@@ -14,14 +14,18 @@ SOURCES += \
     courseedit.cpp \
     departedit.cpp \
     main.cpp \
-    studentwindow.cpp
+    questionedit.cpp \
+    studentwindow.cpp \
+    topicedit.cpp
 
 HEADERS += \
     adminwindow.h \
     authorizationwindow.h \
     courseedit.h \
     departedit.h \
-    studentwindow.h
+    questionedit.h \
+    studentwindow.h \
+    topicedit.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -33,4 +37,6 @@ FORMS += \
     authorizationwindow.ui \
     courseedit.ui \
     departedit.ui \
-    studentwindow.ui
+    questionedit.ui \
+    studentwindow.ui \
+    topicedit.ui
