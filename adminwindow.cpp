@@ -16,7 +16,6 @@ AdminWindow::~AdminWindow()
 
 void AdminWindow::on_toolButton_clicked()
 {
-    //QString QFileDialog::getOpenFileName();
     questionedit form;
     form.setModal(true);
     form.exec();
