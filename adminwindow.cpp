@@ -6,7 +6,9 @@ AdminWindow::AdminWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AdminWindow)
 {
+    QCommonStyle style;
     ui->setupUi(this);
+    ui->pushButton_4->setIcon(style.standardIcon(QStyle::SP_ArrowBack));
 }
 
 AdminWindow::~AdminWindow()
@@ -43,5 +45,12 @@ void AdminWindow::on_ButDeppart_clicked()
     topicedit form;
     form.setModal(true);
     form.exec();
+}
+
+
+void AdminWindow::on_pushButton_4_clicked()
+{
+    this->close();
+    emit firstWindow();
 }
 

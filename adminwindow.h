@@ -2,10 +2,12 @@
 #define ADMINWINDOW_H
 
 #include <QDialog>
+#include <QCommonStyle>
 #include "departedit.h"
 #include "courseedit.h"
 #include "questionedit.h"
 #include "topicedit.h"
+
 namespace Ui {
 class AdminWindow;
 }
@@ -18,6 +20,9 @@ public:
     explicit AdminWindow(QWidget *parent = nullptr);
     ~AdminWindow();
 
+signals:
+    void firstWindow();
+
 private slots:
     void on_toolButton_clicked();
 
@@ -26,6 +31,8 @@ private slots:
     void on_toolButton_4_clicked();
 
     void on_ButDeppart_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Ui::AdminWindow *ui;

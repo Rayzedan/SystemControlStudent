@@ -9,6 +9,10 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent)
     , ui(new Ui::AuthorizationWindow)
 {
     ui->setupUi(this);
+    SWindow = new StudentWindow();
+    connect(SWindow, &StudentWindow::firstWindow, this, &AuthorizationWindow::show);
+    AWindow = new AdminWindow();
+    connect(AWindow, &AdminWindow::firstWindow, this, &AuthorizationWindow::show);
 }
 
 AuthorizationWindow::~AuthorizationWindow()
@@ -27,10 +31,8 @@ void AuthorizationWindow::on_pushButton_clicked()
         if(login == "Test" && password =="123")
         {
             QMessageBox::information(this,"Авторизация","Успешный вход");
-            AdminWindow window;
-            QMainWindow::close();
-            window.setModal(true);
-            window.exec();
+            this->close();
+            AWindow->show();
         }
         else
         {
@@ -42,10 +44,8 @@ void AuthorizationWindow::on_pushButton_clicked()
         if(login == "Test" && password =="123")
         {
             QMessageBox::information(this,"Авторизация","Успешный вход");
-            StudentWindow window;
-            QMainWindow::close();
-            window.setModal(true);
-            window.exec();
+            this->close();
+            SWindow->show();
         }
         else
         {
