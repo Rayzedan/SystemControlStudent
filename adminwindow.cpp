@@ -19,3 +19,19 @@ void AdminWindow::on_toolButton_clicked()
     //QString QFileDialog::getOpenFileName();
 }
 
+
+void AdminWindow::on_toolButton_3_clicked()
+{
+    departedit form;
+    form.setModal(true);
+    form.exec();
+}
+
+
+void AdminWindow::on_toolButton_4_clicked()
+{
+    courseedit form;
+    form.setModal(true);
+    form.exec();
+}
+

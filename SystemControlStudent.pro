@@ -11,12 +11,16 @@ CONFIG += c++11
 SOURCES += \
     adminwindow.cpp \
     authorizationwindow.cpp \
+    courseedit.cpp \
+    departedit.cpp \
     main.cpp \
     studentwindow.cpp
 
 HEADERS += \
     adminwindow.h \
     authorizationwindow.h \
+    courseedit.h \
+    departedit.h \
     studentwindow.h
 
 # Default rules for deployment.
@@ -27,4 +31,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 FORMS += \
     adminwindow.ui \
     authorizationwindow.ui \
+    courseedit.ui \
+    departedit.ui \
     studentwindow.ui

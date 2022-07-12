@@ -2,6 +2,8 @@
 #define ADMINWINDOW_H
 
 #include <QDialog>
+#include "departedit.h"
+#include "courseedit.h"
 
 namespace Ui {
 class AdminWindow;
@@ -17,6 +19,10 @@ public:
 
 private slots:
     void on_toolButton_clicked();
+
+    void on_toolButton_3_clicked();
+
+    void on_toolButton_4_clicked();
 
 private:
     Ui::AdminWindow *ui;
