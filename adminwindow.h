@@ -21,7 +21,7 @@ public:
     ~AdminWindow();
 
 signals:
-    void firstWindow();
+    void firstWindow(); //Сигнал для соединения окна администратора и окна авторизации
 
 private slots:
     void on_toolButton_clicked();
@@ -36,6 +36,10 @@ private slots:
 
 private:
     Ui::AdminWindow *ui;
+    questionedit *questForm;
+    departedit *departForm;
+    courseedit *courseForm;
+    topicedit *topicForm;
 };
 
 #endif // ADMINWINDOW_H

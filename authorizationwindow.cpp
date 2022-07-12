@@ -10,8 +10,10 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent)
 {
     ui->setupUi(this);
     SWindow = new StudentWindow();
-    connect(SWindow, &StudentWindow::firstWindow, this, &AuthorizationWindow::show);
     AWindow = new AdminWindow();
+    //Связываем окно авторизации и окно студента
+    connect(SWindow, &StudentWindow::firstWindow, this, &AuthorizationWindow::show);
+    //Связываем окно авторизации и окно администратора
     connect(AWindow, &AdminWindow::firstWindow, this, &AuthorizationWindow::show);
 }
 
@@ -21,12 +23,12 @@ AuthorizationWindow::~AuthorizationWindow()
 }
 
 
-void AuthorizationWindow::on_pushButton_clicked()
+void AuthorizationWindow::on_pushButton_clicked() //Кнопка авторизации
 {
     QString login = ui->login->text();
     QString password = ui->password->text();
     QString Mode = ui->choiseMenu->currentText();
-    if (Mode == "Администратор")
+    if (Mode == "Администратор") //В зависимости от режима поставленного в ComboBox открываем нужное окно
     {
         if(login == "Test" && password =="123")
         {

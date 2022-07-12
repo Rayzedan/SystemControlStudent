@@ -17,7 +17,7 @@ public:
     ~StudentWindow();
 
 signals:
-    void firstWindow();
+    void firstWindow(); //Сигнал для соединения окна студента и окна авторизации
 
 private slots:
     void on_pushButton_3_clicked();
