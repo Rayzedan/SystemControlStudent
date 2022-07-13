@@ -6,7 +6,6 @@
 #include <studentwindow.h>
 #include <QtGui>
 #include <QtWidgets>
-#include <QtSql>
 
 namespace Ui {
 class MainWindow;
@@ -26,7 +25,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QSqlDatabase db;
     StudentWindow *SWindow;
     AuthorizationWindow *AWindow;
 };
