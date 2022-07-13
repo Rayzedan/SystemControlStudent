@@ -1,6 +1,5 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
-#include "authorizationwindow.h"
 
 AdminWindow::AdminWindow(QWidget *parent) :
     QDialog(parent),

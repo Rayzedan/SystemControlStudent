@@ -46,7 +46,7 @@ QToolButton:pressed {
  }</string>
      </property>
      <property name="title">
-      <string/>
+      <string>Авторизация</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -62,6 +62,7 @@ QToolButton:pressed {
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>75</weight>
             <italic>false</italic>
             <bold>true</bold>
            </font>
@@ -80,7 +81,7 @@ QWidget {
 </string>
           </property>
           <property name="title">
-           <string>Авторизация</string>
+           <string/>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>

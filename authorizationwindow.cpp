@@ -37,7 +37,7 @@ void AuthorizationWindow::on_pushButton_2_clicked() //Кнопка автори�
         }
 }
 
-void AuthorizationWindow::on_pushButton_clicked()
+void AuthorizationWindow::on_pushButton_clicked() //Кнопка возврата к начальному окну
 {
     this->close();
     emit firstWindow();

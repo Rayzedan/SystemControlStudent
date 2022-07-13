@@ -1,7 +1,6 @@
 #include "studentwindow.h"
 #include "ui_studentwindow.h"
-#include <authorizationwindow.h>
-#include <QCommonStyle>
+#include "authorizationwindow.h"
 
 StudentWindow::StudentWindow(QWidget *parent) :
     QDialog(parent),

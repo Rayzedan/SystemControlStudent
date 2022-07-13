@@ -23,7 +23,7 @@ public:
 
 signals:
     void firstWindow(); //Сигнал для соединения окна администратора и окна авторизации
-    void backToAuth();
+    void backToAuth(); //Сигнал для возвращения к начальному окну приложения
 
 private slots:
     void on_toolButton_clicked();

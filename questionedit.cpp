@@ -1,6 +1,7 @@
 #include "questionedit.h"
 #include "ui_questionedit.h"
 #include "QMessageBox"
+
 questionedit::questionedit(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::questionedit)
