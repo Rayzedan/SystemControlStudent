@@ -19,13 +19,46 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+  
+     padding: 6px;}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <pointsize>-1</pointsize>
+       <italic>false</italic>
+       <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+	background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: gray;
+     font: bold 14px;
+  
+     padding: 6px;}
+
+QPushButton:pressed {
+     background-color: grey;
+     border-style: inset;
+ }
+QToolButton:pressed {
+     background-color: grey;
+     border-style: inset;
+ }</string>
      </property>
      <property name="title">
       <string>Создание курса</string>
@@ -37,8 +70,13 @@
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-color: white;</string>
           </property>
           <property name="text">
            <string>Введите название курса:</string>
@@ -49,7 +87,9 @@
          <widget class="QLineEdit" name="lineEdit">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
           </property>
           <property name="text">
@@ -61,8 +101,13 @@
          <widget class="QLabel" name="label_4">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-color: white;</string>
           </property>
           <property name="text">
            <string>Выберете департамент:</string>
@@ -76,8 +121,13 @@
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-color: white;</string>
           </property>
           <property name="text">
            <string>Выберете тему, относящийся к курсу:</string>
@@ -88,8 +138,13 @@
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-color: white;</string>
           </property>
           <property name="text">
            <string> (не обязательно)</string>

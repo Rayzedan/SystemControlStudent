@@ -15,6 +15,9 @@ public:
     explicit questionedit(QWidget *parent = nullptr);
     ~questionedit();
 
+private slots:
+    void on_comboBox_currentTextChanged(const QString &arg1);
+
 private:
     Ui::questionedit *ui;
 };

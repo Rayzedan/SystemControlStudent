@@ -19,13 +19,38 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <pointsize>-1</pointsize>
+       <italic>false</italic>
+       <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+	background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: gray;
+     font: bold 14px;
+  
+     padding: 6px;}
+
+QPushButton:pressed {
+     background-color: grey;
+     border-style: inset;
+ }
+QToolButton:pressed {
+     background-color: grey;
+     border-style: inset;
+ }</string>
      </property>
      <property name="title">
       <string>Создание задания</string>
@@ -33,6 +58,11 @@
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">
+border-color: white;
+</string>
+        </property>
         <property name="text">
          <string>Формулировка задания:</string>
         </property>
@@ -45,6 +75,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,10,1">
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">border-color: white;</string>
+          </property>
           <property name="text">
            <string>Тип ответа:</string>
           </property>
@@ -83,6 +116,19 @@
          </widget>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">border-color: white;</string>
+        </property>
+        <property name="text">
+         <string>Ответ:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="textEdit_2"/>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">

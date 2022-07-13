@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
     //Связываем окно авторизации и окно администратора
     connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
+    ui->radioButton->setChecked(true);
 }
 
 MainWindow::~MainWindow()
