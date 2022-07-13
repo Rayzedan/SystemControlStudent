@@ -21,13 +21,11 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 
     // Проверяем получилось ли установить соединение
     bool ok = db.open();
-    if (ok)
-    {
-            qDebug()<<"database open";
+    if (ok) {
+            qDebug()<< "database open" ;
     }
-     else
-    {
-            qDebug()<<"error open database because"<<db.lastError().text();
+     else {
+            qDebug()<< "error open database because" <<db.lastError().text();
     }
 
     // Скрываем пароль, который вводит администратор
@@ -51,21 +49,19 @@ void AuthorizationWindow::on_pushButton_2_clicked()
     QString login = ui->login->text();
     QString password = ui->password->text();
     // Проверяем, что вводит пользователь
-        if(login == "")
-        {
+        if(login == "") {
             QMessageBox :: warning (this, "", "Имя пользователя не может быть пустым!");
         }
-        else if (password =="")
-        {
+        else if (password =="") {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
-        else {
+        else
+        {
             QString request = QString("select Login, Password from Users");
             QSqlQuery query;
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
-            if (query.exec(request))
-            {
+            if (query.exec(request)) {
                 AdmWindow->show();
                 this->close();
                 ui->login->clear();
