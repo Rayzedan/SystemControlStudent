@@ -20,33 +20,34 @@ AdminWindow::~AdminWindow()
     delete ui;
 }
 
-void AdminWindow::on_toolButton_clicked() //Кнопка для создания задания
+// Кнопка для создания задания
+void AdminWindow::on_toolButton_clicked()
 {
     questForm->show();
 }
 
-
-void AdminWindow::on_toolButton_3_clicked() //Кнопка для создания департамента
+// Кнопка для создания департамента
+void AdminWindow::on_toolButton_3_clicked()
 {
     departForm->show();
 }
 
-
-void AdminWindow::on_toolButton_4_clicked() //Кнопка для создания курса
+// Кнопка для создания курса
+void AdminWindow::on_toolButton_4_clicked()
 {
    courseForm->show();
 }
 
-
-void AdminWindow::on_ButDeppart_clicked() //Кнопка для создания темы
+// Кнопка для создания темы
+void AdminWindow::on_ButDeppart_clicked()
 {
    topicForm->show();
 }
 
-
-void AdminWindow::on_pushButton_4_clicked() //Кнопка возврата в окно авторизации
+// Кнопка возврата в окно авторизации
+void AdminWindow::on_pushButton_4_clicked()
 {
-    this->close();
+    this->destroy();
     emit backToAuth();
 }
 

@@ -8,9 +8,13 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
       ui(new Ui::AuthorizationWindow)
 {
     ui->setupUi(this);
+    // Скрываем пароль, который вводит администратор
     ui->password->setEchoMode(QLineEdit::Password);
+
+    // Выделяем память для окна администратора
     AdmWindow = new AdminWindow();
-    //Связываем окно авторизации и окно администратора
+
+    // Связываем окно авторизации и окно администратора
     connect(AdmWindow, &AdminWindow::backToAuth, this, &AuthorizationWindow::show);
 }
 
@@ -19,8 +23,8 @@ AuthorizationWindow::~AuthorizationWindow()
     delete ui;
 }
 
-
-void AuthorizationWindow::on_pushButton_2_clicked() //Кнопка авторизации
+// Кнопка авторизации
+void AuthorizationWindow::on_pushButton_2_clicked()
 {
     QString login = ui->login->text();
     QString password = ui->password->text();
@@ -37,9 +41,10 @@ void AuthorizationWindow::on_pushButton_2_clicked() //Кнопка автори�
         }
 }
 
-void AuthorizationWindow::on_pushButton_clicked() //Кнопка возврата к начальному окну
+// Кнопка возврата к начальному окну
+void AuthorizationWindow::on_pushButton_clicked()
 {
-    this->close();
+    this->destroy();
     emit firstWindow();
 }
 

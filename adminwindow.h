@@ -22,8 +22,8 @@ public:
     ~AdminWindow();
 
 signals:
-    void firstWindow(); //Сигнал для соединения окна администратора и окна авторизации
-    void backToAuth(); //Сигнал для возвращения к начальному окну приложения
+    void firstWindow(); // Сигнал для соединения окна администратора и окна авторизации
+    void backToAuth(); // Сигнал для возвращения к начальному окну приложения
 
 private slots:
     void on_toolButton_clicked();

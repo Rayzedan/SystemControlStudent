@@ -15,9 +15,10 @@ StudentWindow::~StudentWindow()
     delete ui;
 }
 
+// Кнопка возврата к начальному окну
 void StudentWindow::on_pushButton_3_clicked()
 {
+    this->destroy();
     emit firstWindow();
-    this->close();
 }
 
