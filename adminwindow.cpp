@@ -1,6 +1,6 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
-
+#include "authorizationwindow.h"
 
 AdminWindow::AdminWindow(QWidget *parent) :
     QDialog(parent),
@@ -48,6 +48,6 @@ void AdminWindow::on_ButDeppart_clicked() //Кнопка для создания
 void AdminWindow::on_pushButton_4_clicked() //Кнопка возврата в окно авторизации
 {
     this->close();
-    emit firstWindow();
+    emit backToAuth();
 }
 

@@ -7,9 +7,7 @@ StudentWindow::StudentWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentWindow)
 {
-    QCommonStyle style;
     ui->setupUi(this);
-    ui->pushButton_3->setIcon(style.standardIcon(QStyle::SP_ArrowBack));
 }
 
 

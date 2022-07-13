@@ -1,14 +1,17 @@
 #ifndef AUTHORIZATIONWINDOW_H
 #define AUTHORIZATIONWINDOW_H
 
-#include <QMainWindow>
-#include "studentwindow.h"
-#include "adminwindow.h"
-QT_BEGIN_NAMESPACE
-namespace Ui { class AuthorizationWindow; }
-QT_END_NAMESPACE
+#include <QDialog>
+#include<QMainWindow>
+#include <adminwindow.h>
+#include <QWidget>
 
-class AuthorizationWindow : public QMainWindow
+namespace Ui {
+class AuthorizationWindow;
+}
+
+
+class AuthorizationWindow : public QDialog
 {
     Q_OBJECT
 
@@ -16,12 +19,16 @@ public:
     explicit AuthorizationWindow(QWidget *parent = nullptr);
     ~AuthorizationWindow();
 
+signals:
+    void firstWindow(); //Сигнал для соединения окна начального входа и окна авторизации
+
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::AuthorizationWindow *ui;
-    StudentWindow *SWindow;
-    AdminWindow *AWindow;
+    AdminWindow *AdmWindow;
 };
 #endif // AUTHORIZATIONWINDOW_H
