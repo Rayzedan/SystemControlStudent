@@ -2,7 +2,9 @@
 #define QUESTIONEDIT_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include <QStackedWidget>
+
 namespace Ui {
 class questionedit;
 }

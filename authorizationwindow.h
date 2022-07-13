@@ -4,8 +4,7 @@
 #include <QDialog>
 #include <adminwindow.h>
 #include <QWidget>
-#include <QtSql>
-#include <QSqlQuery>
+
 
 namespace Ui {
 class AuthorizationWindow;
@@ -30,7 +29,6 @@ private slots:
 
 private:
     Ui::AuthorizationWindow *ui;
-    QSqlDatabase db;
     AdminWindow *AdmWindow;
 };
 #endif // AUTHORIZATIONWINDOW_H

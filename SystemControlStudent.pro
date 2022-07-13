@@ -22,6 +22,7 @@ SOURCES += \
 HEADERS += \
     adminwindow.h \
     authorizationwindow.h \
+    connection.h \
     courseedit.h \
     departedit.h \
     mainwindow.h \
