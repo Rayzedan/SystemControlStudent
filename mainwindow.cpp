@@ -2,12 +2,34 @@
 #include "ui_mainwindow.h"
 #include "authorizationwindow.h"
 #include "studentwindow.h"
-
+#include <QDebug>
+#include <QtSql>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
+
+    // Инициализация соединения с базой данных
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("127.0.0.1");
+    db.setPort(3306);
+    db.setDatabaseName("ExaminationSystem");
+    db.setUserName("root");
+    db.setPassword("Zuban123");
+
+    // Проверяем получилось ли установить соединение
+    bool ok = db.open();
+    if (ok)
+    {
+            qDebug()<<"database open";
+    }
+     else
+    {
+            qDebug()<<"error open database because"<<db.lastError().text();
+    }
+
     // При запуске программы окно будет расположено прямо по центру
     QDesktopWidget desktop;
     QRect rect = desktop.availableGeometry(this);
@@ -17,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
     center.setX(x);
     center.setY(y);
     move(center);
-    ui->setupUi(this);
 
     // Выделяем память под окна студента и авторизации
     AWindow = new AuthorizationWindow();
