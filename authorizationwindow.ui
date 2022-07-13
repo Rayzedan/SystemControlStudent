@@ -20,6 +20,14 @@
    <string>Система контроля знаний студентов</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>480</height>
+    </rect>
+   </property>
    <property name="minimumSize">
     <size>
      <width>640</width>
@@ -260,6 +268,9 @@
              <property name="text">
               <string>Далее</string>
              </property>
+             <property name="shortcut">
+              <string>Return</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -271,7 +282,16 @@
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>3</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
