@@ -2,7 +2,7 @@
 #define QUESTIONEDIT_H
 
 #include <QDialog>
-
+#include <QStackedWidget>
 namespace Ui {
 class questionedit;
 }
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::questionedit *ui;
+    //QStackedWidget *stackedWidget;
 };
 
 #endif // QUESTIONEDIT_H

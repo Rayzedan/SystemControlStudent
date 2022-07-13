@@ -9,14 +9,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     // При запуске программы окно будет расположено прямо по центру
-    QDesktopWidget desktop;
-    QRect rect = desktop.availableGeometry(this);
-    QPoint center = rect.center();
-    int x = center.x() - (width()/2);
-    int y = center.y() - (height()/2);
-    center.setX(x);
-    center.setY(y);
-    move(center);
+    //QDesktopWidget desktop;
+   // QRect rect = desktop.availableGeometry(this);
+    //QPoint center = rect.center();
+    //int x = center.x() - (width()/2);
+   // int y = center.y() - (height()/2);
+   // center.setX(x);
+    //center.setY(y);
+    //move(center);
     ui->setupUi(this);
 
     // Выделяем память под окна студента и авторизации
