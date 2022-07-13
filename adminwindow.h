@@ -7,7 +7,7 @@
 #include "courseedit.h"
 #include "questionedit.h"
 #include "topicedit.h"
-#include "authorizationwindow.h"
+
 
 namespace Ui {
 class AdminWindow;

@@ -2,7 +2,6 @@
 #define AUTHORIZATIONWINDOW_H
 
 #include <QDialog>
-#include<QMainWindow>
 #include <adminwindow.h>
 #include <QWidget>
 
