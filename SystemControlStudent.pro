@@ -15,6 +15,7 @@ SOURCES += \
     changesettings.cpp \
     courseedit.cpp \
     departedit.cpp \
+    fillresult.cpp \
     main.cpp \
     mainwindow.cpp \
     questionedit.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     connection.h \
     courseedit.h \
     departedit.h \
+    fillresult.h \
     mainwindow.h \
     questionedit.h \
     resultswindow.h \
@@ -50,6 +52,7 @@ FORMS += \
     changesettings.ui \
     courseedit.ui \
     departedit.ui \
+    fillresult.ui \
     mainwindow.ui \
     questionedit.ui \
     resultswindow.ui \
