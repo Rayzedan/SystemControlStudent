@@ -33,6 +33,8 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 AuthorizationWindow::~AuthorizationWindow()
 {
     delete ui;
+    delete AdmWindow;
+    delete model;
 }
 
 // Кнопка авторизации
@@ -51,7 +53,7 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
             if (query.exec(request)) {
                 AdmWindow->show();
-                this->close();
+                this->destroy();
                 ui->login->clear();
                 ui->password->clear();
             }

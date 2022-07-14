@@ -28,6 +28,9 @@ StudentWindow::StudentWindow(QWidget *parent) :
 StudentWindow::~StudentWindow()
 {
     delete ui;
+    delete testWindow;
+    delete model;
+    delete model_dep;
 }
 
 // Кнопка возврата к начальному окну

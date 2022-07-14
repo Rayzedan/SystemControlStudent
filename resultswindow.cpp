@@ -17,6 +17,7 @@ ResultsWindow::ResultsWindow(QWidget *parent) :
 ResultsWindow::~ResultsWindow()
 {
     delete ui;
+    delete model_res;
 }
 
 // Закрываем окно и переходим обратно в окно администратора

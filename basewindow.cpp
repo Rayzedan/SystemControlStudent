@@ -13,6 +13,8 @@ BaseWindow::BaseWindow(QWidget *parent) :
 BaseWindow::~BaseWindow()
 {
     delete ui;
+    delete changeSet;
+    delete questForm;
 }
 
 void BaseWindow::on_pushButton_3_clicked()

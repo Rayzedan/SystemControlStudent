@@ -40,6 +40,11 @@ AdminWindow::AdminWindow(QWidget *parent) :
 AdminWindow::~AdminWindow()
 {
     delete ui;
+    delete questForm;
+    delete courseForm;
+    delete topicForm;
+    delete baseForm;
+    delete resultForm;
 }
 
 // Кнопка для создания задания
@@ -87,6 +92,6 @@ void AdminWindow::on_ButDeppart_clicked()
 // Кнопка возврата в окно авторизации
 void AdminWindow::on_pushButton_4_clicked()
 {
-    this->destroy();
+    this->close();
     emit backToAuth();
 }
