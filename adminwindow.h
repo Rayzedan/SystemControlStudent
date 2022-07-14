@@ -2,6 +2,7 @@
 #define ADMINWINDOW_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include <QCommonStyle>
 #include "departedit.h"
 #include "courseedit.h"
