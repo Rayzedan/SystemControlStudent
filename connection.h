@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QtSql>
 
+
  // Создаем одно соединение по умолчанию
 static bool createConnection()
 {
@@ -27,4 +28,5 @@ static bool createConnection()
             return false;
     }
 }
+
 #endif // CONNECTION_H

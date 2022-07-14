@@ -21,6 +21,9 @@
     <pointsize>14</pointsize>
    </font>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
   <property name="windowTitle">
    <string/>
   </property>
@@ -62,6 +65,7 @@
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>75</weight>
             <italic>false</italic>
             <bold>true</bold>
            </font>
@@ -81,6 +85,7 @@
                    <property name="font">
                     <font>
                      <pointsize>-1</pointsize>
+                     <weight>75</weight>
                      <italic>false</italic>
                      <bold>true</bold>
                     </font>
@@ -98,6 +103,7 @@
                    <property name="font">
                     <font>
                      <pointsize>-1</pointsize>
+                     <weight>75</weight>
                      <italic>false</italic>
                      <bold>true</bold>
                     </font>
@@ -115,6 +121,7 @@
                    <property name="font">
                     <font>
                      <pointsize>-1</pointsize>
+                     <weight>75</weight>
                      <italic>false</italic>
                      <bold>true</bold>
                     </font>
@@ -142,16 +149,26 @@
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_2">
                  <item>
-                  <widget class="QComboBox" name="comboBox_2"/>
+                  <widget class="QComboBox" name="comboBox_2">
+                   <property name="mouseTracking">
+                    <bool>false</bool>
+                   </property>
+                   <property name="focusPolicy">
+                    <enum>Qt::WheelFocus</enum>
+                   </property>
+                   <property name="frame">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QComboBox" name="comboBox_3"/>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_2"/>
+                  <widget class="QLineEdit" name="fullName"/>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit"/>
+                  <widget class="QLineEdit" name="company"/>
                  </item>
                 </layout>
                </item>

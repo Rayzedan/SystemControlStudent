@@ -30,5 +30,6 @@ private slots:
 private:
     Ui::AuthorizationWindow *ui;
     AdminWindow *AdmWindow;
+
 };
 #endif // AUTHORIZATIONWINDOW_H
