@@ -36,10 +36,6 @@ void AuthorizationWindow::on_pushButton_2_clicked()
     // Проверяем, что вводит пользователь
         if(login == "") {
             QMessageBox :: warning (this, "", "Имя пользователя не может быть пустым!");
-            AdmWindow->show();
-            this->close();
-            ui->login->clear();
-            ui->password->clear();
         }
         else if (password =="") {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");

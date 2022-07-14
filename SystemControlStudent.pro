@@ -12,6 +12,7 @@ SOURCES += \
     adminwindow.cpp \
     authorizationwindow.cpp \
     basewindow.cpp \
+    changesettings.cpp \
     courseedit.cpp \
     departedit.cpp \
     main.cpp \
@@ -19,12 +20,14 @@ SOURCES += \
     questionedit.cpp \
     resultswindow.cpp \
     studentwindow.cpp \
+    testforstudent.cpp \
     topicedit.cpp
 
 HEADERS += \
     adminwindow.h \
     authorizationwindow.h \
     basewindow.h \
+    changesettings.h \
     connection.h \
     courseedit.h \
     departedit.h \
@@ -32,6 +35,7 @@ HEADERS += \
     questionedit.h \
     resultswindow.h \
     studentwindow.h \
+    testforstudent.h \
     topicedit.h
 
 # Default rules for deployment.
@@ -43,10 +47,12 @@ FORMS += \
     adminwindow.ui \
     authorizationwindow.ui \
     basewindow.ui \
+    changesettings.ui \
     courseedit.ui \
     departedit.ui \
     mainwindow.ui \
     questionedit.ui \
     resultswindow.ui \
     studentwindow.ui \
+    testforstudent.ui \
     topicedit.ui

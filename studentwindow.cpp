@@ -7,6 +7,8 @@ StudentWindow::StudentWindow(QWidget *parent) :
     ui(new Ui::StudentWindow)
 {
     ui->setupUi(this);
+    testWindow = new TestForStudent();
+
 }
 
 
@@ -20,5 +22,13 @@ void StudentWindow::on_pushButton_3_clicked()
 {
     this->destroy();
     emit firstWindow();
+}
+
+
+void StudentWindow::on_pushButton_clicked()
+{
+    testWindow->show();
+    this->destroy();
+
 }
 

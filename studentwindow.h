@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QWidget>
+#include "testforstudent.h"
 
 namespace Ui {
 class StudentWindow;
@@ -22,8 +23,11 @@ signals:
 private slots:
     void on_pushButton_3_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::StudentWindow *ui;
+    TestForStudent *testWindow;
 };
 
 #endif // STUDENTWINDOW_H
