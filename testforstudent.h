@@ -2,6 +2,7 @@
 #define TESTFORSTUDENT_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 
 namespace Ui {
 class TestForStudent;
@@ -14,6 +15,9 @@ class TestForStudent : public QMainWindow
 public:
     explicit TestForStudent(QWidget *parent = nullptr);
     ~TestForStudent();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     Ui::TestForStudent *ui;

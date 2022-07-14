@@ -5,6 +5,8 @@ AdminWindow::AdminWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AdminWindow)
 {
+    ui->setupUi(this);
+
     QCommonStyle style;
 
     //Выделяем память под каждый из разделов
@@ -33,7 +35,6 @@ AdminWindow::AdminWindow(QWidget *parent) :
     // Связываем окно просмотра результата и окно администратора
     connect(resultForm, &ResultsWindow::backToAdm, this, &AdminWindow::show);
 
-    ui->setupUi(this);
     ui->pushButton_4->setIcon(style.standardIcon(QStyle::SP_ArrowBack));
 }
 

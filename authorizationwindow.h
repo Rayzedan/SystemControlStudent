@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QSqlQueryModel>
+#include <QCloseEvent>
 #include "adminwindow.h"
 #include <QWidget>
 
@@ -22,6 +23,9 @@ public:
 
 signals:
     void firstWindow(); //Сигнал для соединения окна начального входа и окна авторизации
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_pushButton_clicked();

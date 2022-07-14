@@ -12,3 +12,8 @@ TestForStudent::~TestForStudent()
 {
     delete ui;
 }
+
+void TestForStudent::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+}

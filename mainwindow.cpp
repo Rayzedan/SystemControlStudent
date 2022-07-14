@@ -22,8 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     // Выделяем память под окна студента и авторизации
-    AWindow = new AuthorizationWindow();
-    SWindow = new StudentWindow();
+    AWindow = new AuthorizationWindow(this);
+    SWindow = new StudentWindow(this);
 
     // Связываем начальное окно и окно студента
     connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
@@ -43,7 +43,7 @@ void MainWindow::on_pushButton_clicked()
 {
     // Проверяем какая из кнопок для выбора пользователя нажата
     if (ui->radioButton->isChecked()) {
-        this->destroy();
+        this->close();
         AWindow->show();
     }
 
@@ -51,10 +51,4 @@ void MainWindow::on_pushButton_clicked()
         this->close();
         SWindow->show();
     }
-}
-
-// Закрываем окно
-void MainWindow::closeEvent(QCloseEvent *event)
-{
-    event->accept();
 }

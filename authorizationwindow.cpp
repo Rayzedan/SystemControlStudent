@@ -37,6 +37,13 @@ AuthorizationWindow::~AuthorizationWindow()
     delete model;
 }
 
+void AuthorizationWindow::closeEvent(QCloseEvent *event)
+{
+    qDebug() << "exit from autWin";
+    event->accept();
+}
+
+
 // Кнопка авторизации
 void AuthorizationWindow::on_pushButton_2_clicked()
 {
@@ -53,7 +60,7 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
             if (query.exec(request)) {
                 AdmWindow->show();
-                this->destroy();
+                this->close();
                 ui->login->clear();
                 ui->password->clear();
             }
