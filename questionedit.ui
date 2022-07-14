@@ -34,7 +34,6 @@
      <property name="font">
       <font>
        <pointsize>-1</pointsize>
-       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -140,7 +139,7 @@ border-color: white;
          <string notr="true"> border-color: white;</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="TextPage">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -160,7 +159,20 @@ border-color: white;
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
-               <widget class="QLineEdit" name="TextAns1"/>
+               <widget class="QLineEdit" name="TextAns1">
+                <property name="styleSheet">
+                 <string notr="true">QWidget {
+	background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: gray;
+     font: bold 14px;
+  
+     padding: 6px;}
+</string>
+                </property>
+               </widget>
               </item>
               <item>
                <spacer name="verticalSpacer">
@@ -176,7 +188,20 @@ border-color: white;
                </spacer>
               </item>
               <item>
-               <widget class="QLineEdit" name="TextAns2"/>
+               <widget class="QLineEdit" name="TextAns2">
+                <property name="styleSheet">
+                 <string notr="true">QWidget {
+	background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: gray;
+     font: bold 14px;
+  
+     padding: 6px;}
+</string>
+                </property>
+               </widget>
               </item>
               <item>
                <spacer name="verticalSpacer_2">
@@ -192,7 +217,20 @@ border-color: white;
                </spacer>
               </item>
               <item>
-               <widget class="QLineEdit" name="TextAns3"/>
+               <widget class="QLineEdit" name="TextAns3">
+                <property name="styleSheet">
+                 <string notr="true">QWidget {
+	background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: gray;
+     font: bold 14px;
+  
+     padding: 6px;}
+</string>
+                </property>
+               </widget>
               </item>
               <item>
                <spacer name="verticalSpacer_3">
@@ -208,7 +246,20 @@ border-color: white;
                </spacer>
               </item>
               <item>
-               <widget class="QLineEdit" name="TextAns4"/>
+               <widget class="QLineEdit" name="TextAns4">
+                <property name="styleSheet">
+                 <string notr="true">QWidget {
+	background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: gray;
+     font: bold 14px;
+  
+     padding: 6px;}
+</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

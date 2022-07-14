@@ -11,6 +11,7 @@ AdminWindow::AdminWindow(QWidget *parent) :
     departForm = new departedit();
     courseForm = new courseedit();
     topicForm = new topicedit();
+    baseForm = new BaseWindow();
     ui->setupUi(this);
     ui->pushButton_4->setIcon(style.standardIcon(QStyle::SP_ArrowBack));
 }
@@ -49,5 +50,11 @@ void AdminWindow::on_pushButton_4_clicked()
 {
     this->destroy();
     emit backToAuth();
+}
+
+
+void AdminWindow::on_pushButton_2_clicked()
+{
+    baseForm->show();
 }
 
