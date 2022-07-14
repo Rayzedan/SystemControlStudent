@@ -7,6 +7,7 @@ StudentWindow::StudentWindow(QWidget *parent) :
     ui(new Ui::StudentWindow)
 {
     ui->setupUi(this);
+
     testWindow = new TestForStudent();
         
     // Выделяем память под данные из бд для ComboBox_2/ComboBox_3

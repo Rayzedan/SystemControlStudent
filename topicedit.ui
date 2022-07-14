@@ -28,6 +28,7 @@
      <property name="font">
       <font>
        <pointsize>-1</pointsize>
+       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -62,6 +63,7 @@ QToolButton:pressed {
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>75</weight>
             <italic>false</italic>
             <bold>true</bold>
            </font>
@@ -79,6 +81,7 @@ QToolButton:pressed {
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>75</weight>
             <italic>false</italic>
             <bold>true</bold>
            </font>
@@ -93,6 +96,7 @@ QToolButton:pressed {
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>75</weight>
             <italic>false</italic>
             <bold>true</bold>
            </font>

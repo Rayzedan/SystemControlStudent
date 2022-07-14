@@ -10,6 +10,7 @@
 #include "topicedit.h"
 #include "basewindow.h"
 #include "resultswindow.h"
+
 namespace Ui {
 class AdminWindow;
 }

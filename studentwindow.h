@@ -3,8 +3,8 @@
 
 #include <QDialog>
 #include <QWidget>
-#include "testforstudent.h"
 #include <QSqlQueryModel>
+#include "testforstudent.h"
 
 namespace Ui {
 class StudentWindow;

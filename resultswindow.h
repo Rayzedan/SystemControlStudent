@@ -2,6 +2,8 @@
 #define RESULTSWINDOW_H
 
 #include <QWidget>
+#include <QSqlTableModel>
+#include <QSqlQueryModel>
 
 namespace Ui {
 class ResultsWindow;
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::ResultsWindow *ui;
+    QSqlQueryModel *model_res;
 };
 
 #endif // RESULTSWINDOW_H
