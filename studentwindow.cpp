@@ -7,10 +7,8 @@ StudentWindow::StudentWindow(QWidget *parent) :
     ui(new Ui::StudentWindow)
 {
     ui->setupUi(this);
-<<<<<<< HEAD
     testWindow = new TestForStudent();
-=======
-
+        
     // Выделяем память под данные из бд для ComboBox_2/ComboBox_3
     model = new QSqlQueryModel();
     model_dep = new QSqlQueryModel();
@@ -22,7 +20,6 @@ StudentWindow::StudentWindow(QWidget *parent) :
     // Отображаем полученные данные
     ui->comboBox_2->setModel(model);
     ui->comboBox_3->setModel(model_dep);
->>>>>>> 276a248 (добавил парсинг данных из бд в окно студента)
 
 }
 
@@ -44,13 +41,9 @@ void StudentWindow::on_pushButton_3_clicked()
 
 void StudentWindow::on_pushButton_clicked()
 {
-<<<<<<< HEAD
-    testWindow->show();
-    this->destroy();
-=======
     QString fullName = ui->fullName->text();
     QString company = ui->company->text();
->>>>>>> 276a248 (добавил парсинг данных из бд в окно студента)
-
+    testWindow->show();
+    this->destroy();
 }
 
