@@ -64,7 +64,7 @@
          <item>
           <widget class="QPushButton" name="pushButton_4">
            <property name="text">
-            <string>Изменть настройки БД</string>
+            <string>Изменить настройки БД</string>
            </property>
           </widget>
          </item>
