@@ -12,3 +12,10 @@ topicedit::~topicedit()
 {
     delete ui;
 }
+
+// Закрываем окно
+void topicedit::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit backToAdm();
+}

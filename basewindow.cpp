@@ -26,3 +26,8 @@ void BaseWindow::on_pushButton_4_clicked()
     changeSet->show();
 }
 
+void BaseWindow::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit backToAdm();
+}

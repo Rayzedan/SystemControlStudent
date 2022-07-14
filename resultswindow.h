@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSqlTableModel>
 #include <QSqlQueryModel>
+#include <QCloseEvent>
 
 namespace Ui {
 class ResultsWindow;
@@ -16,6 +17,12 @@ class ResultsWindow : public QWidget
 public:
     explicit ResultsWindow(QWidget *parent = nullptr);
     ~ResultsWindow();
+
+signals:
+    void backToAdm();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     Ui::ResultsWindow *ui;

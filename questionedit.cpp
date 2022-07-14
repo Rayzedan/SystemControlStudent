@@ -34,3 +34,11 @@ void questionedit::on_comboBox_currentTextChanged(const QString &arg1)
     }
 }
 
+// Закрываем окно
+void questionedit::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit backToAdm();
+}
+
+

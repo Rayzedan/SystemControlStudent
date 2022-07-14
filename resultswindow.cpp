@@ -18,3 +18,10 @@ ResultsWindow::~ResultsWindow()
 {
     delete ui;
 }
+
+// Закрываем окно и переходим обратно в окно администратора
+void ResultsWindow::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit backToAdm();
+}

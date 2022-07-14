@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "questionedit.h"
 #include "changesettings.h"
+
 namespace Ui {
 class BaseWindow;
 }
@@ -15,6 +16,12 @@ class BaseWindow : public QWidget
 public:
     explicit BaseWindow(QWidget *parent = nullptr);
     ~BaseWindow();
+
+signals:
+    void backToAdm();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_pushButton_3_clicked();

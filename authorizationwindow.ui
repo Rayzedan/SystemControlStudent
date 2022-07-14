@@ -91,7 +91,7 @@ QWidget {
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
-            <widget class="QLineEdit" name="login"/>
+            <widget class="QComboBox" name="login"/>
            </item>
            <item>
             <widget class="QLineEdit" name="password"/>

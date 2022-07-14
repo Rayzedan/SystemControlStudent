@@ -12,3 +12,10 @@ departedit::~departedit()
 {
     delete ui;
 }
+
+// Закрываем окно
+void departedit::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit backToAdm();
+}

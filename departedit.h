@@ -2,6 +2,7 @@
 #define DEPARTEDIT_H
 
 #include <QDialog>
+#include <QCloseEvent>
 
 namespace Ui {
 class departedit;
@@ -14,6 +15,12 @@ class departedit : public QDialog
 public:
     explicit departedit(QWidget *parent = nullptr);
     ~departedit();
+
+signals:
+    void backToAdm();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     Ui::departedit *ui;

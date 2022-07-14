@@ -39,7 +39,7 @@ void StudentWindow::on_pushButton_3_clicked()
     emit firstWindow();
 }
 
-
+// Кнопка для открытия теста
 void StudentWindow::on_pushButton_clicked()
 {
     QString fullName = ui->fullName->text();

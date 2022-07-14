@@ -12,3 +12,10 @@ courseedit::~courseedit()
 {
     delete ui;
 }
+
+// Закрываем окно
+void courseedit::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit backToAdm();
+}

@@ -1,3 +1,4 @@
+#include <QSqlQueryModel>
 #include "authorizationwindow.h"
 #include "adminwindow.h"
 #include "connection.h"
@@ -19,8 +20,14 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
     // Выделяем память для окна администратора
     AdmWindow = new AdminWindow();
 
+    model = new QSqlQueryModel();
+
     // Связываем окно авторизации и окно администратора
     connect(AdmWindow, &AdminWindow::backToAuth, this, &AuthorizationWindow::show);
+
+    model->setQuery("Select Login From Users");
+
+    ui->login->setModel(model);
 }
 
 AuthorizationWindow::~AuthorizationWindow()
@@ -31,13 +38,9 @@ AuthorizationWindow::~AuthorizationWindow()
 // Кнопка авторизации
 void AuthorizationWindow::on_pushButton_2_clicked()
 {
-    QString login = ui->login->text();
     QString password = ui->password->text();
     // Проверяем, что вводит пользователь
-        if(login == "") {
-            QMessageBox :: warning (this, "", "Имя пользователя не может быть пустым!");
-        }
-        else if (password =="") {
+        if (password =="") {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
@@ -62,7 +65,7 @@ void AuthorizationWindow::on_pushButton_clicked()
 {
     ui->login->clear();
     ui->password->clear();
-    this->destroy();
+    this->close();
     emit firstWindow();
 }
 

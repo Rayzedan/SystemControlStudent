@@ -52,3 +52,8 @@ void MainWindow::on_pushButton_clicked()
     }
 }
 
+// Закрываем окно
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+}

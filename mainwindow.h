@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <authorizationwindow.h>
-#include <studentwindow.h>
+#include "authorizationwindow.h"
+#include "studentwindow.h"
 #include <QtGui>
 #include <QtWidgets>
+#include <QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +20,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_pushButton_clicked();

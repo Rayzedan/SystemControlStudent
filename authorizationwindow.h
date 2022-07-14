@@ -2,7 +2,8 @@
 #define AUTHORIZATIONWINDOW_H
 
 #include <QDialog>
-#include <adminwindow.h>
+#include <QSqlQueryModel>
+#include "adminwindow.h"
 #include <QWidget>
 
 
@@ -30,6 +31,7 @@ private slots:
 private:
     Ui::AuthorizationWindow *ui;
     AdminWindow *AdmWindow;
+    QSqlQueryModel *model;
 
 };
 #endif // AUTHORIZATIONWINDOW_H
