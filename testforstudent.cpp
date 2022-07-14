@@ -13,6 +13,7 @@ TestForStudent::~TestForStudent()
     delete ui;
 }
 
+// Закрываем окно
 void TestForStudent::closeEvent(QCloseEvent *event)
 {
     event->accept();

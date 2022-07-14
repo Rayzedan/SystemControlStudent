@@ -39,6 +39,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// Кнопка выбора режим для пользователя
 void MainWindow::on_pushButton_clicked()
 {
     // Проверяем какая из кнопок для выбора пользователя нажата

@@ -17,12 +17,13 @@ BaseWindow::~BaseWindow()
     delete questForm;
 }
 
+// Переход на окно с редактированием вопроса
 void BaseWindow::on_pushButton_3_clicked()
 {
     questForm->show();
 }
 
-
+// Переход на окно редактирования настроек
 void BaseWindow::on_pushButton_4_clicked()
 {
     changeSet->show();

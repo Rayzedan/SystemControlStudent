@@ -37,6 +37,7 @@ AuthorizationWindow::~AuthorizationWindow()
     delete model;
 }
 
+// Закрываем окно
 void AuthorizationWindow::closeEvent(QCloseEvent *event)
 {
     qDebug() << "exit from autWin";

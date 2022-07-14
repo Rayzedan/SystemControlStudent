@@ -38,7 +38,7 @@ void StudentWindow::on_pushButton_3_clicked()
 {
     //ui->comboBox_2->clear();
     //ui->comboBox_3->clear();
-    this->destroy();
+    this->close();
     emit firstWindow();
 }
 
@@ -48,6 +48,6 @@ void StudentWindow::on_pushButton_clicked()
     QString fullName = ui->fullName->text();
     QString company = ui->company->text();
     testWindow->show();
-    this->destroy();
+    this->close();
 }
 
