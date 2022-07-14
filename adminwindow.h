@@ -8,7 +8,7 @@
 #include "questionedit.h"
 #include "topicedit.h"
 #include "basewindow.h"
-
+#include "resultswindow.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -38,6 +38,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::AdminWindow *ui;
     questionedit *questForm;
@@ -45,6 +47,7 @@ private:
     courseedit *courseForm;
     topicedit *topicForm;
     BaseWindow *baseForm;
+    ResultsWindow *resultForm;
 };
 
 #endif // ADMINWINDOW_H

@@ -17,6 +17,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     questionedit.cpp \
+    resultswindow.cpp \
     studentwindow.cpp \
     topicedit.cpp
 
@@ -29,6 +30,7 @@ HEADERS += \
     departedit.h \
     mainwindow.h \
     questionedit.h \
+    resultswindow.h \
     studentwindow.h \
     topicedit.h
 
@@ -45,5 +47,6 @@ FORMS += \
     departedit.ui \
     mainwindow.ui \
     questionedit.ui \
+    resultswindow.ui \
     studentwindow.ui \
     topicedit.ui

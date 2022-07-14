@@ -12,6 +12,7 @@ AdminWindow::AdminWindow(QWidget *parent) :
     courseForm = new courseedit();
     topicForm = new topicedit();
     baseForm = new BaseWindow();
+    resultForm = new ResultsWindow();
     ui->setupUi(this);
     ui->pushButton_4->setIcon(style.standardIcon(QStyle::SP_ArrowBack));
 }
@@ -56,5 +57,11 @@ void AdminWindow::on_pushButton_4_clicked()
 void AdminWindow::on_pushButton_2_clicked()
 {
     baseForm->show();
+}
+
+
+void AdminWindow::on_pushButton_clicked()
+{
+    resultForm->show();
 }
 
