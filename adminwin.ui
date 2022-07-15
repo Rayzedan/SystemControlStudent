@@ -27,19 +27,15 @@
   <property name="styleSheet">
    <string notr="true">QMainWindow {
 background: white;
-
 }
 QPushButton , QLineEdit,QComboBox{
-display: inline-block;
   color: white;
   font-weight: 700;
 text-decoration: none;
-  user-select: none;
   color: black;
   outline: none;
   border: 2px solid;
   border-radius: 5px;
-  transition: 0.2s;
 
 } 
 QPushButton:hover { background: gray; }
@@ -71,6 +67,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -84,6 +81,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -112,6 +110,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -125,6 +124,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -153,6 +153,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -166,6 +167,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -191,6 +193,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -204,6 +207,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -229,6 +233,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -242,6 +247,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -267,6 +273,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -280,6 +287,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -322,6 +330,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>88</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -348,6 +357,7 @@ QPushButton:pressed { background: white; }</string>
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <italic>false</italic>
              <bold>true</bold>
             </font>
@@ -410,6 +420,7 @@ QPushButton:pressed { background: white; }</string>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
+               <weight>88</weight>
                <bold>true</bold>
                <underline>false</underline>
                <strikeout>false</strikeout>
@@ -425,6 +436,7 @@ QPushButton:pressed { background: white; }</string>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
+               <weight>88</weight>
                <bold>true</bold>
                <underline>false</underline>
                <strikeout>false</strikeout>
@@ -451,6 +463,7 @@ QPushButton:pressed { background: white; }</string>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
+           <weight>75</weight>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -482,6 +495,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -499,6 +513,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -528,6 +543,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -545,6 +561,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -558,6 +575,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>10</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -605,6 +623,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -633,6 +652,7 @@ QPushButton:pressed { background: white; }</string>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
+           <weight>75</weight>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -651,6 +671,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -668,6 +689,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -684,6 +706,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -701,6 +724,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -714,6 +738,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -731,6 +756,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>10</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -748,6 +774,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -778,6 +805,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -806,6 +834,7 @@ QPushButton:pressed { background: white; }</string>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
+           <weight>75</weight>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -824,6 +853,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -841,6 +871,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -857,6 +888,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -874,6 +906,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -943,6 +976,7 @@ QPushButton:pressed { background: white; }</string>
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>88</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <underline>false</underline>
@@ -970,6 +1004,7 @@ QPushButton:pressed { background: white; }</string>
         <widget class="QGroupBox" name="groupBox_4">
          <property name="font">
           <font>
+           <weight>75</weight>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -983,6 +1018,7 @@ QPushButton:pressed { background: white; }</string>
             <property name="font">
              <font>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1012,6 +1048,7 @@ border-color: white;
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1057,6 +1094,7 @@ border-color: white;
             <property name="font">
              <font>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1098,6 +1136,7 @@ border-color: white;
                     <property name="font">
                      <font>
                       <pointsize>12</pointsize>
+                      <weight>88</weight>
                       <bold>true</bold>
                       <underline>false</underline>
                       <strikeout>false</strikeout>
@@ -1123,6 +1162,7 @@ border-color: white;
                     <property name="font">
                      <font>
                       <pointsize>12</pointsize>
+                      <weight>88</weight>
                       <bold>true</bold>
                       <underline>false</underline>
                       <strikeout>false</strikeout>
@@ -1148,6 +1188,7 @@ border-color: white;
                     <property name="font">
                      <font>
                       <pointsize>12</pointsize>
+                      <weight>88</weight>
                       <bold>true</bold>
                       <underline>false</underline>
                       <strikeout>false</strikeout>
@@ -1173,6 +1214,7 @@ border-color: white;
                     <property name="font">
                      <font>
                       <pointsize>12</pointsize>
+                      <weight>88</weight>
                       <bold>true</bold>
                       <underline>false</underline>
                       <strikeout>false</strikeout>
@@ -1294,6 +1336,7 @@ border-color: white;
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
+                  <weight>88</weight>
                   <bold>true</bold>
                   <underline>false</underline>
                   <strikeout>false</strikeout>
@@ -1309,6 +1352,7 @@ border-color: white;
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
+                  <weight>88</weight>
                   <bold>true</bold>
                   <underline>false</underline>
                   <strikeout>false</strikeout>
@@ -1342,6 +1386,7 @@ border-color: white;
              <property name="font">
               <font>
                <pointsize>14</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1390,6 +1435,7 @@ border-color: white;
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
+                 <weight>88</weight>
                  <bold>true</bold>
                  <underline>false</underline>
                  <strikeout>false</strikeout>
@@ -1405,6 +1451,7 @@ border-color: white;
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
+                 <weight>88</weight>
                  <bold>true</bold>
                  <underline>false</underline>
                  <strikeout>false</strikeout>
@@ -1420,6 +1467,7 @@ border-color: white;
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
+                 <weight>88</weight>
                  <bold>true</bold>
                  <underline>false</underline>
                  <strikeout>false</strikeout>
@@ -1450,6 +1498,7 @@ border-color: white;
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>

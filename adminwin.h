@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <tabwidget.h>
+#include <QSqlTableModel>
+#include <QSqlQueryModel>
 
 namespace Ui {
 class AdminWin;
@@ -21,6 +23,7 @@ private slots:
 
 private:
     Ui::AdminWin *ui;
+    QSqlQueryModel *model_res;
 };
 
 #endif // ADMINWIN_H

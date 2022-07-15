@@ -20,11 +20,11 @@ static bool createConnection()
     // Проверяем, получилось ли установить соединение
     bool ok = db.open();
     if (ok) {
-            qDebug()<< "database open" ;
+            qDebug()<< "database open";
             return true;
     }
      else {
-            qDebug()<< "error open database because" <<db.lastError().text();
+            qDebug()<< "error open database because" << db.lastError().text();
             return false;
     }
 }

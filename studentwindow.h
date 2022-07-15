@@ -2,7 +2,9 @@
 #define STUDENTWINDOW_H
 
 #include <QDialog>
+#include <QDebug>
 #include <QWidget>
+#include <QSqlRecord>
 #include <QSqlQueryModel>
 #include "testforstudent.h"
 
@@ -20,6 +22,10 @@ public:
 
 signals:
     void firstWindow(); //Сигнал для соединения окна студента и окна авторизации
+    void sendData(QString logFullName);
+
+public slots:
+    //void recieveData(QVariant variant);
 
 private slots:
     void on_pushButton_3_clicked();

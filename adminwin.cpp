@@ -6,6 +6,12 @@ AdminWin::AdminWin(QWidget *parent) :
     ui(new Ui::AdminWin)
 {
     ui->setupUi(this);
+
+    model_res = new QSqlQueryModel();
+    model_res->setQuery("Select Courses_id, StudentName, Company, Credit, TestDuration, CorrectPercent from Results");
+    ui->tableView_2->setModel(model_res);
+    ui->tableView_2->verticalHeader()->setVisible(false);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 AdminWin::~AdminWin()

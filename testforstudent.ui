@@ -19,25 +19,6 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QMainWindow {
-background: white;
-}
-QPushButton , QLineEdit,QComboBox{
-display: inline-block;
-  color: white;
-  font-weight: 700;
-text-decoration: none;
-  user-select: none;
-  color: black;
-  outline: none;
-  border: 2px solid;
-  border-radius: 5px;
-  transition: 0.2s;
-} 
-QPushButton:hover { background: gray }
-QPushButton:pressed { background: white; }</string>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
@@ -73,8 +54,7 @@ QPushButton:pressed { background: white; }</string>
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -103,24 +83,18 @@ QPushButton:pressed { background: white; }</string>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <layout class="QFormLayout" name="formLayout">
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
+          <item row="0" column="0">
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
-            <property name="text">
-             <string>Ответ1</string>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
             </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="checkBox">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
+           </spacer>
           </item>
           <item row="2" column="0">
            <spacer name="verticalSpacer">
@@ -135,25 +109,6 @@ QPushButton:pressed { background: white; }</string>
             </property>
            </spacer>
           </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Ответ2</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="checkBox_2">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
           <item row="4" column="0">
            <spacer name="verticalSpacer_2">
             <property name="orientation">
@@ -166,25 +121,6 @@ QPushButton:pressed { background: white; }</string>
              </size>
             </property>
            </spacer>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Ответ2</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QCheckBox" name="checkBox_3">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
           </item>
           <item row="6" column="0">
            <spacer name="verticalSpacer_3">
@@ -199,25 +135,6 @@ QPushButton:pressed { background: white; }</string>
             </property>
            </spacer>
           </item>
-          <item row="7" column="0">
-           <widget class="QLabel" name="label_6">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Ответ4</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1">
-           <widget class="QCheckBox" name="checkBox_4">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
           <item row="8" column="0">
            <spacer name="verticalSpacer_4">
             <property name="orientation">
@@ -231,18 +148,33 @@ QPushButton:pressed { background: white; }</string>
             </property>
            </spacer>
           </item>
-          <item row="0" column="0">
-           <spacer name="verticalSpacer_6">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="radioButton">
+            <property name="text">
+             <string>Var1</string>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="radioButton_2">
+            <property name="text">
+             <string>Var2</string>
             </property>
-           </spacer>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QRadioButton" name="radioButton_3">
+            <property name="text">
+             <string>Var3</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QRadioButton" name="radioButton_4">
+            <property name="text">
+             <string>Var4</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -287,14 +219,6 @@ QPushButton:pressed { background: white; }</string>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton">
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
         <property name="text">
          <string>Далее</string>
         </property>
@@ -310,7 +234,7 @@ QPushButton:pressed { background: white; }</string>
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
   </widget>

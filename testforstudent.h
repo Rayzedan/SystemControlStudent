@@ -2,7 +2,10 @@
 #define TESTFORSTUDENT_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QCloseEvent>
+#include <QSqlTableModel>
+#include <QSqlQuery>
 
 namespace Ui {
 class TestForStudent;
@@ -16,11 +19,19 @@ public:
     explicit TestForStudent(QWidget *parent = nullptr);
     ~TestForStudent();
 
+public slots:
+    void recieveData(QString logFullName);
+
 protected:
     void closeEvent(QCloseEvent *event) override;
 
+private slots:
+    void on_pushButton_clicked();
+
+
 private:
     Ui::TestForStudent *ui;
+    QSqlQuery *query;
 };
 
 #endif // TESTFORSTUDENT_H

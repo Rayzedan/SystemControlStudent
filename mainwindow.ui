@@ -86,13 +86,10 @@ background: white;
       <property name="styleSheet">
        <string notr="true">QWidget {
 background: ;
-display: inline-block;
   color: Black;
   font-weight: 700;
   text-decoration: none;
-  user-select: none;
   outline: none;
-  transition: 0.2s;
 }</string>
       </property>
       <property name="title">
@@ -116,16 +113,13 @@ display: inline-block;
         <widget class="QGroupBox" name="groupBox_2">
          <property name="styleSheet">
           <string notr="true">QGroupBox {
-display: inline-block;
   color: white;
   font-weight: 700;
-text-decoration: none;
-  user-select: none;
+  text-decoration: none;
   color: black;
   outline: none;
   border: 2px solid;
   border-radius: 5px;
-  transition: 0.2s;
 } </string>
          </property>
          <property name="title">
@@ -230,16 +224,13 @@ text-decoration: none;
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton {
-display: inline-block;
   color: white;
   font-weight: 700;
-text-decoration: none;
-  user-select: none;
+  text-decoration: none;
   color: black;
   outline: none;
   border: 2px solid;
   border-radius: 5px;
-  transition: 0.2s;
 } 
 QPushButton:hover { background: gray }
 QPushButton:pressed { background: white; }</string>

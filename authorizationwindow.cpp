@@ -9,7 +9,7 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
       ui(new Ui::AuthorizationWindow)
 {
     ui->setupUi(this);
-    Awin = new AdminWin();
+
     // Инициализация соединения с базой данных
     createConnection();
 
@@ -20,7 +20,6 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
     Awin = new AdminWin();
 
     model = new QSqlQueryModel();
-
 
     model->setQuery("Select Login From Users");
 
@@ -37,6 +36,8 @@ AuthorizationWindow::~AuthorizationWindow()
 void AuthorizationWindow::closeEvent(QCloseEvent *event)
 {
     qDebug() << "exit from autWin";
+    ui->login->clear();
+    ui->password->clear();
     event->accept();
 }
 
@@ -68,6 +69,14 @@ void AuthorizationWindow::on_pushButton_2_clicked()
             else
                 QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");
         }
+}
+
+
+// Кнопка возврата к начальному окну
+void AuthorizationWindow::on_pushButton_clicked()
+{
+    this->close();
+    emit firstWindow();
 }
 
 

@@ -32,16 +32,13 @@
 background: white;
 }
 QPushButton , QLineEdit,QComboBox{
-display: inline-block;
   color: white;
   font-weight: 700;
 text-decoration: none;
-  user-select: none;
   color: black;
   outline: none;
   border: 2px solid;
   border-radius: 5px;
-  transition: 0.2s;
 } 
 QPushButton:hover { background: gray }
 QPushButton:pressed { background: white; }</string>
@@ -270,6 +267,9 @@ QPushButton:pressed { background: white; }</string>
             </property>
             <property name="text">
              <string>Начать</string>
+            </property>
+            <property name="shortcut">
+             <string>Return</string>
             </property>
            </widget>
           </item>

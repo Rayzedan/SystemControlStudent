@@ -14,7 +14,6 @@ SOURCES += \
     fillresult.cpp \
     main.cpp \
     mainwindow.cpp \
-    resultswindow.cpp \
     studentwindow.cpp \
     testforstudent.cpp
 
@@ -24,7 +23,6 @@ HEADERS += \
     connection.h \
     fillresult.h \
     mainwindow.h \
-    resultswindow.h \
     studentwindow.h \
     tabwidget.h \
     testforstudent.h
@@ -39,6 +37,5 @@ FORMS += \
     authorizationwindow.ui \
     fillresult.ui \
     mainwindow.ui \
-    resultswindow.ui \
     studentwindow.ui \
     testforstudent.ui
