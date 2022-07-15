@@ -45,6 +45,10 @@ void TestForStudent::recieveData(QString logFullName)
 
 void TestForStudent::on_pushButton_clicked()
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3f18c99 (дебаг)
      if(sizeTest == query->size())
          QMessageBox::question(this,"Внимание","Завершить выполнение теста?");
      if (query->next()) {
