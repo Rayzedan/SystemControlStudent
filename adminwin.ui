@@ -16,17 +16,48 @@
     <height>720</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+background: white;
+
+}
+QPushButton , QLineEdit,QComboBox{
+display: inline-block;
+  color: white;
+  font-weight: 700;
+text-decoration: none;
+  user-select: none;
+  color: black;
+  outline: none;
+  border: 2px solid;
+  border-radius: 5px;
+  transition: 0.2s;
+
+} 
+QPushButton:hover { background: gray; }
+QPushButton:pressed { background: white; }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="TabWidget" name="tabWidget">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="tabPosition">
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="Tab">
       <attribute name="title">
@@ -35,8 +66,55 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Название драйвера:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_5">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <spacer name="verticalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>IP:</string>
            </property>
@@ -44,6 +122,14 @@
          </item>
          <item row="2" column="1">
           <widget class="QLineEdit" name="lineEdit">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
            <property name="inputMask">
             <string>000.000.000.000;_</string>
            </property>
@@ -64,13 +150,28 @@
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="label_2">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>Порт (Port):</string>
            </property>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="lineEdit_2">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="5" column="1">
           <spacer name="verticalSpacer_2">
@@ -85,15 +186,68 @@
            </property>
           </spacer>
          </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Имя базы данных (Database name):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="lineEdit_6">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item row="8" column="0">
           <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>Имя пользователя (Username):</string>
            </property>
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="lineEdit_3">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="9" column="1">
           <spacer name="verticalSpacer_3">
@@ -110,13 +264,28 @@
          </item>
          <item row="10" column="0">
           <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>Пароль (Password):</string>
            </property>
           </widget>
          </item>
          <item row="10" column="1">
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QLineEdit" name="lineEdit_4">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="11" column="1">
           <spacer name="verticalSpacer_5">
@@ -131,55 +300,37 @@
            </property>
           </spacer>
          </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_5">
-           <property name="inputMask">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Название драйвера:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Имя базы данных (Database name):</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLineEdit" name="lineEdit_6"/>
-         </item>
-         <item row="7" column="1">
-          <spacer name="verticalSpacer_4">
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <spacer name="horizontalSpacer_10">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>20</width>
-             <height>40</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="1" column="1">
-          <spacer name="verticalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
+         <item>
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
+           <property name="text">
+            <string>Применить</string>
            </property>
-          </spacer>
+          </widget>
          </item>
         </layout>
        </item>
@@ -196,8 +347,13 @@
           <widget class="QLabel" name="label_19">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>12</pointsize>
+             <italic>false</italic>
+             <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Пользователи:</string>
@@ -205,7 +361,13 @@
           </widget>
          </item>
          <item>
-          <widget class="QListView" name="listView"/>
+          <widget class="QListView" name="listView">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -245,6 +407,14 @@
           <layout class="QVBoxLayout" name="verticalLayout_18">
            <item>
             <widget class="QPushButton" name="pushButton_17">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <bold>true</bold>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
              <property name="text">
               <string>Удалить пользователя</string>
              </property>
@@ -252,6 +422,14 @@
            </item>
            <item>
             <widget class="QPushButton" name="pushButton_16">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <bold>true</bold>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
              <property name="text">
               <string>Добавить пользователя</string>
              </property>
@@ -272,6 +450,7 @@
         <widget class="QGroupBox" name="groupBox">
          <property name="font">
           <font>
+           <pointsize>12</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -302,6 +481,7 @@
              <widget class="QLabel" name="label_7">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -318,8 +498,11 @@
              <widget class="QLineEdit" name="lineEdit_7">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
                </font>
               </property>
               <property name="text">
@@ -344,6 +527,7 @@
              <widget class="QLabel" name="label_8">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -357,12 +541,23 @@
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QComboBox" name="comboBox"/>
+             <widget class="QComboBox" name="comboBox">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+             </widget>
             </item>
             <item row="4" column="0">
              <widget class="QLabel" name="label_9">
               <property name="font">
                <font>
+                <pointsize>10</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -407,6 +602,15 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
               <property name="text">
                <string>Создать</string>
               </property>
@@ -428,6 +632,7 @@
         <widget class="QGroupBox" name="groupBox_2">
          <property name="font">
           <font>
+           <pointsize>12</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -445,6 +650,7 @@
              <widget class="QLabel" name="label_10">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -461,8 +667,11 @@
              <widget class="QLineEdit" name="lineEdit_8">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
                </font>
               </property>
               <property name="text">
@@ -474,6 +683,7 @@
              <widget class="QLabel" name="label_11">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -487,12 +697,23 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_2"/>
+             <widget class="QComboBox" name="comboBox_2">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_12">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -509,6 +730,7 @@
              <widget class="QLabel" name="label_13">
               <property name="font">
                <font>
+                <pointsize>10</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -522,7 +744,17 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_3"/>
+             <widget class="QComboBox" name="comboBox_3">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -543,6 +775,15 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_2">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
               <property name="text">
                <string>Создать</string>
               </property>
@@ -564,6 +805,7 @@
         <widget class="QGroupBox" name="groupBox_3">
          <property name="font">
           <font>
+           <pointsize>12</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
@@ -581,6 +823,7 @@
              <widget class="QLabel" name="label_14">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -597,8 +840,11 @@
              <widget class="QLineEdit" name="lineEdit_9">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
                </font>
               </property>
               <property name="text">
@@ -610,6 +856,7 @@
              <widget class="QLabel" name="label_15">
               <property name="font">
                <font>
+                <pointsize>12</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
@@ -623,7 +870,17 @@
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QComboBox" name="comboBox_4"/>
+             <widget class="QComboBox" name="comboBox_4">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+             </widget>
             </item>
             <item row="2" column="1">
              <spacer name="verticalSpacer_10">
@@ -683,6 +940,15 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_3">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
               <property name="text">
                <string>Создать</string>
               </property>
@@ -704,37 +970,22 @@
         <widget class="QGroupBox" name="groupBox_4">
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-
-QPushButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }
-QToolButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }</string>
-         </property>
          <property name="title">
           <string/>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
+         <layout class="QVBoxLayout" name="verticalLayout_24">
           <item>
            <widget class="QLabel" name="label_20">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">
 border-color: white;
@@ -746,12 +997,24 @@ border-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QTextEdit" name="textEdit"/>
+           <widget class="QTextEdit" name="textEdit">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,10,1">
             <item>
              <widget class="QLabel" name="label_21">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">border-color: white;</string>
               </property>
@@ -791,6 +1054,12 @@ border-color: white;
           </item>
           <item>
            <widget class="QLabel" name="label_22">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">border-color: white;</string>
             </property>
@@ -821,22 +1090,18 @@ border-color: white;
             <widget class="QWidget" name="TestPage">
              <layout class="QVBoxLayout" name="verticalLayout_21">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,1,1">
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_22">
                   <item>
                    <widget class="QLineEdit" name="TextAns1">
-                    <property name="styleSheet">
-                     <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-</string>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                      <underline>false</underline>
+                      <strikeout>false</strikeout>
+                     </font>
                     </property>
                    </widget>
                   </item>
@@ -855,17 +1120,13 @@ border-color: white;
                   </item>
                   <item>
                    <widget class="QLineEdit" name="TextAns2">
-                    <property name="styleSheet">
-                     <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-</string>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                      <underline>false</underline>
+                      <strikeout>false</strikeout>
+                     </font>
                     </property>
                    </widget>
                   </item>
@@ -884,17 +1145,13 @@ border-color: white;
                   </item>
                   <item>
                    <widget class="QLineEdit" name="TextAns3">
-                    <property name="styleSheet">
-                     <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-</string>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                      <underline>false</underline>
+                      <strikeout>false</strikeout>
+                     </font>
                     </property>
                    </widget>
                   </item>
@@ -913,21 +1170,30 @@ border-color: white;
                   </item>
                   <item>
                    <widget class="QLineEdit" name="TextAns4">
-                    <property name="styleSheet">
-                     <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-</string>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                      <underline>false</underline>
+                      <strikeout>false</strikeout>
+                     </font>
                     </property>
                    </widget>
                   </item>
                  </layout>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_8">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_23">
@@ -1007,20 +1273,53 @@ border-color: white;
            </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_24">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
-             <widget class="QPushButton" name="pushButton_4">
-              <property name="text">
-               <string>Добавить</string>
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-             </widget>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_5">
-              <property name="text">
-               <string>Добавить и выйти</string>
-              </property>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <widget class="QPushButton" name="pushButton_4">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                  <bold>true</bold>
+                  <underline>false</underline>
+                  <strikeout>false</strikeout>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_5">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                  <bold>true</bold>
+                  <underline>false</underline>
+                  <strikeout>false</strikeout>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Добавить и выйти</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
@@ -1043,6 +1342,7 @@ border-color: white;
              <property name="font">
               <font>
                <pointsize>14</pointsize>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
@@ -1087,6 +1387,14 @@ border-color: white;
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_13">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
                <property name="text">
                 <string>Добавить вопрос</string>
                </property>
@@ -1094,6 +1402,14 @@ border-color: white;
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_14">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
                <property name="text">
                 <string>Изменить вопрос</string>
                </property>
@@ -1101,6 +1417,14 @@ border-color: white;
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_15">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
                <property name="text">
                 <string>Удалить вопрос</string>
                </property>
@@ -1125,7 +1449,8 @@ border-color: white;
           <widget class="QLabel" name="label_18">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
             </font>
            </property>
            <property name="text">

@@ -28,32 +28,27 @@
    <string/>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {
+background: white;
+}
+QPushButton , QLineEdit,QComboBox{
+display: inline-block;
+  color: white;
+  font-weight: 700;
+text-decoration: none;
+  user-select: none;
+  color: black;
+  outline: none;
+  border: 2px solid;
+  border-radius: 5px;
+  transition: 0.2s;
+} 
+QPushButton:hover { background: gray }
+QPushButton:pressed { background: white; }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_7">
    <item>
     <widget class="QGroupBox" name="groupBox_2">
-     <property name="styleSheet">
-      <string notr="true">
-     QWidget {
-     background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-     QPushButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }
-    QToolButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }
-</string>
-     </property>
      <property name="title">
       <string/>
      </property>
@@ -64,8 +59,6 @@
          <widget class="QGroupBox" name="groupBox">
           <property name="font">
            <font>
-            <pointsize>-1</pointsize>
-            <weight>75</weight>
             <italic>false</italic>
             <bold>true</bold>
            </font>
@@ -84,10 +77,9 @@
                   <widget class="QLabel" name="label">
                    <property name="font">
                     <font>
-                     <pointsize>-1</pointsize>
-                     <weight>75</weight>
+                     <pointsize>12</pointsize>
                      <italic>false</italic>
-                     <bold>true</bold>
+                     <bold>false</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -102,10 +94,9 @@
                   <widget class="QLabel" name="label_2">
                    <property name="font">
                     <font>
-                     <pointsize>-1</pointsize>
-                     <weight>75</weight>
+                     <pointsize>12</pointsize>
                      <italic>false</italic>
-                     <bold>true</bold>
+                     <bold>false</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -120,10 +111,9 @@
                   <widget class="QLabel" name="label_3">
                    <property name="font">
                     <font>
-                     <pointsize>-1</pointsize>
-                     <weight>75</weight>
+                     <pointsize>12</pointsize>
                      <italic>false</italic>
-                     <bold>true</bold>
+                     <bold>false</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -136,6 +126,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="label_4">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">border-color: white;</string>
                    </property>
@@ -150,6 +145,14 @@
                 <layout class="QVBoxLayout" name="verticalLayout_2">
                  <item>
                   <widget class="QComboBox" name="comboBox_2">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
                    <property name="mouseTracking">
                     <bool>false</bool>
                    </property>
@@ -162,13 +165,40 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="comboBox_3"/>
+                  <widget class="QComboBox" name="comboBox_3">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="fullName"/>
+                  <widget class="QLineEdit" name="fullName">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="company"/>
+                  <widget class="QLineEdit" name="company">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -202,6 +232,14 @@
               <height>35</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text">
              <string>Назад</string>
             </property>
@@ -222,6 +260,14 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text">
              <string>Начать</string>
             </property>

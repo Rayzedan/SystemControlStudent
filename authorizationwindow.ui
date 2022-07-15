@@ -26,91 +26,94 @@
    <string>Система контроля знаний студентов</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {\nbackground: white;\n}
+QPushButton , QLineEdit,QComboBox{
+display: inline-block;
+  color: white;
+  font-weight: 700;
+text-decoration: none;
+  user-select: none;
+  color: black;
+  outline: none;
+  border: 2px solid;
+  border-radius: 5px;
+  transition: 0.2s;
+} 
+QPushButton:hover { background: gray }
+QPushButton:pressed { background: white; }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <widget class="QGroupBox" name="groupBox_2">
-     <property name="styleSheet">
-      <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-
-QPushButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }
-QToolButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }</string>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="title">
       <string>Авторизация</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <widget class="QComboBox" name="login">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <item>
-         <widget class="QGroupBox" name="groupBox">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>-1</pointsize>
-            <italic>false</italic>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">
-QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     
-     font: bold 14px;
-  
-     padding: 6px;};
-</string>
-          </property>
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <widget class="QComboBox" name="login"/>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="password"/>
-           </item>
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </widget>
+         <property name="text">
+          <string>bzfb</string>
+         </property>
         </item>
+        <item>
+         <property name="text">
+          <string>Новый элемент</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Новый элемент</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="password">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
@@ -120,6 +123,14 @@ QWidget {
               <width>85</width>
               <height>40</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
@@ -152,6 +163,14 @@ QWidget {
               <width>85</width>
               <height>40</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>

@@ -19,6 +19,25 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+background: white;
+}
+QPushButton , QLineEdit,QComboBox{
+display: inline-block;
+  color: white;
+  font-weight: 700;
+text-decoration: none;
+  user-select: none;
+  color: black;
+  outline: none;
+  border: 2px solid;
+  border-radius: 5px;
+  transition: 0.2s;
+} 
+QPushButton:hover { background: gray }
+QPushButton:pressed { background: white; }</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
@@ -54,7 +73,8 @@
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -85,6 +105,11 @@
          <layout class="QFormLayout" name="formLayout">
           <item row="1" column="0">
            <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Ответ1</string>
             </property>
@@ -112,6 +137,11 @@
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_4">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Ответ2</string>
             </property>
@@ -139,6 +169,11 @@
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_5">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Ответ2</string>
             </property>
@@ -166,6 +201,11 @@
           </item>
           <item row="7" column="0">
            <widget class="QLabel" name="label_6">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Ответ4</string>
             </property>
@@ -247,6 +287,14 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButton">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
         <property name="text">
          <string>Далее</string>
         </property>
@@ -262,7 +310,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

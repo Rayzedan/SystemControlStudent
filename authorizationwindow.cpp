@@ -1,9 +1,8 @@
 #include <QSqlQueryModel>
 #include "authorizationwindow.h"
-#include "adminwindow.h"
 #include "connection.h"
 #include "./ui_authorizationwindow.h"
-
+#include <QMessageBox>
 
 AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
       QDialog(parent),
@@ -18,12 +17,10 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
     ui->password->setEchoMode(QLineEdit::Password);
 
     // Выделяем память для окна администратора
-    AdmWindow = new AdminWindow();
+    Awin = new AdminWin();
 
     model = new QSqlQueryModel();
 
-    // Связываем окно авторизации и окно администратора
-    connect(AdmWindow, &AdminWindow::backToAuth, this, &AuthorizationWindow::show);
 
     model->setQuery("Select Login From Users");
 
@@ -33,7 +30,6 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 AuthorizationWindow::~AuthorizationWindow()
 {
     delete ui;
-    delete AdmWindow;
     delete model;
 }
 
@@ -72,15 +68,6 @@ void AuthorizationWindow::on_pushButton_2_clicked()
             else
                 QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");
         }
-}
-
-// Кнопка возврата к начальному окну
-void AuthorizationWindow::on_pushButton_clicked()
-{
-    ui->login->clear();
-    ui->password->clear();
-    this->close();
-    emit firstWindow();
 }
 
 

@@ -37,7 +37,9 @@
    <string>SystemControlStudent</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {
+background: white;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -52,14 +54,20 @@
      <height>480</height>
     </size>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QGroupBox" name="groupBox_2">
+     <widget class="QGroupBox" name="groupBox">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
       </property>
       <property name="maximumSize">
        <size>
@@ -67,81 +75,76 @@
         <height>480</height>
        </size>
       </property>
-      <property name="title">
-       <string/>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+       </font>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0">
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+background: ;
+display: inline-block;
+  color: Black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  transition: 0.2s;
+}</string>
+      </property>
+      <property name="title">
+       <string>Режим работы</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,5,1">
        <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="minimumSize">
+         <property name="sizeHint" stdset="0">
           <size>
-           <width>0</width>
-           <height>0</height>
+           <width>20</width>
+           <height>40</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>640</width>
-           <height>480</height>
-          </size>
-         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
          <property name="styleSheet">
-          <string notr="true">QWidget {
-	background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: gray;
-     font: bold 14px;
-  
-     padding: 6px;}
-
-QPushButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }
-QToolButton:pressed {
-     background-color: grey;
-     border-style: inset;
- }</string>
+          <string notr="true">QGroupBox {
+display: inline-block;
+  color: white;
+  font-weight: 700;
+text-decoration: none;
+  user-select: none;
+  color: black;
+  outline: none;
+  border: 2px solid;
+  border-radius: 5px;
+  transition: 0.2s;
+} </string>
          </property>
          <property name="title">
-          <string>Режим работы</string>
+          <string/>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,6,6,5,1">
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QRadioButton" name="radioButton">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
-              <weight>75</weight>
+              <pointsize>12</pointsize>
               <italic>false</italic>
               <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QRadioButton{
-border-color: white;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Администратор</string>
@@ -150,79 +153,106 @@ border-color: white;
           </item>
           <item>
            <widget class="QRadioButton" name="radioButton_2">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true">QRadioButton{
-border-color: white;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Студент</string>
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="verticalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>85</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>85</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string>Далее</string>
-              </property>
-              <property name="shortcut">
-               <string>Return</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>85</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>85</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+display: inline-block;
+  color: white;
+  font-weight: 700;
+text-decoration: none;
+  user-select: none;
+  color: black;
+  outline: none;
+  border: 2px solid;
+  border-radius: 5px;
+  transition: 0.2s;
+} 
+QPushButton:hover { background: gray }
+QPushButton:pressed { background: white; }</string>
+           </property>
+           <property name="text">
+            <string>Далее</string>
+           </property>
+           <property name="shortcut">
+            <string>Return</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>

@@ -10,38 +10,24 @@ CONFIG += c++11
 
 SOURCES += \
     adminwin.cpp \
-    adminwindow.cpp \
     authorizationwindow.cpp \
-    basewindow.cpp \
-    changesettings.cpp \
-    courseedit.cpp \
-    departedit.cpp \
     fillresult.cpp \
     main.cpp \
     mainwindow.cpp \
-    questionedit.cpp \
     resultswindow.cpp \
     studentwindow.cpp \
-    testforstudent.cpp \
-    topicedit.cpp
+    testforstudent.cpp
 
 HEADERS += \
     adminwin.h \
-    adminwindow.h \
     authorizationwindow.h \
-    basewindow.h \
-    changesettings.h \
     connection.h \
-    courseedit.h \
-    departedit.h \
     fillresult.h \
     mainwindow.h \
-    questionedit.h \
     resultswindow.h \
     studentwindow.h \
     tabwidget.h \
-    testforstudent.h \
-    topicedit.h
+    testforstudent.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -50,16 +36,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 FORMS += \
     adminwin.ui \
-    adminwindow.ui \
     authorizationwindow.ui \
-    basewindow.ui \
-    changesettings.ui \
-    courseedit.ui \
-    departedit.ui \
     fillresult.ui \
     mainwindow.ui \
-    questionedit.ui \
     resultswindow.ui \
     studentwindow.ui \
-    testforstudent.ui \
-    topicedit.ui
+    testforstudent.ui

@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    QDesktopWidget desktop;
 //    QRect rect = desktop.availableGeometry(this);
 //    QPoint center = rect.center();
- //   int x = center.x() - (width()/2);
+//    int x = center.x() - (width()/2);
 //    int y = center.y() - (height()/2);
 //    center.setX(x);
 //    center.setY(y);
