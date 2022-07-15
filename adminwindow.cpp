@@ -16,7 +16,6 @@ AdminWindow::AdminWindow(QWidget *parent) :
     topicForm = new topicedit();
     baseForm = new BaseWindow();
     resultForm = new ResultsWindow();
-
     // Связываем окно редактирования вопроса и окно администратора
     connect(questForm, &questionedit::backToAdm, this, &AdminWindow::show);
 

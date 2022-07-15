@@ -7,6 +7,7 @@
 #include "adminwindow.h"
 #include <QWidget>
 
+#include "adminwin.h"
 
 namespace Ui {
 class AuthorizationWindow;
@@ -32,10 +33,13 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::AuthorizationWindow *ui;
     AdminWindow *AdmWindow;
     QSqlQueryModel *model;
+    AdminWin *Awin;
 
 };
 #endif // AUTHORIZATIONWINDOW_H

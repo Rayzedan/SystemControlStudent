@@ -10,7 +10,7 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
       ui(new Ui::AuthorizationWindow)
 {
     ui->setupUi(this);
-
+    Awin = new AdminWin();
     // Инициализация соединения с базой данных
     createConnection();
 
@@ -60,8 +60,8 @@ void AuthorizationWindow::on_pushButton_2_clicked()
             QSqlQuery query;
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
             if (query.exec(request)) {
-                AdmWindow->show();
                 this->close();
+                Awin->show();
                 ui->login->clear();
                 ui->password->clear();
             }
@@ -78,4 +78,5 @@ void AuthorizationWindow::on_pushButton_clicked()
     this->close();
     emit firstWindow();
 }
+
 

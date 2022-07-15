@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    adminwin.cpp \
     adminwindow.cpp \
     authorizationwindow.cpp \
     basewindow.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
     topicedit.cpp
 
 HEADERS += \
+    adminwin.h \
     adminwindow.h \
     authorizationwindow.h \
     basewindow.h \
@@ -37,6 +39,7 @@ HEADERS += \
     questionedit.h \
     resultswindow.h \
     studentwindow.h \
+    tabwidget.h \
     testforstudent.h \
     topicedit.h
 
@@ -46,6 +49,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 FORMS += \
+    adminwin.ui \
     adminwindow.ui \
     authorizationwindow.ui \
     basewindow.ui \
