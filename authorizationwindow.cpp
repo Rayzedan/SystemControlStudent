@@ -52,6 +52,10 @@ void AuthorizationWindow::on_pushButton_2_clicked()
     // Проверяем, что вводит пользователь
         if (password =="") {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");
+            this->close();
+            Awin->show();
+            ui->login->clear();
+            ui->password->clear();
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
         else
