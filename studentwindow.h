@@ -22,10 +22,7 @@ public:
 
 signals:
     void firstWindow(); //Сигнал для соединения окна студента и окна авторизации
-    void sendData(QString logFullName);
-
-public slots:
-    //void recieveData(QVariant variant);
+    void sendData(QString logFullName, QString depart);
 
 private slots:
     void on_pushButton_3_clicked();

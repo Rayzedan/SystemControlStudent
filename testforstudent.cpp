@@ -12,7 +12,6 @@ TestForStudent::TestForStudent(QWidget *parent) :
     query = new QSqlQuery();
     query->exec("SELECT Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, "
                    "Chapters_id from Questions, Courses WHERE idCourse = Chapters_id ORDER BY RAND() LIMIT 3;");
-
     if (query->next()) {
        qDebug() << "зашли в цикл";
        ui->label->setText(query->value("Name").toString());
@@ -37,18 +36,15 @@ void TestForStudent::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
-void TestForStudent::recieveData(QString logFullName)
+void TestForStudent::recieveData(QString logFullName, QString depart)
 {
     QString test = logFullName;
-    qDebug() << test;
+    QString test_2 = depart;
+    qDebug() << test + " " + depart;
 }
 
 void TestForStudent::on_pushButton_clicked()
 {
-<<<<<<< HEAD
-=======
-
->>>>>>> 3f18c99 (дебаг)
      if(sizeTest == query->size())
          QMessageBox::question(this,"Внимание","Завершить выполнение теста?");
      if (query->next()) {

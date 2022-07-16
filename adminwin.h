@@ -2,9 +2,11 @@
 #define ADMINWIN_H
 
 #include <QWidget>
-#include <tabwidget.h>
+#include <QCloseEvent>
+#include "tabwidget.h"
 #include <QSqlTableModel>
 #include <QSqlQueryModel>
+#include <QSqlQuery>
 
 namespace Ui {
 class AdminWin;
@@ -17,6 +19,12 @@ class AdminWin : public QWidget
 public:
     explicit AdminWin(QWidget *parent = nullptr);
     ~AdminWin();
+
+signals:
+    void secondWindow(); //Сигнал для соединения панели администратора и начального окна
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_comboBox_5_currentTextChanged(const QString &arg1);

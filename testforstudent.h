@@ -20,7 +20,7 @@ public:
     ~TestForStudent();
 
 public slots:
-    void recieveData(QString logFullName);
+    void recieveData(QString logFullName, QString depart);
 
 protected:
     void closeEvent(QCloseEvent *event) override;

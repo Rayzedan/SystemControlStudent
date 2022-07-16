@@ -46,7 +46,7 @@ void StudentWindow::on_pushButton_3_clicked()
 // Кнопка для открытия теста
 void StudentWindow::on_pushButton_clicked()
 {
-    emit sendData(ui->fullName->text());
+    emit sendData(ui->fullName->text(), ui->comboBox_2->currentText());
     testWindow->show();
     this->close();
 }

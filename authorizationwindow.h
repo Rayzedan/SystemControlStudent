@@ -5,7 +5,6 @@
 #include <QSqlQueryModel>
 #include <QCloseEvent>
 #include <QWidget>
-
 #include "adminwin.h"
 
 namespace Ui {

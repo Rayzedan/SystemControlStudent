@@ -18,8 +18,9 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 
     // Выделяем память для окна администратора
     Awin = new AdminWin();
-
     model = new QSqlQueryModel();
+
+    connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
 
     model->setQuery("Select Login From Users");
 
@@ -29,6 +30,7 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 AuthorizationWindow::~AuthorizationWindow()
 {
     delete ui;
+    delete Awin;
     delete model;
 }
 
@@ -50,9 +52,7 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         if (password =="") {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");
             this->close();
-            Awin->show();
-            ui->login->clear();
-            ui->password->clear();
+            //Awin->show();
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
         else
@@ -63,8 +63,6 @@ void AuthorizationWindow::on_pushButton_2_clicked()
             if (query.exec(request)) {
                 this->close();
                 Awin->show();
-                ui->login->clear();
-                ui->password->clear();
             }
             else
                 QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");

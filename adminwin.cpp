@@ -1,5 +1,6 @@
 #include "adminwin.h"
 #include "ui_adminwin.h"
+#include "mainwindow.h"
 
 AdminWin::AdminWin(QWidget *parent) :
     QWidget(parent),
@@ -12,23 +13,31 @@ AdminWin::AdminWin(QWidget *parent) :
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
 }
 
 AdminWin::~AdminWin()
 {
     delete ui;
+    delete model_res;
 }
 
 void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 {
-    if (arg1 == "Тест"){
+    if (arg1 == "Тест") {
         //QMessageBox::information(this,"Выбор1","Выводим чекбоксы");
         ui->stackedWidget->setCurrentIndex(1);
 
     }
-    else if (arg1 == "Свободный ввод"){
+    else if (arg1 == "Свободный ввод") {
         //QMessageBox::information(this,"Выбор2","Выводим простынь");
         ui->stackedWidget->setCurrentIndex(0);
     }
 }
 
+// Закрываем окно
+void AdminWin::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    emit secondWindow();
+}
