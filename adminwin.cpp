@@ -1,6 +1,6 @@
 #include "adminwin.h"
 #include "ui_adminwin.h"
-#include "mainwindow.h"
+
 
 AdminWin::AdminWin(QWidget *parent) :
     QWidget(parent),

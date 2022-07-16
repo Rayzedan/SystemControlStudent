@@ -4,8 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QCloseEvent>
-#include <QSqlTableModel>
-#include <QSqlQuery>
+#include "database.h"
 
 namespace Ui {
 class TestForStudent;
@@ -16,11 +15,11 @@ class TestForStudent : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit TestForStudent(QWidget *parent = nullptr);
+    explicit TestForStudent(QVariantList takeData, QWidget *parent = nullptr);
     ~TestForStudent();
 
 public slots:
-    void recieveData(QString logFullName, QString depart);
+    //void recieveData(QVariantList data_send);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -28,10 +27,12 @@ protected:
 private slots:
     void on_pushButton_clicked();
 
-
 private:
     Ui::TestForStudent *ui;
+    QVariantList current_data;
+    DataBase *db;
     QSqlQuery *query;
+    int countAnsw;
 };
 
 #endif // TESTFORSTUDENT_H

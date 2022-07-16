@@ -2,14 +2,15 @@
 #include "ui_mainwindow.h"
 #include "authorizationwindow.h"
 #include "studentwindow.h"
-#include "adminwin.h"
-
+#include "database.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    db.openDataBase();
 
     // При запуске программы окно будет расположено прямо по центру
     QDesktopWidget desktop;
@@ -22,16 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     move(center);
 
 
-    // Выделяем память под окна студента и авторизации
-    AWindow = new AuthorizationWindow();
-    SWindow = new StudentWindow();
-    //admWin = new AdminWin();
 
-    // Связываем начальное окно и окно студента
-    connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
-
-    // Связываем начальное окно и окно администратора
-    connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
 
     ui->radioButton->setChecked(true);
 }
@@ -45,6 +37,16 @@ MainWindow::~MainWindow()
 // Кнопка выбора режим для пользователя
 void MainWindow::on_pushButton_clicked()
 {
+    // Выделяем память под окна студента и авторизации
+    AWindow = new AuthorizationWindow();
+    SWindow = new StudentWindow();
+
+    // Связываем начальное окно и окно студента
+    connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
+
+    // Связываем начальное окно и окно администратора
+    connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
+
     // Проверяем какая из кнопок для выбора пользователя нажата
     if (ui->radioButton->isChecked()) {
         this->close();

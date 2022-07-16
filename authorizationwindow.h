@@ -6,6 +6,8 @@
 #include <QCloseEvent>
 #include <QWidget>
 #include "adminwin.h"
+#include <QDebug>
+#include <QMessageBox>
 
 namespace Ui {
 class AuthorizationWindow;
@@ -19,6 +21,7 @@ class AuthorizationWindow : public QDialog
 public:
     explicit AuthorizationWindow(QWidget *parent = nullptr);
     ~AuthorizationWindow();
+
 
 signals:
     void firstWindow(); //Сигнал для соединения окна начального входа и окна авторизации

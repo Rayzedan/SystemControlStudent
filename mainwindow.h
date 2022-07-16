@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "database.h"
 #include "authorizationwindow.h"
 #include "studentwindow.h"
 #include "adminwin.h"
@@ -29,7 +30,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    //AdminWin *admWin;
+    DataBase db;
     StudentWindow *SWindow;
     AuthorizationWindow *AWindow;
 };

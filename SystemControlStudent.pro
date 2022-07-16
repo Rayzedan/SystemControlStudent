@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     adminwin.cpp \
     authorizationwindow.cpp \
+    database.cpp \
     fillresult.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,7 +21,7 @@ SOURCES += \
 HEADERS += \
     adminwin.h \
     authorizationwindow.h \
-    connection.h \
+    database.h \
     fillresult.h \
     mainwindow.h \
     studentwindow.h \

@@ -1,8 +1,5 @@
-#include <QSqlQueryModel>
 #include "authorizationwindow.h"
-#include "connection.h"
 #include "./ui_authorizationwindow.h"
-#include <QMessageBox>
 
 AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
       QDialog(parent),
@@ -10,17 +7,15 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Инициализация соединения с базой данных
-    createConnection();
+    Awin = new AdminWin();
+    connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
 
     // Скрываем пароль, который вводит администратор
     ui->password->setEchoMode(QLineEdit::Password);
 
     // Выделяем память для окна администратора
-    Awin = new AdminWin();
-    model = new QSqlQueryModel();
 
-    connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
+    model = new QSqlQueryModel();   
 
     model->setQuery("Select Login From Users");
 
@@ -30,7 +25,6 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 AuthorizationWindow::~AuthorizationWindow()
 {
     delete ui;
-    delete Awin;
     delete model;
 }
 
@@ -52,7 +46,6 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         if (password =="") {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");
             this->close();
-            //Awin->show();
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
         else
@@ -62,6 +55,7 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
             if (query.exec(request)) {
                 this->close();
+                query.finish();
                 Awin->show();
             }
             else
