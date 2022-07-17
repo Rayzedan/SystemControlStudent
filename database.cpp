@@ -11,6 +11,7 @@ DataBase::~DataBase()
 
 }
 
+// Метод для открытия БД
 bool DataBase::openDataBase()
 {
     db = QSqlDatabase::addDatabase("QMYSQL");
@@ -32,30 +33,33 @@ bool DataBase::openDataBase()
     }
 }
 
+// Метод для отправки данных в бд
 bool DataBase::insertIntoTable(QVariantList data)
 {
     QSqlQuery query;
     query.prepare("INSERT INTO Results (idResult, StudentName, Company, TestDuration, CorrectPercent, Credit, Courses_id) "
                   "VALUES (DEFAULT, :StudentName, :Company, :TestDuration, :CorrectPercent, :Credit, :Courses_id)");
-    query.bindValue(":idResult", "DEFAULT");
+    query.bindValue(":idResult", "DEFAULT"); // В таблице Results у поля idResult выставлен параметр AUTO_INCREMENT
     query.bindValue(":StudentName", data[0].toString());
     query.bindValue(":Company", data[1].toString());
     query.bindValue(":TestDuration", 40);
-    query.bindValue(":CorrectPercent", data[4].toInt());
-    query.bindValue(":Credit", 1);
+    query.bindValue(":CorrectPercent", data[4].toFloat());
+    query.bindValue(":Credit", data[5].toInt());
     query.bindValue(":Courses_id", 1);
-    // После чего выполняется запросом методом exec()
+
+    // Проверяем успешно ли отправились данные
     if(!query.exec()){
         qDebug() << "error insert into ";
         qDebug() << query.lastError().text();
         return false;
     } else {
-        qDebug() << "Отправка";
+        qDebug() << "Отправка ";
         return true;
     }
     return false;
 }
 
+// Метод закрытия бд
 void DataBase::closeDataBase()
 {
     db.close();

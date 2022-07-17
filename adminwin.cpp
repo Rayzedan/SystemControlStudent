@@ -8,6 +8,7 @@ AdminWin::AdminWin(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Отображаем результаты всех студентов в форме таблицы
     model_res = new QSqlQueryModel();
     model_res->setQuery("Select Courses_id, StudentName, Company, Credit, TestDuration, CorrectPercent from Results");
     ui->tableView_2->setModel(model_res);
@@ -19,7 +20,6 @@ AdminWin::AdminWin(QWidget *parent) :
 AdminWin::~AdminWin()
 {
     delete ui;
-    delete model_res;
 }
 
 void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)

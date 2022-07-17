@@ -41,6 +41,7 @@ void StudentWindow::on_pushButton_3_clicked()
 // Кнопка для открытия теста
 void StudentWindow::on_pushButton_clicked()
 {
+    // Отправляем данные, которые ввёл пользователь в окно с тестом
     QVariantList data;
     data.append(ui->fullName->text());
     data.append(ui->company->text());
@@ -48,7 +49,6 @@ void StudentWindow::on_pushButton_clicked()
     data.append(ui->comboBox_3->currentText());
     this->close();
     qDebug() << data;
-    //emit sendData(data);
     testWindow = new TestForStudent(data, this);
     testWindow->show();
 }

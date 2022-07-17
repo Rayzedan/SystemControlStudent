@@ -2,7 +2,6 @@
 #define DATABASE_H
 
 #include <QObject>
-#include <QObject>
 #include <QSql>
 #include <QSqlQuery>
 #include <QSqlError>

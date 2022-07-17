@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 #include "database.h"
+#include "QTime"
+#include "QTimer"
 
 namespace Ui {
 class TestForStudent;
@@ -19,7 +21,7 @@ public:
     ~TestForStudent();
 
 public slots:
-    //void recieveData(QVariantList data_send);
+
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -32,7 +34,7 @@ private:
     QVariantList current_data;
     DataBase *db;
     QSqlQuery *query;
-    int countAnsw;
+    double countAnsw;
 };
 
 #endif // TESTFORSTUDENT_H

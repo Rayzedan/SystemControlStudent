@@ -7,14 +7,14 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Выделяем память для окна администратора
     Awin = new AdminWin();
     connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
 
     // Скрываем пароль, который вводит администратор
     ui->password->setEchoMode(QLineEdit::Password);
 
-    // Выделяем память для окна администратора
-
+    // Создаём модель для отображения всех доступных логинов из бд
     model = new QSqlQueryModel();   
 
     model->setQuery("Select Login From Users");
@@ -25,7 +25,6 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 AuthorizationWindow::~AuthorizationWindow()
 {
     delete ui;
-    delete model;
 }
 
 // Закрываем окно

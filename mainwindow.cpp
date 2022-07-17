@@ -22,9 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
     center.setY(y);
     move(center);
 
-
-
-
     ui->radioButton->setChecked(true);
 }
 
