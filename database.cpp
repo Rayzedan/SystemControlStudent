@@ -14,12 +14,19 @@ DataBase::~DataBase()
 // Метод для открытия БД
 bool DataBase::openDataBase()
 {
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setPort(3306);
-    db.setDatabaseName("ExaminationSystem");
+    QString host = "TUNAKA";
+    QString database = "ExaminationSystem";
+
+    db = QSqlDatabase::addDatabase("QODBC");
+    //db.setHostName("127.0.0.1");
+    //db.setPort(3306);
+    //db.setDatabaseName("ExaminationSystem");
+    //db.setDatabaseName( "DRIVER={SQL Server};Server=TUNAKA;Database=ExaminationSystem;Trusted_Connection=yes" );
+    db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;Trusted_Connection=yes;").arg(host,database));
     db.setUserName("root");
     db.setPassword("Zuban123");
+
+
 
     // Проверяем, получилось ли установить соединение
     bool ok = db.open();
@@ -37,15 +44,15 @@ bool DataBase::openDataBase()
 bool DataBase::insertIntoTable(QVariantList data)
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Results (idResult, StudentName, Company, TestDuration, CorrectPercent, Credit, Courses_id) "
-                  "VALUES (DEFAULT, :StudentName, :Company, :TestDuration, :CorrectPercent, :Credit, :Courses_id)");
+    query.prepare("INSERT INTO Results (StudentName, Company, TestDuration, CorrectPercent, Credit, CourseId) "
+                  "VALUES (:StudentName, :Company, :TestDuration, :CorrectPercent, :Credit, :CourseId)");
     query.bindValue(":idResult", "DEFAULT"); // В таблице Results у поля idResult выставлен параметр AUTO_INCREMENT
     query.bindValue(":StudentName", data[0].toString());
     query.bindValue(":Company", data[1].toString());
     query.bindValue(":TestDuration", 40);
     query.bindValue(":CorrectPercent", data[4].toFloat());
     query.bindValue(":Credit", data[5].toInt());
-    query.bindValue(":Courses_id", 1);
+    query.bindValue(":CourseId", 1);
 
     // Проверяем успешно ли отправились данные
     if(!query.exec()){

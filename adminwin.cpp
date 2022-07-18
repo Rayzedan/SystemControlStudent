@@ -10,7 +10,7 @@ AdminWin::AdminWin(QWidget *parent) :
 
     // Отображаем результаты всех студентов в форме таблицы
     model_res = new QSqlQueryModel();
-    model_res->setQuery("Select Courses_id, StudentName, Company, Credit, TestDuration, CorrectPercent from Results");
+    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, TestDuration AS Время_тестирования, CorrectPercent AS Процент_правильных_ответов from Results");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);

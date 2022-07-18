@@ -13,7 +13,7 @@ TestForStudent::TestForStudent(QVariantList takeData,QWidget *parent) :
     query = new QSqlQuery();
 
     query->exec("SELECT Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, "
-                   "Chapters_id from Questions, Courses WHERE idCourse = Chapters_id ORDER BY RAND() LIMIT 3;");
+                   "ChapterId from Questions, Courses WHERE Courses.Id = ChapterId ORDER BY RAND();");
 
     // Добавляем из бд первую строчку и сразу отображаем её
     if (query->next()) {

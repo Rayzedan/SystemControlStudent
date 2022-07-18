@@ -12,16 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     db.openDataBase();
 
-    // При запуске программы окно будет расположено прямо по центру
-    QDesktopWidget desktop;
-    QRect rect = desktop.availableGeometry(this);
-    QPoint center = rect.center();
-    int x = center.x() - (width()/2);
-    int y = center.y() - (height()/2);
-    center.setX(x);
-    center.setY(y);
-    move(center);
-
     ui->radioButton->setChecked(true);
 }
 
