@@ -14,10 +14,14 @@ DataBase::~DataBase()
 // Метод для открытия БД
 bool DataBase::openDataBase()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("Driver={SQL SERVER};Server=DESKTOP-3NM09MJ\\\SQLEXPRESS;Database=ExaminationSystem;Trusted_Connection=no;");
-    db.setUserName("Admin");
-    db.setPassword("Zuban123");
+    QString host = "192.168.122.109, 1234";
+    QString database = "ExaminationSystem";
+    QString login = "Test";
+    QString password = "123";
+
+    db = QSqlDatabase::addDatabase("QODBC");
+    db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;UID=%3;\
+    PWD=%4;").arg(host,database,login,password));
 
     // Проверяем, получилось ли установить соединение
     bool ok = db.open();
