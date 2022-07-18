@@ -2,6 +2,7 @@
 #define DATABASE_H
 
 #include <QObject>
+#include <QMessageBox>
 #include <QSql>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -18,6 +19,7 @@ public:
     ~DataBase();
 
     void closeDataBase();
+    bool checkData(const QString login, const QString password);
     bool insertIntoTable(QVariantList data);
     bool openDataBase();
 

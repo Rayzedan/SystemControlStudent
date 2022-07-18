@@ -27,9 +27,12 @@ private slots:
     void on_pushButton_3_clicked();
     void on_pushButton_clicked();
 
+    void on_comboBox_2_currentTextChanged(QString arg1);
+
 private:
     Ui::StudentWindow *ui;
     TestForStudent *testWindow;
+    QSqlQuery *query;
     QSqlQueryModel *model;
     QSqlQueryModel *model_dep;
 };

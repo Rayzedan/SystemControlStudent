@@ -15,14 +15,9 @@ StudentWindow::StudentWindow(QWidget *parent) :
 
     // Отправляем запрос на получение данных
     model->setQuery("Select Name From Departments");
-    model_dep->setQuery("Select Name From Courses");
 
     // Отображаем полученные данные
     ui->comboBox_2->setModel(model);
-    ui->comboBox_3->setModel(model_dep);
-
-
-
 }
 
 
@@ -52,3 +47,15 @@ void StudentWindow::on_pushButton_clicked()
     testWindow = new TestForStudent(data, this);
     testWindow->show();
 }
+
+
+
+
+void StudentWindow::on_comboBox_2_currentTextChanged(QString arg1)
+{
+    arg1 = ui->comboBox_2->currentText();
+    model_dep->setQuery("Select Courses.Name from Departments,"
+                         "Courses WHERE Departments.Name = " "'"+arg1+"' AND " "Departments.Id = Courses.DepartmentId");
+    ui->comboBox_3->setModel(model_dep);
+}
+

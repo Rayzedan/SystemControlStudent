@@ -14,19 +14,10 @@ DataBase::~DataBase()
 // Метод для открытия БД
 bool DataBase::openDataBase()
 {
-    QString host = "TUNAKA";
-    QString database = "ExaminationSystem";
-
-    db = QSqlDatabase::addDatabase("QODBC");
-    //db.setHostName("127.0.0.1");
-    //db.setPort(3306);
-    //db.setDatabaseName("ExaminationSystem");
-    //db.setDatabaseName( "DRIVER={SQL Server};Server=TUNAKA;Database=ExaminationSystem;Trusted_Connection=yes" );
-    db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;Trusted_Connection=yes;").arg(host,database));
-    db.setUserName("root");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+    db.setDatabaseName("Driver={SQL SERVER};Server=DESKTOP-3NM09MJ\\\SQLEXPRESS;Database=ExaminationSystem;Trusted_Connection=no;");
+    db.setUserName("Admin");
     db.setPassword("Zuban123");
-
-
 
     // Проверяем, получилось ли установить соединение
     bool ok = db.open();
@@ -64,6 +55,21 @@ bool DataBase::insertIntoTable(QVariantList data)
         return true;
     }
     return false;
+}
+
+
+bool DataBase::checkData(const QString login, const QString password)
+{
+    QSqlQuery query;
+    query.exec("SELECT * FROM users WHERE login='"+login+"' AND password='"+password+"'");
+    if (query.next()) {
+        query.finish();
+        return true;
+    }
+    else {
+        QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");
+        return false;
+    }
 }
 
 // Метод закрытия бд
