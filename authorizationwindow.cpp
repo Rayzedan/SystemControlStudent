@@ -31,8 +31,6 @@ AuthorizationWindow::~AuthorizationWindow()
 void AuthorizationWindow::closeEvent(QCloseEvent *event)
 {
     qDebug() << "exit from autWin";
-    ui->login->clear();
-    ui->password->clear();
     event->accept();
 }
 
@@ -42,23 +40,16 @@ void AuthorizationWindow::on_pushButton_2_clicked()
 {
     QString password = ui->password->text();
     // Проверяем, что вводит пользователь
-        if (password =="") {
+        if (password.isEmpty()) {
             QMessageBox :: warning (this, "", "Пароль не может быть пустым!");
-            this->close();
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
         else
-        {
-            QString request = QString("select Login, Password from Users");
-            QSqlQuery query;
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
-            if (query.exec(request)) {
+            if (db->checkData(ui->login->currentText(), ui->password->text())) {
                 this->close();
-                query.finish();
+                ui->password->clear();
                 Awin->show();
-            }
-            else
-                QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");
         }
 }
 

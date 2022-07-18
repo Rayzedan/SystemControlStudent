@@ -5,6 +5,7 @@
 #include <QSqlQueryModel>
 #include <QCloseEvent>
 #include <QWidget>
+#include "database.h"
 #include "adminwin.h"
 #include <QDebug>
 #include <QMessageBox>
@@ -37,6 +38,7 @@ private slots:
 
 private:
     Ui::AuthorizationWindow *ui;
+    DataBase *db;
     QSqlQueryModel *model;
     AdminWin *Awin;
 
