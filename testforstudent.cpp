@@ -87,3 +87,17 @@ void TestForStudent::on_pushButton_clicked()
          }
      }
 }
+
+void TestForStudent::on_pushButton_2_clicked()
+{
+    if (query->seek(query->at()-1)) {
+        qDebug() << "зашли в цикл";
+        ui->label->setText(query->value("Name").toString());
+        ui->label_2->setText(query->value("Question").toString() + "?");
+        ui->radioButton->setText(query->value("Variant1").toString());
+        ui->radioButton_2->setText(query->value("Variant2").toString());
+        ui->radioButton_3->setText(query->value("Variant3").toString());
+        ui->radioButton_4->setText(query->value("Variant4").toString());
+    }
+}
+
