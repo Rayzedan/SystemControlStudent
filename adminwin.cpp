@@ -1,16 +1,18 @@
 #include "adminwin.h"
 #include "ui_adminwin.h"
 
-
 AdminWin::AdminWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AdminWin)
 {
     ui->setupUi(this);
 
+    Rezform = new FillResult();
+    connect(Rezform, &FillResult::fullrez, this, &AdminWin::show);
+
     // Отображаем результаты всех студентов в форме таблицы
     model_res = new QSqlQueryModel();
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, TestDuration AS Время_тестирования, CorrectPercent AS Процент_правильных_ответов from Results");
+    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -41,3 +43,12 @@ void AdminWin::closeEvent(QCloseEvent *event)
     event->accept();
     emit secondWindow();
 }
+
+void AdminWin::on_tableView_2_doubleClicked(const QModelIndex &index)
+{
+    //пока наобум
+    //emit sendData(ui->); Не хватает мозгов
+    RezWin = new FillResult();
+    RezWin->show();
+}
+
