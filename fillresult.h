@@ -27,6 +27,7 @@ private slots:
 private:
     Ui::FillResult *ui;
     QSqlQuery *query;
+    QSqlQuery *chapterquery;
 };
 
 #endif // FILLRESULT_H

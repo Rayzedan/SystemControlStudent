@@ -6,9 +6,12 @@ FillResult::FillResult(QWidget *parent) :
 {
     ui->setupUi(this);
     query = new QSqlQuery();
-
+    //chapterquery = new QSqlQuery();
     query->exec("Select StudentName, Company, Credit,TestDuration, CorrectPercent,\
     name from Results inner join Courses on Results.CourseId=Courses.Id where Results.Id=1;");
+    //chapterquery->exec("select Chapters.name from Chapters  inner join Courses on \
+    Chapters.CourseId=Courses.Id where Course.name= " "'"+query->value("name").toString()+"';");
+    //запрос на выбор всех тем из курса
 
     if (query->next()) {
         qDebug() << "зашли в цикл";
