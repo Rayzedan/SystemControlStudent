@@ -53,7 +53,7 @@ QPushButton:pressed { background: white; }</string>
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Tab">
       <attribute name="title">
@@ -412,7 +412,7 @@ QPushButton:pressed { background: white; }</string>
               </font>
              </property>
              <property name="text">
-              <string>Удалить пользователя</string>
+              <string>Добавить пользователя</string>
              </property>
             </widget>
            </item>
@@ -427,7 +427,7 @@ QPushButton:pressed { background: white; }</string>
               </font>
              </property>
              <property name="text">
-              <string>Добавить пользователя</string>
+              <string>Удалить пользователя</string>
              </property>
             </widget>
            </item>

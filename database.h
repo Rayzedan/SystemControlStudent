@@ -20,6 +20,9 @@ public:
 
     void closeDataBase();
     bool checkData(const QString login, const QString password);
+    QString encryptPassword(const QString password);
+    QString decodePassword(const QString password);
+    bool createUser(QString login, QString password);
     bool insertIntoTable(QVariantList data);
     bool openDataBase();
 

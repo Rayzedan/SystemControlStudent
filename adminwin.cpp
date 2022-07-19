@@ -52,3 +52,9 @@ void AdminWin::on_tableView_2_doubleClicked(const QModelIndex &index)
     RezWin->show();
 }
 
+
+void AdminWin::on_pushButton_17_clicked()
+{
+  db->createUser("root", "password");
+}
+

@@ -14,8 +14,8 @@ DataBase::~DataBase()
 // Метод для открытия БД
 bool DataBase::openDataBase()
 {
-
-    QString host = "192.168.122.109, 1234";
+    // конфиг бд для админа
+    QString host ="192.168.122.109";
     QString database = "ExaminationSystem";
     QString login = "Test";
     QString password = "123";
@@ -64,10 +64,10 @@ bool DataBase::insertIntoTable(QVariantList data)
 }
 
 
-bool DataBase::checkData(const QString login, const QString password)
+bool DataBase::checkData(const QString login, const QString password_user)
 {
     QSqlQuery query;
-    query.exec("SELECT * FROM users WHERE login='"+login+"' AND password='"+password+"'");
+    query.exec("SELECT Login, Password FROM Users WHERE Login='"+login+"' AND Password='"+encryptPassword(password_user)+"'");
     if (query.next()) {
         query.finish();
         return true;
@@ -76,6 +76,43 @@ bool DataBase::checkData(const QString login, const QString password)
         QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");
         return false;
     }
+}
+
+quint32 key =073;
+QString DataBase::encryptPassword(const QString password)
+{
+    QByteArray arr(password.toUtf8());
+    for(int i =0; i<arr.size(); i++)
+         arr[i] = arr[i]^key;
+
+     return QString::fromUtf8(arr.toBase64());
+}
+
+QString DataBase::decodePassword(const QString password)
+{
+    QByteArray arr = QByteArray::fromBase64(password.toUtf8());
+    for(int i =0; i<arr.size(); i++)
+        arr[i] =arr[i]^key;
+
+    return QString::fromUtf8(arr);
+}
+
+bool DataBase::createUser(QString login, QString password)
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO Users (Login, Password, Permissions) VALUES (:Login, :Password, :Permissions)");
+    query.bindValue(":Login", login);
+    query.bindValue(":Password", encryptPassword(password));
+    query.bindValue(":Permissions", 1);
+    if(!query.exec()){
+        qDebug() << "error insert into ";
+        qDebug() << query.lastError().text();
+        return false;
+    } else {
+        qDebug() << "Отправка ";
+        return true;
+    }
+    return false;
 }
 
 // Метод закрытия бд

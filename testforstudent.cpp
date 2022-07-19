@@ -2,6 +2,7 @@
 #include "ui_testforstudent.h"
 #include "studentwindow.h"
 
+
 TestForStudent::TestForStudent(QVariantList takeData,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::TestForStudent)
@@ -13,7 +14,7 @@ TestForStudent::TestForStudent(QVariantList takeData,QWidget *parent) :
     query = new QSqlQuery();
 
     query->exec("SELECT Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, "
-                   "ChapterId from Questions, Courses WHERE Courses.Id = ChapterId ORDER BY RAND();");
+                   "ChapterId from Questions, Courses WHERE Courses.Id = ChapterId ORDER BY NEWID();");
 
     // Добавляем из бд первую строчку и сразу отображаем её
     if (query->next()) {

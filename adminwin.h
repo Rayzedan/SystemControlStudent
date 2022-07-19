@@ -8,6 +8,7 @@
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include "fillresult.h"
+#include "database.h"
 
 namespace Ui {
 class AdminWin;
@@ -33,8 +34,11 @@ private slots:
 
     void on_tableView_2_doubleClicked(const QModelIndex &index);
 
+    void on_pushButton_17_clicked();
+
 private:
     Ui::AdminWin *ui;
+    DataBase *db;
     QSqlQueryModel *model_res;
     FillResult *RezWin;
     FillResult *Rezform;

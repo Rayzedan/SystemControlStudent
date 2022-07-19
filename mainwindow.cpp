@@ -24,24 +24,24 @@ MainWindow::~MainWindow()
 // Кнопка выбора режим для пользователя
 void MainWindow::on_pushButton_clicked()
 {
-    // Выделяем память под окна студента и авторизации
-    AWindow = new AuthorizationWindow();
-    SWindow = new StudentWindow();
-
-    // Связываем начальное окно и окно студента
-    connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
-
-    // Связываем начальное окно и окно администратора
-    connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
-
     // Проверяем какая из кнопок для выбора пользователя нажата
     if (ui->radioButton->isChecked()) {
-        this->close();
+
+        AWindow = new AuthorizationWindow();
+
+        // Связываем начальное окно и окно авторизации
+        connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
         AWindow->show();
+        this->close();
     }
 
     if (ui->radioButton_2->isChecked()) {
-        this->close();
+
+        SWindow = new StudentWindow();
+
+        // Связываем начальное окно и окно формы ввода данных студентом
+        connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
         SWindow->show();
+        this->close();
     }
 }

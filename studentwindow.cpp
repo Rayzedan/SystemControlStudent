@@ -44,7 +44,7 @@ void StudentWindow::on_pushButton_clicked()
     data.append(ui->comboBox_3->currentText());
     this->close();
     qDebug() << data;
-    testWindow = new TestForStudent(data, this);
+    testWindow = new TestForStudent(data);
     testWindow->show();
 }
 
@@ -53,6 +53,7 @@ void StudentWindow::on_pushButton_clicked()
 
 void StudentWindow::on_comboBox_2_currentTextChanged(QString arg1)
 {
+    qDebug() << "select combobox2";
     arg1 = ui->comboBox_2->currentText();
     model_dep->setQuery("Select Courses.Name from Departments,"
                          "Courses WHERE Departments.Name = " "'"+arg1+"' AND " "Departments.Id = Courses.DepartmentId");
