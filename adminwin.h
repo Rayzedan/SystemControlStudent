@@ -9,7 +9,7 @@
 #include <QSqlQuery>
 #include "fillresult.h"
 #include "database.h"
-
+#include "addusers.h"
 namespace Ui {
 class AdminWin;
 }
@@ -33,6 +33,8 @@ private slots:
 
     void on_pushButton_17_clicked();
 
+    void on_pushButton_7_clicked();
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
@@ -40,6 +42,7 @@ private:
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQuery *query;
+    AddUsers *AddWindow;
 };
 
 #endif // ADMINWIN_H

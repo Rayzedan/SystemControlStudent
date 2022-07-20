@@ -15,19 +15,14 @@ DataBase::~DataBase()
 bool DataBase::openDataBase()
 {
     // конфиг бд для админа
-    QString host ="DESKTOP-3NM09MJ\\\SQLEXPRESS";
-    QString database = "ExaminationSystem";
-    QString login = "Admin";
-    QString password = "Zuban123";
-
-    db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;UID=%3;\
-    PWD=%4;").arg(host,database,login,password));
-
-//    QString host ="192.168.122.109,1234";
+//    QString host ="DESKTOP-3NM09MJ\\\SQLEXPRESS";
 //    QString database = "ExaminationSystem";
-//    QString login = "root";
-//    QString password = "12345";
+//    QString login = "Admin";
+//    QString password = "Zuban123";
+    QString host ="192.168.122.109,1234";
+    QString database = "ExaminationSystem";
+    QString login = "root";
+    QString password = "12345";
 
     db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;UID=%3;\
