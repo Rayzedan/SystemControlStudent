@@ -31,7 +31,6 @@ protected:
 private slots:
     void on_comboBox_5_currentTextChanged(const QString &arg1);
 
-    void on_pushButton_17_clicked();
 
 private:
     Ui::AdminWin *ui;

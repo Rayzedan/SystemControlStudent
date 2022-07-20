@@ -20,10 +20,6 @@ bool DataBase::openDataBase()
     QString login = "Admin";
     QString password = "Zuban123";
 
-    db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;UID=%3;\
-    PWD=%4;").arg(host,database,login,password));
-
 //    QString host ="192.168.122.109,1234";
 //    QString database = "ExaminationSystem";
 //    QString login = "root";
