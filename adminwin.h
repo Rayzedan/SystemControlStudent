@@ -24,7 +24,6 @@ public:
 
 signals:
     void secondWindow(); //Сигнал для соединения панели администратора и начального окна
-    void sendData(QString str);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -32,16 +31,12 @@ protected:
 private slots:
     void on_comboBox_5_currentTextChanged(const QString &arg1);
 
-    void on_tableView_2_doubleClicked(const QModelIndex &index);
-
     void on_pushButton_17_clicked();
 
 private:
     Ui::AdminWin *ui;
     DataBase *db;
     QSqlQueryModel *model_res;
-    FillResult *RezWin;
-    FillResult *Rezform;
 };
 
 #endif // ADMINWIN_H

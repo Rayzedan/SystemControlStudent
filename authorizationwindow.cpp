@@ -46,10 +46,10 @@ void AuthorizationWindow::on_pushButton_2_clicked()
                 // Выделяем память для окна администратора
                 Awin = new AdminWin();
                 connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
-                ui->password->clear();
                 Awin->show();
                 this->close();
         }
+    ui->password->clear();
 }
 
 

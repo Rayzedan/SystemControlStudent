@@ -1,27 +1,19 @@
 #include "fillresult.h"
 #include "ui_fillresult.h"
-FillResult::FillResult(QWidget *parent) :
+#include "studentwindow.h"
+
+FillResult::FillResult (QVariantList result, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FillResult)
 {
     ui->setupUi(this);
-    query = new QSqlQuery();
-    //chapterquery = new QSqlQuery();
-    query->exec("Select StudentName, Company, Credit,TestDuration, CorrectPercent,\
-    name from Results inner join Courses on Results.CourseId=Courses.Id where Results.Id=1;");
-    //chapterquery->exec("select Chapters.name from Chapters  inner join Courses on \
-    Chapters.CourseId=Courses.Id where Course.name= " "'"+query->value("name").toString()+"';");
-    //запрос на выбор всех тем из курса
+    take_data = result;
+    ui->name->setText(take_data[0].toString());
+    ui->company->setText(take_data[1].toString());
+    ui->result->setText(take_data[5].toString());
+    ui->course->setText(take_data[6].toString());
 
-    if (query->next()) {
-        qDebug() << "зашли в цикл";
-        ui->name->setText(query->value("StudentName").toString());
-        ui->company->setText(query->value("Company").toString());
-        ui->credit->setText(query->value("Credit").toString());
-        ui->time->setText(query->value("TestDuration").toString());
-        ui->result->setText(query->value("CorrectPercent").toString());
-        ui->course->setText(query->value("name").toString());
-}
+
 }
 
 FillResult::~FillResult()

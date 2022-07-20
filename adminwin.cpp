@@ -7,9 +7,6 @@ AdminWin::AdminWin(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Rezform = new FillResult();
-    connect(Rezform, &FillResult::fullrez, this, &AdminWin::show);
-
     // Отображаем результаты всех студентов в форме таблицы
     model_res = new QSqlQueryModel();
     model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
@@ -43,15 +40,6 @@ void AdminWin::closeEvent(QCloseEvent *event)
     event->accept();
     emit secondWindow();
 }
-
-void AdminWin::on_tableView_2_doubleClicked(const QModelIndex &index)
-{
-    //пока наобум
-    //emit sendData(ui->); Не хватает мозгов
-    RezWin = new FillResult();
-    RezWin->show();
-}
-
 
 void AdminWin::on_pushButton_17_clicked()
 {

@@ -15,10 +15,10 @@ DataBase::~DataBase()
 bool DataBase::openDataBase()
 {
     // конфиг бд для админа
-    QString host ="192.168.122.109";
+    QString host ="DESKTOP-3NM09MJ\\\SQLEXPRESS";
     QString database = "ExaminationSystem";
-    QString login = "Test";
-    QString password = "123";
+    QString login = "Admin";
+    QString password = "Zuban123";
 
     db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;UID=%3;\
@@ -43,13 +43,14 @@ bool DataBase::insertIntoTable(QVariantList data)
     QSqlQuery query;
     query.prepare("INSERT INTO Results (StudentName, Company, TestDuration, CorrectPercent, Credit, CourseId) "
                   "VALUES (:StudentName, :Company, :TestDuration, :CorrectPercent, :Credit, :CourseId)");
+    qDebug() << data;
     query.bindValue(":idResult", "DEFAULT"); // В таблице Results у поля idResult выставлен параметр AUTO_INCREMENT
     query.bindValue(":StudentName", data[0].toString());
     query.bindValue(":Company", data[1].toString());
     query.bindValue(":TestDuration", 40);
     query.bindValue(":CorrectPercent", data[4].toFloat());
     query.bindValue(":Credit", data[5].toInt());
-    query.bindValue(":CourseId", 1);
+    query.bindValue(":CourseId", data[6].toInt());
 
     // Проверяем успешно ли отправились данные
     if(!query.exec()){
@@ -113,6 +114,70 @@ bool DataBase::createUser(QString login, QString password)
         return true;
     }
     return false;
+}
+
+bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer)
+{
+    qDebug() << "зашли в checkAnswer";
+    if (sum == correctAnswer)
+    {
+        qDebug() << "true";
+        dataAnswer[nameChapter]++;
+        return true;
+    }
+    else
+    {
+        if (dataAnswer.find(nameChapter)!=dataAnswer.end() && dataAnswer[nameChapter]!=0) {
+        qDebug() << "false quest";
+        dataAnswer[nameChapter]--;
+        return false;
+        }
+    }
+
+}
+
+bool DataBase::checkTextAnswer(QString answerUser , const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText)
+{
+    qDebug() << "зашли в checkTextAnswer";
+    if (answerUser.toLower() == correctAnswerText.toLower())
+    {
+        qDebug() << "true";
+        qDebug() << answerUser << " " << correctAnswerText;
+        dataAnswerText[nameChapter]++;
+        return true;
+    }
+    else
+    {
+        if (dataAnswerText.find(nameChapter)!=dataAnswerText.end() && dataAnswerText[nameChapter]!=0) {
+        qDebug() << "false quest";
+        dataAnswerText[nameChapter]--;
+        return false;
+        }
+    }
+
+}
+
+double DataBase::sumAnswer(QMap <int, int>& correctAnswer)
+{
+    int count = 0;
+    for (auto i: correctAnswer.keys()) {
+        count+=correctAnswer.value(i);
+        qDebug() << count;
+    }
+
+    return count;
+}
+
+void DataBase::checkCorrectAnswer(QMap<int, int> &correctAnswer, const int ID)
+{
+    if (correctAnswer.find(ID)!=correctAnswer.end() && correctAnswer[ID]!=0)
+    {
+        correctAnswer[ID]--;
+    }
+    else
+    {
+       correctAnswer[ID] = 0;
+    }
 }
 
 // Метод закрытия бд

@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QPrinter>
 #include <QPrintDialog>
+
 namespace Ui {
 class FillResult;
 }
@@ -15,19 +16,17 @@ class FillResult : public QWidget
     Q_OBJECT
 
 public:
-    explicit FillResult(QWidget *parent = nullptr);
+    explicit FillResult(QVariantList result, QWidget *parent = nullptr);
     ~FillResult();
 
-signals:
-    void fullrez();
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::FillResult *ui;
-    QSqlQuery *query;
-    QSqlQuery *chapterquery;
+    QVariantList take_data;
+
 };
 
 #endif // FILLRESULT_H

@@ -234,32 +234,11 @@
           <property name="title">
            <string/>
           </property>
-          <widget class="QWidget" name="">
-           <property name="geometry">
-            <rect>
-             <x>30</x>
-             <y>20</y>
-             <width>251</width>
-             <height>29</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Тема1:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>Результат:</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QTableView" name="tableView"/>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>

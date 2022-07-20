@@ -2,29 +2,27 @@
 #include "ui_testforstudent.h"
 #include "studentwindow.h"
 
-
-TestForStudent::TestForStudent(QVariantList takeData,QWidget *parent) :
+TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::TestForStudent)
 {
     ui->setupUi(this);
 
-    countAnsw = 0;
-    current_data = takeData;
     query = new QSqlQuery();
 
-    query->exec("SELECT Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, "
-                   "ChapterId from Questions, Courses WHERE Courses.Id = ChapterId ORDER BY NEWID();");
+    countAnsw = 0;
+    courseId =0;
+    current_data = takeData;
+    currentQuestId =0;
 
-    // Добавляем из бд первую строчку и сразу отображаем её
-    if (query->next()) {
-       qDebug() << "зашли в цикл";
-       ui->label->setText(query->value("Name").toString());
-       ui->label_2->setText(query->value("Question").toString());
-       ui->radioButton->setText(query->value("Variant1").toString());
-       ui->radioButton_2->setText(query->value("Variant2").toString());
-       ui->radioButton_3->setText(query->value("Variant3").toString());
-       ui->radioButton_4->setText(query->value("Variant4").toString());
+    query->exec("SELECT Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id "
+                   "from Questions, Courses, Chapters"
+                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id;");
+                                                                                                                    /*"ORDER BY NEWID();");*/
+    if (query->next())
+    {
+        courseId = query->value("CourseId").toInt();
+        setData(query->value("TypeQuestion").toInt());
     }
 }
 
@@ -42,63 +40,119 @@ void TestForStudent::closeEvent(QCloseEvent *event)
 
 void TestForStudent::on_pushButton_clicked()
 {
-     // Проверяем какая из кнопок с ответом была нажата
-     if (ui->radioButton->isChecked() && query->value("CorrectAnswer").toInt() == 1)
-     {
-         countAnsw++;
-     }
-     if (ui->radioButton_2->isChecked() && query->value("CorrectAnswer").toInt() == 2)
-     {
-         countAnsw++;
-     }
-     if (ui->radioButton_3->isChecked() && query->value("CorrectAnswer").toInt() == 3)
-     {
-         countAnsw++;
-     }
-     if (ui->radioButton_4->isChecked() && query->value("CorrectAnswer").toInt() == 4)
-     {
-         countAnsw++;
-     }
+    countAnsw = 0;
+    currentQuestId = query->value("Id").toInt();
+    chapterName = query->value("Name").toString();
 
-     // Проверяем наличие данных в бд
-     if (query->next()) {
-        qDebug() << "зашли в цикл";
-        ui->label->setText(query->value("Name").toString());
-        ui->label_2->setText(query->value("Question").toString() + "?");
-        ui->radioButton->setText(query->value("Variant1").toString());
-        ui->radioButton_2->setText(query->value("Variant2").toString());
-        ui->radioButton_3->setText(query->value("Variant3").toString());
-        ui->radioButton_4->setText(query->value("Variant4").toString());
-     }
-     else
-     {
-         // Если пользователь ответил на все вопросы выводим QMessageBox
-         if (QMessageBox::Yes == QMessageBox::question(this,"Внимание","Завершить выполнение теста?"))
-         {
-             qDebug() << "press yes";
-             double credit = countAnsw/query->size() * 100.0;
-             current_data.append(countAnsw);
-             if (credit >= 40.0)
-                 current_data.append(1);
-             else
-                 current_data.append(0);
-             db->insertIntoTable(current_data); // Отправка данных в бд
-             db->closeDataBase();
-             this->close();
-         }
-     }
-}
-
-void TestForStudent::on_pushButton_2_clicked()
-{
-    if (query->seek(query->at()-1)) {
-        qDebug() << "зашли в цикл";
-        ui->label->setText(query->value("Name").toString());
-        ui->label_2->setText(query->value("Question").toString() + "?");
-        ui->radioButton->setText(query->value("Variant1").toString());
-        ui->radioButton_2->setText(query->value("Variant2").toString());
-        ui->radioButton_3->setText(query->value("Variant3").toString());
-        ui->radioButton_4->setText(query->value("Variant4").toString());
+    if (query->value("TypeQuestion").toInt() ==1)
+    {
+        dataCheckBox();
+        if (db->checkAnswer(countAnsw, chapterName, dataAnswer, query->value("CorrectAnswer").toInt()))
+        {
+            correctAnswer[currentQuestId]++;
+            countAnsw = 0;
+        }
+        else
+        {
+            db->checkCorrectAnswer(correctAnswer,currentQuestId);
+        }
+    }
+    else
+    {
+        if (db->checkTextAnswer(ui->textEdit->toPlainText(),chapterName, dataAnswerText,query->value("Variant1").toString()))
+        {
+            correctAnswer[currentQuestId]++;
+            ui->textEdit->clear();
+        }
+        else
+        {
+            db->checkCorrectAnswer(correctAnswer,currentQuestId);
+        }
+    }
+    // Проверяем наличие данных в бд
+    if (query->next())
+    {
+        setData(query->value("TypeQuestion").toInt());
+    }
+    else
+    {
+        // Если пользователь ответил на все вопросы выводим QMessageBox
+        if (QMessageBox::Yes == QMessageBox::question(this,"Внимание","Завершить выполнение теста?"))
+        {
+            double testCorrectAnswer = db->sumAnswer(correctAnswer);
+            qDebug() << correctAnswer.size();
+            double credit = ((testCorrectAnswer/correctAnswer.size()) * 100.0);
+            qDebug() << credit;
+            if (credit >= 40.0)
+            {
+                current_data.append(credit);
+                current_data.append(1);
+            }
+            else
+            {
+                current_data.append(credit);
+                current_data.append(0);
+            }
+            current_data.append(courseId);
+            db->insertIntoTable(current_data); // Отправка данных в бд
+            studentResult = new FillResult(current_data);
+            studentResult->show();
+            this->close();
+        }
     }
 }
 
+
+void TestForStudent::on_pushButton_2_clicked()
+{
+    countAnsw = 0;
+    if (query->previous())
+    {
+        setData(query->value("TypeQuestion").toInt());
+    }
+}
+
+void TestForStudent::dataCheckBox()
+{
+    // Проверяем какая из кнопок с ответом была нажата
+    if (ui->checkBox->isChecked())
+    {
+        countAnsw+=2;
+    }
+
+    if (ui->checkBox_2->isChecked())
+    {
+        countAnsw+=4;
+    }
+
+    if (ui->checkBox_3->isChecked())
+    {
+        countAnsw+=8;
+    }
+
+    if (ui->checkBox_4->isChecked())
+    {
+        countAnsw+=16;
+    }
+}
+
+void TestForStudent::setData(const int typeQuestion)
+{
+    if (typeQuestion ==1)
+    {
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->label->setText(query->value("Name").toString());
+        ui->label_2->setText(query->value("Question").toString()+ "?");
+        ui->checkBox->setText(query->value("Variant1").toString());
+        ui->checkBox_2->setText(query->value("Variant2").toString());
+        ui->checkBox_3->setText(query->value("Variant3").toString());
+        ui->checkBox_4->setText(query->value("Variant4").toString());
+    }
+    else
+    {
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->label->setText(query->value("Name").toString());
+        ui->label_2->setText(query->value("Question").toString()+ "?");
+        ui->textEdit->clear();
+    }
+}

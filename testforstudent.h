@@ -8,6 +8,7 @@
 #include "database.h"
 #include "QTime"
 #include "QTimer"
+#include "fillresult.h"
 
 namespace Ui {
 class TestForStudent;
@@ -21,6 +22,9 @@ public:
     explicit TestForStudent(QVariantList takeData, QWidget *parent = nullptr);
     ~TestForStudent();
 
+    void setData(const int typeQuestion);
+    void dataCheckBox();
+
 public slots:
 
 
@@ -29,15 +33,22 @@ protected:
 
 private slots:
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
 
 private:
     Ui::TestForStudent *ui;
+    FillResult *studentResult;
+    QMap <int, int> correctAnswer;
+    QMap <QString, int> dataAnswer;
+    QMap <QString, int> dataAnswerText;
     QVariantList current_data;
     DataBase *db;
     QSqlQuery *query;
-    double countAnsw;
+    QString chapterName;
+    int countAnsw;
+    int courseId;
+    int currentQuestId;
+    double sizeTest;
 };
 
 #endif // TESTFORSTUDENT_H
