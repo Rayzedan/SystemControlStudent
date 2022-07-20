@@ -51,7 +51,7 @@ bool DataBase::insertIntoTable(QVariantList data)
     query.bindValue(":idResult", "DEFAULT"); // В таблице Results у поля idResult выставлен параметр AUTO_INCREMENT
     query.bindValue(":StudentName", data[0].toString());
     query.bindValue(":Company", data[1].toString());
-    query.bindValue(":TestDuration", 40);
+    query.bindValue(":TestDuration", data[8].toInt());
     query.bindValue(":CorrectPercent", data[4].toFloat());
     query.bindValue(":Credit", data[5].toInt());
     query.bindValue(":CourseId", data[6].toInt());
@@ -120,61 +120,93 @@ bool DataBase::createUser(QString login, QString password)
     return false;
 }
 
-bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer)
+bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID)
 {
-    qDebug() << "зашли в checkAnswer";
-    if (sum == correctAnswer)
+    if (!correctAnswers.count(ID))
     {
-        qDebug() << "true";
-        dataAnswer[nameChapter]++;
-        return true;
+        qDebug() << "ID = 0 CHECK";
+        if (sum == correctAnswer) {
+            qDebug() << "true";
+            dataAnswer[nameChapter]++;
+            qDebug() << nameChapter << " " << dataAnswer[nameChapter];
+            return true;
+        }
+        else { return false; }
     }
     else
     {
-        if (dataAnswer.find(nameChapter)!=dataAnswer.end() && dataAnswer[nameChapter]!=0) {
-        qDebug() << "false quest";
-        dataAnswer[nameChapter]--;
-        return false;
+        qDebug() << "ID = 1 CHECK";
+        if (sum == correctAnswer) {
+            qDebug() << "true";
+            dataAnswer[nameChapter]++;
+            qDebug() << nameChapter << " " << dataAnswer[nameChapter];
+            return true;
         }
+        else
+        {
+            if (dataAnswer.count(nameChapter)) {
+                qDebug() << "false quest";
+                dataAnswer[nameChapter]--;
+                qDebug() << nameChapter << " " << dataAnswer[nameChapter];
+                return false;
+            }
+        }
+        return false;
     }
-
+    return false;
 }
 
-bool DataBase::checkTextAnswer(QString answerUser , const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText)
+bool DataBase::checkTextAnswer(QString answerUser, const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText, QMap<int, int> &correctAnswers, const int ID)
 {
     qDebug() << "зашли в checkTextAnswer";
-    if (answerUser.toLower() == correctAnswerText.toLower())
+    if (!correctAnswers.count(ID))
     {
-        qDebug() << "true";
-        qDebug() << answerUser << " " << correctAnswerText;
-        dataAnswerText[nameChapter]++;
-        return true;
+        qDebug() << "ID = 0 CHECK";
+        if (answerUser.toLower() == correctAnswerText.toLower()) {
+            qDebug() << "true";
+            dataAnswerText[nameChapter]++;
+            qDebug() << nameChapter << " " << dataAnswerText[nameChapter];
+            return true;
+        }
+        else { return false; }
     }
     else
     {
-        if (dataAnswerText.find(nameChapter)!=dataAnswerText.end() && dataAnswerText[nameChapter]!=0) {
-        qDebug() << "false quest";
-        dataAnswerText[nameChapter]--;
-        return false;
+        qDebug() << "ID = 1 CHECK";
+        if (answerUser.toLower() == correctAnswerText.toLower()) {
+            qDebug() << "true";
+            dataAnswerText[nameChapter]++;
+            qDebug() << nameChapter << " " << dataAnswerText[nameChapter];
+            return true;
         }
+        else
+        {
+            if (dataAnswerText.count(nameChapter)) {
+                qDebug() << "false quest";
+                dataAnswerText[nameChapter]--;
+                qDebug() << nameChapter << " " << dataAnswerText[nameChapter];
+                return false;
+            }
+        }
+        return false;
     }
-
+    return false;
 }
 
 double DataBase::sumAnswer(QMap <int, int>& correctAnswer)
 {
     int count = 0;
+    qDebug() << "ответы";
     for (auto i: correctAnswer.keys()) {
         count+=correctAnswer.value(i);
         qDebug() << count;
     }
-
     return count;
 }
 
 void DataBase::checkCorrectAnswer(QMap<int, int> &correctAnswer, const int ID)
 {
-    if (correctAnswer.find(ID)!=correctAnswer.end() && correctAnswer[ID]!=0)
+    if (correctAnswer.find(ID)!=correctAnswer.end())
     {
         correctAnswer[ID]--;
     }
@@ -182,6 +214,31 @@ void DataBase::checkCorrectAnswer(QMap<int, int> &correctAnswer, const int ID)
     {
        correctAnswer[ID] = 0;
     }
+}
+
+QMap<QString,int> DataBase::mergeMap(QMap<QString, int> &dataAnswer, QMap<QString, int> &dataAnswerText)
+{
+    QMap<QString,int> resultMap;
+    foreach (const QString key, dataAnswer.keys()) {
+        qDebug() << "dataAnswer";
+        qDebug() << key << " " << dataAnswer[key];
+    }
+    foreach (const QString key, dataAnswerText.keys()) {
+        qDebug() << "dataAnswerText";
+        qDebug() << key << " " << dataAnswerText[key];
+    }
+    foreach (const QString key, dataAnswer.keys()) {
+        if (dataAnswerText.contains(key)) {
+            resultMap[key] = dataAnswerText[key] + dataAnswer[key];
+            qDebug() << key << " " << resultMap[key];
+        }
+        else
+        {
+            resultMap[key] = dataAnswer[key];
+            qDebug() << key << " " << resultMap[key];
+        }
+    }
+    return resultMap;
 }
 
 // Метод закрытия бд

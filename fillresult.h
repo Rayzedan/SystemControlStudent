@@ -16,8 +16,10 @@ class FillResult : public QWidget
     Q_OBJECT
 
 public:
-    explicit FillResult(QVariantList result, QWidget *parent = nullptr);
+    explicit FillResult(QVariantList result,QMap<QString, int> themes, QWidget *parent = nullptr);
     ~FillResult();
+
+    void setTable(QMap<QString,int> resultMap);
 
 
 private slots:
