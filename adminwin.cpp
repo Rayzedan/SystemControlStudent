@@ -1,19 +1,13 @@
 #include "adminwin.h"
 #include "ui_adminwin.h"
 
-AdminWin::AdminWin(QWidget *parent) :
+AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AdminWin)
 {
     ui->setupUi(this);
-
-    // Отображаем результаты всех студентов в форме таблицы
-    model_res = new QSqlQueryModel();
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
-    ui->tableView_2->setModel(model_res);
-    ui->tableView_2->verticalHeader()->setVisible(false);
-    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
+    data = dataUser;
+    QString login = data[0].toString();
     model_res_users = new QSqlQueryModel();
         model_res_users ->setQuery("Select login from Users");
         ui->usersView->setModel(model_res_users);
@@ -30,7 +24,7 @@ AdminWin::AdminWin(QWidget *parent) :
 
         query = new QSqlQuery();
         //нужно вбить в Login логин текущего пользователя
-        query->exec("Select Permissions from users where Login ='root'");
+        query->exec("Select Permissions from Users where Login = '" +login+ "'");
         query->next();
         QString acc =query->value("Permissions").toString();
         int accses = acc.toInt();
@@ -73,6 +67,12 @@ AdminWin::AdminWin(QWidget *parent) :
                 case 128:
                     ui->tabWidget->setTabEnabled(7,true);
                     qDebug() <<"Разрешили результаты";
+                    // Отображаем результаты всех студентов в форме таблицы
+                    model_res = new QSqlQueryModel();
+                    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
+                    ui->tableView_2->setModel(model_res);
+                    ui->tableView_2->verticalHeader()->setVisible(false);
+                    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
                     break;
                 }
             }

@@ -43,8 +43,11 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         else
         // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
              if (db->checkData(ui->login->currentText(), password_user)) {
+                 QVariantList data;
+                 data.append(ui->login->currentText());
+                 data.append(password_user);
                 // Выделяем память для окна администратора
-                Awin = new AdminWin();
+                Awin = new AdminWin(data);
                 connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
                 Awin->show();
                 this->close();

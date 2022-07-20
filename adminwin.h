@@ -19,7 +19,7 @@ class AdminWin : public QWidget
     Q_OBJECT
 
 public:
-    explicit AdminWin(QWidget *parent = nullptr);
+    explicit AdminWin(QVariantList dataUser,QWidget *parent = nullptr);
     ~AdminWin();
 
 signals:
@@ -36,6 +36,7 @@ private slots:
 private:
     Ui::AdminWin *ui;
     DataBase *db;
+    QVariantList data;
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQuery *query;
