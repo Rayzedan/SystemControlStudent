@@ -9,65 +9,81 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     AddWindow = new AddUsers();
     data = dataUser;
     QString login = data[0].toString();
-    // Отображаем результаты всех студентов в форме таблицы
+
+    model_res_users = new QSqlQueryModel();
     model_res = new QSqlQueryModel();
+
     model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
+    model_res_users ->setQuery("Select login from Users");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    model_res_users = new QSqlQueryModel();
-    model_res_users ->setQuery("Select login from Users");
     ui->usersView->setModel(model_res_users);
+
     ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
 
-        ui->tabWidget->setTabEnabled(0,false);
-        ui->tabWidget->setTabEnabled(1,false);
-        ui->tabWidget->setTabEnabled(2,false);
-        ui->tabWidget->setTabEnabled(3,false);
-        ui->tabWidget->setTabEnabled(4,false);
-        ui->tabWidget->setTabEnabled(5,false);
-        ui->tabWidget->setTabEnabled(6,false);
-        ui->tabWidget->setTabEnabled(7,false);
+    ui->tabWidget->setTabEnabled(0,false);
+    ui->tabWidget->setTabEnabled(1,false);
+    ui->tabWidget->setTabEnabled(2,false);
+    ui->tabWidget->setTabEnabled(3,false);
+    ui->tabWidget->setTabEnabled(4,false);
+    ui->tabWidget->setTabEnabled(5,false);
+    ui->tabWidget->setTabEnabled(6,false);
+    ui->tabWidget->setTabEnabled(7,false);
 
-        query = new QSqlQuery();
-        query->exec("Select Permissions from Users where Login = '" +login+ "'");
-        query->next();
-        QString acc =query->value("Permissions").toString();
-        int accses = acc.toInt();
-        for (int count = 6;count>=0;count--) {
-            int check =pow(2,count);
-            if ((accses-check)>=0){
-                accses=accses-check;
-                switch (check) {
-                case 1:
-                    ui->tabWidget->setTabEnabled(0,true);
-                    break;
-
-                case 2:
-                    ui->tabWidget->setTabEnabled(1,true);
-                    break;
-
-                case 4:
-                    ui->tabWidget->setTabEnabled(2,true);
-                    break;
-
-                case 8:
-                    ui->tabWidget->setTabEnabled(3,true);
-                    break;
-                case 16:
-                    ui->tabWidget->setTabEnabled(4,true);
-                    break;
-                case 32:
-                    ui->tabWidget->setTabEnabled(5,true);
-                    break;
-                case 64:
-                    ui->tabWidget->setTabEnabled(6,true);
-                    break;
-                }
+    query = new QSqlQuery();
+    //нужно вбить в Login логин текущего пользователя
+    query->exec("Select Permissions from Users where Login = '" +login+ "'");
+    query->next();
+    QString acc =query->value("Permissions").toString();
+    int accses = acc.toInt();
+    for (int count = 7;count>=0;count--)
+    {
+        int check =pow(2,count);
+        if ((accses-check)>=0){
+            accses=accses-check;
+            switch (check) {
+            case 1:
+                ui->tabWidget->setTabEnabled(0,true);
+                qDebug() <<"Разрешили вопросы";
+                break;
+            case 2:
+                ui->tabWidget->setTabEnabled(1,true);
+                qDebug() <<"Разрешили настройки";
+                break;
+            case 4:
+                ui->tabWidget->setTabEnabled(2,true);
+                qDebug() <<"Разрешили пользователи";
+                break;
+            case 8:
+                ui->tabWidget->setTabEnabled(3,true);
+                qDebug() <<"Разрешили департаменты";
+                break;
+            case 16:
+                ui->tabWidget->setTabEnabled(4,true);
+                qDebug() <<"Разрешили курсы";
+                break;
+            case 32:
+                ui->tabWidget->setTabEnabled(5,true);
+                qDebug() <<"Разрешили темы";
+                break;
+            case 64:
+                ui->tabWidget->setTabEnabled(6,true);
+                qDebug() <<"Разрешили базу";
+                break;
+            case 128:
+                ui->tabWidget->setTabEnabled(7,true);
+                ui->tableView_2->setModel(model_res);
+                ui->tableView_2->verticalHeader()->setVisible(false);
+                ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+                qDebug() <<"Разрешили результаты";
+                break;
             }
         }
     }
+}
+
 
 
 AdminWin::~AdminWin()
@@ -82,14 +98,30 @@ void AdminWin::closeEvent(QCloseEvent *event)
     emit secondWindow();
 }
 
-void AdminWin::on_pushButton_17_clicked()
-{
-  db->createUser("root", "password");
-}
+
+//void AdminWin::setTableUsers(int value)
+//{
+
+//}
+
+//void AdminWin::on_tabWidget_tabBarDoubleClicked(int index)
+//{
+//    if (accses >=128)
+//    {
+    // Отображаем результаты всех студентов в форме таблицы
+//    model_res = new QSqlQueryModel();
+//    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
+//    ui->tableView_2->setModel(model_res);
+//    ui->tableView_2->verticalHeader()->setVisible(false);
+//   ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+//    }
+//}
 
 
 void AdminWin::on_pushButton_7_clicked()
 {
     AddWindow->show();
 }
+
+
 

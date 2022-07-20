@@ -31,7 +31,6 @@ protected:
 private slots:
     void on_comboBox_5_currentTextChanged(const QString &arg1);
 
-    void on_pushButton_17_clicked();
 
     void on_pushButton_7_clicked();
 
@@ -46,3 +45,4 @@ private:
 };
 
 #endif // ADMINWIN_H
+
