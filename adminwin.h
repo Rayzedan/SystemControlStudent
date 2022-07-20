@@ -37,6 +37,8 @@ private:
     Ui::AdminWin *ui;
     DataBase *db;
     QSqlQueryModel *model_res;
+    QSqlQueryModel *model_res_users;
+    QSqlQuery *query;
 };
 
 #endif // ADMINWIN_H
