@@ -42,6 +42,7 @@ private slots:
 private:
     Ui::AdminWin *ui;
     DataBase *db;
+    QVariant val;
     QVariantList data;
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;

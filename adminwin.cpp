@@ -96,34 +96,13 @@ void AdminWin::closeEvent(QCloseEvent *event)
     emit secondWindow();
 }
 
-
-
-//void AdminWin::setTableUsers(int value)
-//{
-
-//}
-
-//void AdminWin::on_tabWidget_tabBarDoubleClicked(int index)
-//{
-//    if (accses >=128)
-//    {
-    // Отображаем результаты всех студентов в форме таблицы
-//    model_res = new QSqlQueryModel();
-//    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
-//    ui->tableView_2->setModel(model_res);
-//    ui->tableView_2->verticalHeader()->setVisible(false);
-//   ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-//    }
-//}
-
-
 void AdminWin::on_pushButton_7_clicked()
 {
     AddWindow->show();
 }
 
 
-QVariant val;
+
 
 void AdminWin::on_usersView_clicked(const QModelIndex &index)
 {

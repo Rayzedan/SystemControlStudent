@@ -116,10 +116,11 @@ bool DataBase::createUser(QString login, QString password)
     return false;
 }
 
-bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID)
+bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers)
 {
     if (!correctAnswers.count(ID))
     {
+        countAllAnswers[nameChapter]++;
         qDebug() << "ID = 0 CHECK";
         if (sum == correctAnswer) {
             qDebug() << "true";
@@ -140,7 +141,7 @@ bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QStrin
         }
         else
         {
-            if (dataAnswer.count(nameChapter)) {
+            if (dataAnswer.count(nameChapter) && correctAnswers[ID]!=0) {
                 qDebug() << "false quest";
                 dataAnswer[nameChapter]--;
                 qDebug() << nameChapter << " " << dataAnswer[nameChapter];
@@ -152,11 +153,12 @@ bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QStrin
     return false;
 }
 
-bool DataBase::checkTextAnswer(QString answerUser, const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText, QMap<int, int> &correctAnswers, const int ID)
+bool DataBase::checkTextAnswer(QString answerUser, const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers)
 {
     qDebug() << "зашли в checkTextAnswer";
     if (!correctAnswers.count(ID))
     {
+        countAllAnswers[nameChapter]++;
         qDebug() << "ID = 0 CHECK";
         if (answerUser.toLower() == correctAnswerText.toLower()) {
             qDebug() << "true";
@@ -177,7 +179,7 @@ bool DataBase::checkTextAnswer(QString answerUser, const QString nameChapter, QM
         }
         else
         {
-            if (dataAnswerText.count(nameChapter)) {
+            if (dataAnswerText.count(nameChapter)&& correctAnswers[ID]!=0) {
                 qDebug() << "false quest";
                 dataAnswerText[nameChapter]--;
                 qDebug() << nameChapter << " " << dataAnswerText[nameChapter];
@@ -202,7 +204,7 @@ double DataBase::sumAnswer(QMap <int, int>& correctAnswer)
 
 void DataBase::checkCorrectAnswer(QMap<int, int> &correctAnswer, const int ID)
 {
-    if (correctAnswer.find(ID)!=correctAnswer.end())
+    if (correctAnswer.find(ID)!=correctAnswer.end() && correctAnswer[ID]!=0)
     {
         correctAnswer[ID]--;
     }
@@ -236,6 +238,7 @@ QMap<QString,int> DataBase::mergeMap(QMap<QString, int> &dataAnswer, QMap<QStrin
     }
     return resultMap;
 }
+
 
 // Метод закрытия бд
 void DataBase::closeDataBase()

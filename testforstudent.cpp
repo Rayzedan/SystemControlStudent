@@ -9,20 +9,23 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     ui->setupUi(this);
 
     query = new QSqlQuery();
+    timer = new QTimer(this);
+
     time.setHMS(1,0,0);
     sizeTest = 0;
     countAnsw = 0;
     courseId =0;
     current_data = takeData;
     currentQuestId =0;
-    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+
     query->exec("SELECT Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
                    "from Questions, Courses, Chapters"
-                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id;");
-                                                                                                                    /*"ORDER BY NEWID();");*/
+                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id "
+                                                                                                                    "ORDER BY NEWID();");
     if (query->next())
     {
+        firstQuestId = query->value("Id").toInt();
         descriptionCourse = query->value("Description").toString();
         courseId = query->value("CourseId").toInt();
         setData(query->value("TypeQuestion").toInt());
@@ -46,36 +49,7 @@ void TestForStudent::closeEvent(QCloseEvent *event)
 
 void TestForStudent::on_pushButton_clicked()
 {
-    countAnsw = 0;
-    currentQuestId = query->value("Id").toInt();
-    chapterName = query->value("Name").toString();
-
-    if (query->value("TypeQuestion").toInt() ==1)
-    {
-        dataCheckBox();
-        if (db->checkAnswer(countAnsw, chapterName, dataAnswer, query->value("CorrectAnswer").toInt(), correctAnswers, currentQuestId))
-        {
-            correctAnswers[currentQuestId]++;
-            countAnsw = 0;
-        }
-        else
-        {
-            db->checkCorrectAnswer(correctAnswers,currentQuestId);
-        }
-    }
-    else if  (query->value("TypeQuestion").toInt() ==2)
-    {
-        if (db->checkTextAnswer(ui->textEdit->toPlainText(),chapterName, dataAnswerText,query->value("Variant1").toString(), correctAnswers, currentQuestId))
-        {
-            correctAnswers[currentQuestId]++;
-            ui->textEdit->clear();
-        }
-        else
-        {
-            db->checkCorrectAnswer(correctAnswers,currentQuestId);
-        }
-    }
-    qDebug() << currentQuestId << " " << correctAnswers[currentQuestId];
+    inputAnswer();
     // Проверяем наличие данных в бд
     if (query->next())
     {
@@ -87,28 +61,11 @@ void TestForStudent::on_pushButton_clicked()
         // Если пользователь ответил на все вопросы выводим QMessageBox
         if (QMessageBox::Yes == QMessageBox::question(this,"Внимание","Завершить выполнение теста?"))
         {
-            testCorrectAnswer = db->sumAnswer(correctAnswers);
-            qDebug() << correctAnswers.size();
-            credit = ((testCorrectAnswer/correctAnswers.size()) * 100.0);
-            qDebug() << credit;
-            if (credit >= 40.0)
-            {
-                current_data.append(credit);
-                current_data.append(1);
-            }
-            else
-            {
-                current_data.append(credit);
-                current_data.append(0);
-            }
-            current_data.append(courseId);
-            current_data.append(descriptionCourse);           
-            current_data.append(time.toString("m:ss"));
-            current_data.append(sizeTest);
-            db->insertIntoTable(current_data); // Отправка данных в бд             
-            studentResult = new FillResult(current_data, db->mergeMap(dataAnswer, dataAnswerText));
-            studentResult->show();
-            this->close();
+//            qDebug() << "Все вопросы";
+//            qDebug() << countAllAnswers.size();
+//            qDebug() << countAllAnswers["Глава"];
+//            qDebug() << countAllAnswers["Глава 2"];
+            outputAnswer()
         }
     }
 }
@@ -117,10 +74,17 @@ void TestForStudent::on_pushButton_clicked()
 void TestForStudent::on_pushButton_2_clicked()
 {
     countAnsw = 0;
-    if (query->previous() && currentQuestId !=1)
-    {     
+    currentQuestId = query->value("Id").toInt();
+    qDebug() << currentQuestId;
+    if (query->previous() && currentQuestId!=firstQuestId)
+    {
+            setData(query->value("TypeQuestion").toInt());
+            qDebug() << "Back " << currentQuestId;
+    }
+    else if (query->previous())
+    {
         setData(query->value("TypeQuestion").toInt());
-        qDebug() << "Back " << currentQuestId;
+        qDebug() << "Back " << firstQuestId;
     }
 }
 
@@ -182,34 +146,73 @@ void TestForStudent::updateTime()
     {
         while (query-> next())
             sizeTest++;
-        testCorrectAnswer = db->sumAnswer(correctAnswers);
-        //qDebug() << correctAnswer.size();
-        credit = ((testCorrectAnswer/sizeTest) * 100.0);
-        qDebug() << credit;
-        if (credit >= 40.0)
-        {
-            current_data.append(credit);
-            current_data.append(1);
-        }
-        else
-        {
-            current_data.append(credit);
-            current_data.append(0);
-        }
-        current_data.append(courseId);
-        current_data.append(descriptionCourse);
-        current_data.append(time.toString("m:ss"));
-        current_data.append(sizeTest);
-        db->insertIntoTable(current_data); // Отправка данных в бд
         QMessageBox::warning(this,"Внимание!", "Время вышло");
-        studentResult = new FillResult(current_data,db->mergeMap(dataAnswer, dataAnswerText));
-        studentResult->show();
-        this->close();
+        inputAnswer();
+        outputAnswer();
         timer->stop();
     }
 }
 
-//void TestForStudent::inputAnswer(const ind ID)
-//{
+void TestForStudent::inputAnswer()
+{
+    countAnsw = 0;
+    currentQuestId = query->value("Id").toInt();
+    chapterName = query->value("Name").toString();
+    int typeQuest = query->value("TypeQuestion").toInt();
 
-//}
+    //db->countAllAnswer(currentQuestId, countAllAnswers);
+
+    if (typeQuest ==1)
+    {
+        dataCheckBox();
+        if (db->checkAnswer(countAnsw, chapterName, dataAnswer, query->value("CorrectAnswer").toInt(), correctAnswers, currentQuestId, countAllAnswers))
+        {
+            correctAnswers[currentQuestId]++;
+            countAnsw = 0;
+        }
+        else
+        {
+            db->checkCorrectAnswer(correctAnswers,currentQuestId);
+        }
+    }
+    else if  (typeQuest ==2)
+    {
+        if (db->checkTextAnswer(ui->textEdit->toPlainText(),chapterName, dataAnswerText,query->value("Variant1").toString(), correctAnswers, currentQuestId,countAllAnswers))
+        {
+            correctAnswers[currentQuestId]++;
+            ui->textEdit->clear();
+        }
+        else
+        {
+            db->checkCorrectAnswer(correctAnswers,currentQuestId);
+        }
+    }
+    qDebug() << currentQuestId << " " << correctAnswers[currentQuestId];
+}
+
+void TestForStudent::outputAnswer()
+{
+    testCorrectAnswer = db->sumAnswer(correctAnswers);
+    qDebug() << correctAnswers.size();
+    credit = ((testCorrectAnswer/correctAnswers.size()) * 100.0);
+    qDebug() << credit;
+    if (credit >= 40.0)
+    {
+        current_data.append(credit);
+        current_data.append(1);
+    }
+    else
+    {
+        current_data.append(credit);
+        current_data.append(0);
+    }
+
+    current_data.append(courseId);
+    current_data.append(descriptionCourse);
+    current_data.append(time.toString("m:ss"));
+    current_data.append(sizeTest);
+    db->insertIntoTable(current_data); // Отправка данных в бд
+    studentResult = new FillResult(current_data, db->mergeMap(dataAnswer, dataAnswerText));
+    studentResult->show();
+    this->close();
+}

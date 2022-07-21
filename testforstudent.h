@@ -25,6 +25,8 @@ public:
     //void inputAnswer(const ind ID);
     void setData(const int typeQuestion);
     void dataCheckBox();
+    void inputAnswer();
+    void outputAnswer();
 
 public slots:
 
@@ -43,6 +45,7 @@ private:
     QMap <int, int> correctAnswers;
     QMap <QString, int> dataAnswer;
     QMap <QString, int> dataAnswerText;
+    QMap <QString,int> countAllAnswers;
     QString resultTime;
     QTime time;
     QTimer *timer;
@@ -51,6 +54,7 @@ private:
     QSqlQuery *query;
     QString chapterName;
     QString descriptionCourse;
+    int firstQuestId;
     double testCorrectAnswer;
     double credit;
     int countAnsw;
