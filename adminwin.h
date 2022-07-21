@@ -10,6 +10,7 @@
 #include "fillresult.h"
 #include "database.h"
 #include "addusers.h"
+#include "usersettings.h"
 namespace Ui {
 class AdminWin;
 }
@@ -40,6 +41,8 @@ private slots:
 
     void on_usersView_clicked(const QModelIndex &index);
 
+    void on_pushButton_9_clicked();
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
@@ -48,6 +51,7 @@ private:
     QSqlQueryModel *model_res_users;
     QSqlQuery *query;
     AddUsers *AddWindow;
+    usersettings *SettWindow;
 };
 
 #endif // ADMINWIN_H

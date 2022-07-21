@@ -17,7 +17,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     studentwindow.cpp \
-    testforstudent.cpp
+    testforstudent.cpp \
+    usersettings.cpp
 
 HEADERS += \
     addusers.h \
@@ -28,7 +29,8 @@ HEADERS += \
     mainwindow.h \
     studentwindow.h \
     tabwidget.h \
-    testforstudent.h
+    testforstudent.h \
+    usersettings.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -42,4 +44,5 @@ FORMS += \
     fillresult.ui \
     mainwindow.ui \
     studentwindow.ui \
-    testforstudent.ui
+    testforstudent.ui \
+    usersettings.ui

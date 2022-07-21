@@ -9,7 +9,6 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     AddWindow = new AddUsers();
     data = dataUser;
     QString login = data[0].toString();
-
     model_res_users = new QSqlQueryModel();
     model_res = new QSqlQueryModel();
 
@@ -132,8 +131,27 @@ void AdminWin::on_usersView_clicked(const QModelIndex &index)
 
 void AdminWin::on_pushButton_8_clicked()
 {
-    QString value = val.toString();
-    QSqlQuery query;
-    query.exec("DELETE FROM Users WHERE Login='"+value+"';");
-    QMessageBox :: information (this, "", "Успешное удаление пользователя.");
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете пользователя для удаления.");
+    } else if (val.toString()=="Администратор"){
+        QMessageBox ::critical(this, "", "Нельзя удалить администратора");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Users WHERE Login='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление пользователя.");
+    }
 }
+
+void AdminWin::on_pushButton_9_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете пользователя для настройки.");
+    }else if (val.toString()=="Администратор"){
+        QMessageBox ::critical(this, "", "Нельзя менять права авминистратора");
+    } else {
+        qDebug()<<val.toString();
+        SettWindow = new usersettings(val.toString());
+        SettWindow ->show();
+    }
+}
+
