@@ -34,6 +34,12 @@ private slots:
 
     void on_pushButton_7_clicked();
 
+    void on_pushButton_8_clicked();
+
+    void on_usersView_activated(const QModelIndex &index);
+
+    void on_usersView_clicked(const QModelIndex &index);
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;

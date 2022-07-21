@@ -36,7 +36,9 @@ void AddUsers::on_pushButton_clicked()
     };
     QString NewPerm =QString::number(NewPermision);
     QSqlQuery query;
-    qDebug() << Newlogin << Newpassword<<NewPermision;
+    qDebug() << Newlogin << Newpassword <<NewPermision;
+    Newpassword=encryptPas(Newpassword);
+    qDebug() << Newpassword;
     query.exec("Insert into Users(Login,Password,Permissions) Values ('" +Newlogin+ "','" +Newpassword+ "'," +NewPerm+ ")");
     this->close();
 }

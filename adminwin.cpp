@@ -33,7 +33,6 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     ui->tabWidget->setTabEnabled(7,false);
 
     query = new QSqlQuery();
-    //нужно вбить в Login логин текущего пользователя
     query->exec("Select Permissions from Users where Login = '" +login+ "'");
     query->next();
     QString acc =query->value("Permissions").toString();
@@ -124,4 +123,17 @@ void AdminWin::on_pushButton_7_clicked()
 }
 
 
+QVariant val;
 
+void AdminWin::on_usersView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+}
+
+void AdminWin::on_pushButton_8_clicked()
+{
+    QString value = val.toString();
+    QSqlQuery query;
+    query.exec("DELETE FROM Users WHERE Login='"+value+"';");
+    QMessageBox :: information (this, "", "Успешное удаление пользователя.");
+}

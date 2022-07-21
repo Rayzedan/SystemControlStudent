@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QSqlQuery>
+#include "database.h"
 
 namespace Ui {
 class AddUsers;
@@ -15,6 +16,12 @@ class AddUsers : public QDialog
 public:
     explicit AddUsers(QWidget *parent = nullptr);
     ~AddUsers();
+
+    QString encryptPas(const QString pass) {
+        DataBase base;
+        QString cryptedpas = base.encryptPassword(pass);
+        return cryptedpas;
+    };
 
 
 private slots:
