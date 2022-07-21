@@ -39,6 +39,12 @@ private slots:
 
     void on_pushButton_9_clicked();
 
+    void on_comboBox_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_2_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_3_currentTextChanged(const QString &arg1);
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
@@ -46,6 +52,9 @@ private:
     QVariantList data;
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
+    QSqlQueryModel *model_res_depart;
+    QSqlQueryModel *model_res_course;
+    QSqlQueryModel *model_res_chapter;
     QSqlQuery *query;
     AddUsers *AddWindow;
     usersettings *SettWindow;

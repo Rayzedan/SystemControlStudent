@@ -9,18 +9,30 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     AddWindow = new AddUsers();
     data = dataUser;
     QString login = data[0].toString();
-    model_res_users = new QSqlQueryModel();
-    model_res = new QSqlQueryModel();
 
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
-    model_res_users ->setQuery("Select login from Users");
+    model_res = new QSqlQueryModel();
+    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов From Results");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    ui->usersView->setModel(model_res_users);
 
+    model_res_users = new QSqlQueryModel();
+    model_res_users ->setQuery("Select login From Users Order by login");
+    ui->usersView->setModel(model_res_users);
     ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+
+    model_res_depart = new QSqlQueryModel();
+    model_res_depart->setQuery("Select name From Departments Order by name");
+    ui->DepartView->setModel(model_res_depart);
+    ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+
+    ui->comboBox->setModel(model_res_depart);
+    ui->comboBox_2->setModel(model_res_depart);
+
+
 
     ui->tabWidget->setTabEnabled(0,false);
     ui->tabWidget->setTabEnabled(1,false);
@@ -72,9 +84,6 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
                 break;
             case 128:
                 ui->tabWidget->setTabEnabled(7,true);
-                ui->tableView_2->setModel(model_res);
-                ui->tableView_2->verticalHeader()->setVisible(false);
-                ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
                 qDebug() <<"Разрешили результаты";
                 break;
             }
@@ -134,4 +143,29 @@ void AdminWin::on_pushButton_9_clicked()
         SettWindow ->show();
     }
 }
+
+
+void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    model_res_course = new QSqlQueryModel();
+    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
+    ui->courseView->setModel(model_res_course);
+}
+
+
+//void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
+//{
+//    model_res_course = new QSqlQueryModel();
+//    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
+//    ui->comboBox_3->setModel(model_res_course);
+//}
+
+
+//void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
+//{
+//    model_res_chapter = new QSqlQueryModel();
+//    model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg1+"' and Courses.Id=Chapters.CourseId");
+//    qDebug()<<arg1;
+//    ui->listView->setModel(model_res_chapter);
+//}
 

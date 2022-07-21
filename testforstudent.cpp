@@ -65,7 +65,7 @@ void TestForStudent::on_pushButton_clicked()
 //            qDebug() << countAllAnswers.size();
 //            qDebug() << countAllAnswers["Глава"];
 //            qDebug() << countAllAnswers["Глава 2"];
-            outputAnswer()
+            outputAnswer();
         }
     }
 }
