@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addusers.cpp \
     adminwin.cpp \
     authorizationwindow.cpp \
     database.cpp \
@@ -16,9 +17,11 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     studentwindow.cpp \
-    testforstudent.cpp
+    testforstudent.cpp \
+    usersettings.cpp
 
 HEADERS += \
+    addusers.h \
     adminwin.h \
     authorizationwindow.h \
     database.h \
@@ -26,7 +29,8 @@ HEADERS += \
     mainwindow.h \
     studentwindow.h \
     tabwidget.h \
-    testforstudent.h
+    testforstudent.h \
+    usersettings.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -34,9 +38,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 FORMS += \
+    addusers.ui \
     adminwin.ui \
     authorizationwindow.ui \
     fillresult.ui \
     mainwindow.ui \
     studentwindow.ui \
-    testforstudent.ui
+    testforstudent.ui \
+    usersettings.ui

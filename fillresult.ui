@@ -276,6 +276,7 @@
           <property name="title">
            <string/>
           </property>
+<<<<<<< HEAD
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <widget class="QTableWidget" name="tableWidget">
@@ -299,6 +300,9 @@
             </widget>
            </item>
           </layout>
+=======
+          <layout class="QVBoxLayout" name="verticalLayout_3"/>
+>>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550
          </widget>
         </item>
        </layout>

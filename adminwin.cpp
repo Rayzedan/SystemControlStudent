@@ -6,6 +6,7 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     ui(new Ui::AdminWin)
 {
     ui->setupUi(this);
+    AddWindow = new AddUsers();
     data = dataUser;
     QString login = data[0].toString();
 
@@ -14,6 +15,7 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
 
     model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
     model_res_users ->setQuery("Select login from Users");
+<<<<<<< HEAD
 
 
     ui->usersView->setModel(model_res_users);
@@ -31,6 +33,26 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
 
     query = new QSqlQuery();
     //нужно вбить в Login логин текущего пользователя
+=======
+    ui->tableView_2->setModel(model_res);
+    ui->tableView_2->verticalHeader()->setVisible(false);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->usersView->setModel(model_res_users);
+
+    ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+    ui->tabWidget->setTabEnabled(0,false);
+    ui->tabWidget->setTabEnabled(1,false);
+    ui->tabWidget->setTabEnabled(2,false);
+    ui->tabWidget->setTabEnabled(3,false);
+    ui->tabWidget->setTabEnabled(4,false);
+    ui->tabWidget->setTabEnabled(5,false);
+    ui->tabWidget->setTabEnabled(6,false);
+    ui->tabWidget->setTabEnabled(7,false);
+
+    query = new QSqlQuery();
+>>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550
     query->exec("Select Permissions from Users where Login = '" +login+ "'");
     query->next();
     QString acc =query->value("Permissions").toString();
@@ -88,22 +110,72 @@ AdminWin::~AdminWin()
     delete ui;
 }
 
-void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
-{
-    if (arg1 == "Тест") {
-        //QMessageBox::information(this,"Выбор1","Выводим чекбоксы");
-        ui->stackedWidget->setCurrentIndex(1);
-
-    }
-    else if (arg1 == "Свободный ввод") {
-        //QMessageBox::information(this,"Выбор2","Выводим простынь");
-        ui->stackedWidget->setCurrentIndex(0);
-    }
-}
-
 // Закрываем окно
 void AdminWin::closeEvent(QCloseEvent *event)
 {
     event->accept();
     emit secondWindow();
 }
+<<<<<<< HEAD
+=======
+
+
+//void AdminWin::setTableUsers(int value)
+//{
+
+//}
+
+//void AdminWin::on_tabWidget_tabBarDoubleClicked(int index)
+//{
+//    if (accses >=128)
+//    {
+    // Отображаем результаты всех студентов в форме таблицы
+//    model_res = new QSqlQueryModel();
+//    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
+//    ui->tableView_2->setModel(model_res);
+//    ui->tableView_2->verticalHeader()->setVisible(false);
+//   ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+//    }
+//}
+
+
+void AdminWin::on_pushButton_7_clicked()
+{
+    AddWindow->show();
+}
+
+
+QVariant val;
+
+void AdminWin::on_usersView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+}
+
+void AdminWin::on_pushButton_8_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете пользователя для удаления.");
+    } else if (val.toString()=="Администратор"){
+        QMessageBox ::critical(this, "", "Нельзя удалить администратора");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Users WHERE Login='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление пользователя.");
+    }
+}
+
+void AdminWin::on_pushButton_9_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете пользователя для настройки.");
+    }else if (val.toString()=="Администратор"){
+        QMessageBox ::critical(this, "", "Нельзя менять права авминистратора");
+    } else {
+        qDebug()<<val.toString();
+        SettWindow = new usersettings(val.toString());
+        SettWindow ->show();
+    }
+}
+
+>>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550

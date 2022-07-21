@@ -9,7 +9,8 @@
 #include <QSqlQuery>
 #include "fillresult.h"
 #include "database.h"
-
+#include "addusers.h"
+#include "usersettings.h"
 namespace Ui {
 class AdminWin;
 }
@@ -31,6 +32,19 @@ protected:
 private slots:
     void on_comboBox_5_currentTextChanged(const QString &arg1);
 
+<<<<<<< HEAD
+=======
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_usersView_activated(const QModelIndex &index);
+
+    void on_usersView_clicked(const QModelIndex &index);
+
+    void on_pushButton_9_clicked();
+>>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550
 
 private:
     Ui::AdminWin *ui;
@@ -39,6 +53,9 @@ private:
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQuery *query;
+    AddUsers *AddWindow;
+    usersettings *SettWindow;
 };
 
 #endif // ADMINWIN_H
+
