@@ -9,31 +9,11 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     AddWindow = new AddUsers();
     data = dataUser;
     QString login = data[0].toString();
-
     model_res_users = new QSqlQueryModel();
     model_res = new QSqlQueryModel();
 
     model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
     model_res_users ->setQuery("Select login from Users");
-<<<<<<< HEAD
-
-
-    ui->usersView->setModel(model_res_users);
-
-    ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
-
-    ui->tabWidget->setTabEnabled(0,false);
-    ui->tabWidget->setTabEnabled(1,false);
-    ui->tabWidget->setTabEnabled(2,false);
-    ui->tabWidget->setTabEnabled(3,false);
-    ui->tabWidget->setTabEnabled(4,false);
-    ui->tabWidget->setTabEnabled(5,false);
-    ui->tabWidget->setTabEnabled(6,false);
-    ui->tabWidget->setTabEnabled(7,false);
-
-    query = new QSqlQuery();
-    //нужно вбить в Login логин текущего пользователя
-=======
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -52,11 +32,10 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     ui->tabWidget->setTabEnabled(7,false);
 
     query = new QSqlQuery();
->>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550
     query->exec("Select Permissions from Users where Login = '" +login+ "'");
     query->next();
     QString acc =query->value("Permissions").toString();
-    int accses = acc.toInt();
+       int accses = acc.toInt();
     for (int count = 7;count>=0;count--)
     {
         int check =pow(2,count);
@@ -116,8 +95,7 @@ void AdminWin::closeEvent(QCloseEvent *event)
     event->accept();
     emit secondWindow();
 }
-<<<<<<< HEAD
-=======
+
 
 
 //void AdminWin::setTableUsers(int value)
@@ -178,4 +156,3 @@ void AdminWin::on_pushButton_9_clicked()
     }
 }
 
->>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550

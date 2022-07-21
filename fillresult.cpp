@@ -34,12 +34,24 @@ FillResult::~FillResult()
 
 void FillResult::on_pushButton_clicked()
 {
+    //QString fileName = QFileDialog::getOpenFileName(0,"Open File",QString(),"PNG File(*.png)");
+    printScr();
     QPrinter printer;
-    QPrintDialog dialog(&printer,this);
-
-    if(dialog.exec() == QDialog::Accepted) {
-
+    QPrintDialog *dlg = new QPrintDialog(&printer,0);
+    if(dlg->exec() == QDialog::Accepted) {
+        QImage img("print.png");
+        QPainter painter(&printer);
+//        QRect rect = painter.viewport();
+//        QSize size = img.size();
+//        size.scale(rect.size(), Qt::KeepAspectRatio);
+//        painter.setViewport(rect.x(),rect.y(),size.width(),size.height());
+//        painter.scale(1,1);
+        painter.setWindow(img.rect());
+        painter.drawImage(0,0,img,0,0,-1,-1);
+        painter.end();
     }
+
+    delete dlg;
 }
 
 void FillResult::setTable(QMap<QString, int> resultMap)
@@ -65,4 +77,9 @@ void FillResult::setTable(QMap<QString, int> resultMap)
         ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 1, newItem);
         ++i;
     }
+}
+
+void FillResult::printScr()
+{
+   ui->onprint->grab().save("print.png");
 }

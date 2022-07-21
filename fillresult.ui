@@ -6,14 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>811</width>
-    <height>518</height>
+    <width>800</width>
+    <height>480</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>640</width>
+    <width>800</width>
     <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>812</width>
+    <height>483</height>
    </size>
   </property>
   <property name="font">
@@ -27,6 +39,24 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="onprint">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>440</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>440</height>
+      </size>
+     </property>
      <property name="title">
       <string>Результаты тестирования</string>
      </property>
@@ -48,6 +78,12 @@
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="course">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Курс</string>
           </property>
@@ -276,7 +312,6 @@
           <property name="title">
            <string/>
           </property>
-<<<<<<< HEAD
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <widget class="QTableWidget" name="tableWidget">
@@ -299,10 +334,10 @@
              </property>
             </widget>
            </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3"/>
+           </item>
           </layout>
-=======
-          <layout class="QVBoxLayout" name="verticalLayout_3"/>
->>>>>>> e6c43894d67fb28bae886eeaa315d3e6522dc550
          </widget>
         </item>
        </layout>

@@ -6,6 +6,10 @@
 #include <QSqlQuery>
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QTextDocument>
+#include <QPainter>
+#include <QFileDialog>
+#include <QPixmap>
 
 namespace Ui {
 class FillResult;
@@ -21,6 +25,8 @@ public:
 
     void setTable(QMap<QString,int> resultMap);
 
+public slots:
+    void printScr();
 
 private slots:
     void on_pushButton_clicked();
