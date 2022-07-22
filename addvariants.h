@@ -2,8 +2,11 @@
 #define ADDVARIANTS_H
 
 #include <QDialog>
+#include <QSql>
 #include <QSqlQuery>
-
+#include <QSqlError>
+#include <QSqlDatabase>
+#include "database.h"
 namespace Ui {
 class AddVariants;
 }
@@ -21,6 +24,8 @@ private slots:
 
 private:
     Ui::AddVariants *ui;
+    QSqlQuery *query;
+    QSqlQuery *helpQ;
 };
 
 #endif // ADDVARIANTS_H

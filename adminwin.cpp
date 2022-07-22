@@ -185,6 +185,7 @@ void AdminWin::on_pushButton_16_clicked()
 {
     QVariantList course;
     course.append("курс");
+    course.append("описание курса");
     course.append(ui->comboBox->currentText());
     varWind = new AddVariants(course);
     varWind ->show();
@@ -195,7 +196,7 @@ void AdminWin::on_pushButton_19_clicked()
 {
     QVariantList chap;
     chap.append("тему");
-    chap.append(ui->comboBox_2->currentText());
+    chap.append("номер темы");
     chap.append(ui->comboBox_3->currentText());
     varWind = new AddVariants(chap);
     varWind ->show();
