@@ -9,18 +9,33 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     AddWindow = new AddUsers();
     data = dataUser;
     QString login = data[0].toString();
-    model_res_users = new QSqlQueryModel();
-    model_res = new QSqlQueryModel();
 
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов from Results");
-    model_res_users ->setQuery("Select login from Users");
+    model_res = new QSqlQueryModel();
+    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов From Results");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    ui->usersView->setModel(model_res_users);
 
+    model_res_users = new QSqlQueryModel();
+    model_res_users ->setQuery("Select login From Users Order by login");
+    ui->usersView->setModel(model_res_users);
     ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+
+    model_res_depart = new QSqlQueryModel();
+    model_res_depart->setQuery("Select name From Departments Order by name");
+    ui->DepartView->setModel(model_res_depart);
+    ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+
+    ui->comboBox->setModel(model_res_depart);
+    ui->comboBox_2->setModel(model_res_depart);
+
+    model_res_course = new QSqlQueryModel();
+
+
+
 
     ui->tabWidget->setTabEnabled(0,false);
     ui->tabWidget->setTabEnabled(1,false);
@@ -72,9 +87,6 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
                 break;
             case 128:
                 ui->tabWidget->setTabEnabled(7,true);
-                ui->tableView_2->setModel(model_res);
-                ui->tableView_2->verticalHeader()->setVisible(false);
-                ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
                 qDebug() <<"Разрешили результаты";
                 break;
             }
@@ -127,11 +139,126 @@ void AdminWin::on_pushButton_9_clicked()
     if (val.toString()==""){
         QMessageBox ::critical(this, "", "Сначала выберете пользователя для настройки.");
     }else if (val.toString()=="Администратор"){
-        QMessageBox ::critical(this, "", "Нельзя менять права авминистратора");
+        QMessageBox ::critical(this, "", "Нельзя менять права администратора");
     } else {
         qDebug()<<val.toString();
         SettWindow = new usersettings(val.toString());
         SettWindow ->show();
+    }
+}
+
+
+void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    model_res_course = new QSqlQueryModel();
+    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
+    ui->courseView->setModel(model_res_course);
+    ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+}
+
+
+void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
+{
+    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
+    ui->comboBox_3->setModel(model_res_course);
+}
+
+void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
+{
+    qDebug()<<"Open";
+    model_res_chapter = new QSqlQueryModel();
+    model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg1+"' and Courses.Id=Chapters.CourseId");
+    ui->listView->setModel(model_res_chapter);
+    ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
+}
+
+
+void AdminWin::on_pushButton_10_clicked()
+{
+    QVariantList depart;
+    depart.append("департамент");
+    varWind = new AddVariants(depart);
+    varWind ->show();
+}
+
+
+void AdminWin::on_pushButton_16_clicked()
+{
+    QVariantList course;
+    course.append("курс");
+    course.append("описание курса");
+    course.append(ui->comboBox->currentText());
+    varWind = new AddVariants(course);
+    varWind ->show();
+}
+
+
+void AdminWin::on_pushButton_19_clicked()
+{
+    QVariantList chap;
+    chap.append("тему");
+    chap.append("номер темы");
+    chap.append(ui->comboBox_3->currentText());
+    varWind = new AddVariants(chap);
+    varWind ->show();
+}
+
+
+void AdminWin::on_DepartView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+
+void AdminWin::on_pushButton_12_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете департамент для удаления.");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Departments WHERE name='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление департамента.");
+        qDebug()<< query.lastError().text();
+    }
+}
+
+
+void AdminWin::on_courseView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+
+void AdminWin::on_pushButton_17_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете курс для удаления.");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Courses WHERE name='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление курса.");
+        qDebug()<< query.lastError().text();
+    }
+}
+
+
+void AdminWin::on_listView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+void AdminWin::on_pushButton_20_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете тему для удаления.");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Chapters WHERE name='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление темы.");
+        qDebug()<< query.lastError().text();
     }
 }
 

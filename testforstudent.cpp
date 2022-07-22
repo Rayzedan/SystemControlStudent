@@ -60,10 +60,6 @@ void TestForStudent::on_pushButton_clicked()
         // Если пользователь ответил на все вопросы выводим QMessageBox
         if (QMessageBox::Yes == QMessageBox::question(this,"Внимание","Завершить выполнение теста?"))
         {
-            //qDebug() << "Все вопросы";
-            //qDebug() << countAllAnswers.size();
-            //qDebug() << countAllAnswers["Глава"];
-            //qDebug() << countAllAnswers["Глава 2"];
             outputAnswer();
         }
     }

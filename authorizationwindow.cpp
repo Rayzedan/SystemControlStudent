@@ -13,7 +13,7 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
     // Создаём модель для отображения всех доступных логинов из бд
     model = new QSqlQueryModel();   
 
-    model->setQuery("Select Login From Users");
+    model->setQuery("Select Login From Users order by Login");
 
     ui->login->setModel(model);
 }
@@ -41,7 +41,7 @@ void AuthorizationWindow::on_pushButton_2_clicked()
         }
         // Если пройдены первичные проверки, то отправляем запрос в базу данных
         else
-        // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования
+        // Если введённые данные совпадают с тем, что ввёл пользователь - открываем окно администрирования, пока что убрал авторизацию так как данные в бд незашифрованные
              if (true/*db->checkData(ui->login->currentText(), password_user)*/) {
                  QVariantList data;
                  data.append(ui->login->currentText());
