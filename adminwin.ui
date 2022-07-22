@@ -18,7 +18,8 @@
   </property>
   <property name="font">
    <font>
-    <pointsize>14</pointsize>
+    <family>Roboto</family>
+    <pointsize>16</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -46,16 +47,23 @@ QPushButton:pressed { background: white; }</string>
     <widget class="TabWidget" name="tabWidget">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Roboto</family>
+       <pointsize>16</pointsize>
       </font>
      </property>
      <property name="tabPosition">
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>6</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Tab">
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <attribute name="title">
        <string>Настройки</string>
       </attribute>
@@ -66,8 +74,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label_5">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -107,8 +116,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -148,8 +158,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label_2">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -186,8 +197,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label_6">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -224,8 +236,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label_3">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -262,8 +275,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -341,9 +355,10 @@ QPushButton:pressed { background: white; }</string>
         <widget class="QLabel" name="label_19">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <family>Roboto</family>
+           <pointsize>16</pointsize>
            <italic>false</italic>
-           <bold>true</bold>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -568,6 +583,12 @@ QPushButton:pressed { background: white; }</string>
         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0">
          <item>
           <widget class="QLabel" name="label_7">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Департамент:</string>
            </property>
@@ -699,6 +720,12 @@ QPushButton:pressed { background: white; }</string>
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>
             <widget class="QLabel" name="label_8">
+             <property name="font">
+              <font>
+               <family>Roboto</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Департамент:</string>
              </property>
@@ -706,6 +733,12 @@ QPushButton:pressed { background: white; }</string>
            </item>
            <item>
             <widget class="QLabel" name="label_9">
+             <property name="font">
+              <font>
+               <family>Roboto</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Курс:</string>
              </property>
@@ -836,6 +869,12 @@ QPushButton:pressed { background: white; }</string>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <attribute name="title">
        <string>База заданий</string>
       </attribute>
@@ -848,8 +887,9 @@ QPushButton:pressed { background: white; }</string>
             <widget class="QLabel" name="label_16">
              <property name="font">
               <font>
-               <pointsize>14</pointsize>
-               <bold>true</bold>
+               <family>Roboto</family>
+               <pointsize>16</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -946,6 +986,12 @@ QPushButton:pressed { background: white; }</string>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2">
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <attribute name="title">
        <string>Результаты</string>
       </attribute>
@@ -956,8 +1002,9 @@ QPushButton:pressed { background: white; }</string>
           <widget class="QLabel" name="label_18">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">

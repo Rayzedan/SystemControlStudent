@@ -128,7 +128,11 @@ bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QStrin
             qDebug() << nameChapter << " " << dataAnswer[nameChapter];
             return true;
         }
-        else { return false; }
+        else if (!dataAnswer.count(nameChapter))
+        {
+            dataAnswer[nameChapter] = 0;
+            return false;
+        }
     }
     else
     {
@@ -146,6 +150,11 @@ bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QStrin
                 dataAnswer[nameChapter]--;
                 qDebug() << nameChapter << " " << dataAnswer[nameChapter];
                 return false;
+            }
+            else
+            {
+//                dataAnswer[nameChapter] = 0;
+//                qDebug() << nameChapter << " " << dataAnswer[nameChapter];
             }
         }
         return false;

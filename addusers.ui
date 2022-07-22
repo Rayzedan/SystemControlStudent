@@ -10,6 +10,12 @@
     <height>441</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Roboto</family>
+    <pointsize>16</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
@@ -18,6 +24,7 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
+       <family>Roboto</family>
        <pointsize>14</pointsize>
       </font>
      </property>
@@ -30,7 +37,8 @@
     <widget class="QLabel" name="label_2">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -42,7 +50,8 @@
     <widget class="QLineEdit" name="lineEdit">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
       </font>
      </property>
     </widget>
@@ -51,7 +60,8 @@
     <widget class="QLabel" name="label_3">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -63,7 +73,8 @@
     <widget class="QLineEdit" name="lineEdit_2">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
       </font>
      </property>
     </widget>
@@ -72,7 +83,8 @@
     <widget class="QLabel" name="label_5">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -84,6 +96,7 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="font">
       <font>
+       <family>Roboto</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -93,6 +106,12 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QCheckBox" name="departbox">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Департементы</string>
         </property>
@@ -100,6 +119,12 @@
       </item>
       <item>
        <widget class="QCheckBox" name="coursebox">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Курсы</string>
         </property>
@@ -107,6 +132,12 @@
       </item>
       <item>
        <widget class="QCheckBox" name="chapterbox">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Темы</string>
         </property>
@@ -114,6 +145,12 @@
       </item>
       <item>
        <widget class="QCheckBox" name="basebox">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>База знаний</string>
         </property>
@@ -121,6 +158,12 @@
       </item>
       <item>
        <widget class="QCheckBox" name="rezbox">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Результаты</string>
         </property>
@@ -161,7 +204,8 @@
       <widget class="QPushButton" name="pushButton">
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <family>Roboto</family>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="text">

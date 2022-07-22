@@ -64,6 +64,7 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->verticalHeader()->setVisible(false);
     ui->tableWidget->horizontalHeader()->setVisible(false);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //ui->tableWidget->setColumnHidden(1,true);
     QMap<QString, int>::const_iterator i = resultMap.constBegin();
     while (i != resultMap.constEnd())

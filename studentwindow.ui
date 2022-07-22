@@ -74,7 +74,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QLabel" name="label">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <italic>false</italic>
                      <bold>false</bold>
                     </font>
@@ -91,7 +92,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QLabel" name="label_2">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <italic>false</italic>
                      <bold>false</bold>
                     </font>
@@ -108,7 +110,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QLabel" name="label_3">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <italic>false</italic>
                      <bold>false</bold>
                     </font>
@@ -125,7 +128,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QLabel" name="label_4">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -144,7 +148,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QComboBox" name="comboBox_2">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <bold>true</bold>
                      <underline>false</underline>
                      <strikeout>false</strikeout>
@@ -165,7 +170,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QComboBox" name="comboBox_3">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <bold>true</bold>
                      <underline>false</underline>
                      <strikeout>false</strikeout>
@@ -177,7 +183,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QLineEdit" name="fullName">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <bold>true</bold>
                      <underline>false</underline>
                      <strikeout>false</strikeout>
@@ -189,7 +196,8 @@ QPushButton:pressed { background: white; }</string>
                   <widget class="QLineEdit" name="company">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Roboto</family>
+                     <pointsize>14</pointsize>
                      <bold>true</bold>
                      <underline>false</underline>
                      <strikeout>false</strikeout>
@@ -223,15 +231,22 @@ QPushButton:pressed { background: white; }</string>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QPushButton" name="pushButton_3">
+            <property name="minimumSize">
+             <size>
+              <width>85</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>85</width>
-              <height>35</height>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Roboto</family>
+              <pointsize>14</pointsize>
               <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
@@ -257,9 +272,22 @@ QPushButton:pressed { background: white; }</string>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>85</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Roboto</family>
+              <pointsize>14</pointsize>
               <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>

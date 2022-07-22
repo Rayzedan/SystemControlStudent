@@ -22,6 +22,12 @@
     <height>480</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Roboto</family>
+    <pointsize>16</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Система контроля знаний студентов</string>
   </property>
@@ -44,8 +50,8 @@ QPushButton:pressed { background: white; }</string>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
+       <family>Roboto</family>
+       <pointsize>16</pointsize>
       </font>
      </property>
      <property name="title">
@@ -56,7 +62,8 @@ QPushButton:pressed { background: white; }</string>
        <widget class="QComboBox" name="login">
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <family>Roboto</family>
+          <pointsize>16</pointsize>
           <italic>false</italic>
           <bold>true</bold>
           <underline>false</underline>
@@ -87,7 +94,8 @@ QPushButton:pressed { background: white; }</string>
        <widget class="QLineEdit" name="password">
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <family>Roboto</family>
+          <pointsize>16</pointsize>
           <italic>false</italic>
           <bold>true</bold>
           <underline>false</underline>
@@ -115,15 +123,28 @@ QPushButton:pressed { background: white; }</string>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QPushButton" name="pushButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>85</width>
+              <width>80</width>
               <height>40</height>
              </size>
             </property>
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Roboto</family>
+              <pointsize>16</pointsize>
               <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
@@ -155,15 +176,22 @@ QPushButton:pressed { background: white; }</string>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>85</width>
+              <width>80</width>
               <height>40</height>
              </size>
             </property>
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Roboto</family>
+              <pointsize>16</pointsize>
               <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>

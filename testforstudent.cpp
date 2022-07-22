@@ -19,7 +19,7 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     currentQuestId =0;
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 
-    query->exec("SELECT TOP 40 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
+    query->exec("SELECT TOP 5 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
                    "from Questions, Courses, Chapters"
                 " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id "
                                                                                                                     "ORDER BY NEWID();");
@@ -88,22 +88,22 @@ void TestForStudent::dataCheckBox()
     // Проверяем какая из кнопок с ответом была нажата
     if (ui->checkBox->isChecked())
     {
-        countAnsw+=2;
+        countAnsw+=1;
     }
 
     if (ui->checkBox_2->isChecked())
     {
-        countAnsw+=4;
+        countAnsw+=2;
     }
 
     if (ui->checkBox_3->isChecked())
     {
-        countAnsw+=8;
+        countAnsw+=4;
     }
 
     if (ui->checkBox_4->isChecked())
     {
-        countAnsw+=16;
+        countAnsw+=8;
     }
 }
 

@@ -30,7 +30,8 @@
   </property>
   <property name="font">
    <font>
-    <pointsize>14</pointsize>
+    <family>Roboto</family>
+    <pointsize>16</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -53,6 +54,12 @@ background: white;
      <width>640</width>
      <height>480</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>16</pointsize>
+    </font>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
@@ -77,7 +84,8 @@ background: white;
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <family>Roboto</family>
+        <pointsize>16</pointsize>
         <bold>true</bold>
         <underline>false</underline>
         <strikeout>false</strikeout>
@@ -111,6 +119,15 @@ background: ;
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox_2">
+         <property name="font">
+          <font>
+           <family>Roboto</family>
+           <pointsize>16</pointsize>
+           <bold>true</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">QGroupBox {
   color: white;
@@ -130,7 +147,8 @@ background: ;
            <widget class="QRadioButton" name="radioButton">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Roboto</family>
+              <pointsize>16</pointsize>
               <italic>false</italic>
               <bold>true</bold>
               <underline>false</underline>
@@ -149,7 +167,8 @@ background: ;
            <widget class="QRadioButton" name="radioButton_2">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Roboto</family>
+              <pointsize>16</pointsize>
               <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
@@ -216,7 +235,8 @@ background: ;
            </property>
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
