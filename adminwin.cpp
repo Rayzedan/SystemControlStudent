@@ -32,6 +32,9 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     ui->comboBox->setModel(model_res_depart);
     ui->comboBox_2->setModel(model_res_depart);
 
+    model_res_course = new QSqlQueryModel();
+
+    model_res_chapter = new QSqlQueryModel();
 
 
     ui->tabWidget->setTabEnabled(0,false);
@@ -136,7 +139,7 @@ void AdminWin::on_pushButton_9_clicked()
     if (val.toString()==""){
         QMessageBox ::critical(this, "", "Сначала выберете пользователя для настройки.");
     }else if (val.toString()=="Администратор"){
-        QMessageBox ::critical(this, "", "Нельзя менять права авминистратора");
+        QMessageBox ::critical(this, "", "Нельзя менять права администратора");
     } else {
         qDebug()<<val.toString();
         SettWindow = new usersettings(val.toString());
@@ -150,22 +153,51 @@ void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
     model_res_course = new QSqlQueryModel();
     model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
     ui->courseView->setModel(model_res_course);
+    ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
 }
 
 
-//void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
-//{
-//    model_res_course = new QSqlQueryModel();
-//    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
-//    ui->comboBox_3->setModel(model_res_course);
-//}
+void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
+{
+    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
+    ui->comboBox_3->setModel(model_res_course);
+}
+
+void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
+{
+    qDebug()<<"Open";
+    model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg1+"' and Courses.Id=Chapters.CourseId");
+    ui->listView->setModel(model_res_chapter);
+    ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
+}
 
 
-//void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
-//{
-//    model_res_chapter = new QSqlQueryModel();
-//    model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg1+"' and Courses.Id=Chapters.CourseId");
-//    qDebug()<<arg1;
-//    ui->listView->setModel(model_res_chapter);
-//}
+void AdminWin::on_pushButton_10_clicked()
+{
+    QVariantList depart;
+    depart.append("департамент");
+    varWind = new AddVariants(depart);
+    varWind ->show();
+}
+
+
+void AdminWin::on_pushButton_16_clicked()
+{
+    QVariantList course;
+    course.append("курс");
+    course.append(ui->comboBox->currentText());
+    varWind = new AddVariants(course);
+    varWind ->show();
+}
+
+
+void AdminWin::on_pushButton_19_clicked()
+{
+    QVariantList chap;
+    chap.append("тему");
+    chap.append(ui->comboBox_2->currentText());
+    chap.append(ui->comboBox_3->currentText());
+    varWind = new AddVariants(chap);
+    varWind ->show();
+}
 

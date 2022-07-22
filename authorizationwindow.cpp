@@ -13,7 +13,7 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
     // Создаём модель для отображения всех доступных логинов из бд
     model = new QSqlQueryModel();   
 
-    model->setQuery("Select Login From Users");
+    model->setQuery("Select Login From Users order by Login");
 
     ui->login->setModel(model);
 }

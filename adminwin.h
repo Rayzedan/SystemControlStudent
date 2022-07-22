@@ -11,7 +11,7 @@
 #include "database.h"
 #include "addusers.h"
 #include "usersettings.h"
-
+#include "addvariants.h"
 namespace Ui {
 class AdminWin;
 }
@@ -41,9 +41,15 @@ private slots:
 
     void on_comboBox_currentTextChanged(const QString &arg1);
 
+    void on_comboBox_3_currentTextChanged(const QString &arg1);
+
     void on_comboBox_2_currentTextChanged(const QString &arg1);
 
-    void on_comboBox_3_currentTextChanged(const QString &arg1);
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_16_clicked();
+
+    void on_pushButton_19_clicked();
 
 private:
     Ui::AdminWin *ui;
@@ -58,6 +64,7 @@ private:
     QSqlQuery *query;
     AddUsers *AddWindow;
     usersettings *SettWindow;
+    AddVariants *varWind;
 };
 
 #endif // ADMINWIN_H
