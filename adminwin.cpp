@@ -34,7 +34,7 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
 
     model_res_course = new QSqlQueryModel();
 
-    model_res_chapter = new QSqlQueryModel();
+
 
 
     ui->tabWidget->setTabEnabled(0,false);
@@ -166,6 +166,7 @@ void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
 void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 {
     qDebug()<<"Open";
+    model_res_chapter = new QSqlQueryModel();
     model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg1+"' and Courses.Id=Chapters.CourseId");
     ui->listView->setModel(model_res_chapter);
     ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
@@ -200,5 +201,64 @@ void AdminWin::on_pushButton_19_clicked()
     chap.append(ui->comboBox_3->currentText());
     varWind = new AddVariants(chap);
     varWind ->show();
+}
+
+
+void AdminWin::on_DepartView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+
+void AdminWin::on_pushButton_12_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете департамент для удаления.");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Departments WHERE name='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление департамента.");
+        qDebug()<< query.lastError().text();
+    }
+}
+
+
+void AdminWin::on_courseView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+
+void AdminWin::on_pushButton_17_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете курс для удаления.");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Courses WHERE name='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление курса.");
+        qDebug()<< query.lastError().text();
+    }
+}
+
+
+void AdminWin::on_listView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+void AdminWin::on_pushButton_20_clicked()
+{
+    if (val.toString()==""){
+        QMessageBox ::critical(this, "", "Сначала выберете тему для удаления.");
+    } else {
+        QSqlQuery query;
+        query.exec("DELETE FROM Chapters WHERE name='"+val.toString()+"';");
+        QMessageBox :: information (this, "", "Успешное удаление темы.");
+        qDebug()<< query.lastError().text();
+    }
 }
 
