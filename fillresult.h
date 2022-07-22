@@ -20,10 +20,10 @@ class FillResult : public QWidget
     Q_OBJECT
 
 public:
-    explicit FillResult(QVariantList result,QMap<QString, int> themes, QWidget *parent = nullptr);
+    explicit FillResult(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes, QWidget *parent = nullptr);
     ~FillResult();
 
-    void setTable(QMap<QString,int> resultMap);
+    void setTable(QMap<QString,int> resultMap, QMap<QString, int> allAnswers);
 
 public slots:
     void printScr();
@@ -33,6 +33,7 @@ private slots:
 
 private:
     Ui::FillResult *ui;
+    QMap<QString, int> allAnswers;
     QVariantList take_data;
 
 };

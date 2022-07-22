@@ -19,7 +19,7 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     currentQuestId =0;
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 
-    query->exec("SELECT Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
+    query->exec("SELECT TOP 40 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
                    "from Questions, Courses, Chapters"
                 " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id "
                                                                                                                     "ORDER BY NEWID();");
@@ -28,8 +28,7 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
         firstQuestId = query->value("Id").toInt();
         descriptionCourse = query->value("Description").toString();
         courseId = query->value("CourseId").toInt();
-        setData(query->value("TypeQuestion").toInt());
-        qDebug() << sizeTest;
+        setData(query->value("TypeQuestion").toInt());        
     }
     timer ->start(1000);
     ui->countdown->setText(time.toString("hh:mm:ss"));
@@ -61,11 +60,11 @@ void TestForStudent::on_pushButton_clicked()
         // Если пользователь ответил на все вопросы выводим QMessageBox
         if (QMessageBox::Yes == QMessageBox::question(this,"Внимание","Завершить выполнение теста?"))
         {
-//            qDebug() << "Все вопросы";
-//            qDebug() << countAllAnswers.size();
-//            qDebug() << countAllAnswers["Глава"];
-//            qDebug() << countAllAnswers["Глава 2"];
-            outputAnswer()
+            //qDebug() << "Все вопросы";
+            //qDebug() << countAllAnswers.size();
+            //qDebug() << countAllAnswers["Глава"];
+            //qDebug() << countAllAnswers["Глава 2"];
+            outputAnswer();
         }
     }
 }
@@ -114,7 +113,7 @@ void TestForStudent::dataCheckBox()
 
 void TestForStudent::setData(const int typeQuestion)
 {
-    if (typeQuestion ==1)
+    if (typeQuestion ==0)
     {
         ui->stackedWidget->setCurrentIndex(0);
         ui->label->setText(query->value("Name").toString());
@@ -162,7 +161,7 @@ void TestForStudent::inputAnswer()
 
     //db->countAllAnswer(currentQuestId, countAllAnswers);
 
-    if (typeQuest ==1)
+    if (typeQuest ==0)
     {
         dataCheckBox();
         if (db->checkAnswer(countAnsw, chapterName, dataAnswer, query->value("CorrectAnswer").toInt(), correctAnswers, currentQuestId, countAllAnswers))
@@ -175,7 +174,7 @@ void TestForStudent::inputAnswer()
             db->checkCorrectAnswer(correctAnswers,currentQuestId);
         }
     }
-    else if  (typeQuest ==2)
+    else if  (typeQuest ==1)
     {
         if (db->checkTextAnswer(ui->textEdit->toPlainText(),chapterName, dataAnswerText,query->value("Variant1").toString(), correctAnswers, currentQuestId,countAllAnswers))
         {
@@ -193,9 +192,9 @@ void TestForStudent::inputAnswer()
 void TestForStudent::outputAnswer()
 {
     testCorrectAnswer = db->sumAnswer(correctAnswers);
-    qDebug() << correctAnswers.size();
+    //qDebug() << correctAnswers.size();
     credit = ((testCorrectAnswer/correctAnswers.size()) * 100.0);
-    qDebug() << credit;
+    //qDebug() << credit;
     if (credit >= 40.0)
     {
         current_data.append(credit);
@@ -212,7 +211,7 @@ void TestForStudent::outputAnswer()
     current_data.append(time.toString("m:ss"));
     current_data.append(sizeTest);
     db->insertIntoTable(current_data); // Отправка данных в бд
-    studentResult = new FillResult(current_data, db->mergeMap(dataAnswer, dataAnswerText));
+    studentResult = new FillResult(countAllAnswers,current_data, db->mergeMap(dataAnswer, dataAnswerText));
     studentResult->show();
     this->close();
 }

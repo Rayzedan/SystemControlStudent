@@ -133,7 +133,7 @@ bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QStrin
     else
     {
         qDebug() << "ID = 1 CHECK";
-        if (sum == correctAnswer) {
+        if (sum == correctAnswer && correctAnswers[ID]!=1) {
             qDebug() << "true";
             dataAnswer[nameChapter]++;
             qDebug() << nameChapter << " " << dataAnswer[nameChapter];
@@ -171,7 +171,7 @@ bool DataBase::checkTextAnswer(QString answerUser, const QString nameChapter, QM
     else
     {
         qDebug() << "ID = 1 CHECK";
-        if (answerUser.toLower() == correctAnswerText.toLower()) {
+        if (answerUser.toLower() == correctAnswerText.toLower() && correctAnswers[ID]!=1) {
             qDebug() << "true";
             dataAnswerText[nameChapter]++;
             qDebug() << nameChapter << " " << dataAnswerText[nameChapter];
