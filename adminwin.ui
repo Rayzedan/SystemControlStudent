@@ -41,7 +41,7 @@
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Tab">
       <property name="font">
@@ -74,6 +74,7 @@
           <widget class="QLineEdit" name="lineEdit_5">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -116,6 +117,7 @@
           <widget class="QLineEdit" name="lineEdit">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -158,6 +160,7 @@
           <widget class="QLineEdit" name="lineEdit_2">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -197,6 +200,7 @@
           <widget class="QLineEdit" name="lineEdit_6">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -236,6 +240,7 @@
           <widget class="QLineEdit" name="lineEdit_3">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -275,6 +280,7 @@
           <widget class="QLineEdit" name="lineEdit_4">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -317,6 +323,7 @@
           <widget class="QPushButton" name="pushButton_6">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
              <bold>true</bold>
              <underline>false</underline>
@@ -361,6 +368,7 @@
           <widget class="QListView" name="usersView">
            <property name="font">
             <font>
+             <family>Roboto</family>
              <pointsize>12</pointsize>
             </font>
            </property>
@@ -385,6 +393,7 @@
             <widget class="QPushButton" name="pushButton_7">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -400,6 +409,7 @@
             <widget class="QPushButton" name="pushButton_8">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -415,6 +425,7 @@
             <widget class="QPushButton" name="pushButton_9">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -487,6 +498,7 @@
             <widget class="QPushButton" name="pushButton_10">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -502,6 +514,7 @@
             <widget class="QPushButton" name="pushButton_12">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -517,6 +530,7 @@
             <widget class="QPushButton" name="pushButton_11">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -622,6 +636,7 @@
             <widget class="QPushButton" name="pushButton_16">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -637,6 +652,7 @@
             <widget class="QPushButton" name="pushButton_17">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -652,6 +668,7 @@
             <widget class="QPushButton" name="pushButton_18">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -781,6 +798,7 @@
             <widget class="QPushButton" name="pushButton_19">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -796,6 +814,7 @@
             <widget class="QPushButton" name="pushButton_20">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -811,6 +830,7 @@
             <widget class="QPushButton" name="pushButton_21">
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>12</pointsize>
                <bold>true</bold>
                <underline>false</underline>
@@ -922,6 +942,7 @@
               <widget class="QPushButton" name="pushButton_13">
                <property name="font">
                 <font>
+                 <family>Roboto</family>
                  <pointsize>12</pointsize>
                  <bold>true</bold>
                  <underline>false</underline>
@@ -937,6 +958,7 @@
               <widget class="QPushButton" name="pushButton_14">
                <property name="font">
                 <font>
+                 <family>Roboto</family>
                  <pointsize>12</pointsize>
                  <bold>true</bold>
                  <underline>false</underline>
@@ -952,6 +974,7 @@
               <widget class="QPushButton" name="pushButton_15">
                <property name="font">
                 <font>
+                 <family>Roboto</family>
                  <pointsize>12</pointsize>
                  <bold>true</bold>
                  <underline>false</underline>

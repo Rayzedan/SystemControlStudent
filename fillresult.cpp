@@ -9,6 +9,7 @@ FillResult::FillResult (QMap<QString, int> countAllAnswers, QVariantList result,
     ui->setupUi(this);
     take_data = result;
     setTable(themes, countAllAnswers);
+    qDebug() << resultThemes;
     ui->name->setText(take_data[0].toString());
     ui->company->setText(take_data[1].toString());
     ui->label_14->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy г"));
@@ -42,14 +43,18 @@ void FillResult::on_pushButton_clicked()
     QString credit = ui->credit->text();
     QString current_time =ui->label_14->text();
     QString html =
-    "<html><head><style>p,h2 {line-height: 1.5; font-family: Times New Roman; font-size:14pt}</style></head><body><h2><center>Результаты Тестирования</center></h2><div><p>Курс: "+course+"</span></p><p>ФИО: "+name+"</p><p>Компания: "+company+"</p><p>Дата: "+current_time+"</p><p>Общий процент верных ответов: "+credit+"</p><p>Результаты по темам:</p><table id='theme-results'><tr><td class='tname'></td></tr><tr><td class='tpercent'></td></tr></table><p>Время выполнения: "+time+"</p><p>Результат: "+result+"</p></div></body></html>";
+    "<html>"
+    "<head>"
+    "<style>p,h2 {line-height: 1.5; font-family: Times New Roman; font-size:14pt}</style></head>"
+    "<body><h2><center>Результаты Тестирования</center></h2>"
+    "<div><p>Курс: "+course+"</span></p><p>ФИО: "+name+"</p><p>Компания: "+company+"</p><p>Дата: "+current_time+"</p><p>Общий процент верных ответов: "+credit+"</p><p>Результаты по темам: <b>"+resultThemes+"</b></p><p>Время выполнения: "+time+"</p><p>Результат: "+result+"</p></div></body></html>";
 
     QTextDocument document;
     document.setHtml(html);
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName("C:/Prog/Rez/test.pdf");
+    printer.setOutputFileName("C:/Users/bezle/Documents/test.pdf");
     printer.setPageMargins(QMarginsF(15, 15, 15, 15));
     document.print(&printer);
 }
@@ -68,10 +73,12 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
     {
         ui->tableWidget->setRowCount(ui->tableWidget->rowCount() + 1);
         QTableWidgetItem *newItem = new QTableWidgetItem();
-        newItem->setText(i.key());       
+        newItem->setText(i.key());
+        resultThemes+= "ai.key() +" ";
         ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 0, newItem);
         newItem = new QTableWidgetItem();        
         double item = static_cast<double>(i.value()) / allAnswers[i.key()] * 100.0;
+        resultThemes+= QString::number(item) + "%" + "\n";
         qDebug() << item;
         newItem->setText(QString::number(item,'f',0) + "%");
         ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 1, newItem);
@@ -79,7 +86,4 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
     }
 }
 
-void FillResult::printScr()
-{    
-    ui->onprint->grab().save("print.png");
-}
+

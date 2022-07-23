@@ -15,10 +15,10 @@ DataBase::~DataBase()
 bool DataBase::openDataBase()
 {
     // конфиг бд для админа
-    QString host ="192.168.122.109,1234";
+    QString host ="DESKTOP-3NM09MJ\\\SQLEXPRESS";
     QString database = "ExaminationSystem";
-    QString login = "root";
-    QString password = "123";
+    QString login = "Admin";
+    QString password = "Zuban123";
 
 
     db = QSqlDatabase::addDatabase("QODBC");

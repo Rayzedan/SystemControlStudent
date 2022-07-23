@@ -25,9 +25,6 @@ public:
 
     void setTable(QMap<QString,int> resultMap, QMap<QString, int> allAnswers);
 
-public slots:
-    void printScr();
-
 private slots:
     void on_pushButton_clicked();
 
@@ -35,6 +32,7 @@ private:
     Ui::FillResult *ui;
     QMap<QString, int> allAnswers;
     QVariantList take_data;
+    QString resultThemes;
 
 };
 
