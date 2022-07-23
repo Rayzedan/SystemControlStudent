@@ -11,6 +11,7 @@ AddUsers::AddUsers(QWidget *parent) :
 AddUsers::~AddUsers()
 {
     delete ui;
+    delete db;
 }
 
 void AddUsers::on_pushButton_clicked()
@@ -37,7 +38,7 @@ void AddUsers::on_pushButton_clicked()
     QString NewPerm =QString::number(NewPermision);
     QSqlQuery query;
     qDebug() << Newlogin << Newpassword <<NewPermision;
-    Newpassword=encryptPas(Newpassword);
+    Newpassword = db->encryptPassword(ui->lineEdit_2->text());
     qDebug() << Newpassword;
     query.exec("Insert into Users(Login,Password,Permissions) Values ('" +Newlogin+ "','" +Newpassword+ "'," +NewPerm+ ")");
     this->close();

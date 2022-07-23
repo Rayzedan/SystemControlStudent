@@ -116,6 +116,78 @@ bool DataBase::createUser(QString login, QString password)
     return false;
 }
 
+void DataBase::updateDepart(QString name, QString newName)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE Departments SET Name = '"+newName+"'WHERE Name ='"+name+"';");
+    if(!query.exec()){
+        qDebug() << "error insert into ";
+        qDebug() << query.lastError().text();
+    } else
+    {
+        qDebug() << "Изменение департамента";
+    }
+}
+
+void DataBase::updateCourse(QString name, QString newName, QString description, QString newDepart)
+{
+    QSqlQuery query;
+    query.prepare("SELECT Id From Departments WHERE Name = '"+newDepart+"';");
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    if (newName == "" && description == "")
+    {
+        query.prepare("UPDATE Courses SET DepartmentId = "+id+" WHERE Name ='"+name+"';");
+    }
+    else if (newName == "")
+    {
+        query.prepare("UPDATE Courses SET DepartmentId = "+id+", Description = '"+description+"' WHERE Name ='"+name+"';");
+    }
+    else
+    {
+        query.prepare("UPDATE Courses SET Name= '"+newName+"', DepartmentId = "+id+", Description = '"+description+"' WHERE Name ='"+name+"';");
+    }
+    if(!query.exec()){
+        qDebug() << "error update into ";
+        qDebug() << query.lastError().text();
+    } else
+    {
+        qDebug() << "Изменение курса";
+    }
+}
+
+void DataBase::updateChapter(QString name, QString newName, QString number, QString newCourse)
+{
+    QSqlQuery query;    
+    QString request = "SELECT Id From Courses WHERE Name = '"+newCourse+"';";
+    query.prepare(request);
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();    
+
+    if (newName == "" && number == "")
+    {
+        query.prepare("UPDATE Chapters SET CourseId = "+id+" WHERE Name ='"+name+"';");
+    }
+    else if (newName == "")
+    {
+        query.prepare("UPDATE Chapters SET CourseId = "+id+", Number = "+number+" WHERE Name ='"+name+"';");
+    }
+    else
+    {
+        query.prepare("UPDATE Chapters SET Name= '"+newName+"', CourseId = "+id+", Number = "+number+" WHERE Name ='"+name+"'");
+    }
+    if(!query.exec()){
+        qDebug() << "error update into ";
+        qDebug() << query.lastError().text();
+    } else
+    {
+        qDebug() << "Изменение раздела";
+    }
+}
+
 bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers)
 {
     if (!correctAnswers.count(ID))

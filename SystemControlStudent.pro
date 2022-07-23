@@ -14,6 +14,7 @@ SOURCES += \
     addvariants.cpp \
     adminwin.cpp \
     authorizationwindow.cpp \
+    chaptersettings.cpp \
     database.cpp \
     fillresult.cpp \
     main.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     addvariants.h \
     adminwin.h \
     authorizationwindow.h \
+    chaptersettings.h \
     database.h \
     fillresult.h \
     mainwindow.h \
@@ -45,6 +47,7 @@ FORMS += \
     addvariants.ui \
     adminwin.ui \
     authorizationwindow.ui \
+    chaptersettings.ui \
     fillresult.ui \
     mainwindow.ui \
     studentwindow.ui \

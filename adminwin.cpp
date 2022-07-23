@@ -262,3 +262,33 @@ void AdminWin::on_pushButton_20_clicked()
     }
 }
 
+
+void AdminWin::on_pushButton_11_clicked()
+{
+    QVariantList depart;
+    depart.append("департамент");
+    depart.append(val);
+    chapterWindow = new chaptersettings(depart);
+    chapterWindow ->show();
+}
+
+
+void AdminWin::on_pushButton_18_clicked()
+{
+    QVariantList course;
+    course.append("курс");
+    course.append(val);
+    chapterWindow = new chaptersettings(course);
+    chapterWindow ->show();
+}
+
+
+void AdminWin::on_pushButton_21_clicked()
+{
+    QVariantList chapter;
+    chapter.append("тема");
+    chapter.append(val);
+    chapterWindow = new chaptersettings(chapter);
+    chapterWindow ->show();
+}
+

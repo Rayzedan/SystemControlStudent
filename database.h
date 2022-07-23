@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QSql>
 #include <QSqlQuery>
+#include <QSqlQueryModel>
 #include <QSqlError>
 #include <QSqlDatabase>
 #include <QFile>
@@ -28,6 +29,9 @@ public:
     QString encryptPassword(const QString password);
     QString decodePassword(const QString password);
     bool createUser(QString login, QString password);
+    void updateDepart(QString name, QString newName);
+    void updateCourse(QString name, QString newName, QString description, QString newDepart);
+    void updateChapter(QString name, QString newName, QString number, QString newCourse);
     bool insertIntoTable(QVariantList data);
     bool openDataBase();
 

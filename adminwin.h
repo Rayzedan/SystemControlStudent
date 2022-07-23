@@ -7,11 +7,11 @@
 #include <QSqlTableModel>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
-#include "fillresult.h"
 #include "database.h"
 #include "addusers.h"
 #include "usersettings.h"
 #include "addvariants.h"
+#include "chaptersettings.h"
 
 namespace Ui {
 class AdminWin;
@@ -64,6 +64,12 @@ private slots:
 
     void on_pushButton_20_clicked();
 
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_18_clicked();
+
+    void on_pushButton_21_clicked();
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
@@ -76,6 +82,7 @@ private:
     QSqlQueryModel *model_res_chapter;
     QSqlQuery *query;
     AddUsers *AddWindow;
+    chaptersettings *chapterWindow;
     usersettings *SettWindow;
     AddVariants *varWind;
 };
