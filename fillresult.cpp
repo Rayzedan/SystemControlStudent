@@ -34,27 +34,24 @@ FillResult::~FillResult()
 
 void FillResult::on_pushButton_clicked()
 {
-    //QString fileName = QFileDialog::getOpenFileName(0,"Open File",QString(),"PNG File(*.png)");
-    printScr();
-    QPrinter printer;
-    printer.setFullPage(false);
-    QPrintDialog *dlg = new QPrintDialog(&printer,0);
-    if(dlg->exec() == QDialog::Accepted) {
-        QPixmap p(1200,660);
-        p.load("print.png");
-        QPainter painter(&printer);
-//        QRect rect = painter.viewport();
-//        QSize size = img.size();
-//        size.scale(rect.size(), Qt::KeepAspectRatio);
-//        painter.setViewport(rect.x(),rect.y(),size.width(),size.height());
-//        painter.scale(1,1);
-//        painter.setWindow(img.rect());
+    QString course = ui->course->text();
+    QString name = ui->name->text();
+    QString company = ui->company->text();
+    QString time = ui->time->text();
+    QString result = ui->result->text();
+    QString credit = ui->credit->text();
+    QString current_time =ui->label_14->text();
+    QString html =
+    "<html><head><style>p,h2 {line-height: 1.5; font-family: Times New Roman; font-size:14pt}</style></head><body><h2><center>Результаты Тестирования</center></h2><div><p>Курс: "+course+"</span></p><p>ФИО: "+name+"</p><p>Компания: "+company+"</p><p>Дата: "+current_time+"</p><p>Общий процент верных ответов: "+credit+"</p><p>Результаты по темам:</p><table id='theme-results'><tr><td class='tname'></td></tr><tr><td class='tpercent'></td></tr></table><p>Время выполнения: "+time+"</p><p>Результат: "+result+"</p></div></body></html>";
 
-        painter.drawPixmap(0,0,1200,660,p);
-        painter.end();
-    }
+    QTextDocument document;
+    document.setHtml(html);
 
-    delete dlg;
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName("C:/Prog/Rez/test.pdf");
+    printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+    document.print(&printer);
 }
 
 void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAnswers)
