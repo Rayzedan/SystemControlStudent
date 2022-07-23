@@ -27,22 +27,6 @@
   <property name="windowTitle">
    <string/>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QMainWindow {
-background: white;
-}
-QPushButton , QLineEdit,QComboBox{
-  color: white;
-  font-weight: 700;
-text-decoration: none;
-  color: black;
-  outline: none;
-  border: 2px solid;
-  border-radius: 5px;
-} 
-QPushButton:hover { background: gray }
-QPushButton:pressed { background: white; }</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout_7">
    <item>
     <widget class="QGroupBox" name="groupBox_2">

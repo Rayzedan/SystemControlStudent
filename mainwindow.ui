@@ -38,9 +38,7 @@
    <string>SystemControlStudent</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {
-background: white;
-}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -92,13 +90,7 @@ background: white;
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">QWidget {
-background: ;
-  color: Black;
-  font-weight: 700;
-  text-decoration: none;
-  outline: none;
-}</string>
+       <string notr="true"/>
       </property>
       <property name="title">
        <string>Режим работы</string>
@@ -129,15 +121,7 @@ background: ;
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QGroupBox {
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  color: black;
-  outline: none;
-  border: 2px solid;
-  border-radius: 5px;
-} </string>
+          <string notr="true"/>
          </property>
          <property name="title">
           <string/>
@@ -243,17 +227,7 @@ background: ;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  color: black;
-  outline: none;
-  border: 2px solid;
-  border-radius: 5px;
-} 
-QPushButton:hover { background: gray }
-QPushButton:pressed { background: white; }</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Далее</string>
