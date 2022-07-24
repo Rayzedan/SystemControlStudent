@@ -36,6 +36,7 @@ void StudentWindow::on_pushButton_3_clicked()
 // Кнопка для открытия теста
 void StudentWindow::on_pushButton_clicked()
 {
+    if (ui->fullName->text()!="" and ui->company->text()!=""){
     // Отправляем данные, которые ввёл пользователь в окно с тестом
     QVariantList data;
     data.append(ui->fullName->text());
@@ -46,6 +47,9 @@ void StudentWindow::on_pushButton_clicked()
     qDebug() << data;
     testWindow = new TestForStudent(data);
     testWindow->show();
+    } else {
+        QMessageBox ::critical(this, "", "Введите ФИО и название компании");
+    }
 }
 
 

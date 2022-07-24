@@ -43,18 +43,18 @@ void FillResult::on_pushButton_clicked()
     QString credit = ui->credit->text();
     QString current_time =ui->label_14->text();
     QString html =
-    "<html>"
-    "<head>"
-    "<style>p,h2 {line-height: 1.5; font-family: Times New Roman; font-size:14pt}</style></head>"
-    "<body><h2><center>Результаты Тестирования</center></h2>"
-    "<div><p>Курс: "+course+"</span></p><p>ФИО: "+name+"</p><p>Компания: "+company+"</p><p>Дата: "+current_time+"</p><p>Общий процент верных ответов: "+credit+"</p><p>Результаты по темам: <b>"+resultThemes+"</b></p><p>Время выполнения: "+time+"</p><p>Результат: "+result+"</p></div></body></html>";
+    "<html>""<head>""<style>p,h2 {font-family: Times New Roman;font-size:14pt}</style></head>"\
+    "<body><h2><center>Результаты Тестирования</center></h2>""<div><p>Курс: "+course+"<br></span></p><p>ФИО: "+name+\
+    "<br></p><p>Компания: "+company+"<br></p><p>Дата:"+current_time+"<br></p><p>Общий процент верных ответов: "+credit+\
+    "<br></p><p>Результаты по темам:<br>"+resultThemes+"</p><p>Время выполнения: "+time+"<br></p><p>Результат: "+result+\
+            "<br></p></div></body></html>";
 
     QTextDocument document;
     document.setHtml(html);
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName("C:/Users/bezle/Documents/test.pdf");
+    printer.setOutputFileName("C:/Prog/Rez/test.pdf");
     printer.setPageMargins(QMarginsF(15, 15, 15, 15));
     document.print(&printer);
 }
@@ -74,11 +74,11 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
         ui->tableWidget->setRowCount(ui->tableWidget->rowCount() + 1);
         QTableWidgetItem *newItem = new QTableWidgetItem();
         newItem->setText(i.key());
-        resultThemes+= "ai.key() +" ";
+        resultThemes+=i.key()+" ";
         ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 0, newItem);
         newItem = new QTableWidgetItem();        
         double item = static_cast<double>(i.value()) / allAnswers[i.key()] * 100.0;
-        resultThemes+= QString::number(item) + "%" + "\n";
+        resultThemes+= QString::number(item) + "%" + "<br>";
         qDebug() << item;
         newItem->setText(QString::number(item,'f',0) + "%");
         ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 1, newItem);

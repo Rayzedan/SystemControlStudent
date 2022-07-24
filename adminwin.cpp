@@ -11,7 +11,7 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     QString login = data[0].toString();
 
     model_res = new QSqlQueryModel();
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS Процент_правильных_ответов From Results");
+    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Процент правильных ответов' From Results");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
