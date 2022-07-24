@@ -1,5 +1,6 @@
 #include "adminwin.h"
 #include "ui_adminwin.h"
+#include <QFileDialog>
 
 AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     QWidget(parent),
@@ -7,34 +8,30 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
 {
     ui->setupUi(this);
     AddWindow = new AddUsers();
+    model_res = new QSqlQueryModel();
+    model_res_users = new QSqlQueryModel();
+    model_res_depart = new QSqlQueryModel();
+    model_res_course = new QSqlQueryModel();
+    model_res_chapter = new QSqlQueryModel();
     data = dataUser;
     QString login = data[0].toString();
 
-    model_res = new QSqlQueryModel();
     model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Процент правильных ответов' From Results");
     ui->tableView_2->setModel(model_res);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-
-    model_res_users = new QSqlQueryModel();
     model_res_users ->setQuery("Select login From Users Order by login");
     ui->usersView->setModel(model_res_users);
     ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
 
-
-    model_res_depart = new QSqlQueryModel();
     model_res_depart->setQuery("Select name From Departments Order by name");
     ui->DepartView->setModel(model_res_depart);
     ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
 
 
     ui->comboBox->setModel(model_res_depart);
-    ui->comboBox_2->setModel(model_res_depart);
-
-    model_res_course = new QSqlQueryModel();
-
-
+    ui->comboBox_2->setModel(model_res_depart);    
 
 
     ui->tabWidget->setTabEnabled(0,false);
@@ -99,6 +96,11 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
 AdminWin::~AdminWin()
 {
     delete ui;
+    delete model_res;
+    delete model_res_chapter;
+    delete model_res_course;
+    delete model_res_depart;
+    delete model_res_users;
 }
 
 // Закрываем окно
@@ -112,8 +114,6 @@ void AdminWin::on_pushButton_7_clicked()
 {
     AddWindow->show();
 }
-
-
 
 
 void AdminWin::on_usersView_clicked(const QModelIndex &index)
@@ -149,8 +149,7 @@ void AdminWin::on_pushButton_9_clicked()
 
 
 void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
-{
-    model_res_course = new QSqlQueryModel();
+{    
     model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg1+"' and Departments.Id=Courses.DepartmentId");
     ui->courseView->setModel(model_res_course);
     ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
@@ -165,8 +164,7 @@ void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
 
 void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 {
-    qDebug()<<"Open";
-    model_res_chapter = new QSqlQueryModel();
+    qDebug()<<"Open";    
     model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg1+"' and Courses.Id=Chapters.CourseId");
     ui->listView->setModel(model_res_chapter);
     ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
@@ -219,6 +217,7 @@ void AdminWin::on_pushButton_12_clicked()
         QSqlQuery query;
         query.exec("DELETE FROM Departments WHERE name='"+val.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление департамента.");
+        startUpdateBase(1);
         qDebug()<< query.lastError().text();
     }
 }
@@ -239,6 +238,7 @@ void AdminWin::on_pushButton_17_clicked()
         QSqlQuery query;
         query.exec("DELETE FROM Courses WHERE name='"+val.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление курса.");
+        startUpdateBase(2);
         qDebug()<< query.lastError().text();
     }
 }
@@ -258,6 +258,7 @@ void AdminWin::on_pushButton_20_clicked()
         QSqlQuery query;
         query.exec("DELETE FROM Chapters WHERE name='"+val.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление темы.");
+        startUpdateBase(3);
         qDebug()<< query.lastError().text();
     }
 }
@@ -269,6 +270,8 @@ void AdminWin::on_pushButton_11_clicked()
     depart.append("департамент");
     depart.append(val);
     chapterWindow = new chaptersettings(depart);
+    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+    depart.clear();
     chapterWindow ->show();
 }
 
@@ -279,6 +282,8 @@ void AdminWin::on_pushButton_18_clicked()
     course.append("курс");
     course.append(val);
     chapterWindow = new chaptersettings(course);
+    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+    course.clear();
     chapterWindow ->show();
 }
 
@@ -289,6 +294,39 @@ void AdminWin::on_pushButton_21_clicked()
     chapter.append("тема");
     chapter.append(val);
     chapterWindow = new chaptersettings(chapter);
+    QObject::connect(chapterWindow, chaptersettings::updateBase, this, AdminWin::startUpdateBase);
+    chapter.clear();
     chapterWindow ->show();
+}
+
+void AdminWin::startUpdateBase(int mode)
+{
+    if (mode == 1)
+    {
+        model_res_depart = new QSqlQueryModel();
+        model_res_depart->setQuery("Select name From Departments Order by name");
+        ui->DepartView->setModel(model_res_depart);
+        ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+    }
+    if (mode == 2)
+    {
+        model_res_course = new QSqlQueryModel();
+        model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+ui->comboBox->currentText()+"' and Departments.Id=Courses.DepartmentId");
+        ui->courseView->setModel(model_res_course);
+        ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+    }
+    if (mode == 3)
+     {
+        model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+ui->comboBox_3->currentText()+"' and Courses.Id=Chapters.CourseId");
+        ui->listView->setModel(model_res_chapter);
+        ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
+     }
+}
+
+void AdminWin::on_toolButton_clicked()
+{
+    pathFile = QFileDialog::getExistingDirectory(this, "Выбор папки", "");
+    qDebug() << pathFile;
+    ui->lineEdit->setText(pathFile);
 }
 

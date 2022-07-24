@@ -18,7 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     qDebug() << "exit";
-    delete ui;
+    delete ui;    
+    delete AWindow;
+    delete SWindow;
 }
 
 // Кнопка выбора режим для пользователя

@@ -16,6 +16,9 @@ public:
     explicit chaptersettings(QVariantList dataUser, QWidget *parent = nullptr);
     ~chaptersettings();
 
+signals:
+    updateBase(int mode);
+
 private slots:
     void on_pushButton_2_clicked();
 

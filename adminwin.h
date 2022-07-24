@@ -24,9 +24,14 @@ class AdminWin : public QWidget
 public:
     explicit AdminWin(QVariantList dataUser,QWidget *parent = nullptr);
     ~AdminWin();
+    QString pathFile;
+
+public slots:
+    void startUpdateBase(int mode);
 
 signals:
     void secondWindow(); //Сигнал для соединения панели администратора и начального окна
+    void takePath(QString);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -70,11 +75,13 @@ private slots:
 
     void on_pushButton_21_clicked();
 
+    void on_toolButton_clicked();
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
     QVariant val;
-    QVariantList data;
+    QVariantList data;    
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQueryModel *model_res_depart;

@@ -8,6 +8,7 @@
 #include <QPrintDialog>
 #include <QTextDocument>
 #include <QPainter>
+#include "adminwin.h"
 #include <QFileDialog>
 #include <QPixmap>
 
@@ -23,7 +24,7 @@ public:
     explicit FillResult(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes, QWidget *parent = nullptr);
     ~FillResult();
 
-    void setTable(QMap<QString,int> resultMap, QMap<QString, int> allAnswers);
+    void setTable(QMap<QString,int> resultMap, QMap<QString, int> allAnswers);    
 
 private slots:
     void on_pushButton_clicked();
@@ -33,6 +34,7 @@ private:
     QMap<QString, int> allAnswers;
     QVariantList take_data;
     QString resultThemes;
+    QString newPath;
 
 };
 

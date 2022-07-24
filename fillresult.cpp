@@ -2,6 +2,8 @@
 #include "ui_fillresult.h"
 #include "studentwindow.h"
 
+
+
 FillResult::FillResult (QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FillResult)
@@ -54,7 +56,7 @@ void FillResult::on_pushButton_clicked()
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName("C:/Prog/Rez/test.pdf");
+    printer.setOutputFileName("C:/Users/bezle/Documents/test.pdf");
     printer.setPageMargins(QMarginsF(15, 15, 15, 15));
     document.print(&printer);
 }
@@ -74,7 +76,7 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
         ui->tableWidget->setRowCount(ui->tableWidget->rowCount() + 1);
         QTableWidgetItem *newItem = new QTableWidgetItem();
         newItem->setText(i.key());
-        resultThemes+=i.key()+" ";
+        resultThemes+=i.key()+" ";        
         ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 0, newItem);
         newItem = new QTableWidgetItem();        
         double item = static_cast<double>(i.value()) / allAnswers[i.key()] * 100.0;
