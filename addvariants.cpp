@@ -11,28 +11,31 @@ AddVariants::AddVariants(QVariantList data, QWidget *parent) :
 
 
     qDebug()<<data;
-    if (data[0].toString()=="департамент") {
-       ui->label_3->hide();
+    if (data[0].toString()=="Департамент") {
        ui->label_4->hide();
        ui->lineEdit_2->hide();
+       ui->label->hide();
+       ui->lineEdit_3->hide();
        ui->label_2->setText(data[0].toString());
        query->prepare("Insert into Departments(name) Values (:name)");
 
-    } else if (data[0].toString()=="курс"){
+    } else if (data[0].toString()=="Курс"){
         helpQ = new QSqlQuery();
-        helpQ->exec("select id from Departments where name='"+data[2].toString()+"';");
+        helpQ->exec("select id from Departments where name='"+data[3].toString()+"';");
         helpQ->next();
         QString id = helpQ->value("Id").toString();
+        ui->label->setText(data[2].toString());
         ui->label_4->setText(data[1].toString());
         ui->label_2->setText(data[0].toString());
         query->prepare("Insert into Courses(name,description,departmentid)\
  Values (:name,:next_val,"+id+")");
 
-    } else if (data[0].toString()=="тему"){
+    } else if (data[0].toString()=="Тема"){
         helpQ = new QSqlQuery();
-        helpQ->exec("select id from Courses where name='"+data[2].toString()+"';");
+        helpQ->exec("select id from Courses where name='"+data[3].toString()+"';");
         helpQ->next();
         QString id = helpQ->value("Id").toString();
+        ui->label->setText(data[2].toString());
         ui->label_4->setText(data[1].toString());
         ui->label_2->setText(data[0].toString());
         query->prepare("Insert into Chapters(name,number,CourseId)\

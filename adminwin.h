@@ -9,7 +9,6 @@
 #include <QSqlQuery>
 #include "database.h"
 #include "addusers.h"
-#include "usersettings.h"
 #include "addvariants.h"
 #include "chaptersettings.h"
 
@@ -90,7 +89,6 @@ private:
     QSqlQuery *query;
     AddUsers *AddWindow;
     chaptersettings *chapterWindow;
-    usersettings *SettWindow;
     AddVariants *varWind;
 };
 

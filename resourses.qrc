@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resourses/add.png</file>
+        <file>resourses/back.png</file>
+        <file>resourses/settings.png</file>
+        <file>resourses/icons8-file-50.png</file>
+        <file>resourses/icons8-rename-50.png</file>
+    </qresource>
+</RCC>

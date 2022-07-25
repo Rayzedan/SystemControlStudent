@@ -56,7 +56,7 @@ void FillResult::on_pushButton_clicked()
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName("C:/Users/bezle/Documents/test.pdf");
+    printer.setOutputFileName("C:/pro/test.pdf");
     printer.setPageMargins(QMarginsF(15, 15, 15, 15));
     document.print(&printer);
 }

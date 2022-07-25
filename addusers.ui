@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
+    <width>479</width>
     <height>441</height>
    </rect>
   </property>
@@ -29,7 +29,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Добавить администратора</string>
+      <string>Создание администратора</string>
      </property>
     </widget>
    </item>

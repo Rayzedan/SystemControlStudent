@@ -14,7 +14,7 @@ class AddUsers : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddUsers(QWidget *parent = nullptr);
+    explicit AddUsers(QVariant dataUser,QWidget *parent = nullptr);
     ~AddUsers();
 
     QString encryptPas(const QString pass) {
@@ -30,6 +30,8 @@ private slots:
 private:
     Ui::AddUsers *ui;
     DataBase *db;
+    QSqlQuery *model;
+    QSqlQuery *query;
 };
 
 #endif // ADDUSERS_H

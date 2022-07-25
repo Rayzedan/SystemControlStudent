@@ -47,7 +47,7 @@
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Tab">
       <property name="font">
@@ -59,90 +59,60 @@
       <attribute name="title">
        <string>Настройки</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_19">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Выберете папку для сохранения сертификатов</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_11">
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Выберете папку для сохранения сертификатов</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item>
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>64</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="lineEdit">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <spacer name="verticalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Expanding</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>279</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QToolButton" name="toolButton">
-             <property name="text">
-              <string>Обзор...</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer_4">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
+          <widget class="QToolButton" name="toolButton">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/icons8-file-50.png</normaloff>:/resourses/icons8-file-50.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>463</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -158,23 +128,10 @@
            <property name="font">
             <font>
              <family>Roboto</family>
-             <pointsize>12</pointsize>
+             <pointsize>14</pointsize>
             </font>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_17">
@@ -183,14 +140,24 @@
              <property name="font">
               <font>
                <family>Roboto</family>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
                <bold>true</bold>
                <underline>false</underline>
                <strikeout>false</strikeout>
               </font>
              </property>
              <property name="text">
-              <string>+</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -199,14 +166,24 @@
              <property name="font">
               <font>
                <family>Roboto</family>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
                <bold>true</bold>
                <underline>false</underline>
                <strikeout>false</strikeout>
               </font>
              </property>
              <property name="text">
-              <string>-</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -215,19 +192,29 @@
              <property name="font">
               <font>
                <family>Roboto</family>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
                <bold>true</bold>
                <underline>false</underline>
                <strikeout>false</strikeout>
               </font>
              </property>
              <property name="text">
-              <string>Настройки</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
            <item>
-            <spacer name="verticalSpacer_21">
+            <spacer name="verticalSpacer_5">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
@@ -264,29 +251,16 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="10,0">
          <item>
           <widget class="QListView" name="DepartView">
            <property name="font">
             <font>
              <family>Roboto</family>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
             </font>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -302,7 +276,17 @@
               </font>
              </property>
              <property name="text">
-              <string>+</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -318,7 +302,17 @@
               </font>
              </property>
              <property name="text">
-              <string>-</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -334,7 +328,17 @@
               </font>
              </property>
              <property name="text">
-              <string>Настройки</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -411,7 +415,14 @@
           </layout>
          </item>
          <item>
-          <widget class="QListView" name="courseView"/>
+          <widget class="QListView" name="courseView">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="verticalSpacer_13">
@@ -429,19 +440,6 @@
         </layout>
        </item>
        <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>527</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
           <widget class="QPushButton" name="pushButton_16">
@@ -455,7 +453,17 @@
             </font>
            </property>
            <property name="text">
-            <string>+</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -471,7 +479,17 @@
             </font>
            </property>
            <property name="text">
-            <string>-</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -487,7 +505,17 @@
             </font>
            </property>
            <property name="text">
-            <string>Настройки</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -591,19 +619,6 @@
         </layout>
        </item>
        <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>527</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <layout class="QVBoxLayout" name="verticalLayout_9">
          <item>
           <widget class="QPushButton" name="pushButton_19">
@@ -617,7 +632,17 @@
             </font>
            </property>
            <property name="text">
-            <string>+</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -633,7 +658,17 @@
             </font>
            </property>
            <property name="text">
-            <string>-</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -649,7 +684,17 @@
             </font>
            </property>
            <property name="text">
-            <string>Настройки</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -722,19 +767,6 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
-              <spacer name="verticalSpacer_15">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
               <widget class="QPushButton" name="pushButton_13">
                <property name="font">
                 <font>
@@ -746,7 +778,17 @@
                 </font>
                </property>
                <property name="text">
-                <string>Добавить вопрос</string>
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="resourses.qrc">
+                 <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -761,8 +803,15 @@
                  <strikeout>false</strikeout>
                 </font>
                </property>
-               <property name="text">
-                <string>Изменить вопрос</string>
+               <property name="icon">
+                <iconset resource="resourses.qrc">
+                 <normaloff>:/resourses/icons8-rename-50.png</normaloff>:/resourses/icons8-rename-50.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -777,10 +826,30 @@
                  <strikeout>false</strikeout>
                 </font>
                </property>
-               <property name="text">
-                <string>Удалить вопрос</string>
+               <property name="icon">
+                <iconset resource="resourses.qrc">
+                 <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
                </property>
               </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_15">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>
@@ -836,6 +905,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -7,7 +7,6 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     ui(new Ui::AdminWin)
 {
     ui->setupUi(this);
-    AddWindow = new AddUsers();
     model_res = new QSqlQueryModel();
     model_res_users = new QSqlQueryModel();
     model_res_depart = new QSqlQueryModel();
@@ -56,35 +55,24 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
             switch (check) {
             case 1:
                 ui->tabWidget->setTabEnabled(0,true);
-                qDebug() <<"Разрешили вопросы";
                 break;
             case 2:
                 ui->tabWidget->setTabEnabled(1,true);
-                qDebug() <<"Разрешили настройки";
                 break;
             case 4:
                 ui->tabWidget->setTabEnabled(2,true);
-                qDebug() <<"Разрешили пользователи";
                 break;
             case 8:
                 ui->tabWidget->setTabEnabled(3,true);
-                qDebug() <<"Разрешили департаменты";
                 break;
             case 16:
                 ui->tabWidget->setTabEnabled(4,true);
-                qDebug() <<"Разрешили курсы";
                 break;
             case 32:
                 ui->tabWidget->setTabEnabled(5,true);
-                qDebug() <<"Разрешили темы";
                 break;
             case 64:
                 ui->tabWidget->setTabEnabled(6,true);
-                qDebug() <<"Разрешили базу";
-                break;
-            case 128:
-                ui->tabWidget->setTabEnabled(7,true);
-                qDebug() <<"Разрешили результаты";
                 break;
             }
         }
@@ -112,6 +100,8 @@ void AdminWin::closeEvent(QCloseEvent *event)
 
 void AdminWin::on_pushButton_7_clicked()
 {
+    QString aaa = "-1";
+    AddWindow = new AddUsers(aaa);
     AddWindow->show();
 }
 
@@ -142,8 +132,9 @@ void AdminWin::on_pushButton_9_clicked()
         QMessageBox ::critical(this, "", "Нельзя менять права администратора");
     } else {
         qDebug()<<val.toString();
-        SettWindow = new usersettings(val.toString());
-        SettWindow ->show();
+        AddWindow = new AddUsers(val.toString());
+        //SettWindow ->show();
+        AddWindow->show();
     }
 }
 
@@ -174,7 +165,7 @@ void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 void AdminWin::on_pushButton_10_clicked()
 {
     QVariantList depart;
-    depart.append("департамент");
+    depart.append("Департамент");
     varWind = new AddVariants(depart);
     varWind ->show();
 }
@@ -183,8 +174,9 @@ void AdminWin::on_pushButton_10_clicked()
 void AdminWin::on_pushButton_16_clicked()
 {
     QVariantList course;
-    course.append("курс");
-    course.append("описание курса");
+    course.append("Курс");
+    course.append("Описание курса");
+    course.append("Время");
     course.append(ui->comboBox->currentText());
     varWind = new AddVariants(course);
     varWind ->show();
@@ -194,8 +186,9 @@ void AdminWin::on_pushButton_16_clicked()
 void AdminWin::on_pushButton_19_clicked()
 {
     QVariantList chap;
-    chap.append("тему");
-    chap.append("номер темы");
+    chap.append("Тема");
+    chap.append("Номер темы");
+    chap.append("Колличество вопросов");
     chap.append(ui->comboBox_3->currentText());
     varWind = new AddVariants(chap);
     varWind ->show();
