@@ -7,7 +7,6 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     ui(new Ui::TestForStudent)
 {
     ui->setupUi(this);
-
     query = new QSqlQuery();
     timer = new QTimer(this);
 
@@ -17,6 +16,9 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     courseId =0;
     current_data = takeData;
     currentQuestId =0;
+
+    ui->label_3->setText(current_data[3].toString());
+
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 
     query->exec("SELECT TOP 5 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
@@ -113,7 +115,7 @@ void TestForStudent::setData(const int typeQuestion)
     {
         ui->stackedWidget->setCurrentIndex(0);
         ui->label->setText(query->value("Name").toString());
-        ui->label_2->setText(query->value("Question").toString()+ "?");
+        ui->textBrowser->setText(query->value("Question").toString()+ "?");
         ui->checkBox->setText(query->value("Variant1").toString());
         ui->checkBox_2->setText(query->value("Variant2").toString());
         ui->checkBox_3->setText(query->value("Variant3").toString());
@@ -123,7 +125,7 @@ void TestForStudent::setData(const int typeQuestion)
     {
         ui->stackedWidget->setCurrentIndex(1);
         ui->label->setText(query->value("Name").toString());
-        ui->label_2->setText(query->value("Question").toString()+ "?");
+        ui->textBrowser->setText(query->value("Question").toString()+ "?");
         ui->textEdit->clear();
     }
 }
