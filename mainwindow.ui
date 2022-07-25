@@ -229,8 +229,15 @@
            <property name="styleSheet">
             <string notr="true"/>
            </property>
-           <property name="text">
-            <string>Далее</string>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/R.png</normaloff>:/resourses/R.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
            <property name="shortcut">
             <string>Return</string>
@@ -245,6 +252,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>

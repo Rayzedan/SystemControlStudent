@@ -53,3 +53,7 @@ FORMS += \
 
 RESOURCES += \
     resourses.qrc
+
+DISTFILES += \
+    resourses/L.png \
+    resourses/R.png

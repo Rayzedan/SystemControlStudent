@@ -312,7 +312,7 @@ void AdminWin::startUpdateBase(int mode)
      {
         model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+ui->comboBox_3->currentText()+"' and Courses.Id=Chapters.CourseId");
         ui->listView->setModel(model_res_chapter);
-        ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
+        ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;line-height: 5}" );
      }
 }
 

@@ -19,11 +19,6 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget {
-background-color: gray;
-}</string>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
@@ -102,12 +97,6 @@ background-color: gray;
       </property>
       <property name="tabletTracking">
        <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QTextBrowser {
-background-color: None;
-	border-color: None;
-}</string>
       </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -277,8 +266,15 @@ hr { height: 1px; border-width: 0; }
           <pointsize>14</pointsize>
          </font>
         </property>
-        <property name="text">
-         <string>Назад</string>
+        <property name="icon">
+         <iconset resource="resourses.qrc">
+          <normaloff>:/resourses/L.png</normaloff>:/resourses/L.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -302,8 +298,15 @@ hr { height: 1px; border-width: 0; }
           <pointsize>14</pointsize>
          </font>
         </property>
-        <property name="text">
-         <string>Далее</string>
+        <property name="icon">
+         <iconset resource="resourses.qrc">
+          <normaloff>:/resourses/R.png</normaloff>:/resourses/R.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -312,6 +315,8 @@ hr { height: 1px; border-width: 0; }
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>
