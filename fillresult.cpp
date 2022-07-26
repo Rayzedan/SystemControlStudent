@@ -11,7 +11,6 @@ FillResult::FillResult (QMap<QString, int> countAllAnswers, QVariantList result,
     ui->setupUi(this);
     take_data = result;
     setTable(themes, countAllAnswers);
-    qDebug() << resultThemes;
     ui->name->setText(take_data[0].toString());
     ui->company->setText(take_data[1].toString());
     ui->label_14->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy г"));
@@ -56,7 +55,7 @@ void FillResult::on_pushButton_clicked()
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName("C:/pro/test.pdf");
+    printer.setOutputFileName("C:/pro/"+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
     printer.setPageMargins(QMarginsF(15, 15, 15, 15));
     document.print(&printer);
 }

@@ -25,6 +25,9 @@ public:
     ~AdminWin();
     QString pathFile;
 
+    void CourseQuery(QString arg);
+    void ChapterQuery(QString arg);
+
 public slots:
     void startUpdateBase(int mode);
 
