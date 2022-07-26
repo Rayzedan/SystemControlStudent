@@ -10,16 +10,7 @@ AddVariants::AddVariants(QVariantList data, QWidget *parent) :
     query = new QSqlQuery();
 
 
-    qDebug()<<data;
-    if (data[0].toString()=="Департамент") {
-       ui->label_4->hide();
-       ui->lineEdit_2->hide();
-       ui->label->hide();
-       ui->lineEdit_3->hide();
-       ui->label_2->setText(data[0].toString());
-       query->prepare("Insert into Departments(name) Values (:name)");
-
-    } else if (data[0].toString()=="Курс"){
+    if (data[0].toString()=="Курс"){
         helpQ = new QSqlQuery();
         helpQ->exec("select id from Departments where name='"+data[3].toString()+"';");
         helpQ->next();
@@ -28,7 +19,7 @@ AddVariants::AddVariants(QVariantList data, QWidget *parent) :
         ui->label_4->setText(data[1].toString());
         ui->label_2->setText(data[0].toString());
         query->prepare("Insert into Courses(name,description,departmentid)\
- Values (:name,:next_val,"+id+")");
+                       Values (:name,:next_val,"+id+")");
 
     } else if (data[0].toString()=="Тема"){
         helpQ = new QSqlQuery();
@@ -39,7 +30,7 @@ AddVariants::AddVariants(QVariantList data, QWidget *parent) :
         ui->label_4->setText(data[1].toString());
         ui->label_2->setText(data[0].toString());
         query->prepare("Insert into Chapters(name,number,CourseId)\
- Values (:name,:next_val,"+id+")");
+                       Values (:name,:next_val,"+id+")");
     }
 }
 

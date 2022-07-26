@@ -2,7 +2,7 @@
 #include "ui_adminwin.h"
 #include <QFileDialog>
 
-AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
+AdminWin::AdminWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AdminWin)
 {
@@ -12,8 +12,6 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     model_res_depart = new QSqlQueryModel();
     model_res_course = new QSqlQueryModel();
     model_res_chapter = new QSqlQueryModel();
-    data = dataUser;
-    QString login = data[0].toString();
 
     model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Процент правильных ответов' From Results");
     ui->tableView_2->setModel(model_res);
@@ -42,41 +40,7 @@ AdminWin::AdminWin(QVariantList dataUser, QWidget *parent) :
     ui->tabWidget->setTabEnabled(6,false);
     ui->tabWidget->setTabEnabled(7,false);
 
-    query = new QSqlQuery();
-    query->exec("Select Permissions from Users where Login = '" +login+ "'");
-    query->next();
-    QString acc =query->value("Permissions").toString();
-       int accses = acc.toInt();
-    for (int count = 7;count>=0;count--)
-    {
-        int check =pow(2,count);
-        if ((accses-check)>=0){
-            accses=accses-check;
-            switch (check) {
-            case 1:
-                ui->tabWidget->setTabEnabled(0,true);
-                break;
-            case 2:
-                ui->tabWidget->setTabEnabled(1,true);
-                break;
-            case 4:
-                ui->tabWidget->setTabEnabled(2,true);
-                break;
-            case 8:
-                ui->tabWidget->setTabEnabled(3,true);
-                break;
-            case 16:
-                ui->tabWidget->setTabEnabled(4,true);
-                break;
-            case 32:
-                ui->tabWidget->setTabEnabled(5,true);
-                break;
-            case 64:
-                ui->tabWidget->setTabEnabled(6,true);
-                break;
-            }
-        }
-    }
+
 }
 
 
@@ -89,12 +53,14 @@ AdminWin::~AdminWin()
     delete model_res_course;
     delete model_res_depart;
     delete model_res_users;
+    qDebug() << "destroy adm";
 }
 
 // Закрываем окно
 void AdminWin::closeEvent(QCloseEvent *event)
-{
+{    
     event->accept();
+    //this->destroy();
     emit secondWindow();
 }
 
@@ -165,42 +131,33 @@ void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 void AdminWin::on_pushButton_10_clicked()
 {
     QVariantList depart;
-    depart.append("Департамент");
-    varWind = new AddVariants(depart);
-    varWind ->show();
+    depart.append("департамент");
+    depart.append("empty");
+    depart.append("INSERT");
+    chapterWindow = new chaptersettings(depart);
+    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+    depart.clear();
+    chapterWindow ->show();
 }
 
-
-void AdminWin::on_pushButton_16_clicked()
+void AdminWin::on_pushButton_11_clicked()
 {
-    QVariantList course;
-    course.append("Курс");
-    course.append("Описание курса");
-    course.append("Время");
-    course.append(ui->comboBox->currentText());
-    varWind = new AddVariants(course);
-    varWind ->show();
+    QVariantList depart;
+    if (val.toString()!= "") {
+        depart.append("департамент");
+        depart.append(val);
+        depart.append("UPDATE");
+        chapterWindow = new chaptersettings(depart);
+        connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+        depart.clear();
+        chapterWindow ->show();
+    }
+    else
+    {
+        QMessageBox::critical(this, "", "Выберете департамент");
+    }
+
 }
-
-
-void AdminWin::on_pushButton_19_clicked()
-{
-    QVariantList chap;
-    chap.append("Тема");
-    chap.append("Номер темы");
-    chap.append("Колличество вопросов");
-    chap.append(ui->comboBox_3->currentText());
-    varWind = new AddVariants(chap);
-    varWind ->show();
-}
-
-
-void AdminWin::on_DepartView_clicked(const QModelIndex &index)
-{
-    val = index.data().toString();
-    qDebug()<<val;
-}
-
 
 void AdminWin::on_pushButton_12_clicked()
 {
@@ -215,13 +172,30 @@ void AdminWin::on_pushButton_12_clicked()
     }
 }
 
-
-void AdminWin::on_courseView_clicked(const QModelIndex &index)
+void AdminWin::on_pushButton_16_clicked()
 {
-    val = index.data().toString();
-    qDebug()<<val;
+    QVariantList course;
+    course.append("курс");
+    course.append("empty");
+    course.append("INSERT");
+    course.append(ui->comboBox->currentText());
+    chapterWindow = new chaptersettings(course);
+    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+    course.clear();
+    chapterWindow ->show();
 }
 
+
+void AdminWin::on_pushButton_19_clicked()
+{
+    QVariantList chap;
+    chap.append("Тема");
+    chap.append("Номер темы");
+    chap.append("Колличество вопросов");
+    chap.append(ui->comboBox_3->currentText());
+    varWind = new AddVariants(chap);
+    varWind ->show();
+}
 
 void AdminWin::on_pushButton_17_clicked()
 {
@@ -256,30 +230,21 @@ void AdminWin::on_pushButton_20_clicked()
     }
 }
 
-
-void AdminWin::on_pushButton_11_clicked()
-{
-    QVariantList depart;
-    depart.append("департамент");
-    depart.append(val);
-    chapterWindow = new chaptersettings(depart);
-    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
-    depart.clear();
-    chapterWindow ->show();
-}
-
-
 void AdminWin::on_pushButton_18_clicked()
 {
     QVariantList course;
-    course.append("курс");
-    course.append(val);
-    chapterWindow = new chaptersettings(course);
-    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
-    course.clear();
-    chapterWindow ->show();
+    if (val.toString()!="") {
+        course.append("курс");
+        course.append(val);
+        course.append("UPDATE");
+        course.append(ui->comboBox->currentText());
+        chapterWindow = new chaptersettings(course);
+        connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+        course.clear();
+        chapterWindow ->show();
+    }
+    else  QMessageBox::critical(this, "", "Выберете курс");
 }
-
 
 void AdminWin::on_pushButton_21_clicked()
 {
@@ -290,6 +255,25 @@ void AdminWin::on_pushButton_21_clicked()
     QObject::connect(chapterWindow, chaptersettings::updateBase, this, AdminWin::startUpdateBase);
     chapter.clear();
     chapterWindow ->show();
+}
+
+void AdminWin::on_DepartView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+void AdminWin::on_courseView_clicked(const QModelIndex &index)
+{
+    val = index.data().toString();
+    qDebug()<<val;
+}
+
+void AdminWin::on_toolButton_clicked()
+{
+    pathFile = QFileDialog::getExistingDirectory(this, "Выбор папки", "");
+    qDebug() << pathFile;
+    ui->lineEdit->setText(pathFile);
 }
 
 void AdminWin::startUpdateBase(int mode)
@@ -316,10 +300,43 @@ void AdminWin::startUpdateBase(int mode)
      }
 }
 
-void AdminWin::on_toolButton_clicked()
+void AdminWin::takeLogin(QString login)
 {
-    pathFile = QFileDialog::getExistingDirectory(this, "Выбор папки", "");
-    qDebug() << pathFile;
-    ui->lineEdit->setText(pathFile);
-}
+    qDebug() << login;
+    query = new QSqlQuery();
+    query->exec("Select Permissions from Users where Login = '" +login+ "'");
+    query->next();
+    QString acc =query->value("Permissions").toString();
+       int accses = acc.toInt();
+    for (int count = 7;count>=0;count--)
+    {
+        int check =pow(2,count);
+        if ((accses-check)>=0){
+            accses=accses-check;
+            switch (check) {
+            case 1:
+                ui->tabWidget->setTabEnabled(0,true);
+                break;
+            case 2:
+                ui->tabWidget->setTabEnabled(1,true);
+                break;
+            case 4:
+                ui->tabWidget->setTabEnabled(2,true);
+                break;
+            case 8:
+                ui->tabWidget->setTabEnabled(3,true);
+                break;
+            case 16:
+                ui->tabWidget->setTabEnabled(4,true);
+                break;
+            case 32:
+                ui->tabWidget->setTabEnabled(5,true);
+                break;
+            case 64:
+                ui->tabWidget->setTabEnabled(6,true);
+                break;
+            }
+        }
+    }
 
+}

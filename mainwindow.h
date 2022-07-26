@@ -23,7 +23,7 @@ public:
     ~MainWindow();
 
 signals:
-    void backToStart(); //Сигнал для соединения окна студента и окна авторизации
+    void backToStart(AdminWin *AdmWin); //Сигнал для соединения окна студента и окна авторизации
 
 private slots:
     void on_pushButton_clicked();
@@ -33,6 +33,7 @@ private:
     DataBase db;
     StudentWindow *SWindow;
     AuthorizationWindow *AWindow;
+    AdminWin *admWindow;
 };
 
 #endif // MAINWINDOW_H

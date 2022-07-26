@@ -46,14 +46,15 @@ void AuthorizationWindow::on_pushButton_2_clicked()
                  QVariantList data;
                  data.append(ui->login->currentText());
                  data.append(password_user);
-                // Выделяем память для окна администратора
-                Awin = new AdminWin(data);
-                connect(Awin, &AdminWin::secondWindow, this, &AuthorizationWindow::show);
+                // Выделяем память для окна администратора                
+                connect(this, &AuthorizationWindow::sendData,Awin,&AdminWin::takeLogin);
+                emit sendData(ui->login->currentText());
                 Awin->show();
                 this->close();
         }
     ui->password->clear();
 }
+
 
 
 // Кнопка возврата к начальному окну
@@ -64,3 +65,7 @@ void AuthorizationWindow::on_pushButton_clicked()
 }
 
 
+void AuthorizationWindow::takePoint(AdminWin *admWin)
+{
+    Awin = admWin;
+}

@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "authorizationwindow.h"
-#include "studentwindow.h"
-#include "database.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     db.openDataBase();
-
     ui->radioButton->setChecked(true);
 }
 
@@ -30,9 +27,13 @@ void MainWindow::on_pushButton_clicked()
     if (ui->radioButton->isChecked()) {
 
         AWindow = new AuthorizationWindow();
-
+        admWindow = new AdminWin();
+        qDebug() << admWindow;
+        connect(admWindow, &AdminWin::secondWindow, this, &MainWindow::show);
+        connect(this, &MainWindow::backToStart, AWindow, &AuthorizationWindow::takePoint);
+        emit backToStart(admWindow);
         // Связываем начальное окно и окно авторизации
-        connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
+        connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);        
         AWindow->show();
         this->close();
     }

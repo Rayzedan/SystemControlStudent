@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QMessageBox>
 
+
 namespace Ui {
 class AuthorizationWindow;
 }
@@ -23,9 +24,11 @@ public:
     explicit AuthorizationWindow(QWidget *parent = nullptr);
     ~AuthorizationWindow();
 
-
+public slots:
+    void takePoint(AdminWin *admWin);
 signals:
     void firstWindow(); //Сигнал для соединения окна начального входа и окна авторизации
+    void sendData(QString login);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -41,6 +44,5 @@ private:
     DataBase *db;
     QSqlQueryModel *model;
     AdminWin *Awin;
-
 };
 #endif // AUTHORIZATIONWINDOW_H

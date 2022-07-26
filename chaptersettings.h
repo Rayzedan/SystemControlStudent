@@ -15,6 +15,7 @@ class chaptersettings : public QDialog
 public:
     explicit chaptersettings(QVariantList dataUser, QWidget *parent = nullptr);
     ~chaptersettings();
+    void setData(QVariantList dataUser);
 
 signals:
     updateBase(int mode);

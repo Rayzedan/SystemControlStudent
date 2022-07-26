@@ -2,6 +2,7 @@
 #define FILLRESULT_H
 
 #include <QWidget>
+#include <QCloseEvent>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QPrinter>
@@ -28,6 +29,9 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     Ui::FillResult *ui;

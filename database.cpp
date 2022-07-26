@@ -15,10 +15,10 @@ DataBase::~DataBase()
 bool DataBase::openDataBase()
 {
     // конфиг бд для админа
-    QString host ="127.0.0.1";
+    QString host ="DESKTOP-3NM09MJ\\\SQLEXPRESS";
     QString database = "ExaminationSystem";
-    QString login = "root";
-    QString password = "123";
+    QString login = "Admin";
+    QString password = "Zuban123";
 
 
     db = QSqlDatabase::addDatabase("QODBC");
@@ -116,12 +116,23 @@ bool DataBase::createUser(QString login, QString password)
     return false;
 }
 
+void DataBase::createDepart(QString name)
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO Departments (name) VALUES (:name)");
+    query.bindValue(":name",name);
+    if (!query.exec()) {
+        qDebug() << "error insert into ";
+        qDebug() << query.lastError().text();
+    } else qDebug() << "Создание нового департамента ";
+}
+
 void DataBase::updateDepart(QString name, QString newName)
 {
     QSqlQuery query;
     query.prepare("UPDATE Departments SET Name = '"+newName+"'WHERE Name ='"+name+"';");
     if(!query.exec()){
-        qDebug() << "error insert into ";
+        qDebug() << "error update into ";
         qDebug() << query.lastError().text();
     } else
     {
@@ -324,5 +335,6 @@ QMap<QString,int> DataBase::mergeMap(QMap<QString, int> &dataAnswer, QMap<QStrin
 // Метод закрытия бд
 void DataBase::closeDataBase()
 {
+    qDebug() << "close database";
     db.close();
 }

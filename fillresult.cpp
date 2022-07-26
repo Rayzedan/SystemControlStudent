@@ -88,4 +88,9 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
     }
 }
 
+// Закрываем окно
+void FillResult::closeEvent(QCloseEvent *event)
+{
+    event->accept();
 
+}

@@ -2,6 +2,7 @@
 #define TESTFORSTUDENT_H
 
 #include <QWidget>
+#include <QCloseEvent>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QCloseEvent>

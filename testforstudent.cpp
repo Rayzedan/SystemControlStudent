@@ -9,8 +9,8 @@ TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
     ui->setupUi(this);
     query = new QSqlQuery();
     timer = new QTimer(this);
-
-    time.setHMS(1,0,0);
+    int time1 = 10;
+    time.setHMS(0,time1,0);
     sizeTest = 0;
     countAnsw = 0;
     courseId =0;
@@ -134,7 +134,7 @@ void TestForStudent::updateTime()
 {
     if (time.toString("m:ss")!="0:50")
     {
-        time=time.addSecs(-1);
+        time = time.addSecs(-1);
         ui->countdown->setText(time.toString("m:ss"));
         resultTime = time.toString("m:ss");
         //qDebug() << resultTime;

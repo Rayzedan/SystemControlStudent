@@ -21,12 +21,13 @@ class AdminWin : public QWidget
     Q_OBJECT
 
 public:
-    explicit AdminWin(QVariantList dataUser,QWidget *parent = nullptr);
+     explicit AdminWin(QWidget *parent = nullptr);
     ~AdminWin();
     QString pathFile;
 
 public slots:
     void startUpdateBase(int mode);
+    void takeLogin(QString login);
 
 signals:
     void secondWindow(); //Сигнал для соединения панели администратора и начального окна
@@ -86,7 +87,7 @@ private:
     QSqlQueryModel *model_res_depart;
     QSqlQueryModel *model_res_course;
     QSqlQueryModel *model_res_chapter;
-    QSqlQuery *query;
+    QSqlQuery *query;    
     AddUsers *AddWindow;
     chaptersettings *chapterWindow;
     AddVariants *varWind;
