@@ -22,10 +22,16 @@ class FillResult : public QWidget
     Q_OBJECT
 
 public:
-    explicit FillResult(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes, QWidget *parent = nullptr);
+    explicit FillResult(QWidget *parent = nullptr);
     ~FillResult();
 
     void setTable(QMap<QString,int> resultMap, QMap<QString, int> allAnswers);    
+
+public slots:
+    void takeData(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes);
+
+signals:
+    void startWindow();
 
 private slots:
     void on_pushButton_clicked();

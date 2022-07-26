@@ -12,26 +12,7 @@ AdminWin::AdminWin(QWidget *parent) :
     model_res_depart = new QSqlQueryModel();
     model_res_course = new QSqlQueryModel();
     model_res_chapter = new QSqlQueryModel();
-
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
-    ui->tableView_2->setModel(model_res);
-    ui->tableView_2->verticalHeader()->setVisible(false);
-    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    model_res_users ->setQuery("Select login From Users Order by login");
-    ui->usersView->setModel(model_res_users);
-    ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
-
-    model_res_depart->setQuery("Select name From Departments Order by name");
-    ui->DepartView->setModel(model_res_depart);
-    ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
-
-
-    ui->comboBox->setModel(model_res_depart);
-    ui->comboBox_2->setModel(model_res_depart);
-    ui->comboBox_4->setModel(model_res_depart);
-
-
+    model_res_question = new QSqlQueryModel();
     ui->tabWidget->setTabEnabled(0,false);
     ui->tabWidget->setTabEnabled(1,false);
     ui->tabWidget->setTabEnabled(2,false);
@@ -40,7 +21,6 @@ AdminWin::AdminWin(QWidget *parent) :
     ui->tabWidget->setTabEnabled(5,false);
     ui->tabWidget->setTabEnabled(6,false);
     ui->tabWidget->setTabEnabled(7,false);
-
 
 }
 
@@ -105,14 +85,17 @@ void AdminWin::on_pushButton_9_clicked()
 }
 
 void AdminWin::CourseQuery(QString arg){
+   qDebug() << "use course";
    model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+arg+"' and Departments.Id=Courses.DepartmentId");
 };
 void AdminWin::ChapterQuery(QString arg){
+   qDebug() << "use chapter";
    model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+arg+"' and Courses.Id=Chapters.CourseId");
 };
 
 void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
 {    
+    qDebug() << "comboBox_1";
     CourseQuery(arg1);
     ui->courseView->setModel(model_res_course);
     ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
@@ -121,13 +104,14 @@ void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
 
 void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
 {
+    qDebug() << "comboBox_2";
     CourseQuery(arg1);
     ui->comboBox_3->setModel(model_res_course);
 }
 
 void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 {
-    qDebug()<<"Open";    
+    qDebug()<<"comboBox_3";
     ChapterQuery(arg1);
     ui->listView->setModel(model_res_chapter);
     ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
@@ -310,6 +294,24 @@ void AdminWin::startUpdateBase(int mode)
 
 void AdminWin::takeLogin(QString login)
 {
+    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
+    ui->tableView_2->setModel(model_res);
+    ui->tableView_2->verticalHeader()->setVisible(false);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    model_res_users ->setQuery("Select login From Users Order by login");
+    ui->usersView->setModel(model_res_users);
+    ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+    model_res_depart->setQuery("Select name From Departments Order by name");
+    ui->DepartView->setModel(model_res_depart);
+    ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+
+
+    ui->comboBox->setModel(model_res_depart);
+    ui->comboBox_2->setModel(model_res_depart);
+    ui->comboBox_4->setModel(model_res_depart);
+
     qDebug() << login;
     query = new QSqlQuery();
     query->exec("Select Permissions from Users where Login = '" +login+ "'");
@@ -350,6 +352,7 @@ void AdminWin::takeLogin(QString login)
 
 void AdminWin::on_comboBox_4_currentTextChanged(const QString &arg1)
 {
+    qDebug() << "comboBox_4";
     CourseQuery(arg1);
     ui->comboBox_5->setModel(model_res_course);
 }
@@ -357,6 +360,7 @@ void AdminWin::on_comboBox_4_currentTextChanged(const QString &arg1)
 
 void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 {
+    qDebug() << arg1;
     ChapterQuery(arg1);
     ui->comboBox_6 ->setModel(model_res_chapter);
 }
@@ -364,8 +368,9 @@ void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 
 void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
 {
-    model_res_question->setQuery("Select Question as 'Вопрос',Variant1 as 'Вариант1', Variant2 as 'Вариант2', Variant3 as 'Вариант3', Variant4 as 'Вариант4', "\
-                                 "CorrectAnswer as 'Ответ'  from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
+    qDebug() << "comboBox_6";
+    model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
+                                 "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
     qDebug()<<model_res_question->lastError();
     ui->tableView->setModel(model_res_question);
     ui->tableView->verticalHeader()->setVisible(false);

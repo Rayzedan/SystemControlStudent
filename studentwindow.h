@@ -20,8 +20,12 @@ public:
     explicit StudentWindow(QWidget *parent = nullptr);
     ~StudentWindow();
 
+public slots:
+    void takePoint(TestForStudent *testWin);
+
 signals:
     void firstWindow(); //Сигнал для соединения окна студента и окна авторизации
+    void sendData(QVariantList data);
 
 private slots:
     void on_pushButton_3_clicked();

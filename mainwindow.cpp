@@ -32,8 +32,7 @@ void MainWindow::on_pushButton_clicked()
         connect(admWindow, &AdminWin::secondWindow, this, &MainWindow::show);
         connect(this, &MainWindow::backToStart, AWindow, &AuthorizationWindow::takePoint);
         emit backToStart(admWindow);
-        // Связываем начальное окно и окно авторизации
-        connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);        
+        // Связываем начальное окно и окно авторизации        
         AWindow->show();
         this->close();
     }
@@ -41,9 +40,16 @@ void MainWindow::on_pushButton_clicked()
     if (ui->radioButton_2->isChecked()) {
 
         SWindow = new StudentWindow();
-
+        resWin = new FillResult();
+        testWindow = new TestForStudent();
+        qDebug() << resWin;
         // Связываем начальное окно и окно формы ввода данных студентом
         connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
+        connect(resWin, &FillResult::startWindow, this, &MainWindow::show);
+        connect(this, &MainWindow::backFromResult, testWindow, &TestForStudent::takePoint);
+        connect(this, &MainWindow::sendPoint, SWindow, &StudentWindow::takePoint);
+        emit backFromResult(resWin);
+        emit sendPoint(testWindow);
         SWindow->show();
         this->close();
     }

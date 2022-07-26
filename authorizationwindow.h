@@ -26,8 +26,7 @@ public:
 
 public slots:
     void takePoint(AdminWin *admWin);
-signals:
-    void firstWindow(); //Сигнал для соединения окна начального входа и окна авторизации
+signals:   
     void sendData(QString login);
 
 protected:

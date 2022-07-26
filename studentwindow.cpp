@@ -45,14 +45,18 @@ void StudentWindow::on_pushButton_clicked()
     data.append(ui->comboBox_3->currentText());
     this->close();
     qDebug() << data;
-    testWindow = new TestForStudent(data);
+    connect(this, &StudentWindow::sendData,testWindow,TestForStudent::takeData);
+    emit sendData(data);
     testWindow->show();
     } else {
         QMessageBox ::critical(this, "", "Введите ФИО и название компании");
     }
 }
 
-
+void StudentWindow::takePoint(TestForStudent *testWin)
+{
+    testWindow = testWin;
+}
 
 
 void StudentWindow::on_comboBox_2_currentTextChanged(QString arg1)

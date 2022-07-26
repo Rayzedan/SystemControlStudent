@@ -2,38 +2,12 @@
 #include "ui_testforstudent.h"
 #include "studentwindow.h"
 
-TestForStudent::TestForStudent(QVariantList takeData, QWidget *parent) :
+TestForStudent::TestForStudent(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::TestForStudent)
 {
     ui->setupUi(this);
-    query = new QSqlQuery();
-    timer = new QTimer(this);
-    int time1 = 10;
-    time.setHMS(0,time1,0);
-    sizeTest = 0;
-    countAnsw = 0;
-    courseId =0;
-    current_data = takeData;
-    currentQuestId =0;
 
-    ui->label_3->setText(current_data[3].toString());
-
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
-
-    query->exec("SELECT TOP 5 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
-                   "from Questions, Courses, Chapters"
-                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id "
-                                                                                                                    "ORDER BY NEWID();");
-    if (query->next())
-    {
-        firstQuestId = query->value("Id").toInt();
-        descriptionCourse = query->value("Description").toString();
-        courseId = query->value("CourseId").toInt();
-        setData(query->value("TypeQuestion").toInt());        
-    }
-    timer ->start(1000);
-    ui->countdown->setText(time.toString("hh:mm:ss"));
 }
 
 TestForStudent::~TestForStudent()
@@ -208,8 +182,45 @@ void TestForStudent::outputAnswer()
     current_data.append(descriptionCourse);
     current_data.append(time.toString("m:ss"));
     current_data.append(sizeTest);
-    db->insertIntoTable(current_data); // Отправка данных в бд
-    studentResult = new FillResult(countAllAnswers,current_data, db->mergeMap(dataAnswer, dataAnswerText));
+    db->insertIntoTable(current_data);  // Отправка данных в бд
+    connect(this, &TestForStudent::sendData,studentResult, &FillResult::takeData);
+    emit sendData(countAllAnswers,current_data, db->mergeMap(dataAnswer, dataAnswerText));
     studentResult->show();
     this->close();
+}
+
+void TestForStudent::takePoint(FillResult *resWin)
+{
+    studentResult = resWin;
+}
+
+void TestForStudent::takeData(QVariantList data)
+{
+    query = new QSqlQuery();
+    timer = new QTimer(this);
+    int time1 = 10;
+    time.setHMS(0,time1,0);
+    sizeTest = 0;
+    countAnsw = 0;
+    courseId =0;
+    current_data = data;
+    currentQuestId =0;
+
+    ui->label_3->setText(current_data[3].toString());
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+
+    query->exec("SELECT TOP 5 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
+                   "from Questions, Courses, Chapters"
+                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id "
+                                                                                                                    "ORDER BY NEWID();");
+    if (query->next())
+    {
+        firstQuestId = query->value("Id").toInt();
+        descriptionCourse = query->value("Description").toString();
+        courseId = query->value("CourseId").toInt();
+        setData(query->value("TypeQuestion").toInt());
+    }
+    timer ->start(1000);
+    ui->countdown->setText(time.toString("hh:mm:ss"));
 }

@@ -20,7 +20,7 @@ class TestForStudent : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit TestForStudent(QVariantList takeData, QWidget *parent = nullptr);
+    explicit TestForStudent(QWidget *parent = nullptr);
     ~TestForStudent();
 
     //void inputAnswer(const ind ID);
@@ -30,7 +30,11 @@ public:
     void outputAnswer();
 
 public slots:
+    void takePoint(FillResult *resWin);
+    void takeData(QVariantList data);
 
+signals:
+    void sendData(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes);
 
 protected:
     void closeEvent(QCloseEvent *event) override;

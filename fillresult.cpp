@@ -2,30 +2,11 @@
 #include "ui_fillresult.h"
 #include "studentwindow.h"
 
-
-
-FillResult::FillResult (QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes, QWidget *parent) :
+FillResult::FillResult(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FillResult)
 {
-    ui->setupUi(this);
-    take_data = result;
-    setTable(themes, countAllAnswers);
-    ui->name->setText(take_data[0].toString());
-    ui->company->setText(take_data[1].toString());
-    ui->label_14->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy г"));
-    ui->credit->setText(take_data[4].toString() + "%");
-    if (take_data[5].toInt()==1)
-    {
-      ui->result->setText("Зачёт");
-    }
-    else
-    {
-      ui->result->setText("Незачёт");
-    }
-    ui->course->setText(take_data[7].toString());
-    ui->time->setText(take_data[8].toString());
-
+    ui->setupUi(this);    
 
 }
 
@@ -87,9 +68,30 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
     }
 }
 
+void FillResult::takeData(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes)
+{
+    take_data = result;
+    setTable(themes, countAllAnswers);
+    ui->name->setText(take_data[0].toString());
+    ui->company->setText(take_data[1].toString());
+    ui->label_14->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy г"));
+    ui->credit->setText(take_data[4].toString() + "%");
+    if (take_data[5].toInt()==1)
+    {
+      ui->result->setText("Зачёт");
+    }
+    else
+    {
+      ui->result->setText("Незачёт");
+    }
+    ui->course->setText(take_data[7].toString());
+    ui->time->setText(take_data[8].toString());
+}
+
 // Закрываем окно
 void FillResult::closeEvent(QCloseEvent *event)
 {
     event->accept();
+    emit startWindow();
 
 }
