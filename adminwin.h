@@ -9,7 +9,6 @@
 #include <QSqlQuery>
 #include "database.h"
 #include "addusers.h"
-#include "addvariants.h"
 #include "chaptersettings.h"
 
 namespace Ui {
@@ -102,7 +101,6 @@ private:
     QSqlQuery *query;        
     AddUsers *AddWindow;
     chaptersettings *chapterWindow;
-    AddVariants *varWind;
 };
 
 #endif // ADMINWIN_H

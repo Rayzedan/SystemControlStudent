@@ -11,7 +11,6 @@ CONFIG += c++11
 
 SOURCES += \
     addusers.cpp \
-    addvariants.cpp \
     adminwin.cpp \
     authorizationwindow.cpp \
     chaptersettings.cpp \
@@ -24,7 +23,6 @@ SOURCES += \
 
 HEADERS += \
     addusers.h \
-    addvariants.h \
     adminwin.h \
     authorizationwindow.h \
     chaptersettings.h \
@@ -42,7 +40,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 FORMS += \
     addusers.ui \
-    addvariants.ui \
     adminwin.ui \
     authorizationwindow.ui \
     chaptersettings.ui \
