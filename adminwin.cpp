@@ -127,6 +127,8 @@ void AdminWin::on_comboBox_4_currentTextChanged(const QString &arg1)
 {
     if (indexTab == 5) {
         qDebug() << "comboBox_4";
+        model_res_chapter->clear();
+        model_res_question->clear();
         CourseQuery(arg1);
         ui->comboBox_5->setModel(model_res_course);
     }
@@ -137,6 +139,7 @@ void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 {
     if (indexTab == 5) {
         qDebug() << arg1;
+        model_res_question->clear();
         ChapterQuery(arg1);
         ui->comboBox_6 ->setModel(model_res_chapter);
     }
@@ -145,11 +148,10 @@ void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 
 void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
 {
-    if (indexTab == 5) {
+    if (indexTab == 5 && ui->comboBox_5->currentText()!="") {
         qDebug() << "comboBox_6";
         model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
                                      "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
-        qDebug()<<model_res_question->lastError();
         ui->tableView->setModel(model_res_question);
         ui->tableView->verticalHeader()->setVisible(false);
         ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -268,6 +270,7 @@ void AdminWin::on_pushButton_18_clicked()
         course.append(valCourse);
         course.append("UPDATE");
         course.append(ui->comboBox->currentText());
+        course.append(ui->comboBox->currentIndex());
         chapterWindow = new chaptersettings(course);
         connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
         course.clear();
@@ -412,9 +415,11 @@ void AdminWin::on_tabWidget_currentChanged(int index)
     } else if (index==3) {
         qDebug()<<"Вкладка Курсы";
         indexTab =3;
+        startUpdateBase(2);
     } else if (index==4) {
         qDebug()<<"Вкладка Темы";
         indexTab = 4;
+        startUpdateBase(3);
     } else if (index==5) {
         qDebug()<<"Вкладка Вопросы";
         indexTab = 5;

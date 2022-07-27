@@ -78,6 +78,8 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->lineEdit_2->setText(desc);
         ui->lineEdit_3->setText(time);        
         ui->comboBox->setModel(model1);
+        ui->comboBox->setCurrentIndex(data[4].toInt());
+        ui->comboBox->setCurrentText(data[3].toString());
         mode = 2;
     }
     if (data[0].toString()=="тема" && data[2].toString() =="INSERT"){
