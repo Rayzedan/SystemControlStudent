@@ -93,10 +93,27 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->comboBox->hide();
         mode = 3;
     } else if ((data[0].toString()=="тема" && data[2].toString() =="UPDATE")){
+        //Потом уберу в бд или ты
+        QSqlQuery query;
+        query.exec("SELECT Id, Number From Chapters WHERE Name = '"+data[1].toString()+"';");
+        query.next();
+        qDebug() << query.lastError().text();
+        QString id = query.value("Id").toString();
+        QString number = query.value("Number").toString();
+        query.clear();
+        query.exec("SELECT Count From CountChapters WHERE ChapterId = "+id+";");
+        query.next();
+        qDebug() << query.lastError().text();
+        QString count = query.value("Count").toString();
+        query.clear();
+        //Потом уберу в бд или ты
         ui->label_1->setText("Название темы");
         ui->label_2->setText("Номер темы");
         ui->label_3->setText("Колличество вопросов");
         ui->label_4->setText("Выбранный курс");
+        ui->lineEdit->setText(data[1].toString());
+        ui->lineEdit_2->setText(number);
+        ui->lineEdit_3->setText(count);
         ui->comboBox->addItem(data[3].toString(),QVariant(0));
         ui->comboBox->setCurrentIndex(0);
         mode = 3;
