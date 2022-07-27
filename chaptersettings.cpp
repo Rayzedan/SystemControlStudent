@@ -11,8 +11,7 @@ chaptersettings::chaptersettings(QVariantList dataUser, QWidget *parent) :
     data = dataUser;
     qDebug()<<dataUser;
     qDebug()<<"НАСТРОЙКИ";
-    setData(data);
-
+    setData(data);    
 }
 
 chaptersettings::~chaptersettings()
@@ -57,43 +56,38 @@ void chaptersettings::setData(QVariantList dataUser)
         mode = 2;
 
     } else if (data[0].toString()=="курс" && dataUser[2].toString() == "UPDATE"){
-
-        //Потом уберу в бд или ты
         QSqlQuery query;
+        model1 = new QSqlQueryModel();
         query.exec("SELECT Id,Description From Courses WHERE Name = '"+data[1].toString()+"';");
-        query.next();
-        qDebug() << query.lastError().text();
+        query.next();        
         QString id = query.value("Id").toString();
         QString desc = query.value("Description").toString();
+        qDebug() << id;
         query.clear();
-        query.exec("SELECT Time From timeCourses WHERE CourseId = "+id+";");
-        query.next();
-        qDebug() << query.lastError().text();
+        query.exec("SELECT Time From TimeCourses WHERE CourseId = "+id+";");
+        query.next();        
         QString time = query.value("Time").toString();
+        qDebug() << time;
         query.clear();
-        //Потом уберу в бд или ты
-
+        model1->setQuery("SELECT Name From Departments");
         ui->label_1->setText("Имя курса");
         ui->label_2->setText("Описание курса");
         ui->label_3->setText("Время");
         ui->label_4->setText("Выбранный департамент");
         ui->lineEdit->setText(data[1].toString());
         ui->lineEdit_2->setText(desc);
-        ui->lineEdit_3->setText(time);
-        //в comboBox должны показываться все департаменты
-        ui->comboBox->addItem(data[3].toString(),QVariant(0));
-        ui->comboBox->setCurrentIndex(0);
+        ui->lineEdit_3->setText(time);        
+        ui->comboBox->setModel(model1);
         mode = 2;
     }
     if (data[0].toString()=="тема" && data[2].toString() =="INSERT"){
         ui->label_1->setText("Название темы");
         ui->label_2->setText("Номер темы");
-        ui->label_3->setText("Колличество вопросов");
+        ui->label_3->setText("Количество вопросов");
         ui->label_4->hide();
         ui->comboBox->hide();
         mode = 3;
-    } else if ((data[0].toString()=="тема" && data[2].toString() =="UPDATE")){
-        //Потом уберу в бд или ты
+    } else if ((data[0].toString()=="тема" && data[2].toString() == "UPDATE")) {
         QSqlQuery query;
         query.exec("SELECT Id, Number From Chapters WHERE Name = '"+data[1].toString()+"';");
         query.next();
@@ -105,11 +99,10 @@ void chaptersettings::setData(QVariantList dataUser)
         query.next();
         qDebug() << query.lastError().text();
         QString count = query.value("Count").toString();
-        query.clear();
-        //Потом уберу в бд или ты
+        query.clear();        
         ui->label_1->setText("Название темы");
         ui->label_2->setText("Номер темы");
-        ui->label_3->setText("Колличество вопросов");
+        ui->label_3->setText("Количество вопросов");
         ui->label_4->setText("Выбранный курс");
         ui->lineEdit->setText(data[1].toString());
         ui->lineEdit_2->setText(number);

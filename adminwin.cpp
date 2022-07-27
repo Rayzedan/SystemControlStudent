@@ -20,7 +20,7 @@ AdminWin::AdminWin(QWidget *parent) :
     ui->tabWidget->setTabEnabled(4,false);
     ui->tabWidget->setTabEnabled(5,false);
     ui->tabWidget->setTabEnabled(6,false);
-
+    indexTab = 0;
 }
 
 
@@ -93,29 +93,68 @@ void AdminWin::ChapterQuery(QString arg){
 };
 
 void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
-{    
-    qDebug() << "comboBox_1";
-    CourseQuery(arg1);
-    ui->courseView->setModel(model_res_course);
-    ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+{
+    if (indexTab == 3) {
+        qDebug() << "comboBox_1";
+        CourseQuery(arg1);
+        ui->courseView->setModel(model_res_course);
+        ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+    }
 }
 
 
 void AdminWin::on_comboBox_2_currentTextChanged(const QString &arg1)
 {
-    qDebug() << "comboBox_2";
-    CourseQuery(arg1);
-    ui->comboBox_3->setModel(model_res_course);
+    if (indexTab == 4) {
+        qDebug() << "comboBox_2";
+        model_res_chapter->clear();
+        CourseQuery(arg1);
+        ui->comboBox_3->setModel(model_res_course);
+    }
 }
 
 void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 {
-    qDebug()<<"comboBox_3";
-    ChapterQuery(arg1);
-    ui->listView->setModel(model_res_chapter);
-    ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
+    if (indexTab == 4){
+        qDebug()<<"comboBox_3";
+        ChapterQuery(arg1);
+        ui->listView->setModel(model_res_chapter);
+        ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
+    }
 }
 
+void AdminWin::on_comboBox_4_currentTextChanged(const QString &arg1)
+{
+    if (indexTab == 5) {
+        qDebug() << "comboBox_4";
+        CourseQuery(arg1);
+        ui->comboBox_5->setModel(model_res_course);
+    }
+}
+
+
+void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
+{
+    if (indexTab == 5) {
+        qDebug() << arg1;
+        ChapterQuery(arg1);
+        ui->comboBox_6 ->setModel(model_res_chapter);
+    }
+}
+
+
+void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
+{
+    if (indexTab == 5) {
+        qDebug() << "comboBox_6";
+        model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
+                                     "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
+        qDebug()<<model_res_question->lastError();
+        ui->tableView->setModel(model_res_question);
+        ui->tableView->verticalHeader()->setVisible(false);
+        ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    }
+}
 
 void AdminWin::on_pushButton_10_clicked()
 {
@@ -132,9 +171,9 @@ void AdminWin::on_pushButton_10_clicked()
 void AdminWin::on_pushButton_11_clicked()
 {
     QVariantList depart;
-    if (val.toString()!= "") {
+    if (valDepart.toString()!= "") {
         depart.append("департамент");
-        depart.append(val);
+        depart.append(valDepart);
         depart.append("UPDATE");
         chapterWindow = new chaptersettings(depart);
         connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
@@ -150,11 +189,11 @@ void AdminWin::on_pushButton_11_clicked()
 
 void AdminWin::on_pushButton_12_clicked()
 {
-    if (val.toString()==""){
+    if (valDepart.toString()==""){
         QMessageBox ::critical(this, "", "Сначала выберете департамент для удаления.");
     } else {
         QSqlQuery query;
-        query.exec("DELETE FROM Departments WHERE name='"+val.toString()+"';");
+        query.exec("DELETE FROM Departments WHERE name='"+valDepart.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление департамента.");
         startUpdateBase(1);
         qDebug()<< query.lastError().text();
@@ -179,7 +218,7 @@ void AdminWin::on_pushButton_19_clicked()
 {
     QVariantList chap;
     chap.append("тема");
-    chap.append(val);
+    chap.append("empty");
     chap.append("INSERT");
     chap.append(ui->comboBox_3->currentText());
     chapterWindow = new chaptersettings(chap);
@@ -190,11 +229,11 @@ void AdminWin::on_pushButton_19_clicked()
 
 void AdminWin::on_pushButton_17_clicked()
 {
-    if (val.toString()==""){
+    if (valCourse.toString()==""){
         QMessageBox ::critical(this, "", "Сначала выберете курс для удаления.");
     } else {
         QSqlQuery query;
-        query.exec("DELETE FROM Courses WHERE name='"+val.toString()+"';");
+        query.exec("DELETE FROM Courses WHERE name='"+valCourse.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление курса.");
         startUpdateBase(2);
         qDebug()<< query.lastError().text();
@@ -204,17 +243,17 @@ void AdminWin::on_pushButton_17_clicked()
 
 void AdminWin::on_listView_clicked(const QModelIndex &index)
 {
-    val = index.data().toString();
+    valTheme = index.data().toString();
     qDebug()<<val;
 }
 
 void AdminWin::on_pushButton_20_clicked()
 {
-    if (val.toString()==""){
+    if (valTheme.toString()==""){
         QMessageBox ::critical(this, "", "Сначала выберете тему для удаления.");
     } else {
         QSqlQuery query;
-        query.exec("DELETE FROM Chapters WHERE name='"+val.toString()+"';");
+        query.exec("DELETE FROM Chapters WHERE name='"+valTheme.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление темы.");
         startUpdateBase(3);
         qDebug()<< query.lastError().text();
@@ -224,9 +263,9 @@ void AdminWin::on_pushButton_20_clicked()
 void AdminWin::on_pushButton_18_clicked()
 {
     QVariantList course;
-    if (val.toString()!="") {
+    if (valCourse.toString()!="") {
         course.append("курс");
-        course.append(val);
+        course.append(valCourse);
         course.append("UPDATE");
         course.append(ui->comboBox->currentText());
         chapterWindow = new chaptersettings(course);
@@ -240,9 +279,9 @@ void AdminWin::on_pushButton_18_clicked()
 void AdminWin::on_pushButton_21_clicked()
 {
     QVariantList chap;
-    if (val.toString()!="") {
+    if (valTheme.toString()!="") {
         chap.append("тема");
-        chap.append(val);
+        chap.append(valTheme);
         chap.append("UPDATE");
         chap.append(ui->comboBox_3->currentText());
         chapterWindow = new chaptersettings(chap);
@@ -255,14 +294,14 @@ void AdminWin::on_pushButton_21_clicked()
 
 void AdminWin::on_DepartView_clicked(const QModelIndex &index)
 {
-    val = index.data().toString();
-    qDebug()<<val;
+    valDepart = index.data().toString();
+    qDebug()<<valDepart;
 }
 
 void AdminWin::on_courseView_clicked(const QModelIndex &index)
 {
-    val = index.data().toString();
-    qDebug()<<val;
+    valCourse = index.data().toString();
+    qDebug()<<valCourse;
 }
 
 void AdminWin::on_toolButton_clicked()
@@ -355,32 +394,7 @@ void AdminWin::takeLogin(QString login)
     }
 }
 
-void AdminWin::on_comboBox_4_currentTextChanged(const QString &arg1)
-{
-    qDebug() << "comboBox_4";
-    CourseQuery(arg1);
-    ui->comboBox_5->setModel(model_res_course);
-}
 
-
-void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
-{
-    qDebug() << arg1;
-    ChapterQuery(arg1);
-    ui->comboBox_6 ->setModel(model_res_chapter);
-}
-
-
-void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
-{
-    qDebug() << "comboBox_6";
-    model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
-                                 "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
-    qDebug()<<model_res_question->lastError();
-    ui->tableView->setModel(model_res_question);
-    ui->tableView->verticalHeader()->setVisible(false);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-}
 
 
 //Заготовка под нормальное расписывание кода по вкладкам
@@ -388,18 +402,25 @@ void AdminWin::on_tabWidget_currentChanged(int index)
 {
     if (index==0){
         qDebug()<<"Вкладка Настройки";
+        indexTab = 0;
     } else if (index==1) {
         qDebug()<<"Вкладка Пользователи";
+        indexTab = 1;
     } else if (index==2) {
         qDebug()<<"Вкладка Департамент";
+        indexTab =2;
     } else if (index==3) {
         qDebug()<<"Вкладка Курсы";
+        indexTab =3;
     } else if (index==4) {
         qDebug()<<"Вкладка Темы";
+        indexTab = 4;
     } else if (index==5) {
         qDebug()<<"Вкладка Вопросы";
+        indexTab = 5;
     } else if (index==6) {
         qDebug()<<"Вкладка Результаты";
+        indexTab = 6;
     }
 }
 

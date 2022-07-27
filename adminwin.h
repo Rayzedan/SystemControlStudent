@@ -91,7 +91,11 @@ private:
     Ui::AdminWin *ui;
     DataBase *db;
     QVariant val;
-    QVariantList data;    
+    QVariantList data;
+    int indexTab;
+    QVariant valTheme;
+    QVariant valCourse;
+    QVariant valDepart;
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQueryModel *model_res_depart;

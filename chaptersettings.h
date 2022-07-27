@@ -26,6 +26,7 @@ private slots:
 private:
     Ui::chaptersettings *ui;
     QSqlQueryModel *model;
+    QSqlQueryModel *model1;
     QSqlQuery *query;
     DataBase *db;
     QVariantList data;
