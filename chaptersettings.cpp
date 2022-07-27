@@ -158,6 +158,7 @@ void chaptersettings::on_pushButton_2_clicked()
     if (mode == 3 && data[2].toString() == "UPDATE")
     {
         db->updateChapter(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->comboBox->currentText());
+        db->updateChapterCount(ui->lineEdit_3->text(),ui->lineEdit->text());
         emit updateBase(mode);
         this->close();
     }

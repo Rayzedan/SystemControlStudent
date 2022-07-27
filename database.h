@@ -37,6 +37,7 @@ public:
     void updateCourse(QString name, QString newName, QString description, QString newDepart);
     void createChapter(QString name,QString number, QString Course);
     void createChapterCount(QString count, QString chapter);
+    void updateChapterCount(QString count, QString chapter);
     void updateChapter(QString name, QString newName, QString number, QString newCourse);
     bool insertIntoTable(QVariantList data);
     bool openDataBase();

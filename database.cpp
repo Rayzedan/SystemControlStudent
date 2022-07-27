@@ -216,6 +216,17 @@ void DataBase::createChapterCount(QString count, QString chapter){
     query.exec("Insert Into CountChapters(Count,ChapterId) Values ("+count+","+id+");");
 };
 
+void DataBase::updateChapterCount(QString count, QString chapter){
+    QSqlQuery query;
+    query.prepare("SELECT Id From Chapters WHERE Name = '"+chapter+"';");
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    query.exec("Update CountChapters SET Count="+count+" Where ChapterId="+id+";");
+};
+
+
 void DataBase::updateChapter(QString name, QString newName, QString number, QString newCourse)
 {
     QSqlQuery query;    
