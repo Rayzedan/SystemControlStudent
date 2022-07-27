@@ -87,6 +87,14 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_pushButton_13_clicked();
+
+    void on_tableView_clicked(const QModelIndex &index);
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_15_clicked();
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
@@ -96,6 +104,7 @@ private:
     QVariant valTheme;
     QVariant valCourse;
     QVariant valDepart;
+    QVariant valQuestion;
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQueryModel *model_res_depart;

@@ -111,6 +111,36 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->comboBox->setCurrentIndex(0);
         mode = 3;
     };
+
+    if (data[0].toString()=="Вопрос" && data[2].toString() =="INSERT"){
+        ui->label_1->setText("Формулировка вопроса");
+        ui->label_2->setText("Варианты ответов");
+        ui->label_3->setText("Корректный ответ");
+        ui->label_4->setText("Тип вопроса");
+        ui->comboBox->addItem("Тестовый вопрос");
+        ui->comboBox->addItem("Развернутый вопрос");
+        ui->comboBox->setCurrentIndex(0);
+        mode = 4;
+    } else if ((data[0].toString()=="Вопрос" && data[2].toString() == "UPDATE")) {
+        QSqlQuery query;
+        query.exec("SELECT Id, Variant1, Variant2, Variant3, Variant4, CorrectAnswer From Questions WHERE question = '"+data[1].toString()+"';");
+        query.next();
+        qDebug() << query.lastError().text();
+        QString id = query.value("Id").toString();
+        QString variants= query.value("Variant1").toString()+"; "+query.value("Variant2").toString()+"; "+query.value("Variant3").toString()\
+                +"; "+query.value("Variant4").toString();
+        QString answer=query.value("CorrectAnswer").toString();
+        ui->label_1->setText("Формулировка вопроса");
+        ui->label_2->setText("Варианты ответов");
+        ui->label_3->setText("Корректный ответ");
+        ui->label_4->setText("Выбранная тема");
+        ui->lineEdit->setText(data[1].toString());
+        ui->lineEdit_2->setText(variants);
+        ui->lineEdit_3->setText(answer);
+        ui->comboBox->addItem(data[3].toString(),QVariant(0));
+        ui->comboBox->setCurrentIndex(0);
+        mode = 4;
+    };
 }
 
 void chaptersettings::on_pushButton_2_clicked()
@@ -152,6 +182,18 @@ void chaptersettings::on_pushButton_2_clicked()
     {
         db->updateChapter(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->comboBox->currentText());
         db->updateChapterCount(ui->lineEdit_3->text(),ui->lineEdit->text());
+        emit updateBase(mode);
+        this->close();
+    }
+    if (mode == 4 && data[2].toString() == "INSERT")
+    {
+        db->createQuestion(ui->comboBox->currentText(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),data[3].toString());
+        emit updateBase(mode);
+        this->close();
+    }
+    if (mode == 4 && data[2].toString() == "UPDATE")
+    {
+        db->updateQuestion(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),ui->comboBox->currentText());
         emit updateBase(mode);
         this->close();
     }
