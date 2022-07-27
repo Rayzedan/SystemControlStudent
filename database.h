@@ -30,9 +30,13 @@ public:
     QString decodePassword(const QString password);
     bool createUser(QString login, QString password);
     void createDepart(QString name);
-    void createCourse(QString name);
+    void createCourse(QString name,QString description, QString Depart);
+    void createCourseTime(QString time, QString course);
+    void updateCourseTime(QString time, QString course);
     void updateDepart(QString name, QString newName);
     void updateCourse(QString name, QString newName, QString description, QString newDepart);
+    void createChapter(QString name,QString number, QString Course);
+    void createChapterCount(QString count, QString chapter);
     void updateChapter(QString name, QString newName, QString number, QString newCourse);
     bool insertIntoTable(QVariantList data);
     bool openDataBase();

@@ -15,10 +15,10 @@ DataBase::~DataBase()
 bool DataBase::openDataBase()
 {
     // конфиг бд для админа
-    QString host ="DESKTOP-3NM09MJ\\\SQLEXPRESS";
+    QString host ="127.0.0.1";
     QString database = "ExaminationSystem";
-    QString login = "Admin";
-    QString password = "Zuban123";
+    QString login = "root";
+    QString password = "123";
 
 
     db = QSqlDatabase::addDatabase("QODBC");
@@ -139,6 +139,34 @@ void DataBase::updateDepart(QString name, QString newName)
         qDebug() << "Изменение департамента";
     }
 }
+void DataBase::createCourse(QString name,QString description, QString Depart){
+    QSqlQuery query;
+    query.prepare("SELECT Id From Departments WHERE Name = '"+Depart+"';");
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    query.exec("Insert Into Courses(Name, Description, DepartmentId) Values ('"+name+"','"+description+"',"+id+");");
+};
+
+void DataBase::createCourseTime(QString time, QString course){
+    QSqlQuery query;
+    query.prepare("SELECT Id From Courses WHERE Name = '"+course+"';");
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    query.exec("Insert Into TimeCourses(Time,CourseId) Values ("+time+","+id+");");
+};
+void DataBase::updateCourseTime(QString time, QString course){
+    QSqlQuery query;
+    query.prepare("SELECT Id From Courses WHERE Name = '"+course+"';");
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    query.exec("UPDATE TimeCourses Set Time="+time+" Where CourseId="+id+";");
+};
 
 void DataBase::updateCourse(QString name, QString newName, QString description, QString newDepart)
 {
@@ -168,6 +196,25 @@ void DataBase::updateCourse(QString name, QString newName, QString description, 
         qDebug() << "Изменение курса";
     }
 }
+
+void DataBase::createChapter(QString name,QString number, QString Course){
+    QSqlQuery query;
+    query.exec("SELECT Id From Courses WHERE Name = '"+Course+"';");
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    query.exec("Insert Into Chapters(Name,Number,CourseId) Values ('"+name+"',"+number+","+id+");");
+};
+
+void DataBase::createChapterCount(QString count, QString chapter){
+    QSqlQuery query;
+    query.prepare("SELECT Id From Chapters WHERE Name = '"+chapter+"';");
+    query.exec();
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    query.exec("Insert Into CountChapters(Count,ChapterId) Values ("+count+","+id+");");
+};
 
 void DataBase::updateChapter(QString name, QString newName, QString number, QString newCourse)
 {

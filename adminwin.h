@@ -86,6 +86,8 @@ private slots:
 
     void on_comboBox_6_currentTextChanged(const QString &arg1);
 
+    void on_tabWidget_currentChanged(int index);
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;

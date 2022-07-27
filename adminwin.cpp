@@ -20,7 +20,6 @@ AdminWin::AdminWin(QWidget *parent) :
     ui->tabWidget->setTabEnabled(4,false);
     ui->tabWidget->setTabEnabled(5,false);
     ui->tabWidget->setTabEnabled(6,false);
-    ui->tabWidget->setTabEnabled(7,false);
 
 }
 
@@ -179,12 +178,14 @@ void AdminWin::on_pushButton_16_clicked()
 void AdminWin::on_pushButton_19_clicked()
 {
     QVariantList chap;
-    chap.append("Тема");
-    chap.append("Номер темы");
-    chap.append("Колличество вопросов");
+    chap.append("тема");
+    chap.append(val);
+    chap.append("INSERT");
     chap.append(ui->comboBox_3->currentText());
-    varWind = new AddVariants(chap);
-    varWind ->show();
+    chapterWindow = new chaptersettings(chap);
+    connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+    chap.clear();
+    chapterWindow ->show();
 }
 
 void AdminWin::on_pushButton_17_clicked()
@@ -238,13 +239,17 @@ void AdminWin::on_pushButton_18_clicked()
 
 void AdminWin::on_pushButton_21_clicked()
 {
-    QVariantList chapter;
-    chapter.append("тема");
-    chapter.append(val);
-    chapterWindow = new chaptersettings(chapter);
-    QObject::connect(chapterWindow, chaptersettings::updateBase, this, AdminWin::startUpdateBase);
-    chapter.clear();
-    chapterWindow ->show();
+    QVariantList chap;
+    if (val.toString()!="") {
+        chap.append("тема");
+        chap.append(val);
+        chap.append("UPDATE");
+        chap.append(ui->comboBox_3->currentText());
+        chapterWindow = new chaptersettings(chap);
+        connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+        chap.clear();
+        chapterWindow ->show();
+    }
 }
 
 
@@ -377,4 +382,24 @@ void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
+
+//Заготовка под нормальное расписывание кода по вкладкам
+void AdminWin::on_tabWidget_currentChanged(int index)
+{
+    if (index==0){
+        qDebug()<<"Вкладка Настройки";
+    } else if (index==1) {
+        qDebug()<<"Вкладка Пользователи";
+    } else if (index==2) {
+        qDebug()<<"Вкладка Департамент";
+    } else if (index==3) {
+        qDebug()<<"Вкладка Курсы";
+    } else if (index==4) {
+        qDebug()<<"Вкладка Темы";
+    } else if (index==5) {
+        qDebug()<<"Вкладка Вопросы";
+    } else if (index==6) {
+        qDebug()<<"Вкладка Результаты";
+    }
+}
 

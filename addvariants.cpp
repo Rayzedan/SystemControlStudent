@@ -8,7 +8,7 @@ AddVariants::AddVariants(QVariantList data, QWidget *parent) :
 {
     ui->setupUi(this);
     query = new QSqlQuery();
-
+    qDebug()<<"ДОБАВЛЕНИЕ";
 
     if (data[0].toString()=="Курс"){
         helpQ = new QSqlQuery();
