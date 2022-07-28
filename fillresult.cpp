@@ -40,7 +40,6 @@ void FillResult::on_pushButton_clicked()
     printer.setOutputFormat(QPrinter::PdfFormat);
     if (pathToPdf !="DEFAULT") {
         printer.setOutputFileName(pathToPdf+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
-
     }
     else {
         printer.setOutputFileName(QDir::currentPath()+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
