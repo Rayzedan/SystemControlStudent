@@ -255,6 +255,36 @@ void DataBase::updateChapter(QString name, QString newName, QString number, QStr
     }
 }
 
+void DataBase::createQuestion(QString type,QString question, QString variants, QString answer,QString chapter){
+    QSqlQuery query;
+    query.exec("SELECT Id From Chapters WHERE Name = '"+chapter+"';");
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    QList variant = variants.split("; ");
+    QString typeQuestion;
+    if (type=="Тестовый вопрос"){
+        typeQuestion ="0";
+    } else{
+        typeQuestion ="1";
+    }
+    query.prepare("Insert Into Questions(TypeQuestion,Question,Variant1,Variant2,Variant3,Variant4,CorrectAnswer, ChapterId) Values ("+typeQuestion+\
+                  ",'"+question+"','"+variant[0]+"','"+variant[1]+"','"+variant[2]+"','"+variant[3]+"',"+answer+","+id+")");
+    query.exec();
+};
+
+void DataBase::updateQuestion(QString oldquestion,QString question, QString variants, QString answer,QString chapter){
+    QSqlQuery query;
+    query.exec("SELECT Id From Chapters WHERE Name = '"+chapter+"'");
+    query.next();
+    QString id = query.value("Id").toString();
+    query.clear();
+    QList variant = variants.split("; ");
+    qDebug()<<"Запрос";
+    query.clear();
+    query.exec("UPDATE Questions SET Question = '"+question+"', Variant1 = '"+variant[0]+"', Variant2 = '"+variant[1]+"', Variant3 = '"+variant[2]+"', Variant4 = '"+variant[3]+"', CorrectAnswer = "+answer+", ChapterId = "+id+" Where Question = '"+oldquestion+"';");
+};
+
 bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers)
 {
     if (!correctAnswers.count(ID))

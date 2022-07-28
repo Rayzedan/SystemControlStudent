@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>480</height>
+    <width>812</width>
+    <height>483</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -195,6 +195,39 @@
           </property>
          </widget>
         </item>
+        <item row="7" column="1">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QTableWidget" name="tableWidget">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+             <property name="showGrid">
+              <bool>false</bool>
+             </property>
+             <property name="columnCount">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item row="8" column="1">
          <spacer name="verticalSpacer_4">
           <property name="orientation">
@@ -306,39 +339,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item row="7" column="1">
-         <widget class="QGroupBox" name="groupBox">
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <widget class="QTableWidget" name="tableWidget">
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="editTriggers">
-              <set>QAbstractItemView::NoEditTriggers</set>
-             </property>
-             <property name="showGrid">
-              <bool>false</bool>
-             </property>
-             <property name="columnCount">
-              <number>0</number>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_3"/>
-           </item>
-          </layout>
-         </widget>
         </item>
        </layout>
       </item>

@@ -99,6 +99,7 @@ private:
     QVariant valTheme;
     QVariant valCourse;
     QVariant valDepart;
+    QVariant valQuestion;
     QSqlQueryModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQueryModel *model_res_depart;

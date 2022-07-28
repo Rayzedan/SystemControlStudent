@@ -40,6 +40,8 @@ public:
     void createChapterCount(QString count, QString chapter);
     void updateChapterCount(QString count, QString chapter);
     void updateChapter(QString name, QString newName, QString number, QString newCourse);
+    void createQuestion(QString type,QString question, QString variants, QString answer,QString chapter);
+    void updateQuestion(QString oldquestion, QString question, QString variants, QString answer,QString chapter);
     bool insertIntoTable(QVariantList data);
     bool openDataBase();
 

@@ -53,4 +53,5 @@ RESOURCES += \
 
 DISTFILES += \
     resourses/L.png \
-    resourses/R.png
+    resourses/R.png \
+    resourses/icons8-expand-arrow-50.png
