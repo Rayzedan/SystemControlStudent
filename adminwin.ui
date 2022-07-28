@@ -50,7 +50,7 @@
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Tab">
       <property name="font">
@@ -65,7 +65,7 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="3" column="1">
+         <item row="3" column="2">
           <spacer name="verticalSpacer_2">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -78,8 +78,18 @@
            </property>
           </spacer>
          </item>
-         <item row="1" column="1">
-          <spacer name="verticalSpacer">
+         <item row="13" column="2">
+          <widget class="QLineEdit" name="passwordDb">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="2">
+          <spacer name="verticalSpacer_6">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -91,63 +101,14 @@
            </property>
           </spacer>
          </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_12">
            <property name="text">
-            <string>Порт</string>
+            <string>IP</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Путь сохранения</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLineEdit" name="lineEdit_3">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="1">
-          <widget class="QLineEdit" name="lineEdit_6">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLineEdit" name="lineEdit_4">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="2">
+         <item row="15" column="3">
           <widget class="QPushButton" name="pushButton">
            <property name="text">
             <string/>
@@ -164,8 +125,8 @@
            </property>
           </widget>
          </item>
-         <item row="8" column="1">
-          <widget class="QLineEdit" name="lineEdit_5">
+         <item row="10" column="2">
+          <widget class="QLineEdit" name="loginDb">
            <property name="font">
             <font>
              <family>Roboto</family>
@@ -174,20 +135,23 @@
            </property>
           </widget>
          </item>
-         <item row="7" column="1">
-          <spacer name="verticalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="lineEdit"/>
          </item>
-         <item row="6" column="0">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Путь сохранения</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
           <widget class="QLabel" name="label_10">
            <property name="font">
             <font>
@@ -200,20 +164,30 @@
            </property>
           </widget>
          </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="label_11">
+         <item row="8" column="2">
+          <widget class="QLineEdit" name="databaseName">
            <property name="font">
             <font>
              <family>Roboto</family>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
             </font>
-           </property>
-           <property name="text">
-            <string>Логин</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
+         <item row="1" column="2">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="3">
           <widget class="QToolButton" name="toolButton">
            <property name="font">
             <font>
@@ -233,127 +207,25 @@
            </property>
           </widget>
          </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>IP</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="ip"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Порт</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="port"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Название базы</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="databaseName"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>Логин</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="loginDb"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Пароль</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="passwordDb"/>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>463</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit">
+         <item row="5" column="2">
+          <widget class="QLineEdit" name="port">
            <property name="font">
             <font>
              <family>Roboto</family>
              <pointsize>14</pointsize>
             </font>
            </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
-         <item row="10" column="0">
-          <widget class="QLabel" name="label_12">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
+         <item row="13" column="0">
+          <widget class="QLabel" name="label_5">
            <property name="text">
             <string>Пароль</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_5">
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_11">
            <property name="font">
             <font>
              <family>Roboto</family>
@@ -361,21 +233,24 @@
             </font>
            </property>
            <property name="text">
-            <string>IP</string>
+            <string>Логин</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_2">
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_6">
            <property name="font">
             <font>
              <family>Roboto</family>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
+           </property>
+           <property name="text">
+            <string>Порт</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="6" column="2">
           <spacer name="verticalSpacer_4">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -388,165 +263,11 @@
            </property>
           </spacer>
          </item>
-         <item row="11" column="1">
-          <spacer name="verticalSpacer_14">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
+         <item row="2" column="2">
+          <widget class="QLineEdit" name="ip"/>
          </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_7">
-      <attribute name="title">
-       <string>Пользователи</string>
-      </attribute>
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_18" stretch="6,1">
-         <item>
-          <widget class="QListView" name="usersView">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QListView::item:alternate {
-	color: rgb(0, 0, 0);
-    background: #EEEEEE;
-}
-QListView::item:selected {
-    border: 1px solid black;
-}
-QListView::item {
-    border-bottom: 1px solid black;
-	padding: 5px;
-}
-QListView::item:selected:!active {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
-	color: rgb(0, 0, 0);
-}
-QListView::item:selected:active {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
-color: rgb(0, 0, 0);
-}
-QListView::item:hover {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
-color: rgb(0, 0, 0);
-}</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_17">
-         <item>
-          <widget class="QPushButton" name="pushButton_7">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_8">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_9">
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>14</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_5">
+         <item row="11" column="2">
+          <spacer name="verticalSpacer_12">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -718,6 +439,163 @@ color: rgb(0, 0, 0);
             </spacer>
            </item>
           </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="title">
+       <string>Пользователи</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_18" stretch="6,1">
+         <item>
+          <widget class="QListView" name="usersView">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListView::item:alternate {
+	color: rgb(0, 0, 0);
+    background: #EEEEEE;
+}
+QListView::item:selected {
+    border: 1px solid black;
+}
+QListView::item {
+    border-bottom: 1px solid black;
+	padding: 5px;
+}
+QListView::item:selected:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+	color: rgb(0, 0, 0);
+}
+QListView::item:selected:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}
+QListView::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_17">
+         <item>
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/add.png</normaloff>:/resourses/add.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_9">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
