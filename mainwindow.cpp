@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     AWindow = new AuthorizationWindow();
     connect(this, &MainWindow::startConfigMode, AWindow, &AuthorizationWindow::startMode);
+    connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
     configFile();
     ui->radioButton->setChecked(true);
     qDebug() << configMode;    
@@ -29,6 +30,7 @@ void MainWindow::on_pushButton_clicked()
     if (ui->radioButton->isChecked()) {
         admWindow = new AdminWin();
         qDebug() << admWindow;
+
         connect(admWindow, &AdminWin::secondWindow, this, &MainWindow::show);
         connect(this, &MainWindow::backToStart, AWindow, &AuthorizationWindow::takePoint);
         emit backToStart(admWindow);

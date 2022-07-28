@@ -24,6 +24,7 @@ void AuthorizationWindow::closeEvent(QCloseEvent *event)
 {
     qDebug() << "exit from autWin";
     event->accept();
+    emit firstWindow();
 }
 
 

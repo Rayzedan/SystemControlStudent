@@ -29,6 +29,7 @@ public slots:
     void startMode(bool configMode);
 signals:   
     void sendData(QString login);
+    void firstWindow();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

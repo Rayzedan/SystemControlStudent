@@ -1,13 +1,14 @@
 #include "testforstudent.h"
 #include "ui_testforstudent.h"
 #include "studentwindow.h"
+//#include <QDir>
 
 TestForStudent::TestForStudent(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::TestForStudent)
 {
     ui->setupUi(this);
-
+    //qDebug() << QDir::currentPath();
 }
 
 TestForStudent::~TestForStudent()
