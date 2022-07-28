@@ -19,6 +19,7 @@ public:
     explicit DataBase(QObject *parent = nullptr);
     ~DataBase();
 
+    bool createNewConnection(QVariantList config);
     void closeDataBase();
     bool checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers);
     bool checkTextAnswer(QString answerUser ,const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers);

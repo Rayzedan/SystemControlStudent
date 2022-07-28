@@ -7,6 +7,7 @@
 #include <QSqlTableModel>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
+#include "QSettings"
 #include "database.h"
 #include "addusers.h"
 #include "chaptersettings.h"
@@ -86,6 +87,8 @@ private slots:
     void on_comboBox_6_currentTextChanged(const QString &arg1);
 
     void on_tabWidget_currentChanged(int index);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::AdminWin *ui;

@@ -26,6 +26,7 @@ public:
 
 public slots:
     void takePoint(AdminWin *admWin);
+    void startMode(bool configMode);
 signals:   
     void sendData(QString login);
 
@@ -43,5 +44,7 @@ private:
     DataBase *db;
     QSqlQueryModel *model;
     AdminWin *Awin;
+    QString adminPassword = "WFRVXVJcaVRUTw==";
+    bool mode = false;
 };
 #endif // AUTHORIZATIONWINDOW_H

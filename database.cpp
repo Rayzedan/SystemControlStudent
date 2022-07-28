@@ -12,15 +12,14 @@ DataBase::~DataBase()
 }
 
 // Метод для открытия БД
-bool DataBase::openDataBase()
+bool DataBase::createNewConnection(QVariantList config)
 {
     // конфиг бд для админа
-    QString host ="127.0.0.1";
-    QString database = "ExaminationSystem";
-    QString login = "root";
-    QString password = "123";
-
-
+    QString host =config[0].toString();
+    QString database = config[1].toString();
+    QString login = decodePassword(config[2].toString());
+    QString password = decodePassword(config[3].toString());
+    qDebug() << host << " " << database << " " << login << " " << password;
     db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName(QString("DRIVER={SQL Server};""SERVER=%1;DATABASE=%2;UID=%3;\
     PWD=%4;").arg(host,database,login,password));
@@ -32,7 +31,7 @@ bool DataBase::openDataBase()
             return true;
     }
      else {
-            qDebug()<< "error open database" << db.lastError().text();
+            qDebug()<< "error open database" << db.lastError().text();            
             return false;
     }
 }
@@ -73,8 +72,7 @@ bool DataBase::checkData(const QString login, const QString password_user)
         query.finish();
         return true;
     }
-    else {
-        QMessageBox :: warning (NULL, "Ошибка", "Неверное имя пользователя или пароль");
+    else {        
         return false;
     }
 }

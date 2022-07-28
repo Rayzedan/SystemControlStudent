@@ -309,9 +309,21 @@ void AdminWin::on_courseView_clicked(const QModelIndex &index)
 
 void AdminWin::on_toolButton_clicked()
 {
+    bool goChange = true;
     pathFile = QFileDialog::getExistingDirectory(this, "Выбор папки", "");
     qDebug() << pathFile;
     ui->lineEdit->setText(pathFile);
+    if (pathFile.isEmpty()) {
+        goChange = false;
+    }
+    if (goChange) {
+        QString fileName = "config.ini";
+        QSettings settings(fileName, QSettings::IniFormat);
+        settings.beginGroup("userSettings");
+        settings.setValue("path",pathFile);
+        settings.endGroup();
+    }
+
 }
 
 
@@ -341,62 +353,106 @@ void AdminWin::startUpdateBase(int mode)
 
 void AdminWin::takeLogin(QString login)
 {
-    model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
-    ui->tableView_2->setModel(model_res);
-    ui->tableView_2->verticalHeader()->setVisible(false);
-    ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    if (login!= "DEFAULT") {
+        model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
+        ui->tableView_2->setModel(model_res);
+        ui->tableView_2->verticalHeader()->setVisible(false);
+        ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    model_res_users ->setQuery("Select login From Users Order by login");
-    ui->usersView->setModel(model_res_users);
-    ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+        model_res_users ->setQuery("Select login From Users Order by login");
+        ui->usersView->setModel(model_res_users);
+        ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
 
-    model_res_depart->setQuery("Select name From Departments Order by name");
-    ui->DepartView->setModel(model_res_depart);
-    ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+        model_res_depart->setQuery("Select name From Departments Order by name");
+        ui->DepartView->setModel(model_res_depart);
+        ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
 
 
-    ui->comboBox->setModel(model_res_depart);
-    ui->comboBox_2->setModel(model_res_depart);
-    ui->comboBox_4->setModel(model_res_depart);
+        ui->comboBox->setModel(model_res_depart);
+        ui->comboBox_2->setModel(model_res_depart);
+        ui->comboBox_4->setModel(model_res_depart);
 
-    qDebug() << login;
-    query = new QSqlQuery();
-    query->exec("Select Permissions from Users where Login = '" +login+ "'");
-    query->next();
-    QString acc =query->value("Permissions").toString();
-       int accses = acc.toInt();
-    for (int count = 7;count>=0;count--)
-    {
-        int check =pow(2,count);
-        if ((accses-check)>=0){
-            accses=accses-check;
-            switch (check) {
-            case 1:
-                ui->tabWidget->setTabEnabled(0,true);
-                break;
-            case 2:
-                ui->tabWidget->setTabEnabled(1,true);
-                break;
-            case 4:
-                ui->tabWidget->setTabEnabled(2,true);
-                break;
-            case 8:
-                ui->tabWidget->setTabEnabled(3,true);
-                break;
-            case 16:
-                ui->tabWidget->setTabEnabled(4,true);
-                break;
-            case 32:
-                ui->tabWidget->setTabEnabled(5,true);
-                break;
-            case 64:
-                ui->tabWidget->setTabEnabled(6,true);
-                break;
+        qDebug() << login;
+        query = new QSqlQuery();
+        query->exec("Select Permissions from Users where Login = '" +login+ "'");
+        query->next();
+        QString acc =query->value("Permissions").toString();
+           int accses = acc.toInt();
+        for (int count = 7;count>=0;count--)
+        {
+            int check =pow(2,count);
+            if ((accses-check)>=0){
+                accses=accses-check;
+                switch (check) {
+                case 1:
+                    ui->tabWidget->setTabEnabled(0,true);
+                    break;
+                case 2:
+                    ui->tabWidget->setTabEnabled(1,true);
+                    break;
+                case 4:
+                    ui->tabWidget->setTabEnabled(2,true);
+                    break;
+                case 8:
+                    ui->tabWidget->setTabEnabled(3,true);
+                    break;
+                case 16:
+                    ui->tabWidget->setTabEnabled(4,true);
+                    break;
+                case 32:
+                    ui->tabWidget->setTabEnabled(5,true);
+                    break;
+                case 64:
+                    ui->tabWidget->setTabEnabled(6,true);
+                    break;
+                }
             }
         }
     }
+    else {
+        ui->tabWidget->setTabEnabled(0,true);
+    }
+
 }
 
+
+void AdminWin::on_pushButton_clicked()
+{
+    QVariantList data;
+    bool goChange = true;
+    if (ui->ip->text()=="") {
+        QMessageBox::warning(this,"","Введите IP");
+        goChange = false;
+    }
+    if (ui->port->text()=="") {
+        QMessageBox::warning(this,"","Введите порт");
+        goChange = false;
+    }
+    if (ui->databaseName->text()=="") {
+        QMessageBox::warning(this,"","Введите имя базы данных");
+        goChange = false;
+    }
+    if (ui->loginDb->text()=="") {
+        QMessageBox::warning(this,"","Введите логин");
+        goChange = false;
+    }
+    if (ui->passwordDb->text()=="") {
+        QMessageBox::warning(this,"","Введите пароль");
+        goChange = false;
+    }
+    if (goChange) {
+        QString fileName = "config.ini";
+        QSettings settings(fileName, QSettings::IniFormat);
+        settings.beginGroup("userSettings");
+        settings.setValue("host",ui->ip->text() + "," + ui->port->text());
+        settings.setValue("database", ui->databaseName->text());
+        settings.setValue("login", db->encryptPassword(ui->loginDb->text()));
+        settings.setValue("password",db->encryptPassword(ui->passwordDb->text()));
+        settings.endGroup();
+        QMessageBox::information(this, "", "Изменения вступят в силу после следующего перезапуска");
+        this->close();
+    }
+}
 
 
 
@@ -428,4 +484,3 @@ void AdminWin::on_tabWidget_currentChanged(int index)
         indexTab = 6;
     }
 }
-

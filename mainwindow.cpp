@@ -7,9 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    db.openDataBase();
+    AWindow = new AuthorizationWindow();
+    connect(this, &MainWindow::startConfigMode, AWindow, &AuthorizationWindow::startMode);
+    configFile();
     ui->radioButton->setChecked(true);
+    qDebug() << configMode;    
 }
 
 MainWindow::~MainWindow()
@@ -25,8 +27,6 @@ void MainWindow::on_pushButton_clicked()
 {
     // Проверяем какая из кнопок для выбора пользователя нажата
     if (ui->radioButton->isChecked()) {
-
-        AWindow = new AuthorizationWindow();
         admWindow = new AdminWin();
         qDebug() << admWindow;
         connect(admWindow, &AdminWin::secondWindow, this, &MainWindow::show);
@@ -38,7 +38,6 @@ void MainWindow::on_pushButton_clicked()
     }
 
     if (ui->radioButton_2->isChecked()) {
-
         SWindow = new StudentWindow();
         resWin = new FillResult();
         testWindow = new TestForStudent();
@@ -53,4 +52,30 @@ void MainWindow::on_pushButton_clicked()
         SWindow->show();
         this->close();
     }
+}
+
+void MainWindow::configFile()
+{
+    QString fileName = "config.ini";
+    QSettings settings(fileName, QSettings::IniFormat);
+    if (!QFile::exists(fileName)) {
+       qDebug() << "FILE" << fileName <<" DON'T EXIST";
+       settings.beginGroup("userSettings");
+       settings.setValue("host", "");
+       settings.setValue("database", "");
+       settings.setValue("login", "");
+       settings.setValue("password", "");
+       settings.setValue("pathFile", "");
+       settings.endGroup();       
+    } else {             
+        settings.beginGroup("userSettings");
+        data.append(settings.value("host").toString());
+        data.append(settings.value("database").toString());
+        data.append(settings.value("login").toString());
+        data.append(settings.value("password").toString());
+        settings.endGroup();
+       }
+    configMode = db.createNewConnection(data);
+    qDebug() << configMode;
+    emit startConfigMode(configMode);
 }

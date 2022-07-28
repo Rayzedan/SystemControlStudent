@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 #include "database.h"
 #include "fillresult.h"
 #include "testforstudent.h"
@@ -24,10 +25,15 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-signals:
+public slots:
+    void configFile();
+
+signals:    
     void backToStart(AdminWin *AdmWin);  //Сигнал для соединения окна администрирования и окна авторизации
     void backFromResult (FillResult *resWindow);
     void sendPoint (TestForStudent *testWin);
+    void startConfigMode (bool configMode);
+
 
 private slots:
     void on_pushButton_clicked();
@@ -36,10 +42,12 @@ private:
     Ui::MainWindow *ui;
     DataBase db;
     StudentWindow *SWindow;
+    QVariantList data;
     AuthorizationWindow *AWindow;
     AdminWin *admWindow;
     TestForStudent *testWindow;
     FillResult *resWin;
+    bool configMode;
 };
 
 #endif // MAINWINDOW_H

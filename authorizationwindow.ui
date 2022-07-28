@@ -62,21 +62,6 @@
         <property name="styleSheet">
          <string notr="true"/>
         </property>
-        <item>
-         <property name="text">
-          <string>bzfb</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Новый элемент</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Новый элемент</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item>

@@ -109,7 +109,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="ip"/>
        </item>
        <item>
         <widget class="QLabel" name="label_6">
@@ -119,7 +119,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_3"/>
+        <widget class="QLineEdit" name="port"/>
        </item>
        <item>
         <widget class="QLabel" name="label_10">
@@ -129,7 +129,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_4"/>
+        <widget class="QLineEdit" name="databaseName"/>
        </item>
        <item>
         <widget class="QLabel" name="label_11">
@@ -139,7 +139,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_5"/>
+        <widget class="QLineEdit" name="loginDb"/>
        </item>
        <item>
         <widget class="QLabel" name="label_12">
@@ -149,7 +149,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_6"/>
+        <widget class="QLineEdit" name="passwordDb"/>
        </item>
        <item>
         <spacer name="verticalSpacer_2">
