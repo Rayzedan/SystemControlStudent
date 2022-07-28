@@ -33,6 +33,7 @@ AdminWin::~AdminWin()
     delete model_res_course;
     delete model_res_depart;
     delete model_res_users;
+    delete model_res_question;
     qDebug() << "destroy adm";
 }
 
@@ -43,7 +44,7 @@ void AdminWin::closeEvent(QCloseEvent *event)
     //this->destroy();
     emit secondWindow();
 }
-
+//Кнопка создания пользователя
 void AdminWin::on_pushButton_7_clicked()
 {
     QString val = "-1";
@@ -51,12 +52,12 @@ void AdminWin::on_pushButton_7_clicked()
     AddWindow->show();
 }
 
-
+//Выбор пользователя для удаления или изменения
 void AdminWin::on_usersView_clicked(const QModelIndex &index)
 {
     val = index.data().toString();
 }
-
+//Кнопка удаления пользователя
 void AdminWin::on_pushButton_8_clicked()
 {
     if (val.toString()==""){
@@ -69,7 +70,7 @@ void AdminWin::on_pushButton_8_clicked()
         QMessageBox :: information (this, "", "Успешное удаление пользователя.");
     }
 }
-
+//Кнопка настройки пользователя
 void AdminWin::on_pushButton_9_clicked()
 {
     if (val.toString()==""){
@@ -98,7 +99,6 @@ void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
         qDebug() << "comboBox_1";
         CourseQuery(arg1);
         ui->courseView->setModel(model_res_course);
-        //ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
     }
 }
 
