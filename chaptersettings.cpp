@@ -10,7 +10,6 @@ chaptersettings::chaptersettings(QVariantList dataUser, QWidget *parent) :
     model = new QSqlQueryModel();
     data = dataUser;
     qDebug()<<dataUser;
-    qDebug()<<"НАСТРОЙКИ";
     setData(data);    
 }
 
@@ -67,7 +66,6 @@ void chaptersettings::setData(QVariantList dataUser)
         query.exec("SELECT Time From TimeCourses WHERE CourseId = "+id+";");
         query.next();        
         QString time = query.value("Time").toString();
-        qDebug() << time;
         query.clear();
         model1->setQuery("SELECT Name From Departments");
         ui->label_1->setText("Имя курса");
@@ -91,13 +89,11 @@ void chaptersettings::setData(QVariantList dataUser)
         QSqlQuery query;
         query.exec("SELECT Id, Number From Chapters WHERE Name = '"+data[1].toString()+"';");
         query.next();
-        qDebug() << query.lastError().text();
         QString id = query.value("Id").toString();
         QString number = query.value("Number").toString();
         query.clear();
         query.exec("SELECT Count From CountChapters WHERE ChapterId = "+id+";");
         query.next();
-        qDebug() << query.lastError().text();
         QString count = query.value("Count").toString();
         query.clear();        
         ui->label_1->setText("Название темы");
@@ -125,7 +121,6 @@ void chaptersettings::setData(QVariantList dataUser)
         QSqlQuery query;
         query.exec("SELECT Id, Variant1, Variant2, Variant3, Variant4, CorrectAnswer From Questions WHERE question = '"+data[1].toString()+"';");
         query.next();
-        qDebug() << query.lastError().text();
         QString id = query.value("Id").toString();
         QString variants= query.value("Variant1").toString()+"; "+query.value("Variant2").toString()+"; "+query.value("Variant3").toString()\
                 +"; "+query.value("Variant4").toString();

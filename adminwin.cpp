@@ -98,7 +98,7 @@ void AdminWin::on_comboBox_currentTextChanged(const QString &arg1)
         qDebug() << "comboBox_1";
         CourseQuery(arg1);
         ui->courseView->setModel(model_res_course);
-        ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
+        //ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
     }
 }
 
@@ -119,7 +119,6 @@ void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
         qDebug()<<"comboBox_3";
         ChapterQuery(arg1);
         ui->listView->setModel(model_res_chapter);
-        ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;}" );
     }
 }
 
@@ -365,20 +364,18 @@ void AdminWin::startUpdateBase(int mode)
         model_res_depart = new QSqlQueryModel();
         model_res_depart->setQuery("Select name From Departments Order by name");
         ui->DepartView->setModel(model_res_depart);
-        ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; line-height: 5 }" );
     }
     if (mode == 2)
     {
         model_res_course = new QSqlQueryModel();
         model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+ui->comboBox->currentText()+"' and Departments.Id=Courses.DepartmentId");
         ui->courseView->setModel(model_res_course);
-        ui->courseView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;line-height: 5}" );
+
     }
     if (mode == 3)
      {
         model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+ui->comboBox_3->currentText()+"' and Courses.Id=Chapters.CourseId");
         ui->listView->setModel(model_res_chapter);
-        ui->listView->setStyleSheet( "QListView::item { border-bottom: 1px solid black;line-height: 5}" );
      }
 }
 
@@ -391,13 +388,8 @@ void AdminWin::takeLogin(QString login)
 
     model_res_users ->setQuery("Select login From Users Order by login");
     ui->usersView->setModel(model_res_users);
-    ui->usersView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
-
     model_res_depart->setQuery("Select name From Departments Order by name");
     ui->DepartView->setModel(model_res_depart);
-    ui->DepartView->setStyleSheet( "QListView::item { border-bottom: 1px solid black; }" );
-
-
     ui->comboBox->setModel(model_res_depart);
     ui->comboBox_2->setModel(model_res_depart);
     ui->comboBox_4->setModel(model_res_depart);

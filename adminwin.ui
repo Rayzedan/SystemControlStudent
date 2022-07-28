@@ -43,11 +43,14 @@
        <pointsize>16</pointsize>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="tabPosition">
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="Tab">
       <property name="font">
@@ -228,6 +231,33 @@
              <pointsize>14</pointsize>
             </font>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QListView::item:alternate {
+	color: rgb(0, 0, 0);
+    background: #EEEEEE;
+}
+QListView::item:selected {
+    border: 1px solid black;
+}
+QListView::item {
+    border-bottom: 1px solid black;
+}
+QListView::item:selected:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+	color: rgb(0, 0, 0);
+}
+QListView::item:selected:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}
+QListView::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}</string>
+           </property>
           </widget>
          </item>
          <item>
@@ -328,14 +358,14 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer_20">
+        <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>312</height>
+           <height>40</height>
           </size>
          </property>
         </spacer>
@@ -356,6 +386,33 @@
              <family>Roboto</family>
              <pointsize>14</pointsize>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListView::item:alternate {
+	color: rgb(0, 0, 0);
+    background: #EEEEEE;
+}
+QListView::item:selected {
+    border: 1px solid black;
+}
+QListView::item {
+    border-bottom: 1px solid black;
+}
+QListView::item:selected:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+	color: rgb(0, 0, 0);
+}
+QListView::item:selected:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}
+QListView::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}</string>
            </property>
           </widget>
          </item>
@@ -518,6 +575,33 @@
              <family>Roboto</family>
              <pointsize>14</pointsize>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListView::item:alternate {
+	color: rgb(0, 0, 0);
+    background: #EEEEEE;
+}
+QListView::item:selected {
+    border: 1px solid black;
+}
+QListView::item {
+    border-bottom: 1px solid black;
+}
+QListView::item:selected:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+	color: rgb(0, 0, 0);
+}
+QListView::item:selected:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}
+QListView::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}</string>
            </property>
           </widget>
          </item>
@@ -698,7 +782,43 @@
           </layout>
          </item>
          <item>
-          <widget class="QListView" name="listView"/>
+          <widget class="QListView" name="listView">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListView::item:alternate {
+	color: rgb(0, 0, 0);
+    background: #EEEEEE;
+
+}
+
+QListView::item:selected {
+    border: 1px solid black;
+}
+QListView::item {
+    border-bottom: 1px solid black;
+}
+QListView::item:selected:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+	color: rgb(0, 0, 0);
+}
+QListView::item:selected:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}
+QListView::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+color: rgb(0, 0, 0);
+}</string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="verticalSpacer_11">
@@ -881,7 +1001,14 @@
           </layout>
          </item>
          <item>
-          <widget class="QTableView" name="tableView"/>
+          <widget class="QTableView" name="tableView">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -1004,7 +1131,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableView" name="tableView_2"/>
+          <widget class="QTableView" name="tableView_2">
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
