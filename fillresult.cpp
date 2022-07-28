@@ -1,6 +1,7 @@
 #include "fillresult.h"
 #include "ui_fillresult.h"
 #include "studentwindow.h"
+#include <QSettings>
 
 FillResult::FillResult(QWidget *parent) :
     QWidget(parent),
@@ -70,6 +71,7 @@ void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAn
 
 void FillResult::takeData(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes)
 {
+    takePath();
     take_data = result;
     setTable(themes, countAllAnswers);
     ui->name->setText(take_data[0].toString());
@@ -86,6 +88,17 @@ void FillResult::takeData(QMap<QString, int> countAllAnswers, QVariantList resul
     }
     ui->course->setText(take_data[7].toString());
     ui->time->setText(take_data[8].toString());
+}
+
+void FillResult::takePath()
+{
+    QString fileName = "config.ini";
+    QSettings settings(fileName, QSettings::IniFormat);
+    settings.beginGroup("userSettings");
+    pathToPdf.append(settings.value("path").toString());
+    settings.endGroup();
+    qDebug() << pathToPdf;
+
 }
 
 // Закрываем окно

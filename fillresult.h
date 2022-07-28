@@ -29,6 +29,7 @@ public:
 
 public slots:
     void takeData(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes);
+    void takePath();
 
 signals:
     void startWindow();
@@ -45,6 +46,7 @@ private:
     QVariantList take_data;
     QString resultThemes;
     QString newPath;
+    QString pathToPdf;
 
 };
 
