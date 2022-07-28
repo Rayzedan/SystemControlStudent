@@ -63,12 +63,13 @@ void MainWindow::configFile()
     if (!QFile::exists(fileName)) {
        qDebug() << "FILE" << fileName <<" DON'T EXIST";
        settings.beginGroup("userSettings");
-       settings.setValue("host", "");
-       settings.setValue("database", "");
-       settings.setValue("login", "");
-       settings.setValue("password", "");
-       settings.setValue("pathFile", "");
-       settings.endGroup();       
+       settings.setValue("host", "DEFAULT");
+       settings.setValue("database", "DEFAULT");
+       settings.setValue("login", "DEFAULT");
+       settings.setValue("password", "DEFAULT");
+       settings.setValue("pathFile", "DEFAULT");
+       settings.endGroup();
+       configMode = false;
     } else {             
         settings.beginGroup("userSettings");
         data.append(settings.value("host").toString());
@@ -76,8 +77,8 @@ void MainWindow::configFile()
         data.append(settings.value("login").toString());
         data.append(settings.value("password").toString());
         settings.endGroup();
-       }
-    configMode = db.createNewConnection(data);
+        configMode = db.createNewConnection(data);
+       }    
     qDebug() << configMode;
     emit startConfigMode(configMode);
 }

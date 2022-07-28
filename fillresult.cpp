@@ -2,6 +2,7 @@
 #include "ui_fillresult.h"
 #include "studentwindow.h"
 #include <QSettings>
+#include <QDir>
 
 FillResult::FillResult(QWidget *parent) :
     QWidget(parent),
@@ -37,7 +38,13 @@ void FillResult::on_pushButton_clicked()
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName("C:/pro/"+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
+    if (pathToPdf !="DEFAULT") {
+        printer.setOutputFileName(pathToPdf+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
+
+    }
+    else {
+        printer.setOutputFileName(QDir::currentPath()+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
+    }
     printer.setPageMargins(QMarginsF(15, 15, 15, 15));
     document.print(&printer);
 }

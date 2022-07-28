@@ -11,7 +11,6 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
     ui->password->setEchoMode(QLineEdit::Password);
 
 
-
 }
 
 AuthorizationWindow::~AuthorizationWindow()
@@ -24,7 +23,7 @@ void AuthorizationWindow::closeEvent(QCloseEvent *event)
 {
     qDebug() << "exit from autWin";
     event->accept();
-    emit firstWindow();
+
 }
 
 
@@ -53,7 +52,6 @@ void AuthorizationWindow::on_pushButton_2_clicked()
             QVariantList data;
             data.append(ui->login->currentText());
             data.append(password_user);
-            // Выделяем память для окна администратора
             connect(this, &AuthorizationWindow::sendData,Awin,&AdminWin::takeLogin);
             emit sendData(ui->login->currentText());
             Awin->show();
@@ -70,7 +68,8 @@ void AuthorizationWindow::on_pushButton_2_clicked()
 // Кнопка возврата к начальному окну
 void AuthorizationWindow::on_pushButton_clicked()
 {
-    this->close();    
+    this->close();
+    emit firstWindow();
 }
 
 
