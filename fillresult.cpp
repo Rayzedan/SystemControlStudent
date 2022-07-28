@@ -26,10 +26,10 @@ void FillResult::on_pushButton_clicked()
     QString current_time =ui->label_14->text();
     QString html =
     "<html>""<head>""<style>p,h2 {font-family: Times New Roman;font-size:14pt}</style></head>"\
-    "<body><h2><center>Результаты Тестирования</center></h2>""<div><p>Курс: "+course+"<br></span></p><p>ФИО: "+name+\
-    "<br></p><p>Компания: "+company+"<br></p><p>Дата:"+current_time+"<br></p><p>Общий процент верных ответов: "+credit+\
-    "<br></p><p>Результаты по темам:<br>"+resultThemes+"</p><p>Время выполнения: "+time+"<br></p><p>Результат: "+result+\
-            "<br></p></div></body></html>";
+    "<body><h2><center>Приложение к сертификату</center></h2>""<div><p>Выдан: "+name+\
+    ", компания: '"+company+"'<br></p><p>За прохождение курса '"+course+"'<br></span></p><p>Дата прохождения:"+current_time+\
+    "<br></p><p>Результаты по темам:<br>"+resultThemes+"</p><p>Общий процент верных ответов: "+credit+"<br></p><p>Время выполнения: "+time+\
+    "<br></p><p>Результат: "+result+"<br></p></div></body></html>";
 
     QTextDocument document;
     document.setHtml(html);
