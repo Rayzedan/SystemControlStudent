@@ -125,8 +125,7 @@ void AdminWin::on_comboBox_3_currentTextChanged(const QString &arg1)
 void AdminWin::on_comboBox_4_currentTextChanged(const QString &arg1)
 {
     if (indexTab == 5) {
-        qDebug() << "comboBox_4";
-        model_res_chapter->clear();
+        qDebug() << "comboBox_4";        
         model_res_question->clear();
         CourseQuery(arg1);
         ui->comboBox_5->setModel(model_res_course);
@@ -138,7 +137,7 @@ void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 {
     if (indexTab == 5) {
         qDebug() << arg1;
-        model_res_question->clear();
+//        model_res_question->clear();
         ChapterQuery(arg1);
         ui->comboBox_6 ->setModel(model_res_chapter);
     }
@@ -337,6 +336,7 @@ void AdminWin::on_pushButton_15_clicked()
     } else {
         QSqlQuery query;
         query.exec("DELETE FROM Questions WHERE Question='"+valQuestion.toString()+"';");
+        startUpdateBase(4);
         QMessageBox :: information (this, "", "Успешное удаление вопроса.");
     }
 }
@@ -377,22 +377,37 @@ void AdminWin::startUpdateBase(int mode)
 {
     if (mode == 1)
     {
-        model_res_depart = new QSqlQueryModel();
+        //model_res_depart = new QSqlQueryModel();
         model_res_depart->setQuery("Select name From Departments Order by name");
         ui->DepartView->setModel(model_res_depart);
     }
     if (mode == 2)
     {
-        model_res_course = new QSqlQueryModel();
+        //model_res_course = new QSqlQueryModel();
         model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+ui->comboBox->currentText()+"' and Departments.Id=Courses.DepartmentId");
         ui->courseView->setModel(model_res_course);
-
     }
     if (mode == 3)
      {
+        model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+ui->comboBox_2->currentText()+"' and Departments.Id=Courses.DepartmentId");
+        ui->comboBox_3->setModel(model_res_course);
         model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+ui->comboBox_3->currentText()+"' and Courses.Id=Chapters.CourseId");
-        ui->listView->setModel(model_res_chapter);
+        ui->listView->setModel(model_res_chapter);        
      }
+    if (mode ==4) {
+        model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+ui->comboBox_4->currentText()+"' and Departments.Id=Courses.DepartmentId");
+        ui->comboBox_5->setModel(model_res_course);
+        if (ui->comboBox_6->currentText()!="") {
+            qDebug() << "update base";
+            model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
+                                         "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+ui->comboBox_6->currentText()+"' and Chapters.Id=Questions.ChapterId");
+             ui->tableView->setModel(model_res_question);
+        }
+    }
+    if (mode ==6) {
+        model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
+        ui->tableView_2->setModel(model_res);
+    }
 }
 
 void AdminWin::takeLogin(QString login)
@@ -519,8 +534,10 @@ void AdminWin::on_tabWidget_currentChanged(int index)
     } else if (index==5) {
         qDebug()<<"Вкладка Вопросы";
         indexTab = 5;
+        startUpdateBase(4);
     } else if (index==6) {
         qDebug()<<"Вкладка Результаты";
         indexTab = 6;
+        startUpdateBase(6);
     }
 }
