@@ -154,6 +154,7 @@ void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
         ui->tableView->setModel(model_res_question);
         ui->tableView->verticalHeader()->setVisible(false);
         ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->tableView->resizeRowsToContents();
     }
 }
 
@@ -401,14 +402,15 @@ void AdminWin::takeLogin(QString login)
         ui->tableView_2->setModel(model_res);
         ui->tableView_2->verticalHeader()->setVisible(false);
         ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->tableView_2->resizeRowsToContents();
 
-    model_res_users ->setQuery("Select login From Users Order by login");
-    ui->usersView->setModel(model_res_users);
-    model_res_depart->setQuery("Select name From Departments Order by name");
-    ui->DepartView->setModel(model_res_depart);
-    ui->comboBox->setModel(model_res_depart);
-    ui->comboBox_2->setModel(model_res_depart);
-    ui->comboBox_4->setModel(model_res_depart);
+        model_res_users ->setQuery("Select login From Users Order by login");
+        ui->usersView->setModel(model_res_users);
+        model_res_depart->setQuery("Select name From Departments Order by name");
+        ui->DepartView->setModel(model_res_depart);
+        ui->comboBox->setModel(model_res_depart);
+        ui->comboBox_2->setModel(model_res_depart);
+        ui->comboBox_4->setModel(model_res_depart);
 
         qDebug() << login;
         query = new QSqlQuery();

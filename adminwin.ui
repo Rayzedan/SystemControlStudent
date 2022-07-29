@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>600</height>
+    <width>1280</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1080</width>
-    <height>600</height>
+    <width>1280</width>
+    <height>720</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1080</width>
-    <height>600</height>
+    <width>4096</width>
+    <height>2304</height>
    </size>
   </property>
   <property name="font">
@@ -37,6 +37,24 @@
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="TabWidget" name="tabWidget">
+     <property name="minimumSize">
+      <size>
+       <width>720</width>
+       <height>576</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>4096</width>
+       <height>2304</height>
+      </size>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>1</width>
+       <height>1</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <family>Roboto</family>
@@ -1096,6 +1114,9 @@ color: rgb(0, 0, 0);
              <family>Roboto</family>
              <pointsize>14</pointsize>
             </font>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustIgnored</enum>
            </property>
           </widget>
          </item>
