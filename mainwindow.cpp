@@ -67,7 +67,7 @@ void MainWindow::configFile()
        settings.setValue("database", "DEFAULT");
        settings.setValue("login", "DEFAULT");
        settings.setValue("password", "DEFAULT");
-       settings.setValue("pathFile", "DEFAULT");
+       settings.setValue("path", "DEFAULT");
        settings.endGroup();
        configMode = false;
     } else {             

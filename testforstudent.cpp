@@ -1,14 +1,13 @@
 #include "testforstudent.h"
 #include "ui_testforstudent.h"
 #include "studentwindow.h"
-//#include <QDir>
+
 
 TestForStudent::TestForStudent(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::TestForStudent)
 {
-    ui->setupUi(this);
-    //qDebug() << QDir::currentPath();
+    ui->setupUi(this);    
 }
 
 TestForStudent::~TestForStudent()
@@ -46,7 +45,7 @@ void TestForStudent::on_pushButton_clicked()
 void TestForStudent::on_pushButton_2_clicked()
 {
     countAnsw = 0;
-    currentQuestId = query->value("Id").toInt();
+    currentQuestId = query->value("idQuest").toInt();
     qDebug() << currentQuestId;
     if (query->previous() && currentQuestId!=firstQuestId)
     {
@@ -82,6 +81,13 @@ void TestForStudent::dataCheckBox()
     {
         countAnsw+=8;
     }
+    if (ui->checkBox->isChecked()==0 && ui->checkBox_2->isChecked()==0 && ui->checkBox_3->isChecked()==0 && ui->checkBox_4->isChecked()==0) {
+        countAnsw=0;
+    }
+    ui->checkBox->setChecked(false);
+    ui->checkBox_2->setChecked(false);
+    ui->checkBox_3->setChecked(false);
+    ui->checkBox_4->setChecked(false);
 }
 
 void TestForStudent::setData(const int typeQuestion)
@@ -107,19 +113,24 @@ void TestForStudent::setData(const int typeQuestion)
 
 void TestForStudent::updateTime()
 {
-    if (time.toString("m:ss")!="0:50")
+    if (time.toString("hh:mm:ss")!="00:00:00")
     {
         time = time.addSecs(-1);
-        ui->countdown->setText(time.toString("m:ss"));
-        resultTime = time.toString("m:ss");
-        //qDebug() << resultTime;
+        timeResult = timeResult.addSecs(+1);
+        ui->countdown->setText(time.toString("hh:mm:ss"));
+        resultTime = time.toString("hh:mm:ss");
+        qDebug() << timeResult.toString("hh:mm:ss");
     }
     else
     {
-        while (query-> next())
+        inputAnswer();
+        while (query-> next()) {
+            inputAnswer();
+            setData(query->value("TypeQuestion").toInt());
+        }
             sizeTest++;
         QMessageBox::warning(this,"Внимание!", "Время вышло");
-        inputAnswer();
+
         outputAnswer();
         timer->stop();
     }
@@ -128,10 +139,10 @@ void TestForStudent::updateTime()
 void TestForStudent::inputAnswer()
 {
     countAnsw = 0;
-    currentQuestId = query->value("Id").toInt();
+    currentQuestId = query->value("idQuest").toInt();
     chapterName = query->value("Name").toString();
     int typeQuest = query->value("TypeQuestion").toInt();
-
+    qDebug() << currentQuestId << " " << chapterName << " " << typeQuest;
     //db->countAllAnswer(currentQuestId, countAllAnswers);
 
     if (typeQuest ==0)
@@ -139,11 +150,13 @@ void TestForStudent::inputAnswer()
         dataCheckBox();
         if (db->checkAnswer(countAnsw, chapterName, dataAnswer, query->value("CorrectAnswer").toInt(), correctAnswers, currentQuestId, countAllAnswers))
         {
+            qDebug() << "true";
             correctAnswers[currentQuestId]++;
             countAnsw = 0;
         }
         else
         {
+            qDebug() << "false";
             db->checkCorrectAnswer(correctAnswers,currentQuestId);
         }
     }
@@ -166,7 +179,7 @@ void TestForStudent::outputAnswer()
 {
     testCorrectAnswer = db->sumAnswer(correctAnswers);
     //qDebug() << correctAnswers.size();
-    credit = ((testCorrectAnswer/correctAnswers.size()) * 100.0);
+    credit = ((testCorrectAnswer/5.0) * 100.0);
     //qDebug() << credit;
     if (credit >= 40.0)
     {
@@ -181,7 +194,7 @@ void TestForStudent::outputAnswer()
 
     current_data.append(courseId);
     current_data.append(descriptionCourse);
-    current_data.append(time.toString("m:ss"));
+    current_data.append(timeResult.toString("hh:mm:ss"));
     current_data.append(sizeTest);
     db->insertIntoTable(current_data);  // Отправка данных в бд
     connect(this, &TestForStudent::sendData,studentResult, &FillResult::takeData);
@@ -199,9 +212,9 @@ void TestForStudent::takeData(QVariantList data)
 {
     query = new QSqlQuery();
     timer = new QTimer(this);
-    int time1 = 10;
-    time.setHMS(0,time1,0);
     sizeTest = 0;
+    hour =0;
+    min =0;
     countAnsw = 0;
     courseId =0;
     current_data = data;
@@ -211,17 +224,32 @@ void TestForStudent::takeData(QVariantList data)
 
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 
-    query->exec("SELECT TOP 5 Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, CourseId, TypeQuestion, Questions.Id, Description "
-                   "from Questions, Courses, Chapters"
-                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id "
+    query->exec("SELECT TOP 5 TimeCourses.Time, Chapters.Name, Question, Variant1, Variant2, Variant3, Variant4, CorrectAnswer, ChapterId, Courses.Id as idCourse, TypeQuestion, Questions.Id as idQuest, Description "
+                   "from Questions, Courses, Chapters, TimeCourses"
+                " WHERE Courses.Id = Chapters.CourseId AND Courses.Name = '"+current_data[3].toString()+"'"+" AND ChapterId = Chapters.Id AND Courses.Id = TimeCourses.CourseId "
                                                                                                                     "ORDER BY NEWID();");
     if (query->next())
     {
-        firstQuestId = query->value("Id").toInt();
+        firstQuestId = query->value("idQuest").toInt();
         descriptionCourse = query->value("Description").toString();
-        courseId = query->value("CourseId").toInt();
+        courseId = query->value("idCourse").toInt();
         setData(query->value("TypeQuestion").toInt());
-    }
-    timer ->start(1000);
+        min = query->value("Time").toInt();
+    }    
+    qDebug() << min;
+    timerSettings();
+    timeResult.setHMS(0,0,0);
+    timer->start(1000);
     ui->countdown->setText(time.toString("hh:mm:ss"));
+}
+
+void TestForStudent::timerSettings()
+{
+    while (min >=60) {
+        hour++;
+        min-=60;
+    }
+    if (hour !=0) { time.setHMS(hour,min,0); }
+    else { time.setHMS(0,min,0); }
+    //qDebug() << time.hour();
 }

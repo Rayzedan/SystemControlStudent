@@ -23,7 +23,6 @@ public:
     explicit TestForStudent(QWidget *parent = nullptr);
     ~TestForStudent();
 
-    //void inputAnswer(const ind ID);
     void setData(const int typeQuestion);
     void dataCheckBox();
     void inputAnswer();
@@ -32,7 +31,7 @@ public:
 public slots:
     void takePoint(FillResult *resWin);
     void takeData(QVariantList data);
-
+    void timerSettings();
 signals:
     void sendData(QMap<QString, int> countAllAnswers, QVariantList result, QMap<QString, int> themes);
 
@@ -53,6 +52,7 @@ private:
     QMap <QString,int> countAllAnswers;
     QString resultTime;
     QTime time;
+    QTime timeResult;
     QTimer *timer;
     QVariantList current_data;
     DataBase *db;
@@ -62,6 +62,9 @@ private:
     int firstQuestId;
     double testCorrectAnswer;
     double credit;
+    int hour;
+    int min;
+    int sec;
     int countAnsw;
     int courseId;
     int currentQuestId;
