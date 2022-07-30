@@ -37,6 +37,7 @@ void TestForStudent::on_pushButton_clicked()
         if (QMessageBox::Yes == QMessageBox::question(this,"Внимание","Завершить выполнение теста?"))
         {
             outputAnswer();
+            timer->stop();
         }
     }
 }

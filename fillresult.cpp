@@ -19,33 +19,16 @@ FillResult::~FillResult()
 
 void FillResult::on_pushButton_clicked()
 {
-    QString course = ui->course->text();
-    QString name = ui->name->text();
-    QString company = ui->company->text();
-    QString time = ui->time->text();
-    QString result = ui->result->text();
-    QString credit = ui->credit->text();
-    QString current_time =ui->label_14->text();
-    QString html =
-    "<html>""<head>""<style>p,h2 {font-family: Times New Roman;font-size:14pt}</style></head>"\
-    "<body><h2><center>Приложение к сертификату</center></h2>""<div><p>Выдан: "+name+\
-    ", компания: '"+company+"'<br></p><p>За прохождение курса '"+course+"'<br></span></p><p>Дата прохождения:"+current_time+\
-    "<br></p><p>Результаты по темам:<br>"+resultThemes+"</p><p>Общий процент верных ответов: "+credit+"<br></p><p>Время выполнения: "+time+\
-    "<br></p><p>Результат: "+result+"<br></p></div></body></html>";
-
+    QPrinter printer;
+    QPrintDialog* pPrintDialog = new QPrintDialog(&printer);
     QTextDocument document;
     document.setHtml(html);
-
-    QPrinter printer(QPrinter::PrinterResolution);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    if (pathToPdf !="DEFAULT") {
-        printer.setOutputFileName(pathToPdf+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
+    //printer.setOutputFormat(QPrinter::PdfFormat);
+    if (pPrintDialog->exec() == QDialog::Accepted) {
+        printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+        document.print(&printer);
     }
-    else {
-        printer.setOutputFileName(QDir::currentPath()+current_time+"_"+take_data[3].toString()+"_"+name+".pdf");
-    }
-    printer.setPageMargins(QMarginsF(15, 15, 15, 15));
-    document.print(&printer);
+    delete pPrintDialog;
 }
 
 void FillResult::setTable(QMap<QString, int> resultMap, QMap<QString, int> allAnswers)
@@ -94,6 +77,53 @@ void FillResult::takeData(QMap<QString, int> countAllAnswers, QVariantList resul
     }
     ui->course->setText(take_data[7].toString());
     ui->time->setText(take_data[8].toString());
+    QString course = ui->course->text();
+    QString name = ui->name->text();
+    QString company = ui->company->text();
+    QString time = ui->time->text();
+    QString resultAll = ui->result->text();
+    QString credit = ui->credit->text();
+    QString current_time =ui->label_14->text();
+    html =
+    "<html>""<head>""<style>p,h2 {font-family: Times New Roman;font-size:14pt}</style></head>"\
+    "<body><h2><center>Приложение к сертификату</center></h2>""<div><p>Выдан: "+name+\
+    ", компания: '"+company+"'<br></p><p>За прохождение курса '"+course+"'<br></span></p><p>Дата прохождения:"+current_time+\
+    "<br></p><p>Результаты по темам:<br>"+resultThemes+"</p><p>Общий процент верных ответов: "+credit+"<br></p><p>Время выполнения: "+time+\
+    "<br></p><p>Результат: "+resultAll+"<br></p></div></body></html>";
+
+    QTextDocument document;
+    document.setHtml(html);
+
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    if (pathToPdf !="DEFAULT") {
+        QDir dir(pathToPdf + "/" +take_data[3].toString());
+        if (!dir.exists()) {
+            dir.mkpath(pathToPdf + "/" +take_data[3].toString());
+            pathToPdf= pathToPdf + "/" + take_data[3].toString() + "/";
+            qDebug() << "didnt exist path " << pathToPdf;
+        }
+        else {
+            pathToPdf= pathToPdf + "/" + take_data[3].toString() + "/";
+            qDebug() << "exist path " << pathToPdf;
+        }
+        printer.setOutputFileName(pathToPdf+current_time+"_"+name+".pdf");
+    }
+    else {
+        QDir dir(QDir::currentPath() + "/" + take_data[3].toString());
+        if (!dir.exists()) {
+            dir.mkpath(QDir::currentPath() + "/" +take_data[3].toString());
+            pathToPdf= QDir::currentPath() + "/" + take_data[3].toString() + "/";
+            qDebug() << "didnt exist path " << pathToPdf;
+        }
+        else {
+            pathToPdf= QDir::currentPath() + "/" + take_data[3].toString() + "/";
+            qDebug() << "exist path " << pathToPdf;
+        }
+        printer.setOutputFileName(pathToPdf+current_time+"_"+name+".pdf");
+    }
+    printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+    document.print(&printer);
 }
 
 void FillResult::takePath()

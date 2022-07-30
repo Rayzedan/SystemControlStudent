@@ -47,6 +47,7 @@ private:
     QString resultThemes;
     QString newPath;
     QString pathToPdf;
+    QString html;
 
 };
 
