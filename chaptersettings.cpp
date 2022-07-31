@@ -86,7 +86,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->label_3->setText("Количество вопросов");
         ui->label_4->hide();
         ui->comboBox->hide();
-        mode = 3;
+        mode = 31;
     } else if ((data[0].toString()=="тема" && data[2].toString() == "UPDATE")) {
         QSqlQuery query;
         query.exec("SELECT Id, Number From Chapters WHERE Name = '"+data[1].toString()+"';");
@@ -107,7 +107,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->lineEdit_3->setText(count);
         ui->comboBox->addItem(data[3].toString(),QVariant(0));
         ui->comboBox->setCurrentIndex(0);
-        mode = 3;
+        mode = 31;
     };
 
     if (data[0].toString()=="Вопрос" && data[2].toString() =="INSERT"){
@@ -118,7 +118,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->comboBox->addItem("Тестовый вопрос");
         ui->comboBox->addItem("Развернутый вопрос");
         ui->comboBox->setCurrentIndex(0);
-        mode = 4;
+        mode = 41;
     } else if ((data[0].toString()=="Вопрос" && data[2].toString() == "UPDATE")) {
         QSqlQuery query;
         query.exec("SELECT Id, Variant1, Variant2, Variant3, Variant4, CorrectAnswer From Questions WHERE question = '"+data[1].toString()+"';");
@@ -136,7 +136,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->lineEdit_3->setText(answer);
         ui->comboBox->addItem(data[3].toString(),QVariant(0));
         ui->comboBox->setCurrentIndex(0);
-        mode = 4;
+        mode = 41;
     };
 }
 
@@ -168,27 +168,28 @@ void chaptersettings::on_pushButton_2_clicked()
         emit updateBase(mode);
         this->close();
     }
-    if (mode == 3 && data[2].toString() == "INSERT")
+    if (mode == 31 && data[2].toString() == "INSERT")
     {
         db->createChapter(ui->lineEdit->text(), ui->lineEdit_2->text(),data[3].toString());
         db->createChapterCount(ui->lineEdit_3->text(),ui->lineEdit->text());
         emit updateBase(mode);
         this->close();
     }
-    if (mode == 3 && data[2].toString() == "UPDATE")
+    if (mode == 31 && data[2].toString() == "UPDATE")
     {
         db->updateChapter(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->comboBox->currentText());
         db->updateChapterCount(ui->lineEdit_3->text(),ui->lineEdit->text());
         emit updateBase(mode);
         this->close();
     }
-    if (mode == 4 && data[2].toString() == "INSERT")
+    if (mode == 41 && data[2].toString() == "INSERT")
     {
+        qDebug() << "Insert quest";
         db->createQuestion(ui->comboBox->currentText(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),data[3].toString());
         emit updateBase(mode);
         this->close();
     }
-    if (mode == 4 && data[2].toString() == "UPDATE")
+    if (mode == 41 && data[2].toString() == "UPDATE")
     {
         db->updateQuestion(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),ui->comboBox->currentText());
         emit updateBase(mode);

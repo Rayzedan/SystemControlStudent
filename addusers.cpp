@@ -42,6 +42,7 @@ AddUsers::AddUsers(QVariant dataUser,QWidget *parent) :
 
         query = new QSqlQuery();
         query->prepare("UPDATE Users set Login=:login, Password=:password, Permissions=:perm Where Login='"+dataUser.toString()+"';");
+        emit updateUsers(0);
     }
 }
 
@@ -86,6 +87,7 @@ void AddUsers::on_pushButton_clicked()
         QSqlQuery setquery;
         setquery.exec("Insert into Users(Login,Password,Permissions) Values ('" +Newlogin+ "','" +Newpassword+ "'," +NewPerm+ ")");
     }
+    emit updateUsers(0);
     this->close();
 }
 

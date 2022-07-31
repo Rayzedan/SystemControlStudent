@@ -49,6 +49,7 @@ void AdminWin::on_pushButton_7_clicked()
 {
     QString val = "-1";
     AddWindow = new AddUsers(val);
+    connect(AddWindow, &AddUsers::updateUsers, this, &AdminWin::startUpdateBase);
     AddWindow->show();
 }
 
@@ -67,6 +68,7 @@ void AdminWin::on_pushButton_8_clicked()
     } else {
         QSqlQuery query;
         query.exec("DELETE FROM Users WHERE Login='"+val.toString()+"';");
+        startUpdateBase(0);
         QMessageBox :: information (this, "", "Успешное удаление пользователя.");
     }
 }
@@ -80,6 +82,7 @@ void AdminWin::on_pushButton_9_clicked()
     } else {
         qDebug()<<val.toString();
         AddWindow = new AddUsers(val.toString());
+        connect(AddWindow, &AddUsers::updateUsers, this, &AdminWin::startUpdateBase);
         AddWindow->show();
     }
 }
@@ -137,7 +140,7 @@ void AdminWin::on_comboBox_5_currentTextChanged(const QString &arg1)
 {
     if (indexTab == 5) {
         qDebug() << arg1;
-//        model_res_question->clear();
+        model_res_question->clear();
         ChapterQuery(arg1);
         ui->comboBox_6 ->setModel(model_res_chapter);
     }
@@ -257,7 +260,7 @@ void AdminWin::on_pushButton_20_clicked()
         QSqlQuery query;
         query.exec("DELETE FROM Chapters WHERE name='"+valTheme.toString()+"';");
         QMessageBox :: information (this, "", "Успешное удаление темы.");
-        startUpdateBase(3);
+        startUpdateBase(31);
         qDebug()<< query.lastError().text();
     }
 }
@@ -336,7 +339,7 @@ void AdminWin::on_pushButton_15_clicked()
     } else {
         QSqlQuery query;
         query.exec("DELETE FROM Questions WHERE Question='"+valQuestion.toString()+"';");
-        startUpdateBase(4);
+        startUpdateBase(41);
         QMessageBox :: information (this, "", "Успешное удаление вопроса.");
     }
 }
@@ -375,6 +378,10 @@ void AdminWin::on_toolButton_clicked()
 
 void AdminWin::startUpdateBase(int mode)
 {
+    if (mode ==0) {
+        model_res_users ->setQuery("Select login From Users Order by login");
+        ui->usersView->setModel(model_res_users);
+    }
     if (mode == 1)
     {
         //model_res_depart = new QSqlQueryModel();
@@ -394,11 +401,23 @@ void AdminWin::startUpdateBase(int mode)
         model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+ui->comboBox_3->currentText()+"' and Courses.Id=Chapters.CourseId");
         ui->listView->setModel(model_res_chapter);        
      }
+    if (mode == 31) {
+        model_res_chapter->setQuery("Select Chapters.name from Chapters, Courses where Courses.name='"+ui->comboBox_3->currentText()+"' and Courses.Id=Chapters.CourseId");
+        ui->listView->setModel(model_res_chapter);
+    }
     if (mode ==4) {
         model_res_course->setQuery("Select Courses.name from Courses, Departments where Departments.name='"+ui->comboBox_4->currentText()+"' and Departments.Id=Courses.DepartmentId");
         ui->comboBox_5->setModel(model_res_course);
         if (ui->comboBox_6->currentText()!="") {
             qDebug() << "update base";
+            model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
+                                         "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+ui->comboBox_6->currentText()+"' and Chapters.Id=Questions.ChapterId");
+             ui->tableView->setModel(model_res_question);
+        }
+    }
+    if (mode ==41) {
+        if (ui->comboBox_6->currentText()!="") {
+            qDebug() << "update questBase";
             model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
                                          "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+ui->comboBox_6->currentText()+"' and Chapters.Id=Questions.ChapterId");
              ui->tableView->setModel(model_res_question);
@@ -516,10 +535,11 @@ void AdminWin::on_tabWidget_currentChanged(int index)
 {
     if (index==0){
         qDebug()<<"Вкладка Настройки";
-        indexTab = 0;
+        indexTab = 0;        
     } else if (index==1) {
         qDebug()<<"Вкладка Пользователи";
         indexTab = 1;
+        startUpdateBase(0);
     } else if (index==2) {
         qDebug()<<"Вкладка Департамент";
         indexTab =2;

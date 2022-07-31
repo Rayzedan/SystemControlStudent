@@ -256,6 +256,7 @@ void DataBase::updateChapter(QString name, QString newName, QString number, QStr
 }
 
 void DataBase::createQuestion(QString type,QString question, QString variants, QString answer,QString chapter){
+    qDebug() << "Добавление вопроса";
     QSqlQuery query;
     query.exec("SELECT Id From Chapters WHERE Name = '"+chapter+"';");
     query.next();

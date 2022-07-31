@@ -119,8 +119,7 @@ void TestForStudent::updateTime()
         time = time.addSecs(-1);
         timeResult = timeResult.addSecs(+1);
         ui->countdown->setText(time.toString("hh:mm:ss"));
-        resultTime = time.toString("hh:mm:ss");
-        qDebug() << timeResult.toString("hh:mm:ss");
+        resultTime = time.toString("hh:mm:ss");        
     }
     else
     {
@@ -129,9 +128,8 @@ void TestForStudent::updateTime()
             inputAnswer();
             setData(query->value("TypeQuestion").toInt());
         }
-            sizeTest++;
+        //sizeTest++;
         QMessageBox::warning(this,"Внимание!", "Время вышло");
-
         outputAnswer();
         timer->stop();
     }
@@ -236,8 +234,7 @@ void TestForStudent::takeData(QVariantList data)
         courseId = query->value("idCourse").toInt();
         setData(query->value("TypeQuestion").toInt());
         min = query->value("Time").toInt();
-    }    
-    qDebug() << min;
+    }        
     timerSettings();
     timeResult.setHMS(0,0,0);
     timer->start(1000);

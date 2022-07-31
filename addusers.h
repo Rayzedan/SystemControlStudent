@@ -23,7 +23,8 @@ public:
         return cryptedpas;
     };
 
-
+signals:
+    updateUsers(int mode);
 private slots:
     void on_pushButton_clicked();
 

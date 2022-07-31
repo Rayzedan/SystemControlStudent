@@ -28,9 +28,7 @@ void MainWindow::on_pushButton_clicked()
 {
     // Проверяем какая из кнопок для выбора пользователя нажата
     if (ui->radioButton->isChecked()) {
-        admWindow = new AdminWin();
-        qDebug() << admWindow;
-
+        admWindow = new AdminWin();        
         connect(admWindow, &AdminWin::secondWindow, this, &MainWindow::show);
         connect(this, &MainWindow::backToStart, AWindow, &AuthorizationWindow::takePoint);
         emit backToStart(admWindow);
@@ -42,8 +40,7 @@ void MainWindow::on_pushButton_clicked()
     if (ui->radioButton_2->isChecked()) {
         SWindow = new StudentWindow();
         resWin = new FillResult();
-        testWindow = new TestForStudent();
-        qDebug() << resWin;
+        testWindow = new TestForStudent();        
         // Связываем начальное окно и окно формы ввода данных студентом
         connect(SWindow, &StudentWindow::firstWindow, this, &MainWindow::show);
         connect(resWin, &FillResult::startWindow, this, &MainWindow::show);
