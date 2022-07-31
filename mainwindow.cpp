@@ -11,8 +11,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::startConfigMode, AWindow, &AuthorizationWindow::startMode);
     connect(AWindow, &AuthorizationWindow::firstWindow, this, &MainWindow::show);
     configFile();
+
+    if (configMode == false) {
+        ui->radioButton_2->setEnabled(false);
+        QMessageBox::warning(this,"", "Невозможно установить соединение");
+    }
+
     ui->radioButton->setChecked(true);
-    qDebug() << configMode;    
+    qDebug() << configMode;
 }
 
 MainWindow::~MainWindow()
@@ -75,7 +81,6 @@ void MainWindow::configFile()
         data.append(settings.value("password").toString());
         settings.endGroup();
         configMode = db.createNewConnection(data);
-       }    
-    qDebug() << configMode;
+       }        
     emit startConfigMode(configMode);
 }
