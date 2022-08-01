@@ -65,7 +65,14 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="textEdit_2"/>
+    <widget class="QTextEdit" name="textEdit_2">
+     <property name="font">
+      <font>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QLabel" name="label_3">

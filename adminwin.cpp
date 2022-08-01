@@ -307,6 +307,7 @@ void AdminWin::on_pushButton_13_clicked()
 {
     QVariantList quest;
     quest.append("empty");
+    quest.append(ui->comboBox_6->currentText());
     questionWindow = new SettingsQuestion(quest);
     //connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
     quest.clear();
@@ -317,14 +318,12 @@ void AdminWin::on_pushButton_14_clicked()
 {
     QVariantList quest;
     if (valQuestion.toString()!="") {
-        quest.append("Вопрос");
         quest.append(valQuestion);
-        quest.append("UPDATE");
         quest.append(ui->comboBox_6->currentText());
-        chapterWindow = new chaptersettings(quest);
-        connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
+        questionWindow = new SettingsQuestion(quest);
+        //connect(chapterWindow, &chaptersettings::updateBase, this, &AdminWin::startUpdateBase);
         quest.clear();
-        chapterWindow ->show();
+        questionWindow ->show();
     }
 }
 

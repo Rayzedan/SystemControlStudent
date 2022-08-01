@@ -264,7 +264,7 @@ void DataBase::createQuestion(QString type,QString question, QString variants, Q
     query.clear();
     QList variant = variants.split("; ");
     QString typeQuestion;
-    if (type=="Тестовый вопрос"){
+    if (type=="Тестовый"){
         typeQuestion ="0";
     } else{
         typeQuestion ="1";
