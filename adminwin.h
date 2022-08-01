@@ -11,6 +11,7 @@
 #include "database.h"
 #include "addusers.h"
 #include "chaptersettings.h"
+#include "settingsquestion.h"
 
 namespace Ui {
 class AdminWin;
@@ -113,6 +114,7 @@ private:
     QSqlQuery *query;        
     AddUsers *AddWindow;
     chaptersettings *chapterWindow;
+    SettingsQuestion *questionWindow;
 };
 
 #endif // ADMINWIN_H

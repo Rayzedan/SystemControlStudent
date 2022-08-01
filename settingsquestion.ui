@@ -65,20 +65,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextBrowser" name="textBrowser">
-     <property name="font">
-      <font>
-       <family>Roboto</family>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QTextBrowser {
-background-color: #F0F0F0;
-border: 3px solid #F0F0F0;
-}</string>
-     </property>
-    </widget>
+    <widget class="QTextEdit" name="textEdit_2"/>
    </item>
    <item>
     <widget class="QLabel" name="label_3">
@@ -102,7 +89,7 @@ border: 3px solid #F0F0F0;
       </font>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -165,29 +152,60 @@ border: 3px solid #F0F0F0;
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QTextEdit" name="textEdit">
-         <property name="font">
-          <font>
-           <family>Roboto</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QTextEdit {
-background-color: #F0F0F0;
-border: 3px solid #F0F0F0;
-}</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>11</y>
+         <width>917</width>
+         <height>146</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Roboto</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="icon">
+        <iconset resource="resourses.qrc">
+         <normaloff>:/resourses/icons8-save-50.png</normaloff>:/resourses/icons8-save-50.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>

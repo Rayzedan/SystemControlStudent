@@ -68,7 +68,7 @@
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>6</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="Tab">
       <property name="font">

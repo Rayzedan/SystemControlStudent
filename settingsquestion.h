@@ -12,7 +12,7 @@ class SettingsQuestion : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsQuestion(QWidget *parent = nullptr);
+    explicit SettingsQuestion(QVariantList data, QWidget *parent = nullptr);
     ~SettingsQuestion();
 
 private:
