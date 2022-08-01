@@ -18,6 +18,7 @@ SOURCES += \
     fillresult.cpp \
     main.cpp \
     mainwindow.cpp \
+    settingsquestion.cpp \
     studentwindow.cpp \
     testforstudent.cpp
 
@@ -29,6 +30,7 @@ HEADERS += \
     database.h \
     fillresult.h \
     mainwindow.h \
+    settingsquestion.h \
     studentwindow.h \
     tabwidget.h \
     testforstudent.h
@@ -45,6 +47,7 @@ FORMS += \
     chaptersettings.ui \
     fillresult.ui \
     mainwindow.ui \
+    settingsquestion.ui \
     studentwindow.ui \
     testforstudent.ui
 

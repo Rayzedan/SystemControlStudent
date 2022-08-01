@@ -151,8 +151,7 @@ void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
 {
     if (indexTab == 5 && ui->comboBox_5->currentText()!="") {
         qDebug() << "comboBox_6";
-        model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
-                                     "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
+        model_res_question->setQuery("Select Questions.Id, Question as Вопрос from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
         ui->tableView->setModel(model_res_question);
         ui->tableView->verticalHeader()->setVisible(false);
         ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -410,9 +409,8 @@ void AdminWin::startUpdateBase(int mode)
         ui->comboBox_5->setModel(model_res_course);
         if (ui->comboBox_6->currentText()!="") {
             qDebug() << "update base";
-            model_res_question->setQuery("Select Question as Вопрос, Variant1 as Вариант1, Variant2 as Вариант2, Variant3 as Вариант3, Variant4 as Вариант4, "
-                                         "CorrectAnswer as Ответ from Questions, Chapters where Chapters.name='"+ui->comboBox_6->currentText()+"' and Chapters.Id=Questions.ChapterId");
-             ui->tableView->setModel(model_res_question);
+            model_res_question->setQuery("Select Questions.Id, Question as Вопрос from Questions, Chapters where Chapters.name='"+ui->comboBox_6->currentText()+"' and Chapters.Id=Questions.ChapterId");
+            ui->tableView->setModel(model_res_question);
         }
     }
     if (mode ==41) {

@@ -217,6 +217,12 @@
              <property name="focusPolicy">
               <enum>Qt::StrongFocus</enum>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
+background-color: #F0F0F0;
+border: 3px solid #F0F0F0;
+}</string>
+             </property>
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
