@@ -15,26 +15,33 @@ AddUsers::AddUsers(QVariant dataUser,QWidget *parent) :
         model->next();
         ui->lineEdit_2->setText(model->value("Password").toString());
 
-        int chPrem =model->value("Password").toInt();
+        int chPrem =model->value("Permissions").toInt();
+        qDebug()<<chPrem;
         for (int count=6;count>=2;count--){
             int check =pow(2,count);
-            if (chPrem-check>0){
+            if (chPrem-check>=0){
                 chPrem=chPrem-check;
+                qDebug()<<"Текущее значение"<<chPrem;
                 switch (check) {
                 case 4:
                    ui->departbox->setChecked(true);
+                   qDebug()<<1;
                     break;
                 case 8:
                     ui->coursebox->setChecked(true);
+                    qDebug()<<2;
                     break;
                 case 16:
                     ui->chapterbox->setChecked(true);
+                    qDebug()<<3;
                     break;
                 case 32:
                     ui->basebox->setChecked(true);
+                    qDebug()<<4;
                     break;
                 case 64:
                     ui->rezbox->setChecked(true);
+                    qDebug()<<5;
                     break;
                 }
             }
