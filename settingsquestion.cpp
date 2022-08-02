@@ -1,12 +1,12 @@
 #include "settingsquestion.h"
 #include "ui_settingsquestion.h"
 
-SettingsQuestion::SettingsQuestion(QVariantList data, QWidget *parent) :
+SettingsQuestion::SettingsQuestion(QVariantList date, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SettingsQuestion)
 {
     ui->setupUi(this);
-
+    data = date;
     qDebug()<<data;
     if (data[0].toString()!="empty"){
         QSqlQuery query;
@@ -29,7 +29,7 @@ SettingsQuestion::SettingsQuestion(QVariantList data, QWidget *parent) :
             ui->lineEdit_4->setText(ch4);
             for (int count=3;count>=0;count--){
                 int val = pow(2,count);
-                if (ans-val>0){
+                if (ans-val>=0){
                     ans-=val;
                     switch (val) {
                     case 1:
@@ -68,4 +68,38 @@ void SettingsQuestion::on_comboBox_currentTextChanged(const QString &arg1)
     }
 }
 
+
+
+void SettingsQuestion::on_pushButton_clicked()
+{
+    QString type = ui->comboBox->currentText();
+    QString question = ui->textEdit_2->toPlainText();
+    QString variants = ""+ui->lineEdit->text()+"; "+ui->lineEdit_2->text()+\
+            "; "+ui->lineEdit_3->text()+"; "+ui->lineEdit_4->text()+"";
+    int ans = 0;
+    if (ui->checkBox->isChecked()){
+        ans+=1;
+    }
+    if (ui->checkBox_2->isChecked()){
+        ans+=2;
+    }
+    if (ui->checkBox_3->isChecked()){
+        ans+=4;
+    }
+    if (ui->checkBox_4->isChecked()){
+        ans+=8;
+    }
+    QString answer = QString::number(ans);
+    QString chapter = data[1].toString();
+    QString oldquestionid = data[0].toString();
+    qDebug() <<type<<question<<variants<<answer<<chapter;
+    if (data[0].toString()=="empty"){
+        db->createQuestion(type,question,variants,answer,chapter);
+    }else{
+        db->updateQuestion(type,question,variants,answer,chapter,oldquestionid);
+    }
+
+
+    //this->close();
+}
 

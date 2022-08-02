@@ -119,6 +119,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->comboBox->addItem("Развернутый вопрос");
         ui->comboBox->setCurrentIndex(0);
         mode = 41;
+
     } else if ((data[0].toString()=="Вопрос" && data[2].toString() == "UPDATE")) {
         QSqlQuery query;
         query.exec("SELECT Id, Variant1, Variant2, Variant3, Variant4, CorrectAnswer From Questions WHERE question = '"+data[1].toString()+"';");
@@ -191,7 +192,7 @@ void chaptersettings::on_pushButton_2_clicked()
     }
     if (mode == 41 && data[2].toString() == "UPDATE")
     {
-        db->updateQuestion(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),ui->comboBox->currentText());
+        //db->updateQuestion(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),ui->comboBox->currentText());
         emit updateBase(mode);
         this->close();
     }
