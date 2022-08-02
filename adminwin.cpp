@@ -577,3 +577,29 @@ void AdminWin::on_pushButton_2_clicked()
     QProcess::startDetached("explorer", QStringList() << p);
 }
 
+//Заготовка под нормальное расписывание кода по вкладкам
+void AdminWin::on_tabWidget_currentChanged(int index)
+{
+    if (index==0){
+        qDebug()<<"Вкладка Настройки";
+        indexTab = 0;
+    } else if (index==1) {
+        qDebug()<<"Вкладка Пользователи";
+        indexTab = 1;
+    } else if (index==2) {
+        qDebug()<<"Вкладка Департамент";
+        indexTab =2;
+    } else if (index==3) {
+        qDebug()<<"Вкладка Курсы";
+        indexTab =3;
+    } else if (index==4) {
+        qDebug()<<"Вкладка Темы";
+        indexTab = 4;
+    } else if (index==5) {
+        qDebug()<<"Вкладка Вопросы";
+        indexTab = 5;
+    } else if (index==6) {
+        qDebug()<<"Вкладка Результаты";
+        indexTab = 6;
+    }
+}
