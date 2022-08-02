@@ -567,6 +567,13 @@ void AdminWin::updateRes()
 
 void AdminWin::on_pushButton_2_clicked()
 {
-    QProcess::startDetached("explorer", QStringList() << "C:\\pro");
+    QString fileName = "config.ini";
+    QSettings settings(fileName, QSettings::IniFormat);
+    settings.beginGroup("userSettings");
+    QString p = settings.value("path").toString();
+    settings.endGroup();
+    p.replace("/","\\");
+    qDebug()<<p;
+    QProcess::startDetached("explorer", QStringList() << p);
 }
 
