@@ -1,7 +1,7 @@
 #include "adminwin.h"
 #include "ui_adminwin.h"
 #include <QFileDialog>
-
+#include <QProcess>
 AdminWin::AdminWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AdminWin)
@@ -516,40 +516,6 @@ void AdminWin::on_pushButton_clicked()
     }
 }
 
-
-
-//Заготовка под нормальное расписывание кода по вкладкам
-void AdminWin::on_tabWidget_currentChanged(int index)
-{
-    if (index==0){
-        qDebug()<<"Вкладка Настройки";
-        indexTab = 0;        
-    } else if (index==1) {
-        qDebug()<<"Вкладка Пользователи";
-        indexTab = 1;
-        startUpdateBase(0);
-    } else if (index==2) {
-        qDebug()<<"Вкладка Департамент";
-        indexTab =2;
-    } else if (index==3) {
-        qDebug()<<"Вкладка Курсы";
-        indexTab =3;
-        startUpdateBase(2);
-    } else if (index==4) {
-        qDebug()<<"Вкладка Темы";
-        indexTab = 4;
-        startUpdateBase(3);
-    } else if (index==5) {
-        qDebug()<<"Вкладка Вопросы";
-        indexTab = 5;
-        startUpdateBase(4);
-    } else if (index==6) {
-        qDebug()<<"Вкладка Результаты";
-        indexTab = 6;
-        startUpdateBase(6);
-    }
-}
-
 void AdminWin::on_pushButton_4_clicked()
 {
    qDebug() << "Filter";
@@ -598,4 +564,9 @@ void AdminWin::updateRes()
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(5,QHeaderView::ResizeToContents);
 }
 
+
+void AdminWin::on_pushButton_2_clicked()
+{
+    QProcess::startDetached("explorer", QStringList() << "C:\\pro");
+}
 
