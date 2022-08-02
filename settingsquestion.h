@@ -20,7 +20,7 @@ public:
 private slots:
     void on_comboBox_currentTextChanged(const QString &arg1);
 
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked();
 
 private:
     Ui::SettingsQuestion *ui;

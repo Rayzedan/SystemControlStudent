@@ -114,12 +114,13 @@ void TestForStudent::setData(const int typeQuestion)
 
 void TestForStudent::updateTime()
 {
+    QString test;
     if (time.toString("hh:mm:ss")!="00:00:00")
     {
         time = time.addSecs(-1);
         timeResult = timeResult.addSecs(+1);
-        ui->countdown->setText(time.toString("hh:mm:ss"));
-        resultTime = time.toString("hh:mm:ss");        
+        ui->countdown->setText(time.toString("hh:mm:ss"));        
+        resultTime = time.toString("hh:mm:ss");
     }
     else
     {

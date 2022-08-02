@@ -43,6 +43,10 @@ bool DataBase::insertIntoTable(QVariantList data)
     query.prepare("INSERT INTO Results (StudentName, Company, TestDuration, CorrectPercent, Credit, CourseId) "
                   "VALUES (:StudentName, :Company, :TestDuration, :CorrectPercent, :Credit, :CourseId)");
     qDebug() << data;
+    QString time = data[8].toString().remove(":");
+    int min = 0;
+    min = time.toInt();
+    qDebug() << min;
     query.bindValue(":idResult", "DEFAULT"); // В таблице Results у поля idResult выставлен параметр AUTO_INCREMENT
     query.bindValue(":StudentName", data[0].toString());
     query.bindValue(":Company", data[1].toString());
@@ -155,7 +159,7 @@ void DataBase::createCourseTime(QString time, QString course){
     QString id = query.value("Id").toString();
     query.clear();
     query.exec("Insert Into TimeCourses(Time,CourseId) Values ("+time+","+id+");");
-};
+}
 void DataBase::updateCourseTime(QString time, QString course){
     QSqlQuery query;
     query.prepare("SELECT Id From Courses WHERE Name = '"+course+"';");
@@ -164,7 +168,7 @@ void DataBase::updateCourseTime(QString time, QString course){
     QString id = query.value("Id").toString();
     query.clear();
     query.exec("UPDATE TimeCourses Set Time="+time+" Where CourseId="+id+";");
-};
+}
 
 void DataBase::updateCourse(QString name, QString newName, QString description, QString newDepart)
 {
@@ -202,7 +206,7 @@ void DataBase::createChapter(QString name,QString number, QString Course){
     QString id = query.value("Id").toString();
     query.clear();
     query.exec("Insert Into Chapters(Name,Number,CourseId) Values ('"+name+"',"+number+","+id+");");
-};
+}
 
 void DataBase::createChapterCount(QString count, QString chapter){
     QSqlQuery query;
@@ -212,7 +216,7 @@ void DataBase::createChapterCount(QString count, QString chapter){
     QString id = query.value("Id").toString();
     query.clear();
     query.exec("Insert Into CountChapters(Count,ChapterId) Values ("+count+","+id+");");
-};
+}
 
 void DataBase::updateChapterCount(QString count, QString chapter){
     QSqlQuery query;
@@ -222,7 +226,7 @@ void DataBase::updateChapterCount(QString count, QString chapter){
     QString id = query.value("Id").toString();
     query.clear();
     query.exec("Update CountChapters SET Count="+count+" Where ChapterId="+id+";");
-};
+}
 
 
 void DataBase::updateChapter(QString name, QString newName, QString number, QString newCourse)
