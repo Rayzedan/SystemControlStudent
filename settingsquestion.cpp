@@ -100,6 +100,6 @@ void SettingsQuestion::on_pushButton_clicked()
     }
 
 
-    //this->close();
+    this->close();
 }
 

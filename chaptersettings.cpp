@@ -27,7 +27,7 @@ void chaptersettings::setData(QVariantList dataUser)
        ui->label_2->hide();
        ui->label_3->hide();
        ui->label_4->hide();
-       ui->comboBox->hide();
+       ui->label->hide();
        ui->lineEdit_2->hide();
        ui->lineEdit_3->hide();
        mode = 1;
@@ -38,7 +38,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->label_2->hide();
         ui->label_3->hide();
         ui->label_4->hide();
-        ui->comboBox->hide();
+        ui->label->hide();
         ui->lineEdit_2->hide();
         ui->lineEdit_3->hide();
         mode = 1;
@@ -51,7 +51,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->label_2->setText("Описание курса");
         ui->label_3->setText("Время");
         ui->label_4->hide();
-        ui->comboBox->hide();
+        ui->label->hide();
         mode = 2;
 
     } else if (data[0].toString()=="курс" && dataUser[2].toString() == "UPDATE"){
@@ -75,9 +75,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->lineEdit->setText(data[1].toString());
         ui->lineEdit_2->setText(desc);
         ui->lineEdit_3->setText(time);        
-        ui->comboBox->setModel(model1);
-        ui->comboBox->setCurrentIndex(data[4].toInt());
-        ui->comboBox->setCurrentText(data[3].toString());
+        ui->label->setText(data[3].toString());
         mode = 2;
     }
     if (data[0].toString()=="тема" && data[2].toString() =="INSERT"){
@@ -85,7 +83,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->label_2->setText("Номер темы");
         ui->label_3->setText("Количество вопросов");
         ui->label_4->hide();
-        ui->comboBox->hide();
+        ui->label->hide();
         mode = 31;
     } else if ((data[0].toString()=="тема" && data[2].toString() == "UPDATE")) {
         QSqlQuery query;
@@ -105,8 +103,7 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->lineEdit->setText(data[1].toString());
         ui->lineEdit_2->setText(number);
         ui->lineEdit_3->setText(count);
-        ui->comboBox->addItem(data[3].toString(),QVariant(0));
-        ui->comboBox->setCurrentIndex(0);
+        ui->label->setText(data[3].toString());
         mode = 31;
     };
 
@@ -115,9 +112,6 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->label_2->setText("Варианты ответов");
         ui->label_3->setText("Корректный ответ");
         ui->label_4->setText("Тип вопроса");
-        ui->comboBox->addItem("Тестовый вопрос");
-        ui->comboBox->addItem("Развернутый вопрос");
-        ui->comboBox->setCurrentIndex(0);
         mode = 41;
 
     } else if ((data[0].toString()=="Вопрос" && data[2].toString() == "UPDATE")) {
@@ -135,8 +129,6 @@ void chaptersettings::setData(QVariantList dataUser)
         ui->lineEdit->setText(data[1].toString());
         ui->lineEdit_2->setText(variants);
         ui->lineEdit_3->setText(answer);
-        ui->comboBox->addItem(data[3].toString(),QVariant(0));
-        ui->comboBox->setCurrentIndex(0);
         mode = 41;
     };
 }
@@ -164,7 +156,7 @@ void chaptersettings::on_pushButton_2_clicked()
     }
     if (mode == 2 && data[2].toString() == "UPDATE")
     {
-        db->updateCourse(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->comboBox->currentText());
+        db->updateCourse(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->label->text());
         db->updateCourseTime(ui->lineEdit_3->text(),ui->lineEdit->text());
         emit updateBase(mode);
         this->close();
@@ -178,7 +170,7 @@ void chaptersettings::on_pushButton_2_clicked()
     }
     if (mode == 31 && data[2].toString() == "UPDATE")
     {
-        db->updateChapter(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->comboBox->currentText());
+        db->updateChapter(data[1].toString(),ui->lineEdit->text(), ui->lineEdit_2->text(),ui->label->text());
         db->updateChapterCount(ui->lineEdit_3->text(),ui->lineEdit->text());
         emit updateBase(mode);
         this->close();
@@ -186,7 +178,7 @@ void chaptersettings::on_pushButton_2_clicked()
     if (mode == 41 && data[2].toString() == "INSERT")
     {
         qDebug() << "Insert quest";
-        db->createQuestion(ui->comboBox->currentText(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),data[3].toString());
+        db->createQuestion(ui->label->text(),ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(),data[3].toString());
         emit updateBase(mode);
         this->close();
     }
