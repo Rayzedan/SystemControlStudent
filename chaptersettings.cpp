@@ -63,7 +63,7 @@ void chaptersettings::setData(QVariantList dataUser)
         QString desc = query.value("Description").toString();
         qDebug() << id;
         query.clear();
-        query.exec("SELECT Time From TimeCourses WHERE CourseId = "+id+";");
+        query.exec("SELECT Time From SettingCourses WHERE CourseId = "+id+";");
         query.next();        
         QString time = query.value("Time").toString();
         query.clear();
@@ -94,7 +94,7 @@ void chaptersettings::setData(QVariantList dataUser)
         QString id = query.value("Id").toString();
         QString number = query.value("Number").toString();
         query.clear();
-        query.exec("SELECT Count From CountChapters WHERE ChapterId = "+id+";");
+        query.exec("SELECT Count From SettingChapters WHERE ChapterId = "+id+";");
         query.next();
         QString count = query.value("Count").toString();
         query.clear();        

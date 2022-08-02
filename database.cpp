@@ -158,7 +158,7 @@ void DataBase::createCourseTime(QString time, QString course){
     query.next();
     QString id = query.value("Id").toString();
     query.clear();
-    query.exec("Insert Into TimeCourses(Time,CourseId) Values ("+time+","+id+");");
+    query.exec("Insert Into SettingCourses(Time,CourseId) Values ("+time+","+id+");");
 }
 void DataBase::updateCourseTime(QString time, QString course){
     QSqlQuery query;
@@ -167,7 +167,7 @@ void DataBase::updateCourseTime(QString time, QString course){
     query.next();
     QString id = query.value("Id").toString();
     query.clear();
-    query.exec("UPDATE TimeCourses Set Time="+time+" Where CourseId="+id+";");
+    query.exec("UPDATE SettingCourses Set Time="+time+" Where CourseId="+id+";");
 }
 
 void DataBase::updateCourse(QString name, QString newName, QString description, QString newDepart)
@@ -215,7 +215,7 @@ void DataBase::createChapterCount(QString count, QString chapter){
     query.next();
     QString id = query.value("Id").toString();
     query.clear();
-    query.exec("Insert Into CountChapters(Count,ChapterId) Values ("+count+","+id+");");
+    query.exec("Insert Into SettingChapters(Count,ChapterId) Values ("+count+","+id+");");
 }
 
 void DataBase::updateChapterCount(QString count, QString chapter){
@@ -225,7 +225,7 @@ void DataBase::updateChapterCount(QString count, QString chapter){
     query.next();
     QString id = query.value("Id").toString();
     query.clear();
-    query.exec("Update CountChapters SET Count="+count+" Where ChapterId="+id+";");
+    query.exec("Update SettingChapters SET Count="+count+" Where ChapterId="+id+";");
 }
 
 
