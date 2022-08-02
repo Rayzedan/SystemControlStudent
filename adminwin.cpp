@@ -1,7 +1,8 @@
-#include "adminwin.h"
+﻿#include "adminwin.h"
 #include "ui_adminwin.h"
 #include <QFileDialog>
 #include <QProcess>
+
 AdminWin::AdminWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AdminWin)
@@ -586,20 +587,63 @@ void AdminWin::on_tabWidget_currentChanged(int index)
     } else if (index==1) {
         qDebug()<<"Вкладка Пользователи";
         indexTab = 1;
+        startUpdateBase(0);
     } else if (index==2) {
         qDebug()<<"Вкладка Департамент";
         indexTab =2;
+        startUpdateBase(1);
     } else if (index==3) {
         qDebug()<<"Вкладка Курсы";
         indexTab =3;
+        startUpdateBase(2);
     } else if (index==4) {
         qDebug()<<"Вкладка Темы";
         indexTab = 4;
+        startUpdateBase(3);
     } else if (index==5) {
         qDebug()<<"Вкладка Вопросы";
         indexTab = 5;
+        startUpdateBase(4);
     } else if (index==6) {
         qDebug()<<"Вкладка Результаты";
         indexTab = 6;
+        startUpdateBase(6);
     }
 }
+
+void AdminWin::exportCsvFile()
+{
+    QFile csvFile(QDir::currentPath() + "/" + "result.csv");
+    if (model_res!=nullptr) {
+        if (csvFile.open(QIODevice::WriteOnly|QIODevice::Truncate)) {
+            qDebug() << "createFile";
+            QTextStream textStream(&csvFile);
+            QStringList stringList;
+            stringList.append("Студент");
+            stringList.append("Компания");
+            stringList.append("Время выполнения");
+            stringList.append("Процент правильных ответов");
+            stringList.append("Результат");
+            stringList.append("Номер курса");
+            textStream << stringList.join( ';' )+"\n";
+            stringList.clear();
+            for (int row = 0; row < model_res->rowCount(); row++) {
+                for(int column = 1; column < 7; column++) {
+                    stringList << model_res->data(model_res->index(row, column)).toString();
+                }
+                textStream << stringList.join( ';' )+"\n";
+                qDebug() << stringList;
+                stringList.clear();
+            }
+        }
+        csvFile.close();
+    }
+    else {
+        qDebug() << "error";
+    }
+}
+void AdminWin::on_pushButton_5_clicked()
+{
+    exportCsvFile();
+}
+

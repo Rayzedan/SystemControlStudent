@@ -28,6 +28,7 @@ public slots:
     void startUpdateBase(int mode);
     void takeLogin(QString login);
     void updateRes();
+    void exportCsvFile();
 
 signals:
     void secondWindow(); //Сигнал для соединения панели администратора и начального окна
@@ -96,6 +97,8 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_2_clicked();
+
+    void on_pushButton_5_clicked();
 
 private:
     Ui::AdminWin *ui;
