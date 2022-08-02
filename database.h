@@ -6,6 +6,7 @@
 #include <QSql>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSqlTableModel>
 #include <QSqlError>
 #include <QSqlDatabase>
 #include <QFile>
@@ -24,7 +25,7 @@ public:
     bool checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers);
     bool checkTextAnswer(QString answerUser ,const QString nameChapter, QMap<QString, int>& dataAnswerText, QString correctAnswerText, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers);
     bool checkData(const QString login, const QString password);
-    void checkCorrectAnswer(QMap <int, int>& correctAnswer, const int ID);    
+    void checkCorrectAnswer(QMap <int, int>& correctAnswer, const int ID);
     double sumAnswer(QMap <int, int>& correctAnswer);
     QMap<QString,int> mergeMap(QMap<QString, int>& dataAnswer, QMap<QString, int>& dataAnswerText);
     QString encryptPassword(const QString password);
@@ -41,9 +42,9 @@ public:
     void updateChapterCount(QString count, QString chapter);
     void updateChapter(QString name, QString newName, QString number, QString newCourse);
     void createQuestion(QString type,QString question, QString variants, QString answer,QString chapter);
-    void updateQuestion(QString oldquestion, QString question, QString variants, QString answer,QString chapter);
+    void updateQuestion(QString type,QString question, QString variants, QString answer,QString chapter,QString oldquestionid);
     bool insertIntoTable(QVariantList data);
-    bool openDataBase();
+    QString filter(QString studentName, QString company, QString timeFirst, QString timeLast, QString precFirst, QString precLast, QString credit, QString CourseId);
 
 private:
 

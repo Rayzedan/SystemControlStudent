@@ -278,16 +278,24 @@ void DataBase::createQuestion(QString type,QString question, QString variants, Q
     query.exec();
 };
 
-void DataBase::updateQuestion(QString oldquestion,QString question, QString variants, QString answer,QString chapter){
+void DataBase::updateQuestion(QString type,QString question, QString variants, QString answer,QString chapter,QString oldquestionid){
     QSqlQuery query;
     query.exec("SELECT Id From Chapters WHERE Name = '"+chapter+"'");
     query.next();
     QString id = query.value("Id").toString();
     query.clear();
     QList variant = variants.split("; ");
+    QString typeQuestion;
+    if (type=="Тестовый"){
+        typeQuestion ="0";
+    } else{
+        typeQuestion ="1";
+    }
     qDebug()<<"Запрос";
     query.clear();
-    query.exec("UPDATE Questions SET Question = '"+question+"', Variant1 = '"+variant[0]+"', Variant2 = '"+variant[1]+"', Variant3 = '"+variant[2]+"', Variant4 = '"+variant[3]+"', CorrectAnswer = "+answer+", ChapterId = "+id+" Where Question = '"+oldquestion+"';");
+    query.exec("UPDATE Questions SET Question = '"+question+"',TypeQuestion="+typeQuestion+", Variant1 = '"+variant[0]+"', Variant2 = '"+variant[1]+"', Variant3 = '"+variant[2]+\
+            "', Variant4 = '"+variant[3]+"', CorrectAnswer = "+answer+", ChapterId = "+id+" Where Id = "+oldquestionid+";");
+    qDebug()<<query.lastQuery();
 };
 
 bool DataBase::checkAnswer(const int sum, const QString nameChapter, QMap<QString, int>& dataAnswer, const int correctAnswer, QMap<int, int> &correctAnswers, const int ID, QMap<QString, int> &countAllAnswers)
@@ -420,6 +428,84 @@ QMap<QString,int> DataBase::mergeMap(QMap<QString, int> &dataAnswer, QMap<QStrin
         }
     }
     return resultMap;
+}
+
+QString DataBase::filter(QString studentName, QString company, QString timeFirst, QString timeLast, QString precFirst, QString precLast, QString credit, QString CourseId)
+{
+    QString filter;
+    if (studentName.isEmpty()!=true)
+    {
+        filter.append("StudentName = '"+studentName+"'");
+    }
+    if (company.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND Company = '" + company + "'");
+        }
+        else {
+            filter.append("Company = '" + company + "'");
+        }
+    }
+    if (timeFirst.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND TestDuration >= '" + timeFirst + "'");
+        }
+        else {
+            filter.append("TestDuration >= '" + timeFirst + "'");
+        }
+    }
+    if (timeLast.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND TestDuration <= '" + timeLast + "'");
+        }
+        else {
+           filter.append("TestDuration <= '" + timeLast + "'");
+        }
+    }
+    if (precFirst.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND CorrectPercent >= '" + precFirst + "'");
+        }
+        else {
+            filter.append("CorrectPercent >= '" + precFirst + "'");
+        }
+    }
+    if (precLast.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND CorrectPercent <= '" + precLast + "'");
+        }
+        else {
+            filter.append("CorrectPercent <= '" + precLast + "'");
+        }
+    }
+    if (credit.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND Credit = '" + credit + "'");
+        }
+        else {
+            filter.append("Credit = '" + credit + "'");
+        }
+    }
+    if (CourseId.isEmpty()!=true)
+    {
+        if (filter.isEmpty()!=true) {
+            filter.append("AND CourseId = '" + CourseId + "'");
+        }
+        else {
+             filter.append("CourseId = '" + CourseId + "'");
+        }
+    }
+    if (filter.isEmpty()) {
+        return "empty";
+    }
+    else {
+        return filter;
+    }
 }
 
 

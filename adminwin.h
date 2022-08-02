@@ -4,9 +4,6 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include "tabwidget.h"
-#include <QSqlTableModel>
-#include <QSqlQueryModel>
-#include <QSqlQuery>
 #include "QSettings"
 #include "database.h"
 #include "addusers.h"
@@ -24,14 +21,13 @@ class AdminWin : public QWidget
 public:
      explicit AdminWin(QWidget *parent = nullptr);
     ~AdminWin();
-    QString pathFile;
-
-    void CourseQuery(QString arg);
-    void ChapterQuery(QString arg);
 
 public slots:
+    void CourseQuery(QString arg);
+    void ChapterQuery(QString arg);
     void startUpdateBase(int mode);
     void takeLogin(QString login);
+    void updateRes();
 
 signals:
     void secondWindow(); //Сигнал для соединения панели администратора и начального окна
@@ -95,6 +91,10 @@ private slots:
     void on_pushButton_13_clicked();
     void on_pushButton_14_clicked();
     void on_pushButton_15_clicked();
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::AdminWin *ui;
     DataBase *db;
@@ -105,7 +105,8 @@ private:
     QVariant valCourse;
     QVariant valDepart;
     QVariant valQuestion;
-    QSqlQueryModel *model_res;
+    QString pathFile;
+    QSqlTableModel *model_res;
     QSqlQueryModel *model_res_users;
     QSqlQueryModel *model_res_depart;
     QSqlQueryModel *model_res_course;

@@ -7,7 +7,7 @@ AdminWin::AdminWin(QWidget *parent) :
     ui(new Ui::AdminWin)
 {
     ui->setupUi(this);
-    model_res = new QSqlQueryModel();
+    model_res = new QSqlTableModel();
     model_res_users = new QSqlQueryModel();
     model_res_depart = new QSqlQueryModel();
     model_res_course = new QSqlQueryModel();
@@ -21,6 +21,7 @@ AdminWin::AdminWin(QWidget *parent) :
     ui->tabWidget->setTabEnabled(5,false);
     ui->tabWidget->setTabEnabled(6,false);
     indexTab = 0;
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 
@@ -418,20 +419,14 @@ void AdminWin::startUpdateBase(int mode)
         }
     }
     if (mode ==6) {
-        model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
-        ui->tableView_2->setModel(model_res);
+        updateRes();
     }
 }
 
 void AdminWin::takeLogin(QString login)
 {
     if (login!= "DEFAULT") {
-        model_res->setQuery("Select StudentName AS Студент, Company AS Компания, Credit AS Результат, CorrectPercent AS 'Правильных ответов' From Results");
-        ui->tableView_2->setModel(model_res);
-        ui->tableView_2->verticalHeader()->setVisible(false);
-        ui->tableView_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-        ui->tableView_2->resizeRowsToContents();
-
+        updateRes();
         model_res_users ->setQuery("Select login From Users Order by login");
         ui->usersView->setModel(model_res_users);
         model_res_depart->setQuery("Select name From Departments Order by name");
@@ -439,7 +434,6 @@ void AdminWin::takeLogin(QString login)
         ui->comboBox->setModel(model_res_depart);
         ui->comboBox_2->setModel(model_res_depart);
         ui->comboBox_4->setModel(model_res_depart);
-
         qDebug() << login;
         query = new QSqlQuery();
         query->exec("Select Permissions from Users where Login = '" +login+ "'");
@@ -555,3 +549,53 @@ void AdminWin::on_tabWidget_currentChanged(int index)
         startUpdateBase(6);
     }
 }
+
+void AdminWin::on_pushButton_4_clicked()
+{
+   qDebug() << "Filter";
+   QString filter = db->filter(ui->studName->text(), ui->compName->text(), ui->timeFirst->text(),  ui->timeLast->text(),
+                               ui->precFirst->text(),  ui->precLast->text(), ui->resultName->currentText(), ui->courseName->text());
+   if (filter == "empty") {
+       QMessageBox::information(this, "", "Заполните поля");
+   }
+   else {
+       model_res->setFilter(filter);
+       ui->tableView_2->setModel(model_res);
+   }
+}
+
+void AdminWin::on_pushButton_3_clicked()
+{
+    qDebug() << "delete filter";
+    updateRes();
+}
+
+
+void AdminWin::updateRes()
+{
+    ui->studName->clear();
+    ui->compName->clear();
+    ui->timeFirst->clear();
+    ui->timeLast->clear();
+    ui->precFirst->clear();
+    ui->precLast->clear();
+    ui->courseName->clear();
+    model_res->clear();
+    model_res->setTable("Results");
+    model_res->setHeaderData(1, Qt::Horizontal, "Студент");
+    model_res->setHeaderData(2, Qt::Horizontal, "Компания");
+    model_res->setHeaderData(4, Qt::Horizontal, "Процент правильных ответов");
+    model_res->setHeaderData(5, Qt::Horizontal, "Результат");
+    model_res->select();
+    ui->tableView_2->setModel(model_res);
+    ui->tableView_2->hideColumn(0);
+    ui->tableView_2->hideColumn(3);
+    ui->tableView_2->hideColumn(6);
+    ui->tableView_2->verticalHeader()->setVisible(false);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(1,QHeaderView::ResizeToContents);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(2,QHeaderView::ResizeToContents);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(4,QHeaderView::Stretch);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(5,QHeaderView::ResizeToContents);
+}
+
+
