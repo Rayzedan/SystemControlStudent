@@ -84,7 +84,7 @@
        <font>
         <family>Roboto</family>
         <pointsize>16</pointsize>
-        <bold>true</bold>
+        <bold>false</bold>
         <underline>false</underline>
         <strikeout>false</strikeout>
        </font>
@@ -134,7 +134,7 @@
               <family>Roboto</family>
               <pointsize>16</pointsize>
               <italic>false</italic>
-              <bold>true</bold>
+              <bold>false</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
              </font>
@@ -153,7 +153,7 @@
              <font>
               <family>Roboto</family>
               <pointsize>16</pointsize>
-              <bold>true</bold>
+              <bold>false</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
              </font>

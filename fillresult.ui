@@ -57,6 +57,12 @@
        <height>440</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <family>Roboto</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>Результаты тестирования</string>
      </property>
@@ -67,8 +73,9 @@
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -106,8 +113,9 @@
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -139,8 +147,9 @@
          <widget class="QLabel" name="label_4">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -172,8 +181,9 @@
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -192,8 +202,9 @@
          <widget class="QLabel" name="label_6">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -257,8 +268,9 @@ border: 3px solid #F0F0F0;
          <widget class="QLabel" name="label_8">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -290,8 +302,9 @@ border: 3px solid #F0F0F0;
          <widget class="QLabel" name="label_9">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -323,8 +336,9 @@ border: 3px solid #F0F0F0;
          <widget class="QLabel" name="label_10">
           <property name="font">
            <font>
+            <family>Roboto</family>
             <pointsize>14</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">

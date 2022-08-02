@@ -21,6 +21,7 @@ AdminWin::AdminWin(QWidget *parent) :
     ui->tabWidget->setTabEnabled(5,false);
     ui->tabWidget->setTabEnabled(6,false);
     indexTab = 0;
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 
