@@ -575,7 +575,6 @@ void AdminWin::on_pushButton_2_clicked()
     QString p = settings.value("path").toString();
     settings.endGroup();
     p.replace("/","\\");
-    qDebug()<<p;
     QProcess::startDetached("explorer", QStringList() << p);
 }
 
@@ -614,7 +613,12 @@ void AdminWin::on_tabWidget_currentChanged(int index)
 
 void AdminWin::exportCsvFile()
 {
-    QFile csvFile(QDir::currentPath() + "/" + "result.csv");
+    QString fileName = "config.ini";
+    QSettings settings(fileName, QSettings::IniFormat);
+    settings.beginGroup("userSettings");
+    QString p = settings.value("path").toString();
+    settings.endGroup();
+    QFile csvFile(p + "/" + "result.csv");
     if (model_res!=nullptr) {
         if (csvFile.open(QIODevice::WriteOnly|QIODevice::Truncate)) {
             qDebug() << "createFile";
