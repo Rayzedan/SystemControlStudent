@@ -138,7 +138,7 @@
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/icons8-save-50.png</normaloff>:/resourses/icons8-save-50.png</iconset>
+             <normaloff>:/resourses/save.png</normaloff>:/resourses/save.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -233,7 +233,7 @@
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/icons8-file-50.png</normaloff>:/resourses/icons8-file-50.png</iconset>
+             <normaloff>:/resourses/open.png</normaloff>:/resourses/open.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -436,7 +436,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+             <normaloff>:/resourses/delete.png</normaloff>:/resourses/delete.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -462,7 +462,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+             <normaloff>:/resourses/set.png</normaloff>:/resourses/set.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -595,7 +595,7 @@ color: rgb(0, 0, 0);
              </property>
              <property name="icon">
               <iconset resource="resourses.qrc">
-               <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+               <normaloff>:/resourses/delete.png</normaloff>:/resourses/delete.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -621,7 +621,7 @@ color: rgb(0, 0, 0);
              </property>
              <property name="icon">
               <iconset resource="resourses.qrc">
-               <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+               <normaloff>:/resourses/set.png</normaloff>:/resourses/set.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -787,7 +787,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+             <normaloff>:/resourses/delete.png</normaloff>:/resourses/delete.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -813,7 +813,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+             <normaloff>:/resourses/set.png</normaloff>:/resourses/set.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1004,7 +1004,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+             <normaloff>:/resourses/delete.png</normaloff>:/resourses/delete.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1030,7 +1030,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+             <normaloff>:/resourses/set.png</normaloff>:/resourses/set.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1197,7 +1197,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+             <normaloff>:/resourses/delete.png</normaloff>:/resourses/delete.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1220,7 +1220,7 @@ color: rgb(0, 0, 0);
            </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/settings.png</normaloff>:/resourses/settings.png</iconset>
+             <normaloff>:/resourses/set.png</normaloff>:/resourses/set.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1416,7 +1416,7 @@ color: rgb(0, 0, 0);
               <widget class="QPushButton" name="pushButton_3">
                <property name="icon">
                 <iconset resource="resourses.qrc">
-                 <normaloff>:/resourses/back.png</normaloff>:/resourses/back.png</iconset>
+                 <normaloff>:/resourses/delete.png</normaloff>:/resourses/delete.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1460,7 +1460,7 @@ color: rgb(0, 0, 0);
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0,1,0,0,2">
          <item>
           <widget class="QLabel" name="label_13">
            <property name="text">
@@ -1470,8 +1470,49 @@ color: rgb(0, 0, 0);
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_2">
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/folder.png</normaloff>:/resourses/folder.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_17">
            <property name="text">
-            <string>Открыть</string>
+            <string>Экспорт в Excel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="icon">
+            <iconset resource="resourses.qrc">
+             <normaloff>:/resourses/export.png</normaloff>:/resourses/export.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1487,13 +1528,6 @@ color: rgb(0, 0, 0);
             </size>
            </property>
           </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_5">
-           <property name="text">
-            <string>Экспорт в Excel</string>
-           </property>
-          </widget>
          </item>
         </layout>
        </item>

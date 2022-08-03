@@ -1,12 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>resourses/add.png</file>
-        <file>resourses/back.png</file>
-        <file>resourses/settings.png</file>
-        <file>resourses/icons8-file-50.png</file>
-        <file>resourses/icons8-rename-50.png</file>
-        <file>resourses/L.png</file>
-        <file>resourses/R.png</file>
-        <file>resourses/icons8-save-50.png</file>
+        <file>resourses/b.png</file>
+        <file>resourses/delete.png</file>
+        <file>resourses/export.png</file>
+        <file>resourses/folder.png</file>
+        <file>resourses/n.png</file>
+        <file>resourses/open.png</file>
+        <file>resourses/save.png</file>
+        <file>resourses/set.png</file>
+        <file>resourses/print.png</file>
     </qresource>
 </RCC>

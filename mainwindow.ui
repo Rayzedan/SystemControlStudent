@@ -199,48 +199,15 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>85</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>85</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
            <property name="icon">
             <iconset resource="resourses.qrc">
-             <normaloff>:/resourses/R.png</normaloff>:/resourses/R.png</iconset>
+             <normaloff>:/resourses/n.png</normaloff>:/resourses/n.png</iconset>
            </property>
            <property name="iconSize">
             <size>
              <width>30</width>
              <height>30</height>
             </size>
-           </property>
-           <property name="shortcut">
-            <string>Return</string>
            </property>
           </widget>
          </item>

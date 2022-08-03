@@ -197,7 +197,7 @@
       <widget class="QPushButton" name="pushButton">
        <property name="icon">
         <iconset resource="resourses.qrc">
-         <normaloff>:/resourses/icons8-save-50.png</normaloff>:/resourses/icons8-save-50.png</iconset>
+         <normaloff>:/resourses/save.png</normaloff>:/resourses/save.png</iconset>
        </property>
        <property name="iconSize">
         <size>

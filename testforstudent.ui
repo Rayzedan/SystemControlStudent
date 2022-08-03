@@ -300,7 +300,7 @@ hr { height: 1px; border-width: 0; }
         </property>
         <property name="icon">
          <iconset resource="resourses.qrc">
-          <normaloff>:/resourses/L.png</normaloff>:/resourses/L.png</iconset>
+          <normaloff>:/resourses/b.png</normaloff>:/resourses/b.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -332,7 +332,7 @@ hr { height: 1px; border-width: 0; }
         </property>
         <property name="icon">
          <iconset resource="resourses.qrc">
-          <normaloff>:/resourses/R.png</normaloff>:/resourses/R.png</iconset>
+          <normaloff>:/resourses/n.png</normaloff>:/resourses/n.png</iconset>
         </property>
         <property name="iconSize">
          <size>

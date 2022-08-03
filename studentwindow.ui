@@ -221,31 +221,10 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="pushButton_3">
-            <property name="minimumSize">
-             <size>
-              <width>85</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>85</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>14</pointsize>
-              <bold>false</bold>
-              <underline>false</underline>
-              <strikeout>false</strikeout>
-             </font>
-            </property>
+           <widget class="QPushButton" name="pushButton_2">
             <property name="icon">
              <iconset resource="resourses.qrc">
-              <normaloff>:/resourses/L.png</normaloff>:/resourses/L.png</iconset>
+              <normaloff>:/resourses/b.png</normaloff>:/resourses/b.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -270,39 +249,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton">
-            <property name="minimumSize">
-             <size>
-              <width>85</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>14</pointsize>
-              <bold>false</bold>
-              <underline>false</underline>
-              <strikeout>false</strikeout>
-             </font>
-            </property>
             <property name="icon">
              <iconset resource="resourses.qrc">
-              <normaloff>:/resourses/R.png</normaloff>:/resourses/R.png</iconset>
+              <normaloff>:/resourses/n.png</normaloff>:/resourses/n.png</iconset>
             </property>
             <property name="iconSize">
              <size>
               <width>30</width>
               <height>30</height>
              </size>
-            </property>
-            <property name="shortcut">
-             <string>Return</string>
             </property>
            </widget>
           </item>
