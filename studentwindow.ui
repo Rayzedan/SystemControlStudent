@@ -225,7 +225,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="pushButton_3">
             <property name="icon">
              <iconset resource="resourses.qrc">
               <normaloff>:/resourses/b.png</normaloff>:/resourses/b.png</iconset>

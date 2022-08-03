@@ -552,7 +552,7 @@ void AdminWin::updateRes()
     model_res->setTable("Results");
     model_res->setHeaderData(1, Qt::Horizontal, "Студент");
     model_res->setHeaderData(2, Qt::Horizontal, "Компания");
-    model_res->setHeaderData(4, Qt::Horizontal, "Процент правильных ответов");
+    model_res->setHeaderData(4, Qt::Horizontal, "Процент");
     model_res->setHeaderData(5, Qt::Horizontal, "Результат");
     model_res->select();
     ui->tableView_2->setModel(model_res);
@@ -560,9 +560,9 @@ void AdminWin::updateRes()
     ui->tableView_2->hideColumn(3);
     ui->tableView_2->hideColumn(6);
     ui->tableView_2->verticalHeader()->setVisible(false);
-    ui->tableView_2->horizontalHeader()->setSectionResizeMode(1,QHeaderView::ResizeToContents);
-    ui->tableView_2->horizontalHeader()->setSectionResizeMode(2,QHeaderView::ResizeToContents);
-    ui->tableView_2->horizontalHeader()->setSectionResizeMode(4,QHeaderView::Stretch);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(2,QHeaderView::Stretch);
+    ui->tableView_2->horizontalHeader()->setSectionResizeMode(4,QHeaderView::ResizeToContents);
     ui->tableView_2->horizontalHeader()->setSectionResizeMode(5,QHeaderView::ResizeToContents);
 }
 

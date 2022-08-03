@@ -67,4 +67,3 @@ void StudentWindow::on_comboBox_2_currentTextChanged(QString arg1)
                          "Courses WHERE Departments.Name = " "'"+arg1+"' AND " "Departments.Id = Courses.DepartmentId");
     ui->comboBox_3->setModel(model_dep);
 }
-
