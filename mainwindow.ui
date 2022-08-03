@@ -37,6 +37,10 @@
   <property name="windowTitle">
    <string>SystemControlStudent</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resourses.qrc">
+    <normaloff>:/resourses/start.png</normaloff>:/resourses/start.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>

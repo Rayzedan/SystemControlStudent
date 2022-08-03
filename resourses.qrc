@@ -10,5 +10,6 @@
         <file>resourses/save.png</file>
         <file>resourses/set.png</file>
         <file>resourses/print.png</file>
+        <file>resourses/start.png</file>
     </qresource>
 </RCC>

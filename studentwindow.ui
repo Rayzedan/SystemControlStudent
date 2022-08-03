@@ -27,6 +27,10 @@
   <property name="windowTitle">
    <string/>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resourses.qrc">
+    <normaloff>:/resourses/start.png</normaloff>:/resourses/start.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_7">
    <item>
     <widget class="QGroupBox" name="groupBox_2">

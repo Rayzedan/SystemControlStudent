@@ -156,7 +156,8 @@ void AdminWin::on_comboBox_6_currentTextChanged(const QString &arg1)
         model_res_question->setQuery("Select Questions.Id, Question as Вопрос from Questions, Chapters where Chapters.name='"+arg1+"' and Chapters.Id=Questions.ChapterId");
         ui->tableView->setModel(model_res_question);
         ui->tableView->verticalHeader()->setVisible(false);
-        ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        //ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->tableView->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
         ui->tableView->resizeRowsToContents();
     }
 }

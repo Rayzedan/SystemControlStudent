@@ -9,7 +9,7 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent) :
 
     // Скрываем пароль, который вводит администратор
     ui->password->setEchoMode(QLineEdit::Password);
-
+    ui->pushButton_2->setDefault(1);
 
 }
 

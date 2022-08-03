@@ -1,6 +1,5 @@
 QT       += core gui sql
 QT       += printsupport
-QT       += core5compat
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
